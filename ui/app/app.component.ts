@@ -1,56 +1,19 @@
 import {View, Component} from 'angular2/core';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-let imagePath = 'public/images/avatars/avatar11.svg';
+import {VendorMainPageComponent} from './vendor/vendor_home_page/vendor_main_page';
+import {VendorOrdersComponent} from './vendor/vendor_orders/vendor_orders';
 
+//let template = require('./app.component.html');
 
 @Component({
-    selector: 'my-app'
+  selector: 'my-app',
+  templateUrl: 'app/app.component.html',
+  directives: [ROUTER_DIRECTIVES]
 })
-@View({
-  templateUrl: 'app/app.component.html'
-})
-export class AppComponent {
-phones = [
-    {type: 'Home', number: '(555) 251-1234'},
-    {type: 'Cell', number: '(555) 786-9841'},
-    {type: 'Office', number: '(555) 314-1592'}
-  ];
-  todos = [
-    {
-      face: imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    },
-    {
-      face: imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    },
-    {
-      face: imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    },
-    {
-      face: imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    },
-    {
-      face: imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    },
-  ];
-}
+
+@RouteConfig([
+  {path: '/vendor_main_page',   name: 'VendorMainPage', component: VendorMainPageComponent},
+  {path: '/vendor_orders', name: 'VendorOrders', component: VendorOrdersComponent}
+])
+export class AppComponent { }
