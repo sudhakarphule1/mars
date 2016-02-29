@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {Github} from '../../services/github';
 import {Observable} from 'rxjs/Observable';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 
 @Component({
   selector: 'task-list',
