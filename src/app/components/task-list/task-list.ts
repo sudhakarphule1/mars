@@ -3,6 +3,8 @@ import {Github} from '../../services/github';
 import {Observable} from 'rxjs/Observable';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
+import "../../../../node_modules/ng2-material/dist/ng2-material.css";
+import "../../../../node_modules/ng2-material/dist/font.css";
 
 @Component({
   selector: 'task-list',
