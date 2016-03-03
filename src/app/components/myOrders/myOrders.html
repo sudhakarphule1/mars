@@ -1,0 +1,34 @@
+<h3>Orders</h3>
+
+<div> Sort By:
+  <select>
+    <option value="" class="" selected="selected">Select Sort Option:</option>
+    <option value="" label="Company Name">Company Name</option>
+    <option value="" label="Delivery Date">Delivery Date</option>
+    <option value="" label="Order Date">Order Date</option>
+    <option value="" label="Lead Type">Lead Type</option>
+    <option value="" label="Order Status">Order Status</option>
+  </select>
+</div>
+
+<div>
+  <md-content>
+    <md-list>
+      <md-list-item class="md-3-line" *ngFor="#item of orders">
+        <div class="md-list-item-text" layout="column">
+          <span (click)="displayDetails(item)">{{ item.companyName }}</span>
+          <span>{{ item.orderDate }}</span>
+          <span>{{ item.orderType }}</span><md-divider></md-divider>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>
+
+<div *ngIf="selectedItem">
+  <h2>{{selectedItem.companyName}} order details :</h2>
+  <div><label>Order type: </label>{{selectedItem.orderType}}</div>
+  <div>
+    <label>Order Details: </label> {{selectedItem.orderDetails}}
+  </div>
+</div>
