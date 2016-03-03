@@ -1,4 +1,4 @@
-<header>
+<header  class="headerSection">
   <div>
       <input type="search" name="googlesearch">
       <button type="submit">Search Orders</button>
@@ -9,11 +9,12 @@
       <a [routerLink]="['/Customers']">Settings</a>
   </div>
 </header>
-
+<div class="container">
 <div class="left-sidebar">
-  <h3>Order App</h3>
-  <img class="logo" src="app/images/logo.jpg">
+  <h2>Order App</h2>
   <h3>Comfort Agencies</h3>
+  <img class="logo" src="app/images/logo.jpg">
+  <h3>Swapnil Kadam</h3>
   <img src="app/images/profile.png">
   <ul>
     <li><a [routerLink]="['/MyOrders']">My Orders</a></li>
@@ -25,6 +26,7 @@
   </ul>
 </div>
 
-<div class="orders">
+<div>
   <router-outlet></router-outlet>
+</div>
 </div>

@@ -1,5 +1,5 @@
-<h3>Orders</h3>
-
+<div class="orders">
+  <h3>Orders</h3>
 <div> Sort By:
   <select>
     <option value="" class="" selected="selected">Select Sort Option:</option>
@@ -17,10 +17,30 @@
       <md-list-item class="md-3-line" *ngFor="#item of orders">
         <div class="md-list-item-text" layout="column">
           <span (click)="displayDetails(item)">{{ item.companyName }}</span>
+          <span>{{ item.orderDetails }}</span>
           <span>{{ item.orderDate }}</span>
-          <span>{{ item.orderType }}</span><md-divider></md-divider>
+          <span>{{ item.orderType }}</span>
+          <span>{{ item.status }}</span><md-divider></md-divider>
         </div>
       </md-list-item>
+<!--      <table>
+        <tr class="title-lebel">
+          <td>Company Name</td>
+          <td>Order Details</td>
+          <td>Order Date</td>
+          <td>Deadline</td>
+        </tr>
+        <tr *ngFor="#item of orders">
+          <a><td>{{item.productName}}</td>
+          <td>{{item.brand}}</td>
+          <td>{{item.Variant}}</td>
+          <td>{{item.availability}}</td></a>
+        </tr>
+      </table>-->
+<!--      <div class="row">
+
+
+      </div>-->
     </md-list>
   </md-content>
 </div>
@@ -31,4 +51,23 @@
   <div>
     <label>Order Details: </label> {{selectedItem.orderDetails}}
   </div>
+</div>
+</div>
+
+<div class="tableClass">
+  <h3>Products</h3>
+    <table>
+      <tr class="title-labrl">
+        <td><b>Product Name</b></td>
+        <td><b>Brand Name</b></td>
+        <td><b>Variant</b></td>
+        <td><b>Availability</b></td>
+      </tr>
+      <tr *ngFor="#item of allProducts">
+        <td>{{item.productName}}</td>
+        <td>{{item.brand}}</td>
+        <td>{{item.Variant}}</td>
+        <td>{{item.availability}}</td>
+      </tr>
+    </table>
 </div>

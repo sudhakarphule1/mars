@@ -1,5 +1,9 @@
+.container {
+  width: 100%;
+  float: left;
+}
 .left-sidebar {
-  width:30%;
+  width:20%;
   float: left;
 }
 
@@ -20,6 +24,7 @@
   width: 100px;
 }
 
-.orders{
-  float: left;
+
+.headerSection{
+  margin-left: 600px;
 }

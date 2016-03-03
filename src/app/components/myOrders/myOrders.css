@@ -1,0 +1,33 @@
+.tableClass{
+  float: left;
+  width: 40%;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.tableClass table {
+  width: 100%;
+}
+
+.tableClass tr.title-lebel {
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.tableClass tr td {
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.orders{
+  float: left;
+  width: 38%;
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid #ccc;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+
