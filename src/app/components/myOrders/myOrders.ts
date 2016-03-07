@@ -1,11 +1,12 @@
 import {Component} from 'angular2/core';
+import {OrderEntry} from '../orderEntry/orderEntry';
 
 @Component({
   selector: 'myOrders',
   templateUrl: 'app/components/myOrders/myOrders.html',
   styleUrls: ['app/components/myOrders/myOrders.css'],
   providers: [],
-  directives: [],
+  directives: [OrderEntry],
   pipes: []
 })
 export class MyOrders {
@@ -59,61 +60,6 @@ export class MyOrders {
       completionDate: '03/24/2016',
       status: 'Completed',
       orderType: 'phone'}];
-
-  allProducts =  [{productName: 'Dettol Hand wash', brand:'Dettol' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Dettol' ,Variant: '500 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Dettol' ,Variant: '1 Ltr', availability: 'Yes', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '100 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '300 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Hindusthan Lever' ,Variant: '100 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Apple' ,Variant: '500 ml', availability: 'No', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Orient' ,Variant: '50 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Orient' ,Variant: '100 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Orient' ,Variant: '500 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Orient' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Hindusthan Lever' ,Variant: '500 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Hindusthan Lever' ,Variant: '1 Ltr', availability: 'Yes', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '100 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '300 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Hindusthan Lever' ,Variant: '100 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Hindusthan Lever' ,Variant: '500 ml', availability: 'No', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Hindusthan Lever' ,Variant: '50 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Hindusthan Lever' ,Variant: '100 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Hindusthan Lever' ,Variant: '500 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Hindusthan Lever' ,Variant: '500 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Hindusthan Lever' ,Variant: '1 Ltr', availability: 'Yes', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '100 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '300 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Samsung' ,Variant: '100 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Hindusthan Lever' ,Variant: '500 ml', availability: 'No', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Hindusthan Lever' ,Variant: '50 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Orient' ,Variant: '100 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Orient' ,Variant: '500 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Samsung' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Samsung' ,Variant: '300 ml', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Hindusthan Lever' ,Variant: '500 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Hand wash', brand:'Samsung' ,Variant: '1 Ltr', availability: 'Yes', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '100 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Tissue Papers', brand:'Hindusthan Lever' ,Variant: '300 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Hindusthan Lever' ,Variant: '100 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol Antiseptic', brand:'Hindusthan Lever' ,Variant: '500 ml', availability: 'No', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Hindusthan Lever' ,Variant: '50 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Hindusthan Lever' ,Variant: '100 Pcs', availability: 'Yes', quantity: 0},
-    {productName: 'Toilet Paper', brand:'Hindusthan Lever' ,Variant: '500 Pcs', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Hindusthan Lever' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Room Freshner', brand:'Apple' ,Variant: '300 ml', availability: 'No', quantity: 0},
-    {productName: 'Room Freshner', brand:'Apple' ,Variant: '300 ml', availability: 'Yes', quantity: 0},
-    {productName: 'Dettol', brand:'Apple' ,Variant: '300 ml', availability: 'Yes', quantity: 0}];
 
   selectedItem: string;
 
