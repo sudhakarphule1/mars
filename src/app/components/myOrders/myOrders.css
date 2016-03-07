@@ -1,7 +1,7 @@
 .tableClass{
   float: left;
   width: 40%;
-  height: 600px;
+  height: 500px;
   overflow-y: scroll;
 }
 
@@ -30,4 +30,20 @@
   overflow-y: scroll;
 }
 
+.orderButton{
+  width: 150px;
+  height: 30px;
+}
+
+.createOrderSection {
+
+  text-align:center;
+}
+.qty {
+  width: 40px;
+  height: 25px;
+  text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}
 
