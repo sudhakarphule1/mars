@@ -2,6 +2,7 @@
   width: 100%;
   float: left;
 }
+
 .left-sidebar {
   width:20%;
   float: left;
@@ -22,9 +23,4 @@
 .logo{
   height: 100px;
   width: 100px;
-}
-
-
-.headerSection{
-  margin-left: 600px;
 }

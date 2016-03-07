@@ -7,14 +7,14 @@ import {Notes} from './components/notes/notes';
 import {Products} from "./components/products/products";
 import {Customers} from "./components/customers/customers";
 import {LogOut} from "./components/logOut/logOut";
-import {AppHeader} from "./components/appHeader/appHeader";
+import {Header} from "./components/header/header";
 
 @Component({
   selector: 'seed-app',
   providers: [],
   templateUrl: 'app/seed-app.html',
   styleUrls: ['app/seed-app.css'],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, Header],
   pipes: []
 })
 @RouteConfig([
@@ -25,6 +25,7 @@ import {AppHeader} from "./components/appHeader/appHeader";
   new Route({ path: '/customers', component: Customers, name: 'Customers'}),
   new Route({ path: '/logOut', component: LogOut, name: 'LogOut'})
 ])
+
 export class SeedApp {
 
   constructor() {}
