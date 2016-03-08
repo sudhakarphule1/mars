@@ -6,7 +6,7 @@ import {Http, URLSearchParams} from 'angular2/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AllOrders {
+export class Orders {
   constructor(private http: Http){}
 
   getOrders(){

@@ -6,8 +6,7 @@ import {Router, RouteConfig, Route, ROUTER_DIRECTIVES} from 'angular2/router';
   selector: 'userAccount',
   templateUrl: 'app/share/components/user-account.component.html',
   styleUrls: ['app/share/components/user-account.component.css'],
-  directives: [ROUTER_DIRECTIVES],
-  pipes: []
+  directives: [ROUTER_DIRECTIVES]
 })
 export class UserAccount {
 

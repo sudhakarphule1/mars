@@ -7,16 +7,14 @@ import "../../../../node_modules/ng2-material/dist/font.css";
 
 
 @Component({
-  selector: 'products',
+  selector: 'ib-product-master',
   templateUrl: 'app/master/components/product-master.component.html',
   styleUrls: ['app/master/components/product-master.component.css'],
-  providers: [],
-  directives: [ROUTER_DIRECTIVES],
-  pipes: []
+  directives: [ROUTER_DIRECTIVES]
 })
 
 
-export class Products {
+export class ProductMaster {
 /*
   orders = [{companyName: 'Infosys',
     orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',

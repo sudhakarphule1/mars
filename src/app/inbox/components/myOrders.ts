@@ -1,12 +1,12 @@
 import {Component} from 'angular2/core';
-import {OrderEntry} from '../../order/components/create-order.component';
+import {CreateOrder} from '../../order/components/create-order.component';
 
 @Component({
   selector: 'myOrders',
   templateUrl: 'app/inbox/components/myOrders.html',
   styleUrls: ['app/inbox/components/myOrders.css'],
   providers: [],
-  directives: [OrderEntry],
+  directives: [CreateOrder],
   pipes: []
 })
 export class MyOrders {
