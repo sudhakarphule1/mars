@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {Github} from '../../services/github';
 import {Observable} from 'rxjs/Observable';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
@@ -9,8 +8,8 @@ import "../../../../node_modules/ng2-material/dist/font.css";
 
 @Component({
   selector: 'products',
-  templateUrl: 'app/components/products/products.html',
-  styleUrls: ['app/components/products/products.css'],
+  templateUrl: 'app/master/components/product-master.component.html',
+  styleUrls: ['app/master/components/product-master.component.css'],
   providers: [],
   directives: [ROUTER_DIRECTIVES],
   pipes: []

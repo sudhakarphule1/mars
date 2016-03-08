@@ -16,7 +16,7 @@ export class AllOrders {
   private makeRequest(){
 /*    let params = new URLSearchParams();
     params.set('per_page', '100');*/
-    let url = `app/components/myOrders/myOrders.json`;
+    let url = `app/order/services/myOrders.json`;
     console.log(url);
     return this.http.get(url).map((res) => res.json());
   }
