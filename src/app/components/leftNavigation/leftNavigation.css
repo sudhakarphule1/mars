@@ -1,0 +1,21 @@
+.left-sidebar {
+  width:20%;
+  float: left;
+}
+
+.left-sidebar nav {
+  float: left;
+}
+.left-sidebar nav ul {
+  float: left;
+  width: 100%;
+}
+.left-sidebar nav ul li a {
+  float: left;
+  width: 100%;
+}
+
+.logo{
+  height: 100px;
+  width: 100px;
+}

@@ -8,13 +8,14 @@ import {Products} from "./components/products/products";
 import {Customers} from "./components/customers/customers";
 import {LogOut} from "./components/logOut/logOut";
 import {Header} from "./components/header/header";
+import {LeftNavigation} from "./components/leftNavigation/leftNavigation";
 
 @Component({
   selector: 'seed-app',
   providers: [],
   templateUrl: 'app/seed-app.html',
   styleUrls: ['app/seed-app.css'],
-  directives: [ROUTER_DIRECTIVES, Header],
+  directives: [ROUTER_DIRECTIVES, Header, LeftNavigation],
   pipes: []
 })
 @RouteConfig([

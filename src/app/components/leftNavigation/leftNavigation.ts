@@ -3,12 +3,13 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {MyOrders} from '../myOrders/myOrders';
 
 @Component({
-  selector: 'oa-header',
-  templateUrl: 'app/components/header/header.html',
-  styleUrls: ['app/components/header/header.css'],
+  selector: 'oa-left-nav',
+  templateUrl: 'app/components/leftNavigation/leftNavigation.html',
+  styleUrls: ['app/components/leftNavigation/leftNavigation.css'],
   directives: [ROUTER_DIRECTIVES]
 })
-export class Header {
+
+export class LeftNavigation {
 
   constructor() {}
 
