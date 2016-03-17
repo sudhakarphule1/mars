@@ -20,7 +20,7 @@
   padding: 5px;
 }
 
-.orders{
+.inbox{
   float: left;
   width: 38%;
   padding-right: 10px;
@@ -30,7 +30,7 @@
   overflow-y: scroll;
 }
 
-.orderButton{
+.inboxButton{
   width: 150px;
   height: 30px;
 }

@@ -1,5 +1,5 @@
-<div class="orders">
-  <h3>Orders</h3>
+<div class="inbox">
+  <h3>Inbox</h3>
   <div> Sort By:
     <select>
       <option value="" class="" selected="selected">Select Sort Option:</option>
@@ -14,13 +14,14 @@
   <div>
     <md-content>
       <md-list>
-        <md-list-item class="md-3-line" *ngFor="#item of orders">
+        <md-list-item class="md-3-line" *ngFor="#item of itemList">
           <div class="md-list-item-text" layout="column">
             <span (click)="displayDetails(item)">{{ item.companyName }}</span>
             <span>{{ item.orderDetails }}</span>
             <span>{{ item.orderDate }}</span>
             <span>{{ item.orderType }}</span>
-            <span>{{ item.status }}</span><md-divider></md-divider>
+            <span>{{ item.status }}</span>
+            <md-divider></md-divider>
           </div>
         </md-list-item>
 

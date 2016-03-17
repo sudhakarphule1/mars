@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {MyOrders} from './inbox/components/myOrders';
+import {Inbox} from './inbox/components/inbox';
 import {UserAccount} from './share/components/user-account.component';
 import {ProductMaster} from "./master/components/product-master.component";
 import {CustomerMaster} from "./master/components/customer-master.component";
@@ -18,7 +18,7 @@ import {LeftNavigation} from "./inbox/components/left.navigation.component";
   pipes: []
 })
 @RouteConfig([
-  new Route({ path: '/myOrders', component: MyOrders, name: 'MyOrders', useAsDefault: true}),
+  new Route({ path: '/inbox', component: Inbox, name: 'Inbox', useAsDefault: true}),
   new Route({ path: '/userAccount', component: UserAccount, name: 'UserAccount'}),
   new Route({ path: '/products', component: ProductMaster, name: 'Products'}),
   new Route({ path: '/customers', component: CustomerMaster, name: 'Customers'}),
