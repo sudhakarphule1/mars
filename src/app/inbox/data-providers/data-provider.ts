@@ -2,28 +2,35 @@ export interface DataProvider {
   getAll();
 }
 
-export interface InboxItem{
+export class InboxItem{
   id: string;
+  type : string;
 }
 
-export interface EmailItem{
-  from : string;
-  subject : string;
+export class Email extends InboxItem{
+  constructor() {
+    super();
+    this.type = 'Email';
+  }
+  from: string;
+  to: string;
+  cc: string;
+  date : string;
+  subject: string;
   body : string;
+  priority: string;
+  attachments: string
 }
 
-export interface Order{
-  companyName: string,
-  orderDetails: string,
-  orderDate: string,
-  completionDate: string,
-  status: string,
+export class Order extends InboxItem {
+  constructor() {
+    super();
+    this.type = 'Order';
+  }
+  companyName: string;
+  orderDetails: string;
+  orderDate: string;
+  completionDate: string;
+  status: string;
   orderType: string
 }
-
-export interface Lead{
-  from : string;
-  subject : string;
-  body : string;
-}
-

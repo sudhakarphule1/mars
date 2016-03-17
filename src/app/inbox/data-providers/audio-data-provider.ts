@@ -1,29 +1,25 @@
 import {LeadsDataProvider} from "./leads-data-provider";
 import {DataProvider} from "./data-provider";
+import {Email} from "./data-provider";
 
 export class AudioDataProvider implements DataProvider {
   constructor() {
   }
 
   getAll() {
+    var email = new Email();
+    email.from = 'admin.clerk@hsbc.com';
+    email.to = 'order@parag.com';
+    email.cc = 'admin.mgr@hsbc.com';
+    email.date = '12/12/12';
+    email.subject = 'Montly recurring order';
+    email.body = 'Can you see this TODO';
+    email.priority = 'Normal';
+    email.attachments = 'Attachment 1 TODO';
+
     var items:Array<any>;
-    items = new Array<any>();
-    items.push({
-      companyName: 'Infosys',
-      orderDetails: '6 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '03/24/2016',
-      completionDate: '03/24/2016',
-      status: 'In-Progress',
-      orderType: 'email'
-    });
-    items.push({
-      companyName: 'HSBC',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '02/10/2016',
-      completionDate: '03/24/2016',
-      status: 'Completed',
-      orderType: 'online'
-    })
+    items = new Array<Email>();
+    items.push( email)
     return items;
   }
 }

@@ -15,14 +15,8 @@
     <md-content>
       <md-list>
         <md-list-item class="md-3-line" *ngFor="#item of itemList">
-          <div class="md-list-item-text" layout="column">
-            <span (click)="displayDetails(item)">{{ item.companyName }}</span>
-            <span>{{ item.orderDetails }}</span>
-            <span>{{ item.orderDate }}</span>
-            <span>{{ item.orderType }}</span>
-            <span>{{ item.status }}</span>
-            <md-divider></md-divider>
-          </div>
+          <ib-order-item [order]="item" *ngIf="item.type == 'Order'"></ib-order-item>
+          <ib-email-item [email]="item" *ngIf="item.type == 'Email'"></ib-email-item>
         </md-list-item>
 
       </md-list>
