@@ -1,18 +1,19 @@
 import {Component} from 'angular2/core';
-import {CreateOrder} from '../../order/components/create-order.component';
-import {DataProvider} from "../data-providers/data-provider";
-import {OrdersDataProvider} from "../data-providers/orders-data-provider";
-import {EmailDataProvider} from "../data-providers/email-data-provider";
-import {AudioDataProvider} from "../data-providers/audio-data-provider";
-import {OrderItem} from "./inbox-items/order-item-component";
-import {EmailItem} from "./inbox-items/email-item-component";
-import {InboxItem} from "../data-providers/data-provider";
+import {DataProvider} from "./data-providers/data-provider";
+import {OrdersDataProvider} from "./data-providers/orders-data-provider";
+import {EmailDataProvider} from "./data-providers/email-data-provider";
+import {AudioDataProvider} from "./data-providers/audio-data-provider";
+import {InboxItem} from "./inbox.model";
+import {OrderCompactView} from "./item-views/order-compact-view";
+import {EmailCompactView} from "./item-views/email-compact-view";
+import {AudioCompactView} from "./item-views/audio-compact-view";
+import {CreateOrder} from '../order/components/create-order.component';
 
 @Component({
   selector: 'ib-inbox',
-  templateUrl: 'app/inbox/components/inbox.html',
-  styleUrls: ['app/inbox/components/inbox.css'],
-  directives: [CreateOrder, OrderItem, EmailItem]
+  templateUrl: 'app/inbox/inbox.component.html',
+  styleUrls: ['app/inbox/inbox.component.css'],
+  directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView]
 })
 export class Inbox {
   itemList : Array<InboxItem>;

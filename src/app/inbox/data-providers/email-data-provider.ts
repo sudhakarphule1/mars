@@ -1,6 +1,6 @@
-import {LeadsDataProvider} from "./leads-data-provider";
+
 import {DataProvider} from "./data-provider";
-import {Email} from "./data-provider";
+import {Email} from "../inbox.model";
 
 export class EmailDataProvider implements DataProvider {
   constructor() {
@@ -11,7 +11,7 @@ export class EmailDataProvider implements DataProvider {
     email.from = 'admin.clerk@hsbc.com';
     email.to = 'order@parag.com';
     email.cc = 'admin.mgr@hsbc.com';
-    email.date = '12/12/12';
+    email.date = new Date();
     email.subject = 'Montly recurring order';
     email.body = 'Can you see this TODO';
     email.priority = 'Normal';

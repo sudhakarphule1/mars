@@ -1,13 +1,13 @@
 import {Component} from 'angular2/core';
 import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {Inbox} from './inbox/components/inbox';
+import {Inbox} from './inbox/inbox.component';
 import {UserAccount} from './share/components/user-account.component';
 import {ProductMaster} from "./master/components/product-master.component";
 import {CustomerMaster} from "./master/components/customer-master.component";
 import {LogOut} from "./share/components/logout.component";
-import {Header} from "./inbox/components/header.component";
-import {LeftNavigation} from "./inbox/components/left.navigation.component";
+import {Header} from "./share/components/header.component";
+import {LeftNavigation} from "./share/components/left.navigation.component";
 
 @Component({
   selector: 'inbox-app',

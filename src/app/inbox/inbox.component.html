@@ -15,8 +15,9 @@
     <md-content>
       <md-list>
         <md-list-item class="md-3-line" *ngFor="#item of itemList">
-          <ib-order-item [order]="item" *ngIf="item.type == 'Order'"></ib-order-item>
-          <ib-email-item [email]="item" *ngIf="item.type == 'Email'"></ib-email-item>
+          <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
+          <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
+          <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
         </md-list-item>
 
       </md-list>
