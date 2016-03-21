@@ -1,22 +1,24 @@
-import {DataProvider} from "./data-provider";
-import {Order} from "../inbox.model";
+import {Injectable}     from 'angular2/core';
+import {Http, Response} from 'angular2/http';
+import {DataProvider}   from "./data-provider";
+import {Order}          from "../inbox.model";
+import {Observable}     from 'rxjs/Observable';
 
+@Injectable()
 export class OrdersDataProvider implements DataProvider {
-  constructor() {
-  }
+  constructor (private http: Http) {}
+
+  private _url = '/app/inbox/data-providers/orders-mock.json';  // URL to web api
 
   getAll() {
-    var order = new Order();
-    order.companyName = 'Infosys';
-    order.orderDetails = '6 Tissue boxes, 10 Hand dryers, 20 paper towels';
-    order.orderDate = new Date();
-    order.completionDate = '03/24/2016';
-    order.status = 'In-Progress';
-    order.orderType = 'email'
+    return this.http.get(this._url)
+      .map(res => <Order[]> res.json().data)
+      .catch(this.handleError);
+  }
 
-    var items:Array<any>;
-    items = new Array<Order>();
-    items.push(order);
-    return items;
+  private handleError (error: Response) {
+    // in a real world app, we may send the error to some remote logging infrastructure
+    // instead of just logging it to the console
+    return Observable.throw(error.json().error || 'Server error');
   }
 }

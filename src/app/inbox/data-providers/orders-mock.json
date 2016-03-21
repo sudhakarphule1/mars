@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "companyName": "Infosys",
+      "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
+      "status": "In-Progress",
+      "type": "Order"
+    },
+    {
+      "companyName": "Infosys",
+      "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
+      "status": "In-Progress",
+      "type": "Order"
+    }
+  ]
+}

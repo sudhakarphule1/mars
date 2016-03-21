@@ -8,10 +8,14 @@ import {CustomerMaster} from "./master/components/customer-master.component";
 import {LogOut} from "./share/components/logout.component";
 import {Header} from "./share/components/header.component";
 import {LeftNavigation} from "./share/components/left.navigation.component";
+import {HTTP_PROVIDERS}    from 'angular2/http';
+import {OrdersDataProvider} from "./inbox/data-providers/orders-data-provider";
+import {AudioDataProvider} from "./inbox/data-providers/audio-data-provider";
+import {EmailDataProvider} from "./inbox/data-providers/email-data-provider";
 
 @Component({
   selector: 'inbox-app',
-  providers: [],
+  providers: [HTTP_PROVIDERS, OrdersDataProvider, EmailDataProvider, AudioDataProvider],
   templateUrl: 'app/inbox-app.html',
   styleUrls: ['app/inbox-app.css'],
   directives: [ROUTER_DIRECTIVES, Header, LeftNavigation],
