@@ -12,13 +12,23 @@ export class EmailDataProvider implements DataProvider {
 
   getAll() {
     return this.http.get(this._url)
-      .map(res => <Email[]> res.json().data)
-      .catch(this.handleError);
-  }
-
-  private handleError (error: Response) {
-    // in a real world app, we may send the error to some remote logging infrastructure
-    // instead of just logging it to the console
-    return Observable.throw(error.json().error || 'Server error');
+      // initial transform - result to json
+      .map(res => res.json().data)
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((arrayList: Array<any>) => {
+        let result:Array<Email> = [];
+        if (arrayList) {
+          arrayList.forEach((item) => {
+            var email = new Email(  item.from, item.to,
+                                    item.cc, item.subject,
+                                    item.body, new Date( item.date),
+                                    item.priority,
+                                    item.attachments)
+            result.push(email);
+          });
+        }
+        return result;
+      });
   }
 }

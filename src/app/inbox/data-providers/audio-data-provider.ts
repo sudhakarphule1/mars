@@ -12,13 +12,20 @@ export class AudioDataProvider implements DataProvider {
 
   getAll() {
     return this.http.get(this._url)
-      .map(res => <AudioContent[]> res.json().data)
-      .catch(this.handleError);
-  }
-
-  private handleError (error: Response) {
-    // in a real world app, we may send the error to some remote logging infrastructure
-    // instead of just logging it to the console
-    return Observable.throw(error.json().error || 'Server error');
+      // initial transform - result to json
+      .map(res => res.json().data)
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((arrayList: Array<any>) => {
+        let result:Array<AudioContent> = [];
+        if (arrayList) {
+          arrayList.forEach((item) => {
+            var audioContent = new AudioContent(item.from, item.subject,
+              new Date(item.date), item.attachment)
+            result.push(audioContent);
+          });
+        }
+        return result;
+      });
   }
 }

@@ -12,13 +12,21 @@ export class OrdersDataProvider implements DataProvider {
 
   getAll() {
     return this.http.get(this._url)
-      .map(res => <Order[]> res.json().data)
-      .catch(this.handleError);
-  }
-
-  private handleError (error: Response) {
-    // in a real world app, we may send the error to some remote logging infrastructure
-    // instead of just logging it to the console
-    return Observable.throw(error.json().error || 'Server error');
+      // initial transform - result to json
+      .map(res => res.json().data)
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((arrayList: Array<any>) => {
+        let result:Array<Order> = [];
+        if (arrayList) {
+          arrayList.forEach((item) => {
+            var email = new Order(  item.companyName, new Date(item.orderDate),
+                                    new Date(item.completionDate), item.status,
+                                    item.orderType, item.orderDetails);
+            result.push(email);
+          });
+        }
+        return result;
+      });
   }
 }

@@ -35,9 +35,7 @@ export class Inbox implements OnInit {
   getItemList(service : DataProvider) {
     service.getAll()
       .subscribe(
-        items => this.itemList = this.itemList.concat(items),
-        error =>  this.errorMessage = <any>error);
-    console.log(this.itemList);
+        items => this.itemList = this.itemList.concat(items));
   }
 
   selectedItem: string;
