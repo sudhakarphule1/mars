@@ -12,7 +12,8 @@ export class Email extends InboxItem{
                 body : string,
                 date : Date,
                 priority: string,
-                attachments: string) {
+                attachments: string,
+                fromCompany: string) {
     super();
     this.type = 'Email';
     this.from = from;
@@ -23,6 +24,7 @@ export class Email extends InboxItem{
     this.date = date;
     this.priority = priority;
     this.attachments = attachments;
+    this.fromCompany = fromCompany;
   }
   from: string;
   to: string;
@@ -31,6 +33,7 @@ export class Email extends InboxItem{
   body : string;
   priority: string;
   attachments: string;
+  fromCompany: string
 }
 
 export class Order extends InboxItem {

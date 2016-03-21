@@ -7,16 +7,18 @@
       "subject" : "Montly recurring order",
       "body" : "Can you see this TODO",
       "priority" : "Normal",
-      "attachments" : "Attachment 1 TODO"
+      "attachments" : "Attachment 1 TODO",
+      "fromCompany" : "hsbc"
     },
     {
-      "from" : "admin.clerk@hsbc.com",
+      "from" : "admin.clerk@tcs.com",
       "to" : "order@parag.com",
       "cc" : "admin.mgr@hsbc.com",
       "subject" : "Montly recurring order",
       "body" : "Can you see this TODO",
       "priority" : "Normal",
-      "attachments" : "Attachment 1 TODO"
+      "attachments" : "Attachment 1 TODO",
+      "fromCompany" : "tcs"
     }
   ]
 }

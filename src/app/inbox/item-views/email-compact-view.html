@@ -1,5 +1,8 @@
-<div class="md-list-item-text" layout="column">
-  <span (click)="displayDetails(item)">{{ email.from }}</span>
-  <span>{{ email.subject }}</span>
-  <span>{{ email.priority }}</span>
-</div>
+<md-list-item class="md-3-line">
+  <img [src]="'app/share/images/company-logo/'+email.fromCompany + '.png'" class="md-avatar" alt="{{email.from}}"/>
+  <div class="md-list-item-text" layout="column">
+    <h3>{{ email.subject }}</h3>
+    <h4>{{ email.from }}</h4>
+    <p>{{ email.priority }}</p>
+  </div>
+</md-list-item>

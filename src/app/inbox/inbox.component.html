@@ -11,30 +11,18 @@
     </select>
   </div>
 
-  <div>
-    <md-content>
-      <md-list>
-        <md-list-item class="md-3-line" *ngFor="#item of itemList">
-          <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
-          <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
-          <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
-          <md-divider></md-divider>
-        </md-list-item>
-      </md-list>
-    </md-content>
-  </div>
-
-  <!--<div *ngIf="selectedItem">-->
-    <!--<h2>{{selectedItem.companyName}} order details :</h2>-->
-    <!--<div><label>Order type: </label>{{selectedItem.orderType}}</div>-->
-    <!--<div>-->
-      <!--<label>Order Details: </label> {{selectedItem.orderDetails}}-->
-    <!--</div>-->
-  <!--</div>-->
+  <md-content>
+    <md-list>
+      <div *ngFor="#item of itemList">
+        <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
+        <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
+        <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
+        <md-divider></md-divider>
+      </div>
+    </md-list>
+  </md-content>
 </div>
 
 <ib-create-order>Loading...</ib-create-order>
-
 <div class="createOrderSection">
-
 </div>

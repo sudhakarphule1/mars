@@ -24,7 +24,7 @@ export class EmailDataProvider implements DataProvider {
                                     item.cc, item.subject,
                                     item.body, new Date( item.date),
                                     item.priority,
-                                    item.attachments)
+                                    item.attachments, item.fromCompany);
             result.push(email);
           });
         }

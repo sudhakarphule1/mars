@@ -1,7 +1,9 @@
-<div class="md-list-item-text" layout="column">
-  <span (click)="displayDetails(item)">{{ order.companyName }}</span>
-  <span>{{ order.orderDetails }}</span>
-  <span>{{ order.orderDate | date }}</span>
-  <span>{{ order.orderType }}</span>
-  <span>{{ order.status }}</span>
-</div>
+<md-list-item class="md-3-line">
+  <img [src]="'app/share/images/company-logo/'+order.fromCompany + '.png'" class="md-avatar" alt="{{order.companyName}}"/>
+  <div class="md-list-item-text" layout="column">
+    <h3>{{ order.orderDetails }}</h3>
+    <h4>{{ order.orderDate | date }}</h4>
+    <p>{{ order.orderType }}</p>
+    <p>{{ order.status }}</p>
+  </div>
+</md-list-item>
