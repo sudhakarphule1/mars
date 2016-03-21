@@ -1,25 +1,34 @@
-
-import {DataProvider} from "./data-provider";
 import {Email} from "../inbox.model";
+import {Injectable}     from 'angular2/core';
+import {Http, Response} from 'angular2/http';
+import {DataProvider}   from "./data-provider";
+import {Observable}     from 'rxjs/Observable';
 
+@Injectable()
 export class EmailDataProvider implements DataProvider {
-  constructor() {
-  }
+  constructor (private http: Http) {}
+
+  private _url = '/app/inbox/data-providers/emails-mock.json';  // URL to web api
 
   getAll() {
-    var email = new Email();
-    email.from = 'admin.clerk@hsbc.com';
-    email.to = 'order@parag.com';
-    email.cc = 'admin.mgr@hsbc.com';
-    email.date = new Date();
-    email.subject = 'Montly recurring order';
-    email.body = 'Can you see this TODO';
-    email.priority = 'Normal';
-    email.attachments = 'Attachment 1 TODO';
-
-    var items:Array<any>;
-    items = new Array<Email>();
-    items.push( email)
-    return items;
+    return this.http.get(this._url)
+      // initial transform - result to json
+      .map(res => res.json().data)
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((arrayList: Array<any>) => {
+        let result:Array<Email> = [];
+        if (arrayList) {
+          arrayList.forEach((item) => {
+            var email = new Email(  item.from, item.to,
+                                    item.cc, item.subject,
+                                    item.body, new Date( item.date),
+                                    item.priority,
+                                    item.attachments)
+            result.push(email);
+          });
+        }
+        return result;
+      });
   }
 }

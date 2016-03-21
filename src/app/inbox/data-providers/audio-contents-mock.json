@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "from" : "admin.clerk@hsbc.com",
+      "date" : "2016-03-20T09:03:49.285Z",
+      "subject" : "Mrx Joshi from HSBC called me",
+      "attachment" : "Attachment 1 TODO"
+    },
+    {
+      "from" : "admin.clerk@hsbc.com",
+      "date" : "2016-03-21T09:03:49.285Z",
+      "subject" : "Mrx Joshi from HSBC called me",
+      "attachment" : "Attachment 1 TODO"
+    }
+  ]
+}

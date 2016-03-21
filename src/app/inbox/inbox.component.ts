@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {DataProvider} from "./data-providers/data-provider";
 import {OrdersDataProvider} from "./data-providers/orders-data-provider";
 import {EmailDataProvider} from "./data-providers/email-data-provider";
@@ -8,6 +8,7 @@ import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
 import {AudioCompactView} from "./item-views/audio-compact-view";
 import {CreateOrder} from '../order/components/create-order.component';
+import {Order} from "./inbox.model";
 
 @Component({
   selector: 'ib-inbox',
@@ -15,26 +16,32 @@ import {CreateOrder} from '../order/components/create-order.component';
   styleUrls: ['app/inbox/inbox.component.css'],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView]
 })
-export class Inbox {
+export class Inbox implements OnInit {
+  errorMessage: string;
   itemList : Array<InboxItem>;
 
-  constructor() {
-    //var dataProvider = new DataProvider("Sammy the Python");
-    var ordersDataProvider: DataProvider = new OrdersDataProvider();
-    var emailDataProvider: DataProvider = new EmailDataProvider();
-    var audioDataProvider: DataProvider = new AudioDataProvider();
+  constructor(private orderService: OrdersDataProvider,
+              private emailService: EmailDataProvider,
+              private audioService: AudioDataProvider) {
+  }
 
+  ngOnInit() {
     this.itemList = new Array<InboxItem>();
-    this.itemList = this.itemList.concat(ordersDataProvider.getAll());
-    this.itemList = this.itemList.concat(emailDataProvider.getAll());
-    this.itemList = this.itemList.concat(audioDataProvider.getAll());
-    console.log(this.itemList );
+    this.getItemList(this.orderService);
+    this.getItemList(this.emailService);
+    this.getItemList(this.audioService);
+  }
+
+  getItemList(service : DataProvider) {
+    service.getAll()
+      .subscribe(
+        items => this.itemList = this.itemList.concat(items));
   }
 
   selectedItem: string;
 
   displayDetails(item) {
+    console.log(this.itemList);
     this.selectedItem = item;
   };
 }
-
