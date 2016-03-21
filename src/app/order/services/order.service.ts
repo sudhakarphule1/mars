@@ -10,14 +10,41 @@ export class Orders {
   constructor(private http: Http){}
 
   getOrders(){
-    return this.makeRequest();
+    return this.getOrdersFunction();
   }
 
-  private makeRequest(){
-/*    let params = new URLSearchParams();
-    params.set('per_page', '100');*/
-    let url = `app/order/services/myOrders.json`;
-    console.log(url);
-    return this.http.get(url).map((res) => res.json());
+  createOrder(value: Array<any>){
+  return this.createOrderFunction(value);
   }
+
+  deleteOrder(value: Array<any>){
+  return this.deleteOrderFunction(value);
+  }
+
+  public getOrdersFunction(){
+      let url = `app/order/services/myOrders.json`;
+      return this.http.get(url).map((res) => res.json())
+/*      .map((orders: Array<any>) => {
+      let result:Array<any> = [];
+      if (orders) {
+        orders.forEach((order) => {
+          result.push(new orders(order.productName, task.description,
+                                task.dueDate, task.complete));
+        });
+      }
+      return result;
+     }
+  });*/
+  }
+
+  public createOrderFunction(value){
+      let url = `app/order/services/myOrders.json`;
+      return this.http.post(url, value).map((res) => res.json());
+  }
+
+  public deleteOrderFunction(value){
+      let url = `app/order/services/myOrders.json`;
+      return this.http.get(url).map((res) => res.json());
+  }
+
 }

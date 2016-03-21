@@ -1,6 +1,6 @@
 <div class="orders">
 
-<div class="tableClass">
+<div class="tableClass" *ngIf="orderPreview == false">
   <h3>Products</h3>
   <table>
     <tr class="title-labrl">
@@ -10,7 +10,7 @@
       <td><b>Availability</b></td>
       <td><b>Add To Cart</b></td>
     </tr>
-    <tr *ngFor="#item of myOrders | async">
+    <tr *ngFor="#item of myOrders">
       <td>{{item.productName}}</td>
       <td>{{item.brand}}</td>
       <td>{{item.Variant}}</td>
@@ -32,5 +32,37 @@
     </tr>
   </table>
 </div>
+
+  <div class="tableClass" *ngIf="orderPreview == true && orderDetails.length > 0">
+    <h3>Order Details: </h3>
+    <h4>Company Name: Infosys</h4>
+    <h4>Order assigned to: Chetan U.</h4>
+    <table>
+      <tr class="title-labrl">
+        <td><b>Product Name</b></td>
+        <td><b>Brand Name</b></td>
+        <td><b>Variant</b></td>
+        <td><b>Quantity</b></td>
+        <td><b>Action</b></td>
+      </tr>
+      <tr *ngFor="#item of orderDetails">
+        <td>{{item.productName}}</td>
+        <td>{{item.brand}}</td>
+        <td>{{item.Variant}}</td>
+        <td><input type='number'
+                   [(ngModel)]="item.quantity"
+                   class='qty'></td>
+        <td><button (click)="removeItem()">Remove</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
+
+  <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
+
+  <button (click)="cancelOrder()" *ngIf="orderPreview == true">Cancel</button>
+
+  <div *ngIf="displayError == true">{{ errorMessage }}</div>
 
 </div>
