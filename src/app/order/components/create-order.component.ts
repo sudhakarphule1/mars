@@ -4,6 +4,10 @@ import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import {Orders} from '../services/order.service';
 import {IOrder} from './IOrder';
+import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
+import {DOM} from "angular2/src/platform/dom/dom_adapter";
+import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
+import {Media} from "ng2-material/core/util/media";
 
 
 @Component({
@@ -27,6 +31,30 @@ export class CreateOrder {
     constructor(private orders: Orders) {
     orders.getOrders().subscribe(res => this.myOrders = res);
     }
+
+/*
+    showConfirm(ev) {
+    let config = new MdDialogConfig()
+      .textContent('All of the banks have agreed to forgive you your debts.')
+      .clickOutsideToClose(false)
+      .title('Would you like to delete your debt?')
+      .ariaLabel('Lucky day')
+      .ok('Please do it!')
+      .cancel('Sounds like a scam')
+      .targetEvent(ev);
+    this.dialog.open(MdDialogBasic, this.element, config)
+      .then((ref: MdDialogRef) => {
+        ref.whenClosed.then((result) => {
+          if (result) {
+            this.status = 'You decided to get rid of your debt.';
+          }
+          else {
+            this.status = 'You decided to keep your debt.';
+          }
+        })
+      });
+  };
+*/
 
   createOrder(){
 
@@ -62,4 +90,3 @@ export class CreateOrder {
       this.displaySuccess = true;
   }
 }
-

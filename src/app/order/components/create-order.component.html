@@ -2,7 +2,7 @@
 
 <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
   <h3>Products</h3>
-  <table>
+<!--  <table>
     <tr class="title-labrl">
       <td><b>Product Name</b></td>
       <td><b>Brand Name</b></td>
@@ -30,16 +30,100 @@
         </div>
       </td>
     </tr>
-  </table>
+  </table>-->
+
+  <div layout="row" class="md-caption">
+    <div flex="20" layout-padding>
+      <b>Product Name</b>
+    </div>
+    <div flex="20" layout-padding>
+      <b>Brand Name</b>
+    </div>
+    <div flex="20" layout-padding>
+      <b>Variant</b>
+    </div>
+    <div flex="20" layout-padding>
+      <b>Availability</b>
+    </div>
+    <div flex="20" layout-padding>
+      <b>Add To Cart</b>
+    </div>
+  </div>
+  <div *ngFor="#item of myOrders" layout="row" class="md-caption">
+    <div flex="20" layout-padding>
+      {{item.productName}}
+    </div>
+    <div flex="20" layout-padding>
+      {{item.brand}}
+    </div>
+    <div flex="20" layout-padding>
+      {{item.Variant}}
+    </div>
+    <div flex="20" layout-padding>
+      {{item.availability}}
+    </div>
+    <div flex="20" layout-padding>
+      <div *ngIf="item.availability == 'Yes'">
+        <input type='number'
+               [(ngModel)]="item.quantity"
+               class='qty'>
+        <button type='submit'
+                class='qtyminus'
+                (click)="item.quantity=item.quantity-1"
+                [disabled]="item.quantity == 0">-</button>
+        <button type='submit'
+                class='qtyplus'
+                (click)="item.quantity=item.quantity+1">+</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
   <div class="tableClass" *ngIf="orderPreview == true && orderDetails.length > 0">
     <h3>Order Details: </h3>
     <h4>Company Name: Infosys</h4>
     <h4>Order assigned to: Chetan U.</h4>
     <div>Completion Date: 20/02/2016</div>
-    <div>&nbsp;</div>
-    <table>
+
+    <div layout="row" class="md-caption">
+      <div flex="20" layout-padding>
+        <b>Product Name</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Brand Name</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Variant</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Quantity</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Action</b>
+      </div>
+    </div>
+
+    <div layout="row" *ngFor="#item of orderDetails" class="md-caption">
+      <div flex="20" layout-padding>
+        {{item.productName}}
+      </div>
+      <div flex="20" layout-padding>
+        {{item.brand}}
+      </div>
+      <div flex="20" layout-padding>
+        {{item.Variant}}
+      </div>
+      <div flex="20" layout-padding>
+        <input type='number' [(ngModel)]="item.quantity" class='qty'>
+      </div>
+      <div flex="20" layout-padding>
+        <button (click)="removeItem(item)">Remove</button>
+      </div>
+    </div>
+
+ <!--   <table>
       <tr class="title-labrl">
         <td><b>Product Name</b></td>
         <td><b>Brand Name</b></td>
@@ -54,16 +138,27 @@
         <td><input type='number'
                    [(ngModel)]="item.quantity"
                    class='qty'></td>
-        <td><button (click)="removeItem()">Remove</button></td>
+        <td><button (click)="removeItem(item)">Remove</button></td>
       </tr>
-    </table>
+    </table>-->
   </div>
 
-  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
+<!--  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
 
   <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
 
   <button (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
+
+  <div *ngIf="displayError == true">{{ errorMessage }}</div>
+
+  <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>-->
+  <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto">Create Order</button>
+
+  <!--<button md-raised-button class="md-raised md-primary" (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>-->
+
+  <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
+
+  <button md-raised-button class="md-raised md-primary" (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
 
   <div *ngIf="displayError == true">{{ errorMessage }}</div>
 
