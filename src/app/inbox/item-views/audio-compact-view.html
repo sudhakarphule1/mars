@@ -4,9 +4,10 @@
     <h3>{{ audioContent.subject }}</h3>
     <h4>{{ audioContent.date | date }}</h4>
     <p>{{ audioContent.defaultTask.status }}</p>
-    <p>{{ audioContent.from }}</p>
-    <p>{{ audioContent.type }}</p>
-    <p>{{ audioContent.attachment}}</p>
+    <audio controls>
+      <source [src]="audioContent.attachment" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
   </div>
   <img [src]="'app/share/images/avtars/'+audioContent.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{audioContent.defaultTask.assignedTo}}"/>
 </md-list-item>
