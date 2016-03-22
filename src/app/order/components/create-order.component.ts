@@ -19,7 +19,10 @@ export class CreateOrder {
    orderDetails: IOrder[] = new Array();
    orderPreview = false;
    displayError = false;
+   displaySuccess = false;
    errorMessage: string = "";
+   successMessage: string = "";
+   orderID: string;
 
     constructor(private orders: Orders) {
     orders.getOrders().subscribe(res => this.myOrders = res);
@@ -47,7 +50,16 @@ export class CreateOrder {
   removeItem(item){
       var index = this.orderDetails.indexOf(item);
       this.orderDetails.splice(index, 1);
-      console.log(this.orderDetails);
+      if(this.orderDetails.length == 0){
+         this.orderPreview = false;
+      }
+  }
+
+  confirmOrder(){
+      this.successMessage = "Your order has been created. The Order ID is :";
+      this.orderID = "OR200001";
+      this.orderPreview = false;
+      this.displaySuccess = true;
   }
 }
 

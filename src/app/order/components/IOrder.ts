@@ -1,4 +1,4 @@
-export interface IOrder{
+export class IOrder{
   productName: string;
 brand:string,
 Variant: string,

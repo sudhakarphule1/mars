@@ -1,6 +1,6 @@
 <div class="orders">
 
-<div class="tableClass" *ngIf="orderPreview == false">
+<div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
   <h3>Products</h3>
   <table>
     <tr class="title-labrl">
@@ -37,6 +37,8 @@
     <h3>Order Details: </h3>
     <h4>Company Name: Infosys</h4>
     <h4>Order assigned to: Chetan U.</h4>
+    <div>Completion Date: 20/02/2016</div>
+    <div>&nbsp;</div>
     <table>
       <tr class="title-labrl">
         <td><b>Product Name</b></td>
@@ -61,8 +63,10 @@
 
   <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
 
-  <button (click)="cancelOrder()" *ngIf="orderPreview == true">Cancel</button>
+  <button (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
 
   <div *ngIf="displayError == true">{{ errorMessage }}</div>
+
+  <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
 
 </div>
