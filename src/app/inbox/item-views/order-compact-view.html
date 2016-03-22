@@ -4,6 +4,9 @@
     <h3>{{ order.orderDetails }}</h3>
     <h4>{{ order.orderDate | date }}</h4>
     <p>{{ order.orderType }}</p>
-    <p>{{ order.status }}</p>
+    <p>{{ order.defaultTask.status }}</p>
+    <p>{{ order.type }}</p>
+    <p>{{ order.defaultTask.assignedTo }}</p>
   </div>
+  <img [src]="'app/share/images/avtars/'+order.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{order.defaultTask.assignedTo}}"/>
 </md-list-item>

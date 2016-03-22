@@ -3,6 +3,7 @@ import {Http, Response} from 'angular2/http';
 import {DataProvider}   from "./data-provider";
 import {Order}          from "../inbox.model";
 import {Observable}     from 'rxjs/Observable';
+import {Task} from "../inbox.model";
 
 @Injectable()
 export class OrdersDataProvider implements DataProvider {
@@ -20,9 +21,11 @@ export class OrdersDataProvider implements DataProvider {
         let result:Array<Order> = [];
         if (arrayList) {
           arrayList.forEach((item) => {
-            var email = new Order(  item.companyName, new Date(item.orderDate),
+            var defaultTask : Task = new Task(item.defaultTask.assignedOn, item.defaultTask.assignedTo,
+              item.defaultTask.status, item.defaultTask.completeBy, item.defaultTask.priority);
+            var email = new Order(  item.id, item.companyName, new Date(item.orderDate),
                                     new Date(item.completionDate), item.status,
-                                    item.orderType, item.orderDetails);
+                                    item.orderType, item.orderDetails, item.fromCompany, defaultTask);
             result.push(email);
           });
         }

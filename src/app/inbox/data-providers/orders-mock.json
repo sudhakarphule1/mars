@@ -1,18 +1,30 @@
 {
   "data": [
     {
-      "companyName": "Infosys",
+      "fromCompany": "hsbc",
       "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
-      "status": "In-Progress",
       "orderDate" : "2016-03-20T09:03:49.285Z",
-      "completionDate" : "2016-03-20T09:03:49.285Z"
+      "completionDate" : "2016-03-20T09:03:49.285Z",
+      "defaultTask" : {
+        "assignedOn": "2016-03-20T09:03:49.285Z",
+        "assignedTo": "Swapnil",
+        "status": "Pending",
+        "completeBy": "2016-03-22T09:03:49.285Z",
+        "priority": "Normal"
+      }
     },
     {
-      "companyName": "Infosys",
+      "fromCompany": "tcs",
       "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
-      "status": "In-Progress",
       "orderDate" : "2016-03-20T09:03:49.285Z",
-      "completionDate" : "2016-03-20T09:03:49.285Z"
+      "completionDate" : "2016-03-20T09:03:49.285Z",
+      "defaultTask" : {
+        "assignedOn": "2016-03-20T09:03:49.285Z",
+        "assignedTo": "Swapnil",
+        "status": "Pending",
+        "completeBy": "2016-03-22T09:03:49.285Z",
+        "priority": "Normal"
+      }
     }
   ]
 }

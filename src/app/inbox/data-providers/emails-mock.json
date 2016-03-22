@@ -4,21 +4,35 @@
       "from" : "admin.clerk@hsbc.com",
       "to" : "order@parag.com",
       "cc" : "admin.mgr@hsbc.com",
-      "subject" : "Montly recurring order",
+      "subject" : "Montly recurring order HSBC Pune - Hinjawadi",
       "body" : "Can you see this TODO",
       "priority" : "Normal",
       "attachments" : "Attachment 1 TODO",
-      "fromCompany" : "hsbc"
+      "fromCompany" : "hsbc",
+      "defaultTask" : {
+        "assignedOn": "2016-03-20T09:03:49.285Z",
+        "assignedTo": "Swapnil",
+        "status": "Pending",
+        "completeBy": "2016-03-22T09:03:49.285Z",
+        "priority": "Normal"
+      }
     },
     {
       "from" : "admin.clerk@tcs.com",
       "to" : "order@parag.com",
       "cc" : "admin.mgr@hsbc.com",
-      "subject" : "Montly recurring order",
+      "subject" : "Request for material requisition for TCS Pune",
       "body" : "Can you see this TODO",
       "priority" : "Normal",
       "attachments" : "Attachment 1 TODO",
-      "fromCompany" : "tcs"
+      "fromCompany" : "tcs",
+      "defaultTask" : {
+        "assignedOn": "2016-03-20T09:03:49.285Z",
+        "assignedTo": "Swapnil",
+        "status": "Pending",
+        "completeBy": "2016-03-22T09:03:49.285Z",
+        "priority": "Normal"
+      }
     }
   ]
 }

@@ -3,6 +3,10 @@
   <div class="md-list-item-text" layout="column">
     <h3>{{ email.subject }}</h3>
     <h4>{{ email.from }}</h4>
+    <p>{{ email.defaultTask.status }}</p>
     <p>{{ email.priority }}</p>
+    <p>{{ email.type }}</p>
+    <p>{{ email.defaultTask.assignedTo }}</p>
   </div>
+  <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{email.defaultTask.assignedTo}}"/>
 </md-list-item>
