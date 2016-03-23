@@ -1,9 +1,25 @@
-<header  class="headerSection">
-    <input type="search" name="googlesearch">
-    <button type="submit">Search Orders</button>
-    <a [routerLink]="['/Inbox']">My Orders</a>
-    <a [routerLink]="['/Inbox']">Leads</a>
-    <a [routerLink]="['/Inbox']">Dashboard</a>
-    <a [routerLink]="['/Inbox']">History</a>
-    <a [routerLink]="['/Inbox']">Settings</a>
-</header>
+<!--<header  class="headerSection">-->
+    <!--<input type="search" name="googlesearch">-->
+    <!--<button type="submit">Search Orders</button>-->
+    <!--<a [routerLink]="['/Inbox']">My Orders</a>-->
+    <!--<a [routerLink]="['/Inbox']">Leads</a>-->
+    <!--<a [routerLink]="['/Inbox']">Dashboard</a>-->
+    <!--<a [routerLink]="['/Inbox']">History</a>-->
+    <!--<a [routerLink]="['/Inbox']">Settings</a>-->
+<!--</header>-->
+
+<button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
+  <i md-icon>menu</i>
+</button>
+<input type="search" name="search" ng-model="search" md-maxlength="10">
+<span flex></span>
+<button md-button><i md-icon>settings</i>Orders</button>
+<button md-button><i md-icon>settings</i>Leads</button>
+<button md-button><i md-icon>settings</i>Dashboard</button>
+<button md-button><i md-icon>settings</i>History</button>
+<button md-button class="md-icon-button" aria-label="Settings" (click)="open('right')">
+  <i class="green" md-icon>settings</i>
+</button>
+<button md-button class="md-icon-button" aria-label="More" (click)="clicked('Show More')">
+  <i md-icon>more_vert</i>
+</button>

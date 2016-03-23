@@ -1,7 +1,21 @@
-<div class="container">
-  <ib-header>Header</ib-header>
-  <ib-left-nav>Left Navigation</ib-left-nav>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+<div layout="column">
+  <md-sidenav-container layout="row" flex>
+    <md-sidenav name="left" [style]="hasMedia('gt-sm') ? 'side' : 'over'">
+      <md-content layout-padding>
+        <ib-left-nav>Left Navigation</ib-left-nav>
+      </md-content>
+    </md-sidenav>
+    <div flex >
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <ib-header>Header</ib-header>
+        </div>
+      </md-toolbar>
+      <md-content flex layout-padding>
+        <div layout="column" layout-fill layout-align="top center">
+          <router-outlet></router-outlet>
+        </div>
+      </md-content>
+    </div>
+  </md-sidenav-container>
 </div>

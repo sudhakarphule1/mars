@@ -1,17 +1,16 @@
-<div class="inbox">
-  <h3>Inbox</h3>
-  <div> Sort By:
-    <select>
-      <option value="" class="" selected="selected">Select Sort Option:</option>
-      <option value="" label="Company Name">Company Name</option>
-      <option value="" label="Delivery Date">Delivery Date</option>
-      <option value="" label="Order Date">Order Date</option>
-      <option value="" label="Lead Type">Lead Type</option>
-      <option value="" label="Order Status">Order Status</option>
-    </select>
-  </div>
+<div layout="row" layout-fill layout-align="top center">
 
   <md-content>
+    <div> Sort By:
+      <select>
+        <option value="" class="" selected="selected">Select Sort Option:</option>
+        <option value="" label="Company Name">Company Name</option>
+        <option value="" label="Delivery Date">Delivery Date</option>
+        <option value="" label="Order Date">Order Date</option>
+        <option value="" label="Lead Type">Lead Type</option>
+        <option value="" label="Order Status">Order Status</option>
+      </select>
+    </div>
     <md-list>
       <div *ngFor="#item of itemList">
         <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
@@ -21,8 +20,5 @@
       </div>
     </md-list>
   </md-content>
-</div>
-
-<ib-create-order>Loading...</ib-create-order>
-<div class="createOrderSection">
+  <ib-create-order>Loading...</ib-create-order>
 </div>
