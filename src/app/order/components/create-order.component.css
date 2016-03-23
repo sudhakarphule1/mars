@@ -7,7 +7,7 @@
 
 .qty {
   width: 40px;
-  height: 27px;
+  height: 26px;
   text-align: center;
   float:left;
 }
@@ -17,6 +17,7 @@
     line-height: 7px;
     height: 16px;
     width: 22px;
+    display: block;
     outline:none;
 }
 /*.tableClass table {

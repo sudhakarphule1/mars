@@ -1,69 +1,16 @@
 <div class="orders">
 
 <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
-  <h3>Products</h3>
-<!--  <table>
-    <tr class="title-labrl">
-      <td><b>Product Name</b></td>
-      <td><b>Brand Name</b></td>
-      <td><b>Variant</b></td>
-      <td><b>Availability</b></td>
-      <td><b>Add To Cart</b></td>
-    </tr>
-    <tr *ngFor="#item of myOrders">
-      <td>{{item.productName}}</td>
-      <td>{{item.brand}}</td>
-      <td>{{item.Variant}}</td>
-      <td>{{item.availability}}</td>
-      <td>
-        <div *ngIf="item.availability == 'Yes'">
-          <button type='submit'
-                  class='qtyminus'
-                  (click)="item.quantity=item.quantity-1"
-                  [disabled]="item.quantity == 0">-</button>
-          <input type='number'
-                 [(ngModel)]="item.quantity"
-                 class='qty'>
-          <button type='submit'
-                  class='qtyplus'
-                  (click)="item.quantity=item.quantity+1">+</button>
-        </div>
-      </td>
-    </tr>
-  </table>-->
 
-  <div layout="row" class="md-caption">
-    <div flex="20" layout-padding>
-      <b>Product Name</b>
+  <md-list-item *ngFor="#item of myOrders" layout="row" class="md-caption md-list-item-text" flex>
+    <div flex="50" layout-padding>
+      <h4 layout-margin>{{item.productName}}</h4>
+      <h4 layout-margin>{{item.brand}}</h4>
+      <h4 layout-margin>{{item.Variant}}</h4>
     </div>
-    <div flex="20" layout-padding>
-      <b>Brand Name</b>
-    </div>
-    <div flex="20" layout-padding>
-      <b>Variant</b>
-    </div>
-    <div flex="20" layout-padding>
-      <b>Availability</b>
-    </div>
-    <div flex="20" layout-padding>
-      <b>Add To Cart</b>
-    </div>
-  </div>
-  <div *ngFor="#item of myOrders" layout="row" class="md-caption">
-    <div flex="20" layout-padding>
-      {{item.productName}}
-    </div>
-    <div flex="20" layout-padding>
-      {{item.brand}}
-    </div>
-    <div flex="20" layout-padding>
-      {{item.Variant}}
-    </div>
-    <div flex="20" layout-padding>
-      {{item.availability}}
-    </div>
-    <div flex="20" layout-padding>
-      <div *ngIf="item.availability == 'Yes'">
+    <div flex="50" layout-padding>
+      <h4 layout-margin>{{item.availability}}</h4>
+      <div layout-margin *ngIf="item.availability == 'Yes'">
         <input type='number'
                [(ngModel)]="item.quantity"
                class='qty'>
@@ -76,10 +23,8 @@
                 (click)="item.quantity=item.quantity+1">+</button>
       </div>
     </div>
-  </div>
+  </md-list-item>
 </div>
-
-
 
   <div *ngIf="orderPreview == true && orderDetails.length > 0">
     <h3>Order Details: </h3>
