@@ -1,0 +1,10 @@
+md-sidenav.sidenav  {
+  background-image: url("../app/share/images/dock-bg.png");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+}
+
+/* Plese move to header component css */
+md-toolbar.toolbar {
+  background: transparent url("../app/share/images/header-bg.png") repeat-x scroll 0 0 / 100% 100%;
+}

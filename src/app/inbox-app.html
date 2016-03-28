@@ -1,13 +1,11 @@
 <div layout="row">
-  <md-sidenav-container layout="row" flex="20">
-    <md-sidenav name="left" [style]="hasMedia('gt-sm') ? 'side' : 'over'">
-      <md-content layout-padding>
-        <ib-left-nav>Left Navigation</ib-left-nav>
-      </md-content>
+  <md-sidenav-container layout="row" flex="10" layout-align="center center">
+    <md-sidenav class="sidenav" name="left" [style]="hasMedia('gt-sm') ? 'side' : 'over'">
+      <ib-left-nav>Left Navigation</ib-left-nav>
     </md-sidenav>
   </md-sidenav-container>
-  <div flex >
-    <md-toolbar>
+  <div flex layout="column" >
+    <md-toolbar class="toolbar">
       <div class="md-toolbar-tools">
         <ib-header>Header</ib-header>
       </div>
@@ -19,3 +17,5 @@
     </md-content>
   </div>
 </div>
+
+
