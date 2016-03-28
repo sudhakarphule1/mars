@@ -13,7 +13,12 @@
     </div>
     <md-list>
       <div *ngFor="#item of itemList">
-        <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
+        <ib-email-compact-view [email]="item"
+                               *ngIf="item.type == 'Email'"
+                               (click)="showDetails = !showDetails"></ib-email-compact-view>
+        <iframe src="app/inbox/images/LicenseCertificate.pdf"
+                *ngIf="showDetails == true"
+                style="width:600px; height:500px;" frameborder="0"></iframe>
         <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
         <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
         <md-divider></md-divider>

@@ -18,6 +18,7 @@ import {Order} from "./inbox.model";
 })
 export class Inbox implements OnInit {
   errorMessage: string;
+  showDetails: boolean = false;
   itemList : Array<InboxItem>;
 
   constructor(private orderService: OrdersDataProvider,

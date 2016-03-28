@@ -1,14 +1,12 @@
 import {Component} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
-//import 'rxjs/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {Orders} from '../services/order.service';
-import {IOrder} from './IOrder';
 import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
 import {Media} from "ng2-material/core/util/media";
-
+import {orderDetails, products} from './order.model';
 
 @Component({
   selector: 'ib-create-order',
@@ -19,42 +17,18 @@ import {Media} from "ng2-material/core/util/media";
 
 export class CreateOrder {
 
-   myOrders : IOrder[];
-   orderDetails: IOrder[] = new Array();
-   orderPreview = false;
-   displayError = false;
-   displaySuccess = false;
-   errorMessage: string = "";
-   successMessage: string = "";
-   orderID: string;
+  myOrders : orderDetails[];
+  orderDetails: orderDetails[] = new Array();
+  orderPreview = false;
+  displayError = false;
+  displaySuccess = false;
+  errorMessage: string = "";
+  successMessage: string = "";
+  orderID: string;
 
-    constructor(private orders: Orders) {
+  constructor(private orders: Orders) {
     orders.getOrders().subscribe(res => this.myOrders = res);
-    }
-
-/*
-    showConfirm(ev) {
-    let config = new MdDialogConfig()
-      .textContent('All of the banks have agreed to forgive you your debts.')
-      .clickOutsideToClose(false)
-      .title('Would you like to delete your debt?')
-      .ariaLabel('Lucky day')
-      .ok('Please do it!')
-      .cancel('Sounds like a scam')
-      .targetEvent(ev);
-    this.dialog.open(MdDialogBasic, this.element, config)
-      .then((ref: MdDialogRef) => {
-        ref.whenClosed.then((result) => {
-          if (result) {
-            this.status = 'You decided to get rid of your debt.';
-          }
-          else {
-            this.status = 'You decided to keep your debt.';
-          }
-        })
-      });
-  };
-*/
+  }
 
   createOrder(){
 
@@ -65,28 +39,33 @@ export class CreateOrder {
     }
 
     if (this.orderDetails.length == 0){
-        this.errorMessage = "You haven't selected any item for your order";
-        this.displayError = true;
+      this.errorMessage = "You haven't selected any item for your order";
+      this.displayError = true;
     }
     else {
-        this.orderPreview = true;
-        this.displayError = false;
+      this.orderPreview = true;
+      this.displayError = false;
     }
 
   }
 
   removeItem(item){
-      var index = this.orderDetails.indexOf(item);
-      this.orderDetails.splice(index, 1);
-      if(this.orderDetails.length == 0){
-         this.orderPreview = false;
-      }
+    var index = this.orderDetails.indexOf(item);
+    this.orderDetails.splice(index, 1);
+    if(this.orderDetails.length == 0){
+      this.orderPreview = false;
+    }
   }
 
   confirmOrder(){
-      this.successMessage = "Your order has been created. The Order ID is :";
-      this.orderID = "OR200001";
-      this.orderPreview = false;
-      this.displaySuccess = true;
+    this.successMessage = "Your order has been created. The Order ID is :";
+    this.orderID = "OR200001";
+    this.orderPreview = false;
+    this.displaySuccess = true;
+  }
+
+  cancelOrder(){
+    this.orderDetails = [];
+    this.orderPreview = false;
   }
 }

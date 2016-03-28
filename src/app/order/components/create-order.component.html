@@ -1,30 +1,30 @@
 <div class="orders">
 
-<div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
+  <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
 
-  <md-list-item *ngFor="#item of myOrders" layout="row" class="md-caption md-list-item-text" flex>
-    <div flex="50" layout-padding>
-      <h4 layout-margin>{{item.productName}}</h4>
-      <h4 layout-margin>{{item.brand}}</h4>
-      <h4 layout-margin>{{item.Variant}}</h4>
-    </div>
-    <div flex="50" layout-padding>
-      <h4 layout-margin>{{item.availability}}</h4>
-      <div layout-margin *ngIf="item.availability == 'Yes'">
-        <input type='number'
-               [(ngModel)]="item.quantity"
-               class='qty'>
-        <button type='submit'
-                class='qtyminus'
-                (click)="item.quantity=item.quantity-1"
-                [disabled]="item.quantity == 0">-</button>
-        <button type='submit'
-                class='qtyplus'
-                (click)="item.quantity=item.quantity+1">+</button>
+    <md-list-item *ngFor="#item of myOrders" layout="row" class="md-caption md-list-item-text" flex>
+      <div flex="50" layout-padding>
+        <h4 layout-margin>{{item.productName}}</h4>
+        <h4 layout-margin>{{item.brand}}</h4>
+        <h4 layout-margin>{{item.variant}}</h4>
       </div>
-    </div>
-  </md-list-item>
-</div>
+      <div flex="50" layout-padding>
+        <h4 layout-margin>{{item.availability}}</h4>
+        <div layout-margin *ngIf="item.availability == 'Yes'">
+          <input type='number'
+                 [(ngModel)]="item.quantity"
+                 class='qty'>
+          <button type='submit'
+                  class='qtyminus'
+                  (click)="item.quantity=item.quantity-1"
+                  [disabled]="item.quantity == 0">-</button>
+          <button type='submit'
+                  class='qtyplus'
+                  (click)="item.quantity=item.quantity+1">+</button>
+        </div>
+      </div>
+    </md-list-item>
+  </div>
 
   <div *ngIf="orderPreview == true && orderDetails.length > 0">
     <h3>Order Details: </h3>
@@ -68,35 +68,35 @@
       </div>
     </div>
 
- <!--   <table>
-      <tr class="title-labrl">
-        <td><b>Product Name</b></td>
-        <td><b>Brand Name</b></td>
-        <td><b>Variant</b></td>
-        <td><b>Quantity</b></td>
-        <td><b>Action</b></td>
-      </tr>
-      <tr *ngFor="#item of orderDetails">
-        <td>{{item.productName}}</td>
-        <td>{{item.brand}}</td>
-        <td>{{item.Variant}}</td>
-        <td><input type='number'
-                   [(ngModel)]="item.quantity"
-                   class='qty'></td>
-        <td><button (click)="removeItem(item)">Remove</button></td>
-      </tr>
-    </table>-->
+    <!--   <table>
+         <tr class="title-labrl">
+           <td><b>Product Name</b></td>
+           <td><b>Brand Name</b></td>
+           <td><b>Variant</b></td>
+           <td><b>Quantity</b></td>
+           <td><b>Action</b></td>
+         </tr>
+         <tr *ngFor="#item of orderDetails">
+           <td>{{item.productName}}</td>
+           <td>{{item.brand}}</td>
+           <td>{{item.Variant}}</td>
+           <td><input type='number'
+                      [(ngModel)]="item.quantity"
+                      class='qty'></td>
+           <td><button (click)="removeItem(item)">Remove</button></td>
+         </tr>
+       </table>-->
   </div>
 
-<!--  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
+  <!--  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
 
-  <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
+    <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
 
-  <button (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
+    <button (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
 
-  <div *ngIf="displayError == true">{{ errorMessage }}</div>
+    <div *ngIf="displayError == true">{{ errorMessage }}</div>
 
-  <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>-->
+    <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>-->
   <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto">Create Order</button>
 
   <!--<button md-raised-button class="md-raised md-primary" (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>-->
