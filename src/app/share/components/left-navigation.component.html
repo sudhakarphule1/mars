@@ -1,14 +1,37 @@
 <div layout="column" layout-align="center center">
   <h1><img class="logo" src="app/share/images/logo.png"></h1>
-  <h2><img src="app/share/images/profile.png"></h2>
-  <h3>Swapnil Kadam</h3>
-  <ul>
-    <li><a [routerLink]="['/Inbox']">My Orders</a></li>
-    <li><a [routerLink]="['/UserAccount']">User Account</a></li>
-    <li><a [routerLink]="['/UserAccount']">Notes</a></li>
-    <li><a [routerLink]="['/Products']">Products</a></li>
-    <li><a [routerLink]="['/Customers']">Customers</a></li>
-    <li><a [routerLink]="['/LogOut']">Log Out</a></li>
+  <!--<h2 layout-align="center center" layout="row" layout-fill layout-padding><img src="app/share/images/profile.png"></h2>-->
+  <md-list-item class="md-3-line _md-no-proxy ng-scope" ng-repeat="item in messages" role="listitem">
+    <img src="app/share/images/profile.jpg" class="md-avatar"  >
+  </md-list-item>
+  <h3 layout-align="center center" layout="row" layout-fill layout-padding>Welcome Parag </h3>
+  <button md-raised-button class="md-raised md-warn" flex="50" >New Order</button>
+
+  <ul class="leftmenu" layout-margin layout-fill>
+    <li [routerLink]="['/Inbox']" layout="">
+      <img src="app/share/images/orders_left.svg" width="20" height="20" layout-padding>
+      <a layout-padding class="name">My order</a>
+    </li>
+    <li [routerLink]="['/UserAccount']" layout="">
+      <img src="app/share/images/user.svg" width="20" height="20" layout-padding>
+      <a layout-padding class="name">User Account</a>
+    </li>
+    <li [routerLink]="['/UserAccount']" layout="">
+      <img src="app/share/images/notes.svg" width="20" height="20" layout-padding>
+      <a layout-padding class="name">Notes</a>
+    </li>
+    <li [routerLink]="['/Products']" layout="">
+      <img src="app/share/images/products.svg" width="20" height="20" layout-padding>
+      <a layout-padding class="name">Products</a>
+    </li>
+    <li [routerLink]="['/Customers']" layout="">
+      <img src="app/share/images/customer.svg" width="20" height="20" layout-padding>
+      <a layout-padding class="name">Customers</a>
+    </li>
+    <li [routerLink]="['/LogOut']" layout="">
+      <img src="app/share/images/logout.svg" width="20" height="20" layout-padding>
+      <a layout-padding class="name">Log Out</a>
+    </li>
   </ul>
 </div>
 

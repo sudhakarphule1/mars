@@ -1,0 +1,17 @@
+.leftmenu {
+  padding: 0px;
+}
+.leftmenu .name {
+  color:#ffffff;
+  text-decoration: none;
+}
+.leftmenu li:hover {
+  background-color: #3B4549;
+}
+.md-warn {
+  width: 150px;
+}
+h3 {
+  color: #ffffff;
+  font-weight: 200;
+}

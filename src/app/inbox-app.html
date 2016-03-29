@@ -4,18 +4,22 @@
       <ib-left-nav>Left Navigation</ib-left-nav>
     </md-sidenav>
   </md-sidenav-container>
-  <div flex layout="column" >
+
+  <md-content flex >
     <md-toolbar class="toolbar">
       <div class="md-toolbar-tools">
-        <ib-header>Header</ib-header>
+        <ib-header flex layout="row" layout-align="end none">Header</ib-header>
       </div>
     </md-toolbar>
+
     <md-content flex layout-padding>
       <div layout="column" layout-fill layout-align="top center">
         <router-outlet></router-outlet>
       </div>
     </md-content>
-  </div>
+
+
+  </md-content>
 </div>
 
 

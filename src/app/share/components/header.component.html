@@ -11,32 +11,29 @@
 <button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
   <i md-icon>menu</i>
 </button>
-<input type="search" name="search" ng-model="search" md-maxlength="10">
+<input type="search" name="search" ng-model="search" md-maxlength="10" flex>
 <span flex></span>
 <md-button md-button class="md-warn" >
-  <md-icon><i md-icon>settings</i></md-icon>
+  <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
   Orders
 </md-button>
 <md-button md-button class="md-warn" >
-  <md-icon><i md-icon>settings</i></md-icon>
+  <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
   Leads
 </md-button>
 <md-button md-button class="md-warn" >
-  <md-icon><i md-icon>settings</i></md-icon>
+  <md-icon><img class="" src="app/share/images/dashboard.svg"></md-icon>
   Dashboard
 </md-button>
 <md-button md-button class="md-warn" >
-  <md-icon><i md-icon>settings</i></md-icon>
+  <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
   History
 </md-button>
+<md-button md-button class="md-warn" aria-label="Settings" (click)="open('right')" >
+  <md-icon><i md-icon>settings</i></md-icon>
+  Settings
+</md-button>
 
-<!--<button md-button><i md-icon>settings</i>Orders</button>
-<button md-button><i md-icon>settings</i>Leads</button>
-<button md-button><i md-icon>settings</i>Dashboard</button>
-<button md-button><i md-icon>settings</i>History</button>-->
-<button md-button class="md-icon-button" aria-label="Settings" (click)="open('right')">
-  <i class="green" md-icon>settings</i>
-</button>
 <button md-button class="md-icon-button" aria-label="More" (click)="clicked('Show More')">
   <i md-icon>more_vert</i>
 </button>
