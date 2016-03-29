@@ -6,7 +6,10 @@ import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
 import {Media} from "ng2-material/core/util/media";
-import {orderDetails, products} from './order.model';
+import {order} from "./order.model";
+
+import IItem  = require("./../interface/Item");
+import IAddress =  require("./../interface/Address");
 
 @Component({
   selector: 'ib-create-order',
@@ -17,8 +20,8 @@ import {orderDetails, products} from './order.model';
 
 export class CreateOrder {
 
-  myOrders : orderDetails[];
-  orderDetails: orderDetails[] = new Array();
+  items : Array<IItem>;
+  orderDetails: Array<IItem> = new Array();
   orderPreview = false;
   displayError = false;
   displaySuccess = false;
@@ -26,15 +29,18 @@ export class CreateOrder {
   successMessage: string = "";
   orderID: string;
 
+  currentOrder: order = new order();
+
   constructor(private orders: Orders) {
-    orders.getOrders().subscribe(res => this.myOrders = res);
+
+    orders.getOrders().subscribe(res => this.items = res);
   }
 
   createOrder(){
 
-    for(var i in this.myOrders){
-      if (this.myOrders[i].quantity > 0 ){
-        this.orderDetails.push(this.myOrders[i]);
+    for(var i in this.items){
+      if (this.items[i].qty > 0 ){
+        this.orderDetails.push(this.items[i]);
       }
     }
 
@@ -43,6 +49,11 @@ export class CreateOrder {
       this.displayError = true;
     }
     else {
+      this.currentOrder.items = this.orderDetails;
+      this.currentOrder.orderDate = new Date();
+      this.currentOrder.completionDate = new Date();
+      this.currentOrder.totalAmount = 3434;
+      console.log(this.currentOrder);
       this.orderPreview = true;
       this.displayError = false;
     }
@@ -58,7 +69,9 @@ export class CreateOrder {
   }
 
   confirmOrder(){
-    this.successMessage = "Your order has been created. The Order ID is :";
+    this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
+    console.log(this.items);
+    this.successMessage = "Your order has been created The Order ID is :";
     this.orderID = "OR200001";
     this.orderPreview = false;
     this.displaySuccess = true;

@@ -1,26 +1,62 @@
 <div class="orders">
 
+  <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0" >
+    <div><label>Compnay Name </label>
+      <input [(ngModel)] = "currentOrder.companyName" placeholder="name">
+    </div>
+    <div>
+      <label> Order Type </label>
+      <input [(ngModel)] = "currentOrder.orderType" placeholder="Order Type">
+    </div>
+    <div>
+      <label>remarks </label>
+      <input [(ngModel)] = "currentOrder.remarks" placeholder="remarks">
+    </div>
+    <div>
+      <label> contactPerson </label>
+      <input [(ngModel)] = "currentOrder.contactPerson" placeholder="name">
+    </div>
+    <div>
+      <label>venderName </label>
+      <input [(ngModel)] = "currentOrder.venderName" placeholder="name">
+    </div>
+    <div>
+      <label> contactNumber </label>
+      <input [(ngModel)] = "currentOrder.contactNumber" placeholder="">
+    </div>
+    <div>
+      <label>status </label>
+      <input [(ngModel)] = "currentOrder.status" placeholder="status">
+    </div>
+    <div>
+      <label> shippingAddress </label>
+      <input [(ngModel)] = "currentOrder.shippingAddress" placeholder="Address">
+      <label> billingAddress </label>
+      <input [(ngModel)] = "currentOrder.billingAddress" placeholder="Address">
+    </div>
+
+  </div>
   <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
 
-    <md-list-item *ngFor="#item of myOrders" layout="row" class="md-caption md-list-item-text" flex>
+    <md-list-item *ngFor="#item of items" layout="row" class="md-caption md-list-item-text" flex>
       <div flex="50" layout-padding>
-        <h4 layout-margin>{{item.productName}}</h4>
-        <h4 layout-margin>{{item.brand}}</h4>
+        <h4 layout-margin>{{item.name}}</h4>
+        <h4 layout-margin>{{item.detail}}</h4>
         <h4 layout-margin>{{item.variant}}</h4>
       </div>
       <div flex="50" layout-padding>
         <h4 layout-margin>{{item.availability}}</h4>
         <div layout-margin *ngIf="item.availability == 'Yes'">
           <input type='number'
-                 [(ngModel)]="item.quantity"
+                 [(ngModel)]="item.qty"
                  class='qty'>
           <button type='submit'
                   class='qtyminus'
-                  (click)="item.quantity=item.quantity-1"
-                  [disabled]="item.quantity == 0">-</button>
+                  (click)="item.qty=item.qty-1"
+                  [disabled]="item.qty == 0">-</button>
           <button type='submit'
                   class='qtyplus'
-                  (click)="item.quantity=item.quantity+1">+</button>
+                  (click)="item.qty=item.qty+1">+</button>
         </div>
       </div>
     </md-list-item>
@@ -28,9 +64,9 @@
 
   <div *ngIf="orderPreview == true && orderDetails.length > 0">
     <h3>Order Details: </h3>
-    <h4>Company Name: Infosys</h4>
+    <h4>Company Name:{{ currentOrder.companyName}}</h4>
     <h4>Order assigned to: Chetan U.</h4>
-    <div>Completion Date: 20/02/2016</div>
+    <div>Completion Date: {{currentOrder.completionDate}}</div>
 
     <div layout="row" class="md-caption">
       <div flex="20" layout-padding>
@@ -61,7 +97,7 @@
         {{item.Variant}}
       </div>
       <div flex="20" layout-padding>
-        <input type='number' [(ngModel)]="item.quantity" class='qty'>
+        <input type='number' [(ngModel)]="item.qty" class='qty'>
       </div>
       <div flex="20" layout-padding>
         <button (click)="removeItem(item)">Remove</button>

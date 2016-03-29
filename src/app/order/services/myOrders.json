@@ -1,325 +1,184 @@
 [{
-  "productName": "Dettol Hand wash",
-  "brand": "Dettol",
+  "name": "Dettol Hand wash",
+  "detail": "Dettol",
+  "variant": "300 ml",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":10,
+  "amount":0
+}, {
+  "name": "Dettol Hand wash",
+  "detail": "Dettol",
+  "variant": "500 ml",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":20,
+  "amount":0
+}, {
+  "name": "Dettol Hand wash",
+  "detail": "Dettol",
+  "variant": "1 Ltr",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":0
+}, {
+  "name": "Tissue Papers",
+  "detail": "Hindusthan Lever",
+  "variant": "100 Pcs",
+  "availability": "No",
+  "qty": 0,
+  "unitRate":40,
+  "amount":0
+}, {
+  "name": "Tissue Papers",
+  "detail": "Hindusthan Lever",
+  "variant": "300 Pcs",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":60,
+  "amount":0
+}, {
+  "name": "Dettol Antiseptic",
+  "detail": "Hindusthan Lever",
+  "variant": "100 ml",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":140,
+  "amount":0
+}, {
+  "name": "Dettol Antiseptic",
+  "detail": "Apple",
+  "variant": "500 ml",
+  "availability": "No",
+  "qty": 0,
+  "unitRate":40,
+  "amount":0
+}, {
+  "name": "Toilet Paper",
+  "detail": "Orient",
+  "variant": "50 Pcs",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":20,
+  "amount":0
+}, {
+  "name": "Toilet Paper",
+  "detail": "Orient",
+  "variant": "100 Pcs",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":20,
+  "amount":0
+}, {
+  "name": "Toilet Paper",
+  "detail": "Orient",
+  "variant": "500 Pcs",
+  "availability": "No",
+  "qty": 0,
+  "unitRate":20,
+  "amount":0
+}, {
+  "name": "Room Freshner",
+  "detail": "Orient",
+  "variant": "300 ml",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":20,
+  "amount":0
+}, {
+  "name": "Room Freshner",
+  "detail": "Hindusthan Lever",
+  "variant": "300 ml",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":60,
+  "amount":0
+}, {
+  "name": "Room Freshner",
+  "detail": "Hindusthan Lever",
   "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Dettol",
-  "Variant": "500 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Dettol",
-  "Variant": "1 Ltr",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 Pcs",
   "availability": "No",
-  "quantity": 0
+  "qty": 0,
+  "unitRate":40,
+  "amount":0
 }, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 Pcs",
+  "name": "Room Freshner",
+  "detail": "Hindusthan Lever",
+  "variant": "300 ml",
   "availability": "Yes",
-  "quantity": 0
+  "qty": 0,
+  "unitRate":10,
+  "amount":0
 }, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 ml",
+  "name": "Dettol Hand wash",
+  "detail": "Hindusthan Lever",
+  "variant": "500 ml",
   "availability": "Yes",
-  "quantity": 0
+  "qty": 0,
+  "unitRate":10,
+  "amount":0
 }, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Apple",
-  "Variant": "500 ml",
+  "name": "Dettol Hand wash",
+  "detail": "Hindusthan Lever",
+  "variant": "1 Ltr",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":20,
+  "amount":0
+}, {
+  "name": "Tissue Papers",
+  "detail": "Hindusthan Lever",
+  "variant": "100 Pcs",
   "availability": "No",
-  "quantity": 0
+  "qty": 0,
+  "unitRate":230,
+  "amount":0
+}, {
+  "name": "Tissue Papers",
+  "detail": "Hindusthan Lever",
+  "variant": "300 Pcs",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":50,
+  "amount":0
+}, {
+  "name": "Dettol Antiseptic",
+  "detail": "Hindusthan Lever",
+  "variant": "100 ml",
+  "availability": "Yes",
+  "qty": 0,
+  "unitRate":110,
+  "amount":0
+}, {
+  "name": "Dettol Antiseptic",
+  "detail": "Hindusthan Lever",
+  "variant": "500 ml",
+  "availability": "No",
+  "qty": 0,
+  "unitRate":70,
+  "amount":0
 }, {
   "productName": "Toilet Paper",
-  "brand": "Orient",
-  "Variant": "50 Pcs",
+  "detail": "Hindusthan Lever",
+  "variant": "50 Pcs",
   "availability": "Yes",
-  "quantity": 0
+  "qty": 0,
+  "unitRate":50,
+  "amount":0
 }, {
-  "productName": "Toilet Paper",
-  "brand": "Orient",
-  "Variant": "100 Pcs",
+  "name": "Toilet Paper",
+  "detail": "Hindusthan Lever",
+  "variant": "100 Pcs",
   "availability": "Yes",
-  "quantity": 0
+  "qty": 0,
+  "unitRate":20,
+  "amount":0
 }, {
-  "productName": "Toilet Paper",
-  "brand": "Orient",
-  "Variant": "500 Pcs",
+  "name": "Toilet Paper",
+  "detail": "Hindusthan Lever",
+  "variant": "500 Pcs",
   "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Orient",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Hindusthan Lever",
-  "Variant": "1 Ltr",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 Pcs",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 ml",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Hindusthan Lever",
-  "Variant": "50 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 Pcs",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Hindusthan Lever",
-  "Variant": "1 Ltr",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 Pcs",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Samsung",
-  "Variant": "100 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 ml",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Hindusthan Lever",
-  "Variant": "50 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Orient",
-  "Variant": "100 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Orient",
-  "Variant": "500 Pcs",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Samsung",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Samsung",
-  "Variant": "300 ml",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Hand wash",
-  "brand": "Samsung",
-  "Variant": "1 Ltr",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 Pcs",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Tissue Papers",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol Antiseptic",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 ml",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Hindusthan Lever",
-  "Variant": "50 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Hindusthan Lever",
-  "Variant": "100 Pcs",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Toilet Paper",
-  "brand": "Hindusthan Lever",
-  "Variant": "500 Pcs",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Apple",
-  "Variant": "300 ml",
-  "availability": "No",
-  "quantity": 0
-}, {
-  "productName": "Room Freshner",
-  "brand": "Apple",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
-}, {
-  "productName": "Dettol",
-  "brand": "Apple",
-  "Variant": "300 ml",
-  "availability": "Yes",
-  "quantity": 0
+  "qty": 0,
+  "unitRate":40,
+  "amount":0
 }]

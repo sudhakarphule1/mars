@@ -5,6 +5,9 @@ import {Injectable} from 'angular2/core';
 import {Http, URLSearchParams} from 'angular2/http';
 import 'rxjs/add/operator/map';
 
+import OrderModel = require("../components/order.model");
+import {Headers} from "angular2/http";
+
 @Injectable()
 export class Orders {
   constructor(private http: Http){}
@@ -13,7 +16,7 @@ export class Orders {
     return this.getOrdersFunction();
   }
 
-  createOrder(value: Array<any>){
+  createOrder(value){
   return this.createOrderFunction(value);
   }
 
@@ -36,10 +39,26 @@ export class Orders {
      }
   });*/
   }
+  /*let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
 
+  this.http.post('http://localhost:3001/sessions/create', creds, {
+  headers: headers
+})
+.subscribe(
+  data => {
+    this.saveJwt(data.json().id_token);
+    username.value = null;
+    password.value = null;
+  },
+  err => this.logError(err.json().message),
+  () => console.log('Authentication Complete')
+);*/
   public createOrderFunction(value){
-      let url = `app/order/services/myOrders.json`;
-      return this.http.post(url, value).map((res) => res.json());
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+      let url = `http://localhost:5000/orders`;
+      return this.http.post(url, value, headers);
   }
 
   public deleteOrderFunction(value){
