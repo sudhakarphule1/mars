@@ -1,6 +1,6 @@
 <div layout="row">
   <md-sidenav-container layout="row" flex="10" layout-align="center center">
-    <md-sidenav class="sidenav" name="left" [style]="hasMedia('gt-sm') ? 'side' : 'over'">
+    <md-sidenav class="leftnav" name="left" [style]="hasMedia('gt-sm') ? 'side' : 'over'">
       <ib-left-nav>Left Navigation</ib-left-nav>
     </md-sidenav>
   </md-sidenav-container>
@@ -12,12 +12,11 @@
       </div>
     </md-toolbar>
 
-    <md-content flex layout-padding>
+    <md-content flex >
       <div layout="column" layout-fill layout-align="top center">
         <router-outlet></router-outlet>
       </div>
     </md-content>
-
 
   </md-content>
 </div>

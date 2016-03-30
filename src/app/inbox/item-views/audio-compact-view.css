@@ -1,0 +1,11 @@
+.client-img{
+  padding: 10px;
+  border:1px solid #b7b7b7;
+}.client-section {
+   position: relative;
+ }
+.client-section span img {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+}

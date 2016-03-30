@@ -1,5 +1,8 @@
 <md-list-item class="md-3-line">
-  <img [src]="'app/share/images/company-logo/'+audioContent.fromCompany + '.png'" class="md-avatar" alt="{{audioContent.from}}"/>
+  <div class="client-section">
+    <span><img src="app/inbox/images/web.png"> </span>
+    <img [src]="'app/share/images/company-logo/'+audioContent.fromCompany + '.png'" class="md-avatar client-img" alt="{{audioContent.from}}"/>
+  </div>
   <div class="md-list-item-text" layout="column">
     <h3>{{ audioContent.subject }}</h3>
     <h4>{{ audioContent.date | date }}</h4>

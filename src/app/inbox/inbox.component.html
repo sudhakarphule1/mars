@@ -1,24 +1,27 @@
 <div layout="row" layout-fill layout-align="top center" flex>
-
   <md-content flex>
-    <div> Sort By:
-      <select>
-        <option value="" class="" selected="selected">Select Sort Option:</option>
-        <option value="" label="Company Name">Company Name</option>
-        <option value="" label="Delivery Date">Delivery Date</option>
-        <option value="" label="Order Date">Order Date</option>
-        <option value="" label="Lead Type">Lead Type</option>
-        <option value="" label="Order Status">Order Status</option>
-      </select>
+    <div class="assign-order" layout="row" >
+      <span layout-padding> Sort By: </span>
+      <div layout="row" flex >
+        <select>
+          <option value="" class="" selected="selected">Select Sort Option:</option>
+          <option value="" label="Company Name">Company Name</option>
+          <option value="" label="Delivery Date">Delivery Date</option>
+          <option value="" label="Order Date">Order Date</option>
+          <option value="" label="Lead Type">Lead Type</option>
+          <option value="" label="Order Status">Order Status</option>
+        </select>
+      </div>
+      <div layout="row" layout-align="end none" >
+        <span layout-padding>Leads</span>
+        <md-switch layout-padding flex layout-fill  aria-label="Switch 1"></md-switch>
+      </div>
     </div>
-    <md-list>
+
+    <md-list class="inbox-list" layout-padding>
       <div *ngFor="#item of itemList">
-        <ib-email-compact-view [email]="item"
-                               *ngIf="item.type == 'Email'"
-                               (click)="showDetails = !showDetails"></ib-email-compact-view>
-        <iframe src="app/inbox/images/LicenseCertificate.pdf"
-                *ngIf="showDetails == true"
-                style="width:600px; height:500px;" frameborder="0"></iframe>
+        <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'" (click)="showDetails = !showDetails"></ib-email-compact-view>
+        <iframe src="app/inbox/images/LicenseCertificate.pdf" *ngIf="showDetails == true" style="width:600px; height:500px;" frameborder="0"></iframe>
         <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
         <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
         <md-divider></md-divider>

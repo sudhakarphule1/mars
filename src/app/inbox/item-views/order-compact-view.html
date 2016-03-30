@@ -1,5 +1,8 @@
 <md-list-item class="md-3-line">
-  <img [src]="'app/share/images/company-logo/'+order.fromCompany + '.png'" class="md-avatar" alt="{{order.companyName}}"/>
+  <div class="client-section">
+    <span><img src="app/inbox/images/mobile-app.png"> </span>
+    <img [src]="'app/share/images/company-logo/'+order.fromCompany + '.png'" class="md-avatar client-img" alt="{{order.companyName}}"/>
+  </div>
   <div class="md-list-item-text" layout="column">
     <h3>{{ order.orderDetails }}</h3>
     <h4>{{ order.orderDate | date }}</h4>

@@ -1,5 +1,8 @@
 <md-list-item class="md-3-line">
-  <img [src]="'app/share/images/company-logo/'+email.fromCompany + '.png'" class="md-avatar" alt="{{email.from}}"/>
+  <div class="client-section">
+    <span><img src="app/inbox/images/email.png"> </span>
+    <img [src]="'app/share/images/company-logo/'+email.fromCompany + '.png'" class="md-avatar client-img" alt="{{email.from}}"/>
+  </div>
   <div class="md-list-item-text" layout="column">
     <h3>{{ email.subject }}</h3>
     <h4>{{ email.from }}</h4>

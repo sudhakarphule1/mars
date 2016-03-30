@@ -9,12 +9,15 @@ import {EmailCompactView} from "./item-views/email-compact-view";
 import {AudioCompactView} from "./item-views/audio-compact-view";
 import {CreateOrder} from '../order/components/create-order.component';
 import {Order} from "./inbox.model";
+import {Component} from "angular2/core";
+import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styleUrls: ['app/inbox/inbox.component.css'],
-  directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView]
+  directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES]
 })
 export class Inbox implements OnInit {
   errorMessage: string;
@@ -44,5 +47,16 @@ export class Inbox implements OnInit {
   displayDetails(item) {
     console.log(this.itemList);
     this.selectedItem = item;
+  };
+}
+export default class SwitchBasicUsage {
+  public data: any = {
+    cb1: true,
+    cb4: true,
+    cb5: false
+  };
+  public message = 'false';
+  public onChange(cbState) {
+    this.message = cbState;
   };
 }
