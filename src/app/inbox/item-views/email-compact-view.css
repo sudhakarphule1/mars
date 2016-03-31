@@ -1,6 +1,7 @@
 .client-img{
   padding: 10px;
   border:1px solid #b7b7b7;
+  margin-left: 15px;
 }
 .client-section {
   position: relative;
@@ -9,4 +10,23 @@
   position: absolute;
   right: 15px;
   top: 8px;
+}
+.pending{
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  width: 5px;
+  background: red;
+}
+.delivery-date{
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  font-size: 12px;
+  text-align: right;
+  background: lemonchiffon;
+}
+.user-avtar span {
+  padding: 15px 0;
+  font-size: 12px;
 }

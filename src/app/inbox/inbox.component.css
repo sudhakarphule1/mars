@@ -1,4 +1,8 @@
 .assign-order {
   background:#EAEAEA;
+  padding: 10px;
+}
+.assign-order md-switch {
+  margin: 0 0 0 15px;
 }
 

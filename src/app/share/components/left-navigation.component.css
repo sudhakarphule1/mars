@@ -1,6 +1,9 @@
 .leftarea h3 {
-  color: #ffffff;
-  font-weight: 200;
+  color: #fff;
+  font-weight: 600;
+}
+.leftarea h1 {
+  margin: 5px 0px;
 }
 .leftarea ul {
   padding: 0px;
@@ -9,9 +12,19 @@
 .leftarea ul li:hover {
   background-color: #3B4549;
 }
+.leftarea ul li:hover h3 {
+  color: #ffffff;
+}
 .leftarea ul li.selected{
   background-color: #3B4549;
   border-left: 3px solid #F36523;
+}
+.leftarea ul li.selected h3 {
+  color: #ffffff;
+}
+.leftarea ul li h3 {
+  color: #AAA5B3;
+  font-weight: 600;
 }
 .leftarea ul li:last-child {
   position: fixed;
@@ -23,8 +36,9 @@
   background: #F36523;
 }
 .leftarea .md-avatar{
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
+  margin: 0px;
 }
 .leftarea .md-mini {
   position: absolute;

@@ -7,4 +7,7 @@ md-sidenav.leftnav  {
 /* Plese move to header component css */
 md-toolbar.toolbar {
   background: transparent url("../app/share/images/header-bg.png") repeat-x scroll 0 0 / 100% 100%;
+  min-height: 40px;
+  height: 40px;
 }
+

@@ -1,15 +1,25 @@
-<md-list-item class="md-3-line">
+<md-list-item class="md-3-line" >
+
+  <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
   <div class="client-section">
     <span><img src="app/inbox/images/email.png"> </span>
     <img [src]="'app/share/images/company-logo/'+email.fromCompany + '.png'" class="md-avatar client-img" alt="{{email.from}}"/>
   </div>
+
   <div class="md-list-item-text" layout="column">
     <h3>{{ email.subject }}</h3>
     <h4>{{ email.from }}</h4>
-    <p>{{ email.defaultTask.status }}</p>
+    <!--<div>{{ email.defaultTask.status }}</div>-->
     <p>{{ email.priority }}</p>
-    <p>{{ email.type }}</p>
     <p>{{ email.defaultTask.assignedTo }}</p>
   </div>
-  <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{email.defaultTask.assignedTo}}"/>
+
+  <md-list-item class="md-2-line user-avtar">
+    <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{email.defaultTask.assignedTo}}"/>
+    <span flex> 25min </span>
+  </md-list-item>
+  <p class="delivery-date">Delivery by Mar 20, 2016</p>
+
 </md-list-item>
+
+

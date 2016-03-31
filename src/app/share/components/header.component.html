@@ -1,39 +1,31 @@
-<!--<header  class="headerSection">-->
-    <!--<input type="search" name="googlesearch">-->
-    <!--<button type="submit">Search Orders</button>-->
-    <!--<a [routerLink]="['/Inbox']">My Orders</a>-->
-    <!--<a [routerLink]="['/Inbox']">Leads</a>-->
-    <!--<a [routerLink]="['/Inbox']">Dashboard</a>-->
-    <!--<a [routerLink]="['/Inbox']">History</a>-->
-    <!--<a [routerLink]="['/Inbox']">Settings</a>-->
-<!--</header>-->
+<div class="top-header" flex layout="row">
+  <button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
+    <i md-icon>menu</i>
+  </button>
+  <input type="search" name="search" ng-model="search" class="search" md-maxlength="10" flex>
+  <span flex></span>
+  <md-button md-button class="md-warn" >
+    <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
+    Orders
+  </md-button>
+  <md-button md-button class="md-warn" >
+    <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
+    Leads
+  </md-button>
+  <md-button md-button class="md-warn" >
+    <md-icon><img class="" src="app/share/images/dashboard.svg"></md-icon>
+    Dashboard
+  </md-button>
+  <md-button md-button class="md-warn" >
+    <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
+    History
+  </md-button>
+  <md-button md-button class="md-warn" aria-label="Settings" (click)="open('right')" >
+    <md-icon><i md-icon>settings</i></md-icon>
+    Settings
+  </md-button>
 
-<button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
-  <i md-icon>menu</i>
-</button>
-<input type="search" name="search" ng-model="search" md-maxlength="10" flex>
-<span flex></span>
-<md-button md-button class="md-warn" >
-  <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
-  Orders
-</md-button>
-<md-button md-button class="md-warn" >
-  <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
-  Leads
-</md-button>
-<md-button md-button class="md-warn" >
-  <md-icon><img class="" src="app/share/images/dashboard.svg"></md-icon>
-  Dashboard
-</md-button>
-<md-button md-button class="md-warn" >
-  <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
-  History
-</md-button>
-<md-button md-button class="md-warn" aria-label="Settings" (click)="open('right')" >
-  <md-icon><i md-icon>settings</i></md-icon>
-  Settings
-</md-button>
-
-<button md-button class="md-icon-button" aria-label="More" (click)="clicked('Show More')">
-  <i md-icon>more_vert</i>
-</button>
+  <button md-button class="md-icon-button" aria-label="More" (click)="clicked('Show More')">
+    <i md-icon>more_vert</i>
+  </button>
+</div>

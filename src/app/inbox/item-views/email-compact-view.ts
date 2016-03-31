@@ -8,6 +8,9 @@ import {Component} from 'angular2/core';
 })
 export class EmailCompactView {
   email;
+  isPending = true;
+  isInProgress = false;
+  isComplete = false;
 
   constructor() {
   }
