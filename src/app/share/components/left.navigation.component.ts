@@ -11,6 +11,7 @@ import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
 })
 
 export class LeftNavigation {
+  selected : string;
 
   constructor(public sidenav: SidenavService) {
   }
@@ -26,5 +27,9 @@ export class LeftNavigation {
 
   clicked(message: string) {
     alert(message);
+  }
+
+  select( selected : string){
+    this.selected = selected;
   }
 }

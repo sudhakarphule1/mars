@@ -2,6 +2,7 @@ md-sidenav.leftnav  {
   background-image: url("../app/share/images/dock-bg.png");
   background-repeat: no-repeat;
   background-size:100% 100%;
+  width:200px;
 }
 
 /* Plese move to header component css */
@@ -11,3 +12,6 @@ md-toolbar.toolbar {
   height: 40px;
 }
 
+md-sidenav-container.md-pushed{
+  padding-left: 200px;
+}

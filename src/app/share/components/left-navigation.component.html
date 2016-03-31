@@ -8,32 +8,32 @@
   <button md-raised-button class="md-raised md-warn" flex="50" >New Order</button>
 
   <ul layout-margin layout-fill>
-    <li class="selected" [routerLink]="['/Inbox']" layout="">
+    <li class="selected" [routerLink]="['/Inbox']" layout="" [class.selected]="selected === 'Inbox' "  (click)="select('Inbox')">
       <img src="app/share/images/orders_left.svg" width="20" height="20" layout-padding>
-      <h3 layout-padding layout-fill>My order</h3>
+      <h3 layout-padding layout-fill>My Orders</h3>
     </li>
-    <li [routerLink]="['/UserAccount']" layout="">
+    <li [routerLink]="['/UserAccount']" layout="" [class.selected]="selected === 'UserAccount' "  (click)="select('UserAccount')">
       <img src="app/share/images/user.svg" width="20" height="20" layout-padding>
       <h3 layout-padding layout-fill>User Account</h3>
     </li>
-    <li [routerLink]="['/UserAccount']" layout="">
+    <li [routerLink]="['/UserAccount']" layout="" [class.selected]="selected === 'Notes' "  (click)="select('Notes')">
       <img src="app/share/images/notes.svg" width="20" height="20" layout-padding>
       <h3 layout-padding layout-fill>Notes</h3>
       <button md-fab class="md-mini">
         <span class="count">11</span>
       </button>
     </li>
-    <li [routerLink]="['/Products']" layout="">
+    <li [routerLink]="['/Products']" layout="" [class.selected]="selected === 'Products' "  (click)="select('Products')">
       <img src="app/share/images/products.svg" width="20" height="20" layout-padding>
       <h3 layout-padding layout-fill>Products</h3>
     </li>
-    <li [routerLink]="['/Customers']" layout="">
+    <li [routerLink]="['/Customer']" layout="" [class.selected]="selected === 'Customer' "  (click)="select('Customer')">
       <img src="app/share/images/customer.svg" width="20" height="20" layout-padding>
-      <h3 layout-padding layout-fill>Customers</h3>
+      <h3 layout-padding layout-fill>Customer</h3>
     </li>
-    <li [routerLink]="['/LogOut']" layout="">
+    <li [routerLink]="['/Logout']" layout="" [class.selected]="selected === 'Logout' "  (click)="select('Logout')">
       <img src="app/share/images/logout.svg" width="20" height="20" layout-padding>
-      <h3 layout-padding layout-fill>Log Out</h3>
+      <h3 layout-padding layout-fill>Logout</h3>
     </li>
   </ul>
 </div>
