@@ -26,8 +26,8 @@ import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
   new Route({ path: '/inbox', component: Inbox, name: 'Inbox', useAsDefault: true}),
   new Route({ path: '/userAccount', component: UserAccount, name: 'UserAccount'}),
   new Route({ path: '/products', component: ProductMaster, name: 'Products'}),
-  new Route({ path: '/customers', component: CustomerMaster, name: 'Customers'}),
-  new Route({ path: '/logOut', component: LogOut, name: 'LogOut'})
+  new Route({ path: '/customer', component: CustomerMaster, name: 'Customer'}),
+  new Route({ path: '/logout', component: LogOut, name: 'Logout'})
 ])
 
 export class SeedApp {

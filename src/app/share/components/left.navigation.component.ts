@@ -14,6 +14,7 @@ export class LeftNavigation {
   selected : string;
 
   constructor(public sidenav: SidenavService) {
+    this.selected = "Inbox";
   }
   hasMedia(breakSize: string): boolean {
     return Media.hasMedia(breakSize);
