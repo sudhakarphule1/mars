@@ -5,11 +5,39 @@
   float:left;
 }
 .qtyminus,.qtyplus {
-    border: 0;
-    font-size: 19px;
-    line-height: 7px;
-    height: 16px;
-    width: 22px;
-    display: block;
-    outline:none;
+  border: 0;
+  font-size: 19px;
+  line-height: 7px;
+  height: 16px;
+  width: 22px;
+  display: block;
+  outline:none;
+  background: #DADADA;
 }
+.row-title {
+  background: #B3B3B3;
+  padding: 12px 12px 13px;
+  margin: 0px 0px 0px 10px;
+}
+.row-title div {
+  color: #ffffff;
+}
+.content-center {
+  text-align: center;
+}
+.content-center1 {
+  text-align: left;
+  padding-left: 20px;
+}
+.order-row-list {
+  background: #F2F2F2;
+  margin: 0px 0px 2px 10px;
+  padding:10px;
+}
+.order-row-list h4 {
+  margin: 0px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+

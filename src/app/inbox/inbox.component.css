@@ -1,8 +1,15 @@
 .assign-order {
   background:#EAEAEA;
+  box-shadow: 1px 4px 6px #ccc;
+  margin-bottom: 5px;
   padding: 10px;
 }
 .assign-order md-switch {
   margin: 0 0 0 15px;
 }
-
+.inbox-list {
+  padding: 0px;
+}
+.inbox-list:hover{
+backgroud:#EAEAEA;
+}

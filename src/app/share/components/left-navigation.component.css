@@ -1,6 +1,6 @@
 .leftarea h3 {
   color: #fff;
-  font-weight: 600;
+  font-weight: 200;
 }
 .leftarea h1 {
   margin: 5px 0px;
@@ -24,7 +24,11 @@
 }
 .leftarea ul li h3 {
   color: #AAA5B3;
-  font-weight: 600;
+  font-weight: 200;
+}
+.leftarea ul li {
+  border-left: 3px solid transparent;
+  cursor: pointer;
 }
 .leftarea ul li:last-child {
   position: fixed;
