@@ -39,5 +39,14 @@
   font-weight: normal;
   font-size: 14px;
 }
+.order-details,.order-details{
+  height: 500px;
+  overflow: auto;
+}
+md-list-item {
+  min-height: inherit;
+}
 
-
+.top-client-section .md-avatar{
+  margin: 0px 10px 0px 0px;
+}

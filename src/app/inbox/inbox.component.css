@@ -13,3 +13,9 @@
 .inbox-list:hover{
 backgroud:#EAEAEA;
 }
+.inbox-section {
+  height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+

@@ -36,8 +36,6 @@
     </div>
 
   </div>-->
-
-
   <div layout="row" layout-wrap class="row-title"  style="background: #B3B3B3">
     <div flex="66">
       Product
@@ -49,7 +47,7 @@
       Availability
     </div>
   </div>
-  <div class="" style="height: 500px;overflow: auto">
+  <div class="order-details">
   <div layout-wrap *ngFor="#item of items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
     <div flex="70">
       <h4 layout-margin>{{item.name}}</h4>
@@ -74,6 +72,89 @@
     </div>
 
   </div>
+    <div *ngIf="orderPreview == true && orderDetails.length > 0">
+      <h3>Order Details: </h3>
+      <h4>Company Name:{{ currentOrder.companyName}}</h4>
+      <h4>Order assigned to: Chetan U.</h4>
+      <div>Completion Date: {{currentOrder.completionDate}}</div>
+
+      <div layout="row" class="md-caption">
+        <div flex="20" layout-padding>
+          <b>Product Name</b>
+        </div>
+        <div flex="20" layout-padding>
+          <b>Brand Name</b>
+        </div>
+        <div flex="20" layout-padding>
+          <b>Variant</b>
+        </div>
+        <div flex="20" layout-padding>
+          <b>Quantity</b>
+        </div>
+        <div flex="20" layout-padding>
+          <b>Action</b>
+        </div>
+      </div>
+
+      <div layout="row" *ngFor="#item of orderDetails" class="md-caption">
+        <div flex="20" layout-padding>
+          {{item.productName}}
+        </div>
+        <div flex="20" layout-padding>
+          {{item.brand}}
+        </div>
+        <div flex="20" layout-padding>
+          {{item.Variant}}
+        </div>
+        <div flex="20" layout-padding>
+          <input type='number' [(ngModel)]="item.qty" class='qty'>
+        </div>
+        <div flex="20" layout-padding>
+          <button (click)="removeItem(item)">Remove</button>
+        </div>
+      </div>
+
+      <!--   <table>
+           <tr class="title-labrl">
+             <td><b>Product Name</b></td>
+             <td><b>Brand Name</b></td>
+             <td><b>Variant</b></td>
+             <td><b>Quantity</b></td>
+             <td><b>Action</b></td>
+           </tr>
+           <tr *ngFor="#item of orderDetails">
+             <td>{{item.productName}}</td>
+             <td>{{item.brand}}</td>
+             <td>{{item.Variant}}</td>
+             <td><input type='number'
+                        [(ngModel)]="item.quantity"
+                        class='qty'></td>
+             <td><button (click)="removeItem(item)">Remove</button></td>
+           </tr>
+         </table>-->
+    </div>
+
+    <!--  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
+
+      <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
+
+      <button (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
+
+      <div *ngIf="displayError == true">{{ errorMessage }}</div>
+
+      <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>-->
+    <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto">Create Order</button>
+
+    <!--<button md-raised-button class="md-raised md-primary" (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>-->
+
+    <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
+
+    <button md-raised-button class="md-raised md-primary" (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
+
+    <div *ngIf="displayError == true">{{ errorMessage }}</div>
+
+    <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
+
   </div>
 
 <!--  <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
@@ -101,87 +182,6 @@
     </md-list-item>
   </div>-->
 
-  <div *ngIf="orderPreview == true && orderDetails.length > 0">
-    <h3>Order Details: </h3>
-    <h4>Company Name:{{ currentOrder.companyName}}</h4>
-    <h4>Order assigned to: Chetan U.</h4>
-    <div>Completion Date: {{currentOrder.completionDate}}</div>
 
-    <div layout="row" class="md-caption">
-      <div flex="20" layout-padding>
-        <b>Product Name</b>
-      </div>
-      <div flex="20" layout-padding>
-        <b>Brand Name</b>
-      </div>
-      <div flex="20" layout-padding>
-        <b>Variant</b>
-      </div>
-      <div flex="20" layout-padding>
-        <b>Quantity</b>
-      </div>
-      <div flex="20" layout-padding>
-        <b>Action</b>
-      </div>
-    </div>
-
-    <div layout="row" *ngFor="#item of orderDetails" class="md-caption">
-      <div flex="20" layout-padding>
-        {{item.productName}}
-      </div>
-      <div flex="20" layout-padding>
-        {{item.brand}}
-      </div>
-      <div flex="20" layout-padding>
-        {{item.Variant}}
-      </div>
-      <div flex="20" layout-padding>
-        <input type='number' [(ngModel)]="item.qty" class='qty'>
-      </div>
-      <div flex="20" layout-padding>
-        <button (click)="removeItem(item)">Remove</button>
-      </div>
-    </div>
-
-    <!--   <table>
-         <tr class="title-labrl">
-           <td><b>Product Name</b></td>
-           <td><b>Brand Name</b></td>
-           <td><b>Variant</b></td>
-           <td><b>Quantity</b></td>
-           <td><b>Action</b></td>
-         </tr>
-         <tr *ngFor="#item of orderDetails">
-           <td>{{item.productName}}</td>
-           <td>{{item.brand}}</td>
-           <td>{{item.Variant}}</td>
-           <td><input type='number'
-                      [(ngModel)]="item.quantity"
-                      class='qty'></td>
-           <td><button (click)="removeItem(item)">Remove</button></td>
-         </tr>
-       </table>-->
-  </div>
-
-  <!--  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
-
-    <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
-
-    <button (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
-
-    <div *ngIf="displayError == true">{{ errorMessage }}</div>
-
-    <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>-->
-  <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto">Create Order</button>
-
-  <!--<button md-raised-button class="md-raised md-primary" (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>-->
-
-  <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
-
-  <button md-raised-button class="md-raised md-primary" (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
-
-  <div *ngIf="displayError == true">{{ errorMessage }}</div>
-
-  <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
 
 </div>
