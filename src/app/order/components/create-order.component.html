@@ -1,6 +1,102 @@
 <div class="orders">
 
-<!--  <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0" >
+
+  <div class="order-details">
+    <div *ngIf="orderStage === 'createOrder'" layout="row" layout-wrap class="row-title"  style="background: #B3B3B3">
+      <div flex="66">
+        Product
+      </div>
+      <div class="content-center1" flex="17">
+        Quantity
+      </div>
+      <div class="content-center" flex="17">
+        Availability
+      </div>
+    </div>
+    <div *ngIf="orderStage === 'createOrder'">
+      <div layout-wrap *ngFor="#item of items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+        <div flex="70">
+          <h4 layout-margin>{{item.name}}</h4>
+          <h4 layout-margin>{{item.detail}}, {{item.variant}}</h4>
+        </div>
+        <div class="content-center" flex="15">
+          <div *ngIf="item.availability == 'Yes'">
+            <input type='number'
+                   [(ngModel)]="item.qty"
+                   class='qty'>
+            <button type='submit'
+                    class='qtyminus'
+                    (click)="item.qty=item.qty-1"
+                    [disabled]="item.qty == 0">-</button>
+            <button type='submit'
+                    class='qtyplus'
+                    (click)="item.qty=item.qty+1">+</button>
+          </div>
+        </div>
+        <div class="content-center" flex="15">
+          <h4 layout-margin>{{item.availability}}</h4>
+        </div>
+      </div>
+    </div>
+
+
+  <div *ngIf="orderStage === 'preview' && orderDetails.length > 0">
+    <div layout="row" class="md-caption">
+      <div flex="20" layout-padding>
+        <b>Product Name</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Details</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Variant</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Quantity</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Action</b>
+      </div>
+    </div>
+
+    <div layout="row" *ngFor="#item of orderDetails" class="md-caption">
+      <div flex="20" layout-padding>
+        {{item.name}}
+      </div>
+      <div flex="20" layout-padding>
+        {{item.detail}}
+      </div>
+      <div flex="20" layout-padding>
+        {{item.variant}}
+      </div>
+      <div flex="20" layout-padding>
+        <input type='number' [(ngModel)]="item.qty" class='qty'>
+      </div>
+      <div flex="20" layout-padding>
+        <button (click)="removeItem(item)">Remove</button>
+      </div>
+    </div>
+
+    <!--   <table>
+         <tr class="title-labrl">
+           <td><b>Product Name</b></td>
+           <td><b>Brand Name</b></td>
+           <td><b>Variant</b></td>
+           <td><b>Quantity</b></td>
+           <td><b>Action</b></td>
+         </tr>
+         <tr *ngFor="#item of orderDetails">
+           <td>{{item.productName}}</td>
+           <td>{{item.brand}}</td>
+           <td>{{item.Variant}}</td>
+           <td><input type='number'
+                      [(ngModel)]="item.quantity"
+                      class='qty'></td>
+           <td><button (click)="removeItem(item)">Remove</button></td>
+         </tr>
+       </table>-->
+  </div>
+  <div class="tableClass" *ngIf="orderStage === 'basicDetails' && orderDetails.length >0" >
     <div><label>Compnay Name </label>
       <input [(ngModel)] = "currentOrder.companyName" placeholder="name">
     </div>
@@ -29,111 +125,83 @@
       <input [(ngModel)] = "currentOrder.status" placeholder="status">
     </div>
     <div>
-      <label> shippingAddress </label>
-      <input [(ngModel)] = "currentOrder.shippingAddress" placeholder="Address">
-      <label> billingAddress </label>
-      <input [(ngModel)] = "currentOrder.billingAddress" placeholder="Address">
-    </div>
-
-  </div>-->
-  <div layout="row" layout-wrap class="row-title"  style="background: #B3B3B3">
-    <div flex="66">
-      Product
-    </div>
-    <div class="content-center1" flex="17">
-      Quantity
-    </div>
-    <div class="content-center" flex="17">
-      Availability
-    </div>
-  </div>
-  <div class="order-details">
-  <div layout-wrap *ngFor="#item of items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
-    <div flex="70">
-      <h4 layout-margin>{{item.name}}</h4>
-      <h4 layout-margin>{{item.detail}}, {{item.variant}}</h4>
-    </div>
-    <div class="content-center" flex="15">
-      <div *ngIf="item.availability == 'Yes'">
-        <input type='number'
-               [(ngModel)]="item.qty"
-               class='qty'>
-        <button type='submit'
-                class='qtyminus'
-                (click)="item.qty=item.qty-1"
-                [disabled]="item.qty == 0">-</button>
-        <button type='submit'
-                class='qtyplus'
-                (click)="item.qty=item.qty+1">+</button>
+      <h3>Address details:</h3>
+      <div >
+        <label> shippingAddress </label>
+        <input [(ngModel)] = "currentOrder.shippingAddress.line1" placeholder="Line1">
+        <input [(ngModel)] = "currentOrder.shippingAddress.line2" placeholder="Line2">
+        <input [(ngModel)] = "currentOrder.shippingAddress.pinCode" placeholder="Pincode">
+        <input [(ngModel)] = "currentOrder.shippingAddress.city" placeholder="City">
+        <input [(ngModel)] = "currentOrder.shippingAddress.state" placeholder="State">
+        <input [(ngModel)] = "currentOrder.shippingAddress.country" placeholder="country">
       </div>
-    </div>
-    <div class="content-center" flex="15">
-      <h4 layout-margin>{{item.availability}}</h4>
+      <div>
+        <label> billingAddress </label>
+        <input [(ngModel)] = "currentOrder.billingAddress.line1" placeholder="Line1">
+        <input [(ngModel)] = "currentOrder.billingAddress.line2" placeholder="Line2">
+        <input [(ngModel)] = "currentOrder.billingAddress.pinCode" placeholder="Pincode">
+        <input [(ngModel)] = "currentOrder.billingAddress.city" placeholder="City">
+        <input [(ngModel)] = "currentOrder.billingAddress.state" placeholder="State">
+        <input [(ngModel)] = "currentOrder.billingAddress.country" placeholder="country">
+      </div>
+
     </div>
 
   </div>
-    <div *ngIf="orderPreview == true && orderDetails.length > 0">
-      <h3>Order Details: </h3>
-      <h4>Company Name:{{ currentOrder.companyName}}</h4>
-      <h4>Order assigned to: Chetan U.</h4>
-      <div>Completion Date: {{currentOrder.completionDate}}</div>
 
-      <div layout="row" class="md-caption">
-        <div flex="20" layout-padding>
-          <b>Product Name</b>
-        </div>
-        <div flex="20" layout-padding>
-          <b>Brand Name</b>
-        </div>
-        <div flex="20" layout-padding>
-          <b>Variant</b>
-        </div>
-        <div flex="20" layout-padding>
-          <b>Quantity</b>
-        </div>
-        <div flex="20" layout-padding>
-          <b>Action</b>
-        </div>
+  <div *ngIf="orderStage === 'fullPreview' && currentOrder.items.length > 0">
+    <h3>Order Details: </h3>
+    <h4>Company Name:{{ currentOrder.companyName}}</h4>
+    <h4>Order assigned to: Chetan U.</h4>
+    <h4>Completion Date:{{currentOrder.completionDate}}</h4>
+    <h4>remarks:{{currentOrder.remarks}}</h4>
+    <h4>contact person:{{currentOrder.contactPerson}}</h4>
+    <h4>vendor name:{{currentOrder.venderName}}</h4>
+    <h4>contact number:{{currentOrder.contactNumber}}</h4>
+    <h4>shipping address:{{currentOrder.shippingAddress.line1}},{{currentOrder.shippingAddress.line2}}
+      {{currentOrder.shippingAddress.pinCode}},{{currentOrder.shippingAddress.city}}
+      ,{{currentOrder.shippingAddress.state}},{{currentOrder.shippingAddress.country}}</h4>
+    <h4>billing address:{{currentOrder.billingAddress.line1}},{{currentOrder.billingAddress.line2}}
+      {{currentOrder.billingAddress.pinCode}},{{currentOrder.billingAddress.city}}
+      ,{{currentOrder.billingAddress.state}},{{currentOrder.billingAddress.country}}</h4>
+
+    <div layout="row" class="md-caption">
+      <div flex="20" layout-padding>
+        <b>Product Name</b>
       </div>
-
-      <div layout="row" *ngFor="#item of orderDetails" class="md-caption">
-        <div flex="20" layout-padding>
-          {{item.productName}}
-        </div>
-        <div flex="20" layout-padding>
-          {{item.brand}}
-        </div>
-        <div flex="20" layout-padding>
-          {{item.Variant}}
-        </div>
-        <div flex="20" layout-padding>
-          <input type='number' [(ngModel)]="item.qty" class='qty'>
-        </div>
-        <div flex="20" layout-padding>
-          <button (click)="removeItem(item)">Remove</button>
-        </div>
+      <div flex="20" layout-padding>
+        <b>Details</b>
       </div>
-
-      <!--   <table>
-           <tr class="title-labrl">
-             <td><b>Product Name</b></td>
-             <td><b>Brand Name</b></td>
-             <td><b>Variant</b></td>
-             <td><b>Quantity</b></td>
-             <td><b>Action</b></td>
-           </tr>
-           <tr *ngFor="#item of orderDetails">
-             <td>{{item.productName}}</td>
-             <td>{{item.brand}}</td>
-             <td>{{item.Variant}}</td>
-             <td><input type='number'
-                        [(ngModel)]="item.quantity"
-                        class='qty'></td>
-             <td><button (click)="removeItem(item)">Remove</button></td>
-           </tr>
-         </table>-->
+      <div flex="20" layout-padding>
+        <b>Variant</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Quantity</b>
+      </div>
+      <div flex="20" layout-padding>
+        <b>Action</b>
+      </div>
     </div>
 
+    <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption">
+      <div flex="20" layout-padding>
+        {{item.name}}
+      </div>
+      <div flex="20" layout-padding>
+        {{item.detail}}
+      </div>
+      <div flex="20" layout-padding>
+        {{item.variant}}
+      </div>
+      <div flex="20" layout-padding>
+        {{item.qty}}
+      </div>
+      <div flex="20" layout-padding>
+        <button (click)="removeItem(item)">Remove</button>
+      </div>
+    </div>
+
+  </div>
     <!--  <button (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>
 
       <button (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
@@ -143,13 +211,14 @@
       <div *ngIf="displayError == true">{{ errorMessage }}</div>
 
       <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>-->
-    <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto">Create Order</button>
+    <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
 
     <!--<button md-raised-button class="md-raised md-primary" (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>-->
 
-    <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderPreview == true">Confirm</button>
-
-    <button md-raised-button class="md-raised md-primary" (click)="orderPreview = false" *ngIf="orderPreview == true">Cancel</button>
+    <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
+    <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
+    <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview'">Place this Order</button>
+    <button md-raised-button class="md-raised md-primary" (click)="orderStage='createOrder'" >Cancel</button>
 
     <div *ngIf="displayError == true">{{ errorMessage }}</div>
 

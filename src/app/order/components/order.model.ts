@@ -14,8 +14,8 @@ export class order{
   contactNumber: number;
   totalAmount: number;
   items: Array<IItem>;
-  /*shippingAddress: IAddress;
-  billingAddress: IAddress;*/
+  shippingAddress: IAddress;
+  billingAddress: IAddress;
 
 }
 

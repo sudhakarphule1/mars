@@ -3,11 +3,10 @@
  */
 
 import IItem = require("./Item");
-import IAddress = require("./Address");
+import Address = require("./Address");
 
 
-interface OrderModel  {
-
+class OrderModel  {
 
     orderDate: Date;
     completionDate: Date;
@@ -20,9 +19,13 @@ interface OrderModel  {
     contactNumber: number;
     totalAmount: number;
     items: Array<IItem>;
-    shippingAddress: IAddress;
-    billingAddress: IAddress;
+    shippingAddress: Address;
+    billingAddress: Address;
 
+  /*OrderModel(){
+    this.shippingAddress = new Address();
+    this.billingAddress = new Address();
+  }*/
 
 }
 

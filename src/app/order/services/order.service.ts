@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import OrderModel = require("../components/order.model");
 import {Headers} from "angular2/http";
+import {RequestOptions} from "angular2/http";
 
 @Injectable()
 export class Orders {
@@ -26,6 +27,7 @@ export class Orders {
 
   public getOrdersFunction(){
       let url = `app/order/services/myOrders.json`;
+    //let url = `http://localhost:5000/orders`;
       return this.http.get(url).map((res) => res.json())
 /*      .map((orders: Array<any>) => {
       let result:Array<any> = [];
@@ -55,10 +57,13 @@ export class Orders {
   () => console.log('Authentication Complete')
 );*/
   public createOrderFunction(value){
-  let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-      let url = `http://localhost:5000/orders`;
-      return this.http.post(url, value, headers);
+
+    let params = JSON.stringify(value);
+    console.log(params);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/orders`;
+    return this.http.post(url, params,options).map((res) => res.json());
   }
 
   public deleteOrderFunction(value){

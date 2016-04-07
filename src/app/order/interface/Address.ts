@@ -6,7 +6,7 @@
  */
 
 
-interface IAddress  {
+class IAddress  {
     line1: string;
     line2: string;
     pinCode: number;

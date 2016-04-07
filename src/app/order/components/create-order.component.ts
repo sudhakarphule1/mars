@@ -6,10 +6,11 @@ import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
 import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
 import {Media} from "ng2-material/core/util/media";
-import {order} from "./order.model";
+//import {order} from "./order.model";
+import order =  require("./../interface/OrderModel");
 
-import IItem  = require("./../interface/Item");
-import IAddress =  require("./../interface/Address");
+import IItem = require("./../interface/Item");
+import IAddress = require("./../interface/Address");
 
 @Component({
   selector: 'ib-create-order',
@@ -22,7 +23,7 @@ export class CreateOrder {
 
   items : Array<IItem>;
   orderDetails: Array<IItem> = new Array();
-  orderPreview = false;
+  orderStage: string = "createOrder";
   displayError = false;
   displaySuccess = false;
   errorMessage: string = "";
@@ -32,12 +33,12 @@ export class CreateOrder {
   currentOrder: order = new order();
 
   constructor(private orders: Orders) {
-
     orders.getOrders().subscribe(res => this.items = res);
+    this.currentOrder.shippingAddress = new IAddress();
+    this.currentOrder.billingAddress = new IAddress();
   }
 
   createOrder(){
-
     for(var i in this.items){
       if (this.items[i].qty > 0 ){
         this.orderDetails.push(this.items[i]);
@@ -49,12 +50,7 @@ export class CreateOrder {
       this.displayError = true;
     }
     else {
-      this.currentOrder.items = this.orderDetails;
-      this.currentOrder.orderDate = new Date();
-      this.currentOrder.completionDate = new Date();
-      this.currentOrder.totalAmount = 3434;
-      console.log(this.currentOrder);
-      this.orderPreview = true;
+      this.orderStage = "preview";
       this.displayError = false;
     }
 
@@ -64,21 +60,47 @@ export class CreateOrder {
     var index = this.orderDetails.indexOf(item);
     this.orderDetails.splice(index, 1);
     if(this.orderDetails.length == 0){
-      this.orderPreview = false;
+      this.orderStage = "createOrder";
     }
   }
 
+  proceedNext(){
+    this.currentOrder.items = this.orderDetails;
+    this.currentOrder.orderDate = new Date();
+    this.currentOrder.completionDate = new Date();
+    this.currentOrder.totalAmount = 3434;
+    //this.currentOrder.contactNumber = 3452;
+    console.log(this.currentOrder);
+    this.orderStage = "fullPreview";
+
+  }
   confirmOrder(){
-    this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
+    if(this.orderDetails.length > 0){
+      this.orderStage = "basicDetails"
+      this.displayError = false;
+    }
+    else{
+      this.errorMessage = "You haven't selected any item for your order";
+      this.displayError = true;
+    }
+    //this.currentOrder.items = this.orderDetails;
+    /*this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
     console.log(this.items);
     this.successMessage = "Your order has been created The Order ID is :";
     this.orderID = "OR200001";
-    this.orderPreview = false;
-    this.displaySuccess = true;
+    this.orderStage = "confirm";
+    this.displaySuccess = true;*/
+  }
+
+  placeOrder(){
+    this.currentOrder.items = this.orderDetails;
+    console.log(this.currentOrder);
+    this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
+    console.log(this.items);
   }
 
   cancelOrder(){
     this.orderDetails = [];
-    this.orderPreview = false;
+    this.orderStage = "createOrder";
   }
 }

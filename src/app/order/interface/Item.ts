@@ -5,8 +5,7 @@
  * Created by waqar on 23/3/16.
  */
 
-
-interface ItemModel  {
+class ItemModel  {
     name: string;
     detail: string;
     variant: string;
