@@ -38,6 +38,7 @@ md-list-item.md-3-line {
 }
 md-list-item.selected {
   background: #EAEAEA;
+  cursor: pointer;
 }
 audio {
   width: 80%;

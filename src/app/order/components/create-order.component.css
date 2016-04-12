@@ -80,6 +80,7 @@ md-list-item {
 md-checkbox {
   float: left;
   margin: 4px 0px;
+  width: 27px;
 }
 
 .right-top-section {
@@ -92,4 +93,13 @@ md-checkbox {
 
 .content-center button {
   margin: 0px;
+}
+
+md-input-container {
+  height: 40px;
+  margin: 0px 0px 15px;
+}
+
+.customer-details {
+  margin-top: 35px;
 }

@@ -37,7 +37,7 @@
     </div>
     <div flex class="status-update">
       <label flex>Status :</label>
-      <div layout="row" layout-wrap>
+      <div layout="column" layout-wrap>
       <div flex-xs="100" flex="50">
         <md-checkbox aria-label="Checkbox 1"></md-checkbox>
         <md-checkbox aria-label="Checkbox 1"></md-checkbox>
@@ -124,63 +124,166 @@
 
     </div>
   </div>
+  <div class="tableClass customer-details" *ngIf="orderStage === 'basicDetails' && orderDetails.length >0" layout-padding >
+    <div layout-gt-sm="row">
+      <div layout-gt-sm="row" flex="50">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Compnay Name</label>
+          <input md-input [(ngModel)] = "currentOrder.companyName" >
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row" flex="50">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Order Type</label>
+          <input md-input [(ngModel)] = "currentOrder.orderType" >
+        </md-input-container>
+      </div>
+    </div>
 
+    <div layout-gt-sm="row">
+      <div layout-gt-sm="row" flex="50">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>remarks</label>
+          <input md-input [(ngModel)] = "currentOrder.remarks" >
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row" flex="50">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>contactPerson</label>
+          <input md-input [(ngModel)] = "currentOrder.contactPerson" >
+        </md-input-container>
+      </div>
+    </div>
 
+    <div layout-gt-sm="row" >
+      <div layout-gt-sm="row" flex="50">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>venderName</label>
+          <input md-input [(ngModel)] = "currentOrder.venderName" >
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row" flex="50">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>contactNumber</label>
+          <input md-input [(ngModel)] = "currentOrder.contactNumber" >
+        </md-input-container>
+      </div>
+    </div>
 
-  <div class="tableClass" *ngIf="orderStage === 'basicDetails' && orderDetails.length >0" >
-      <div layout-gt-sm="row">
-    <md-input-container class="md-block" flex-gt-sm>
-      <label>Title</label>
-      <input md-input [(value)]="user.title">
-    </md-input-container>
-  </div>
-    <div><label>Compnay Name </label>
-      <input [(ngModel)] = "currentOrder.companyName" placeholder="name">
+    <div layout-gt-sm="row">
+      <div layout-gt-sm="row" flex="50">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>status</label>
+          <input md-input [(ngModel)] = "currentOrder.status" >
+        </md-input-container>
+      </div>
     </div>
-    <div>
-      <label> Order Type </label>
-      <input [(ngModel)] = "currentOrder.orderType" placeholder="Order Type">
-    </div>
-    <div>
-      <label>remarks </label>
-      <input [(ngModel)] = "currentOrder.remarks" placeholder="remarks">
-    </div>
-    <div>
-      <label> contactPerson </label>
-      <input [(ngModel)] = "currentOrder.contactPerson" placeholder="name">
-    </div>
-    <div>
-      <label>venderName </label>
-      <input [(ngModel)] = "currentOrder.venderName" placeholder="name">
-    </div>
-    <div>
-      <label> contactNumber </label>
-      <input [(ngModel)] = "currentOrder.contactNumber" placeholder="">
-    </div>
-    <div>
-      <label>status </label>
-      <input [(ngModel)] = "currentOrder.status" placeholder="status">
-    </div>
-    <div>
+
+    <div class="tableClass" layout-padding>
       <h3>Address details:</h3>
-      <div >
+      <h4>Shipping Address</h4>
+      <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Line1</label>
+            <input md-input [(ngModel)] = "currentOrder.shippingAddress.line1" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Pincode</label>
+            <input md-input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
+          </md-input-container>
+        </div>
+      </div>
+      <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>City</label>
+            <input md-input [(ngModel)] = "currentOrder.shippingAddress.city" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+            <input md-input [(ngModel)] = "currentOrder.shippingAddress.state" >
+          </md-input-container>
+        </div>
+      </div>
+      <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Country</label>
+            <input md-input [(ngModel)] = "currentOrder.shippingAddress.country" >
+          </md-input-container>
+        </div>
+      </div>
+
+
+      <!--<div>
         <label> shippingAddress </label>
-        <input [(ngModel)] = "currentOrder.shippingAddress.line1" placeholder="Line1">
-        <input [(ngModel)] = "currentOrder.shippingAddress.line2" placeholder="Line2">
-        <input [(ngModel)] = "currentOrder.shippingAddress.pinCode" placeholder="Pincode">
-        <input [(ngModel)] = "currentOrder.shippingAddress.city" placeholder="City">
-        <input [(ngModel)] = "currentOrder.shippingAddress.state" placeholder="State">
-        <input [(ngModel)] = "currentOrder.shippingAddress.country" placeholder="country">
+        <input type="text" >
+        <input type="text" [(ngModel)] = "currentOrder.shippingAddress.line2" placeholder="Line2">
+        <input type="number" [(ngModel)] = "currentOrder.shippingAddress.pinCode" placeholder="Pincode">
+        <input type="text" [(ngModel)] = "currentOrder.shippingAddress.city" placeholder="City">
+        <input type="text" [(ngModel)] = "currentOrder.shippingAddress.state" placeholder="State">
+        <input type="text" [(ngModel)] = "currentOrder.shippingAddress.country" placeholder="Country">
+      </div>-->
+      <h4>Billing Address</h4>
+      <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Line1</label>
+            <input md-input [(ngModel)] = "currentOrder.billingAddress.line1" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Line2</label>
+            <input md-input [(ngModel)] = "currentOrder.billingAddress.line2" >
+          </md-input-container>
+        </div>
       </div>
-      <div>
+
+      <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Pincode</label>
+            <input md-input [(ngModel)] = "currentOrder.billingAddress.pinCode" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>City</label>
+            <input md-input [(ngModel)] = "currentOrder.billingAddress.city" >
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+            <input md-input [(ngModel)] = "currentOrder.billingAddress.state" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Country</label>
+            <input md-input [(ngModel)] = "currentOrder.billingAddress.country" >
+          </md-input-container>
+        </div>
+      </div>
+
+      <!--<div>
         <label> billingAddress </label>
-        <input [(ngModel)] = "currentOrder.billingAddress.line1" placeholder="Line1">
-        <input [(ngModel)] = "currentOrder.billingAddress.line2" placeholder="Line2">
-        <input [(ngModel)] = "currentOrder.billingAddress.pinCode" placeholder="Pincode">
-        <input [(ngModel)] = "currentOrder.billingAddress.city" placeholder="City">
-        <input [(ngModel)] = "currentOrder.billingAddress.state" placeholder="State">
-        <input [(ngModel)] = "currentOrder.billingAddress.country" placeholder="country">
-      </div>
+        <input type="text" [(ngModel)] = "currentOrder.billingAddress.line1" placeholder="Line1">
+        <input type="text" [(ngModel)] = "currentOrder.billingAddress.line2" placeholder="Line2">
+        <input type="number" [(ngModel)] = "currentOrder.billingAddress.pinCode" placeholder="Pincode">
+        <input type="text" [(ngModel)] = "currentOrder.billingAddress.city" placeholder="City">
+        <input type="text" [(ngModel)] = "currentOrder.billingAddress.state" placeholder="State">
+        <input type="text" [(ngModel)] = "currentOrder.billingAddress.country" placeholder="Country">
+      </div>-->
 
     </div>
 
@@ -240,44 +343,13 @@
 
   </div>
 
-    <div *ngIf="displayError == true">{{ errorMessage }}</div>
-
-    <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
-
   </div>
   <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
-
-    <!--<button md-raised-button class="md-raised md-primary" (click)="createOrder()" *ngIf="orderPreview == false">Create Order</button>-->
-
-    <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
-    <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
-    <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview'">Place this Order</button>
-    <button md-raised-button class="md-raised md-primary" (click)="orderStage='createOrder'" >Cancel</button>
-<!--  <div class="tableClass" *ngIf="orderPreview == false || orderDetails.length == 0">
-
-    <md-list-item *ngFor="#item of items" layout="row" class="md-caption md-list-item-text" flex>
-      <div flex="50" layout-padding>
-        <h4 layout-margin>{{item.name}}</h4>
-        <h4 layout-margin>{{item.detail}}, {{item.variant}}</h4>
-      </div>
-      <div flex="50" layout-padding>
-        <h4 layout-margin>{{item.availability}}</h4>
-        <div layout-margin *ngIf="item.availability == 'Yes'">
-          <input type='number'
-                 [(ngModel)]="item.qty"
-                 class='qty'>
-          <button type='submit'
-                  class='qtyminus'
-                  (click)="item.qty=item.qty-1"
-                  [disabled]="item.qty == 0">-</button>
-          <button type='submit'
-                  class='qtyplus'
-                  (click)="item.qty=item.qty+1">+</button>
-        </div>
-      </div>
-    </md-list-item>
-  </div>-->
-
-
+  <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
+  <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
+  <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview'">Place this Order</button>
+  <button md-raised-button class="md-raised md-primary" (click)="orderStage='createOrder'" >Cancel</button>
+  <div *ngIf="displayError == true">{{ errorMessage }}</div>
+  <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
 
 </div>

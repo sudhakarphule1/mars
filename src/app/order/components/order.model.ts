@@ -1,6 +1,6 @@
 
-import IItem  = require("./../interface/Item");
-import IAddress =  require("./../interface/Address");
+import IItem  = require("../classes/Item");
+import IAddress =  require("../classes/Address");
 
 export class order{
   orderDate: Date;

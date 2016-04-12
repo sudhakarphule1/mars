@@ -7,18 +7,18 @@ import {DOM} from "angular2/src/platform/dom/dom_adapter";
 import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
 import {Media} from "ng2-material/core/util/media";
 //import {order} from "./order.model";
-import order =  require("./../interface/OrderModel");
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import order =  require("../classes/OrderModel");
+import {FORM_DIRECTIVES} from "angular2/common";
 
-import IItem = require("./../interface/Item");
-import IAddress = require("./../interface/Address");
+import IItem = require("../classes/Item");
+import IAddress = require("../classes/Address");
 
 @Component({
   selector: 'ib-create-order',
   templateUrl: 'app/order/components/create-order.component.html',
   styleUrls: ['app/order/components/create-order.component.css'],
   providers: [HTTP_PROVIDERS, Orders],
-    directives: [MATERIAL_DIRECTIVES],
+  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES],
 })
 
 export class CreateOrder {
@@ -73,9 +73,25 @@ export class CreateOrder {
     this.currentOrder.totalAmount = 3434;
     //this.currentOrder.contactNumber = 3452;
     console.log(this.currentOrder);
-    this.orderStage = "fullPreview";
+    /*this.orderStage = "fullPreview";*/
+    if(this.currentOrder.companyName && this.currentOrder.orderType && this.currentOrder.remarks &&
+    this.currentOrder.contactPerson && this.currentOrder.venderName && this.currentOrder.contactNumber &&
+    this.currentOrder.status && this.currentOrder.shippingAddress.line1 && this.currentOrder.shippingAddress.line2 &&
+    this.currentOrder.shippingAddress.pinCode && this.currentOrder.shippingAddress.city &&
+    this.currentOrder.shippingAddress.state && this.currentOrder.shippingAddress.country &&
+      this.currentOrder.billingAddress.line1 && this.currentOrder.billingAddress.line2 &&
+      this.currentOrder.billingAddress.pinCode && this.currentOrder.billingAddress.city &&
+      this.currentOrder.billingAddress.state && this.currentOrder.billingAddress.country){
+      this.orderStage = "fullPreview";
+      this.displayError = false;
+    }
+    else {
+      this.errorMessage = "One of the mandatory fields is missing";
+      this.displayError = true;
+    }
 
   }
+
   confirmOrder(){
     if(this.orderDetails.length > 0){
       this.orderStage = "basicDetails"
@@ -87,11 +103,11 @@ export class CreateOrder {
     }
     //this.currentOrder.items = this.orderDetails;
     /*this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
-    console.log(this.items);
-    this.successMessage = "Your order has been created The Order ID is :";
-    this.orderID = "OR200001";
-    this.orderStage = "confirm";
-    this.displaySuccess = true;*/
+     console.log(this.items);
+     this.successMessage = "Your order has been created The Order ID is :";
+     this.orderID = "OR200001";
+     this.orderStage = "confirm";
+     this.displaySuccess = true;*/
   }
 
   placeOrder(){
