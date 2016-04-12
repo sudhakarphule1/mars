@@ -25,10 +25,6 @@
 .content-center {
   text-align: center;
 }
-.content-center1 {
-  text-align: left;
-  padding-left: 20px;
-}
 .order-row-list {
   background: #F2F2F2;
   margin: 0px 0px 2px 10px;
@@ -49,4 +45,51 @@ md-list-item {
 
 .top-client-section .md-avatar{
   margin: 0px 10px 0px 0px;
+}
+
+.col-order-detail .md-avatar {
+  margin-top: 0px;
+}
+
+.col-order-detail .md-list-item-text {
+  margin: 0px;
+}
+.col-order-detail h2 {
+  margin: 5px;
+  font-weight: normal;
+}
+.assigned-select label {
+  float: left;
+  padding: 3px 10px 0 0;
+}
+.assigned-select md-input-container {
+  float: left;
+  margin: 0;
+}
+.assigned-select .chat-icon {
+  width: 26px;
+  float: left;
+  margin: 0px 0px 0px 10px;
+}
+
+.status-update label {
+  float: left;
+  padding: 3px 10px 0 0;
+}
+
+md-checkbox {
+  float: left;
+  margin: 4px 0px;
+}
+
+.right-top-section {
+  height: 42px;
+}
+.assigned-section {
+  height: 50px;
+  padding: 10px 25px;
+}
+
+.content-center button {
+  margin: 0px;
 }

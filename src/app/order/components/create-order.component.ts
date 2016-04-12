@@ -8,6 +8,7 @@ import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/component
 import {Media} from "ng2-material/core/util/media";
 //import {order} from "./order.model";
 import order =  require("./../interface/OrderModel");
+import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 
 import IItem = require("./../interface/Item");
 import IAddress = require("./../interface/Address");
@@ -16,7 +17,8 @@ import IAddress = require("./../interface/Address");
   selector: 'ib-create-order',
   templateUrl: 'app/order/components/create-order.component.html',
   styleUrls: ['app/order/components/create-order.component.css'],
-  providers: [HTTP_PROVIDERS, Orders]
+  providers: [HTTP_PROVIDERS, Orders],
+    directives: [MATERIAL_DIRECTIVES],
 })
 
 export class CreateOrder {
