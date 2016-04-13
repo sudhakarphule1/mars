@@ -143,13 +143,13 @@
     <div layout-gt-sm="row">
       <div layout-gt-sm="row" flex="50">
         <md-input-container class="md-block" flex-gt-sm>
-          <label>remarks</label>
+          <label>Remarks</label>
           <input md-input [(ngModel)] = "currentOrder.remarks" >
         </md-input-container>
       </div>
       <div layout-gt-sm="row" flex="50">
         <md-input-container class="md-block" flex-gt-sm>
-          <label>contactPerson</label>
+          <label>Contact Person</label>
           <input md-input [(ngModel)] = "currentOrder.contactPerson" >
         </md-input-container>
       </div>
@@ -164,7 +164,7 @@
       </div>
       <div layout-gt-sm="row" flex="50">
         <md-input-container class="md-block" flex-gt-sm>
-          <label>contactNumber</label>
+          <label>Contact Number</label>
           <input md-input [(ngModel)] = "currentOrder.contactNumber" >
         </md-input-container>
       </div>
@@ -173,7 +173,7 @@
     <div layout-gt-sm="row">
       <div layout-gt-sm="row" flex="50">
         <md-input-container class="md-block" flex-gt-sm>
-          <label>status</label>
+          <label>Status</label>
           <input md-input [(ngModel)] = "currentOrder.status" >
         </md-input-container>
       </div>
@@ -191,26 +191,32 @@
         </div>
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
-            <label>Pincode</label>
-            <input md-input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
+            <label>Line2</label>
+            <input md-input [(ngModel)] = "currentOrder.shippingAddress.line2" >
           </md-input-container>
         </div>
       </div>
       <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Pincode</label>
+            <input md-input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
+          </md-input-container>
+        </div>
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
             <label>City</label>
             <input md-input [(ngModel)] = "currentOrder.shippingAddress.city" >
           </md-input-container>
         </div>
+      </div>
+      <div layout-gt-sm="row" >
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
             <label>State</label>
             <input md-input [(ngModel)] = "currentOrder.shippingAddress.state" >
           </md-input-container>
         </div>
-      </div>
-      <div layout-gt-sm="row" >
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Country</label>
