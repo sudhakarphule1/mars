@@ -11,17 +11,20 @@ import {CreateOrder} from '../order/components/create-order.component';
 import {Order} from "./inbox.model";
 import {Component} from "angular2/core";
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {InboxFilterPipe} from "./inbox-filter.pipe"
 
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styleUrls: ['app/inbox/inbox.component.css'],
-  directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES]
+  directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES],
+  pipes:[InboxFilterPipe]
 })
 export class Inbox implements OnInit {
   errorMessage: string;
   showDetails: boolean = false;
+  filterBy: string = '';
   itemList : Array<InboxItem>;
 
   constructor(private orderService: OrdersDataProvider,

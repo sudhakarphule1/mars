@@ -18,7 +18,7 @@ export class Task {
   }
 }
 
-export class InboxItem {
+export abstract class InboxItem {
   id:string;
   type:string;
   date:Date;
@@ -36,6 +36,8 @@ export class InboxItem {
     this.fromCompany = fromCompany;
     this.defaultTask = defaultTask;
   }
+
+  abstract search(searchFor : string) : boolean;
 }
 
 export class Email extends InboxItem {
@@ -65,25 +67,28 @@ export class Email extends InboxItem {
     this.body = body;
     this.attachments = attachments;
   }
+
+  search(searchFor : string) : boolean{
+    return this.from.toLowerCase().search(searchFor) !== -1
+      || this.to.toLowerCase().search(searchFor) !== -1
+      || this.cc.toLowerCase().search(searchFor) !== -1
+      || this.subject.toLowerCase().search(searchFor) !== -1
+      || this.body.toLowerCase().search(searchFor) !== -1;
+  }
+
 }
 
 export class Order extends InboxItem {
   constructor(id:string,
-              companyName:string,
               orderDate:Date,
               completionDate:Date,
-              status:string,
-              orderType:string,
               orderDetails:string,
               fromCompany:string,
               defaultTask:Task) {
     super(id, 'Order', orderDate, fromCompany, defaultTask);
-    this.companyName = companyName;
     this.orderDetails = orderDetails;
     this.orderDate = orderDate;
     this.completionDate = completionDate;
-    this.status = status;
-    this.orderType = orderType;
   }
 
   companyName:string;
@@ -92,6 +97,11 @@ export class Order extends InboxItem {
   completionDate:Date;
   status:string;
   orderType:string;
+
+  search(searchFor : string) : boolean{
+    return this.orderDetails.toLowerCase().search(searchFor) !== -1;
+  }
+
 }
 
 export class AudioContent extends InboxItem {
@@ -112,4 +122,9 @@ export class AudioContent extends InboxItem {
   date:Date;
   subject:string;
   attachment:string;
+
+  search(searchFor : string) : boolean{
+    return this.from.toLowerCase().search(searchFor) !== -1
+      || this.subject.toLowerCase().search(searchFor) !== -1;
+  }
 }

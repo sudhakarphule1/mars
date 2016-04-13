@@ -12,11 +12,11 @@ import {HTTP_PROVIDERS}    from 'angular2/http';
 import {OrdersDataProvider} from "./inbox/data-providers/orders-data-provider";
 import {AudioDataProvider} from "./inbox/data-providers/audio-data-provider";
 import {EmailDataProvider} from "./inbox/data-providers/email-data-provider";
-import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
+import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
 
 @Component({
   selector: 'inbox-app',
-  providers: [HTTP_PROVIDERS, OrdersDataProvider, EmailDataProvider, AudioDataProvider, SidenavService],
+  providers: [HTTP_PROVIDERS, OrdersDataProvider, EmailDataProvider, AudioDataProvider],
   templateUrl: 'app/inbox-app.html',
   styleUrls: ['app/inbox-app.css'],
   directives: [ROUTER_DIRECTIVES, Header, LeftNavigation, MATERIAL_DIRECTIVES],
@@ -32,19 +32,7 @@ import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
 
 export class SeedApp {
 
-  constructor(public sidenav: SidenavService) {
-  }
   hasMedia(breakSize: string): boolean {
     return Media.hasMedia(breakSize);
-  }
-  open(name: string) {
-    this.sidenav.show(name);
-  }
-  close(name: string) {
-    this.sidenav.hide(name);
-  }
-
-  clicked(message: string) {
-    alert(message);
   }
 }

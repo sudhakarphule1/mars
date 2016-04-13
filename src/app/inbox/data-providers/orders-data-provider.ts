@@ -23,9 +23,9 @@ export class OrdersDataProvider implements DataProvider {
           arrayList.forEach((item) => {
             var defaultTask : Task = new Task(item.defaultTask.assignedOn, item.defaultTask.assignedTo,
               item.defaultTask.status, item.defaultTask.completeBy, item.defaultTask.priority);
-            var email = new Order(  item.id, item.companyName, new Date(item.orderDate),
-                                    new Date(item.completionDate), item.status,
-                                    item.orderType, item.orderDetails, item.fromCompany, defaultTask);
+            var email = new Order(  item.id, new Date(item.orderDate),
+                                    new Date(item.completionDate),
+                                    item.orderDetails, item.fromCompany, defaultTask);
             result.push(email);
           });
         }

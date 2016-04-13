@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
+import {MATERIAL_DIRECTIVES, SidenavService} from "ng2-material/all";
 
 @Component({
   selector: 'ib-left-nav',
@@ -16,18 +16,9 @@ export class LeftNavigation {
   constructor(public sidenav: SidenavService) {
     this.selected = "Inbox";
   }
-  hasMedia(breakSize: string): boolean {
-    return Media.hasMedia(breakSize);
-  }
-  open(name: string) {
-    this.sidenav.show(name);
-  }
+
   close(name: string) {
     this.sidenav.hide(name);
-  }
-
-  clicked(message: string) {
-    alert(message);
   }
 
   select( selected : string){

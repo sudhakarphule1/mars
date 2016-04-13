@@ -10,20 +10,13 @@ import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
   directives: [ROUTER_DIRECTIVES, MATERIAL_DIRECTIVES]
 })
 export class Header {
-
   constructor(public sidenav: SidenavService) {
   }
+
   hasMedia(breakSize: string): boolean {
     return Media.hasMedia(breakSize);
   }
   open(name: string) {
     this.sidenav.show(name);
-  }
-  close(name: string) {
-    this.sidenav.hide(name);
-  }
-
-  clicked(message: string) {
-    alert(message);
   }
 }
