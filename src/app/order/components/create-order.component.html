@@ -2,7 +2,7 @@
 
   <div layout="row" layout-xs="column" class="right-top-section">
     <div flex>
-      <md-list layout="column" layout-padding>
+      <md-list layout="column">
         <md-list-item class="md-3-line col-order-detail">
           <img src="app/share/images/avtars/Swapnil.jpg" class="md-avatar" >
           <div class="md-list-item-text">
@@ -12,7 +12,7 @@
       </md-list>
     </div>
     <div flex>
-      <md-list layout="column" layout-padding layout-align="end end">
+      <md-list layout="column" layout-align="end end">
         <md-list-item class="md-3-line col-order-detail">
           <div class="md-list-item-text">
             <h3>Order Date : 24/01/15 </h3>
@@ -23,8 +23,8 @@
     </div>
   </div>
 
-  <div layout="row" layout-xs="column" layout-padding class="assigned-section">
-    <div flex class="assigned-select">
+  <div layout="row" layout-xs="column" class="assigned-section">
+    <div flex class="assigned-select" flex="40">
       <label flex>Assigned to :</label>
       <md-input-container class="md-block" flex-gt-sm flex>
         <select>
@@ -38,14 +38,14 @@
     <div flex class="status-update">
       <label flex>Status :</label>
       <div layout="column" layout-wrap>
-      <div flex-xs="100" flex="50">
-        <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-        <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-        <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+        <md-radio-group >
+          <md-radio-button value="Apple" class="md-primary"></md-radio-button>
+          <md-radio-button value="Banana" checked="true"> </md-radio-button>
+          <md-radio-button value="Mango" class="md-warn"></md-radio-button>
+        </md-radio-group>
       </div>
     </div>
-    </div>
-    <div flex layout="row" layout-align="end start">
+    <div flex layout="row" layout-align="end center">
         Number of products : 84
     </div>
   </div>
@@ -69,7 +69,7 @@
           <h4 layout-margin>{{item.detail}}, {{item.variant}}</h4>
         </div>
         <div class="content-center" flex="20">
-          <div *ngIf="item.availability == 'Yes'">
+          <div *ngIf="item.availability == 'Available'">
             <input type='number'
                    [(ngModel)]="item.qty"
                    class='qty'>
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="content-center" flex="20">
-          <h4 layout-margin>{{item.availability}}</h4>
+          <h3 layout-margin>{{item.availability}}</h3>
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@
         Quantity
       </div>
       <div class="content-center" flex="20">
-        Availability
+        Action
       </div>
     </div>
     <div layout="row" *ngFor="#item of orderDetails" class="md-caption md-list-item-text order-row-list">
@@ -115,7 +115,19 @@
       </div>
 
       <div flex="20">
-        <input type='number' [(ngModel)]="item.qty" class='qty'>
+        <div *ngIf="item.availability == 'Available'">
+            <input type='number'
+                   [(ngModel)]="item.qty"
+                   class='qty'>
+            <button type='submit'
+                    class='qtyminus'
+                    (click)="item.qty=item.qty-1"
+                    [disabled]="item.qty == 0">-</button>
+            <button type='submit'
+                    class='qtyplus'
+                    (click)="item.qty=item.qty+1">+</button>
+          </div>
+
       </div>
 
       <div class="content-center" flex="20">
@@ -125,6 +137,7 @@
     </div>
   </div>
   <div class="tableClass customer-details" *ngIf="orderStage === 'basicDetails' && orderDetails.length >0" layout-padding >
+    <h3>Address details:</h3>
     <div layout-gt-sm="row">
       <div layout-gt-sm="row" flex="50">
         <md-input-container class="md-block" flex-gt-sm>
@@ -180,7 +193,6 @@
     </div>
 
     <div class="tableClass" layout-padding>
-      <h3>Address details:</h3>
       <h4>Shipping Address</h4>
       <div layout-gt-sm="row" >
         <div layout-gt-sm="row" flex="50">
@@ -239,7 +251,7 @@
       <div layout-gt-sm="row" >
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
-            <label>Line1</label>
+            <label >Line1</label>
             <input md-input [(ngModel)] = "currentOrder.billingAddress.line1" >
           </md-input-container>
         </div>
@@ -295,61 +307,104 @@
 
   </div>
 
-  <div *ngIf="orderStage === 'fullPreview' && currentOrder.items.length > 0">
-    <h3>Order Details: </h3>
-    <h4>Company Name:{{ currentOrder.companyName}}</h4>
-    <h4>Order assigned to: Chetan U.</h4>
-    <h4>Completion Date:{{currentOrder.completionDate}}</h4>
-    <h4>remarks:{{currentOrder.remarks}}</h4>
-    <h4>contact person:{{currentOrder.contactPerson}}</h4>
-    <h4>vendor name:{{currentOrder.venderName}}</h4>
-    <h4>contact number:{{currentOrder.contactNumber}}</h4>
-    <h4>shipping address:{{currentOrder.shippingAddress.line1}},{{currentOrder.shippingAddress.line2}}
-      {{currentOrder.shippingAddress.pinCode}},{{currentOrder.shippingAddress.city}}
-      ,{{currentOrder.shippingAddress.state}},{{currentOrder.shippingAddress.country}}</h4>
-    <h4>billing address:{{currentOrder.billingAddress.line1}},{{currentOrder.billingAddress.line2}}
-      {{currentOrder.billingAddress.pinCode}},{{currentOrder.billingAddress.city}}
-      ,{{currentOrder.billingAddress.state}},{{currentOrder.billingAddress.country}}</h4>
-
-    <div layout="row" class="md-caption">
-      <div flex="20" layout-padding>
-        <b>Product Name</b>
+  <div class="place-order" *ngIf="orderStage === 'fullPreview' && currentOrder.items.length > 0">
+    <h3 layout-padding>Order Details: </h3>
+    <div layout-gt-sm="row">
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Company Name:</label>
+        <h3>{{ currentOrder.companyName}}</h3>
       </div>
-      <div flex="20" layout-padding>
-        <b>Details</b>
-      </div>
-      <div flex="20" layout-padding>
-        <b>Variant</b>
-      </div>
-      <div flex="20" layout-padding>
-        <b>Quantity</b>
-      </div>
-      <div flex="20" layout-padding>
-        <b>Action</b>
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Order assigned to:</label>
+        <h3>Chetan U.</h3>
       </div>
     </div>
 
-    <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption">
-      <div flex="20" layout-padding>
-        {{item.name}}
+    <div layout-gt-sm="row">
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Completion Date:</label>
+        <h3>{{currentOrder.completionDate}}</h3>
       </div>
-      <div flex="20" layout-padding>
-        {{item.detail}}
-      </div>
-      <div flex="20" layout-padding>
-        {{item.variant}}
-      </div>
-      <div flex="20" layout-padding>
-        {{item.qty}}
-      </div>
-      <div flex="20" layout-padding>
-        <button (click)="removeItem(item)">Remove</button>
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Remarks:</label>
+        <h3>{{currentOrder.remarks}}</h3>
       </div>
     </div>
 
+    <div layout-gt-sm="row">
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Contact Person:</label>
+        <h3>{{currentOrder.contactPerson}}</h3>
+      </div>
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Vendor Name:</label>
+        <h3>{{currentOrder.venderName}}</h3>
+      </div>
+    </div>
+
+
+    <div layout-gt-sm="row">
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Contact Number:</label>
+        <h3>{{currentOrder.contactNumber}}</h3>
+      </div>
+    </div>
+
+    <div layout-gt-sm="row" flex="100">
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Shipping Address:</label>
+        <div>
+          {{currentOrder.shippingAddress.line1}},{{currentOrder.shippingAddress.line2}}
+          {{currentOrder.shippingAddress.pinCode}},{{currentOrder.shippingAddress.city}}
+          ,{{currentOrder.shippingAddress.state}},{{currentOrder.shippingAddress.country}}
+        </div>
+      </div>
+      <div class="md-block" flex-gt-sm flex="50" layout-padding>
+        <label>Billing Address:</label>
+        <div>
+          {{currentOrder.billingAddress.line1}},{{currentOrder.billingAddress.line2}}
+        {{currentOrder.billingAddress.pinCode}},{{currentOrder.billingAddress.city}}
+        ,{{currentOrder.billingAddress.state}},{{currentOrder.billingAddress.country}}
+        </div>
+      </div>
+    </div>
+
+    <div class="order-details">
+      <div layout="row" layout-wrap class="row-title">
+        <div flex="35">
+          Product
+        </div>
+        <div class="content-center1" flex="20">
+          Variant
+        </div>
+        <div class="content-center1" flex="20">
+          Quantity
+        </div>
+        <div class="content-center" flex="20">
+          Action
+        </div>
+      </div>
+
+      <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
+        <div flex="35">
+          <h4>{{item.name}}</h4>
+          <h4>{{item.detail}}</h4>
+        </div>
+        <div flex="20">
+          {{item.variant}}
+        </div>
+        <div flex="20">
+          {{item.qty}}
+        </div>
+        <div class="content-center" flex="20">
+          <button md-raised-button class="md-raised md-warn" (click)="removeItem(item)">Remove</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   </div>
+
   <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
   <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
   <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>

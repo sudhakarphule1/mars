@@ -1,3 +1,6 @@
+md-list-item.md-no-style {
+  padding: 0px;
+}
 .qty {
   width: 40px;
   height: 26px;
@@ -16,7 +19,7 @@
 }
 .row-title {
   background: #B3B3B3;
-  padding: 12px 12px 13px;
+  padding: 8px 12px 7px;
   margin: 0px 0px 0px 10px;
 }
 .row-title div {
@@ -31,12 +34,18 @@
   padding:10px;
 }
 .order-row-list h4 {
-  margin: 0px;
+  margin: 2px 0px;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 13px;
+}
+.order-row-list h3 {
+  margin: 2px 0px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #8AC249;
 }
 .order-details,.order-details{
-  height: 500px;
+  height: 76vh;
   overflow: auto;
 }
 md-list-item {
@@ -60,7 +69,8 @@ md-list-item {
 }
 .assigned-select label {
   float: left;
-  padding: 3px 10px 0 0;
+  padding: 6px 10px 0 0;
+  font-size: 14px;
 }
 .assigned-select md-input-container {
   float: left;
@@ -74,10 +84,11 @@ md-list-item {
 
 .status-update label {
   float: left;
-  padding: 3px 10px 0 0;
+  padding: 6px 10px 0 0;
+  font-size: 14px;
 }
 
-md-checkbox {
+md-radio-button {
   float: left;
   margin: 4px 0px;
   width: 27px;
@@ -88,7 +99,8 @@ md-checkbox {
 }
 .assigned-section {
   height: 50px;
-  padding: 10px 25px;
+  padding: 10px 15px;
+  font-size: 14px;
 }
 
 .content-center button {
@@ -100,6 +112,38 @@ md-input-container {
   margin: 0px 0px 15px;
 }
 
-.customer-details {
-  margin-top: 35px;
+.right-top-section md-list-item, 
+.right-top-section md-list-item h3 {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.right-top-section md-list-item div {
+  padding: 0px;
+}
+
+.place-order .md-block h3 {
+  margin: 0px;
+  font-size: 14px;
+  color:#000;
+  font-weight: normal;
+}
+
+.place-order .md-block label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.place-order h3 {
+  margin: 0px;
+  font-size: 18px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
 }

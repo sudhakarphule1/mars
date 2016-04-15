@@ -2,7 +2,7 @@
   "name": "Dettol Hand wash",
   "detail": "Dettol",
   "variant": "300 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":10,
   "amount":0
@@ -10,7 +10,7 @@
   "name": "Dettol Hand wash",
   "detail": "Dettol",
   "variant": "500 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":20,
   "amount":0
@@ -18,14 +18,14 @@
   "name": "Dettol Hand wash",
   "detail": "Dettol",
   "variant": "1 Ltr",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":0
 }, {
   "name": "Tissue Papers",
   "detail": "Hindusthan Lever",
   "variant": "100 Pcs",
-  "availability": "No",
+  "availability": "Not Available",
   "qty": 0,
   "unitRate":40,
   "amount":0
@@ -33,7 +33,7 @@
   "name": "Tissue Papers",
   "detail": "Hindusthan Lever",
   "variant": "300 Pcs",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":60,
   "amount":0
@@ -41,7 +41,7 @@
   "name": "Dettol Antiseptic",
   "detail": "Hindusthan Lever",
   "variant": "100 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":140,
   "amount":0
@@ -49,7 +49,7 @@
   "name": "Dettol Antiseptic",
   "detail": "Apple",
   "variant": "500 ml",
-  "availability": "No",
+  "availability": "Not Available",
   "qty": 0,
   "unitRate":40,
   "amount":0
@@ -57,7 +57,7 @@
   "name": "Toilet Paper",
   "detail": "Orient",
   "variant": "50 Pcs",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":20,
   "amount":0
@@ -65,7 +65,7 @@
   "name": "Toilet Paper",
   "detail": "Orient",
   "variant": "100 Pcs",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":20,
   "amount":0
@@ -73,7 +73,7 @@
   "name": "Toilet Paper",
   "detail": "Orient",
   "variant": "500 Pcs",
-  "availability": "No",
+  "availability": "Not Available",
   "qty": 0,
   "unitRate":20,
   "amount":0
@@ -81,7 +81,7 @@
   "name": "Room Freshner",
   "detail": "Orient",
   "variant": "300 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":20,
   "amount":0
@@ -89,7 +89,7 @@
   "name": "Room Freshner",
   "detail": "Hindusthan Lever",
   "variant": "300 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":60,
   "amount":0
@@ -97,7 +97,7 @@
   "name": "Room Freshner",
   "detail": "Hindusthan Lever",
   "Variant": "300 ml",
-  "availability": "No",
+  "availability": "Not Available",
   "qty": 0,
   "unitRate":40,
   "amount":0
@@ -105,7 +105,7 @@
   "name": "Room Freshner",
   "detail": "Hindusthan Lever",
   "variant": "300 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":10,
   "amount":0
@@ -113,7 +113,7 @@
   "name": "Dettol Hand wash",
   "detail": "Hindusthan Lever",
   "variant": "500 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":10,
   "amount":0
@@ -121,7 +121,7 @@
   "name": "Dettol Hand wash",
   "detail": "Hindusthan Lever",
   "variant": "1 Ltr",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":20,
   "amount":0
@@ -129,7 +129,7 @@
   "name": "Tissue Papers",
   "detail": "Hindusthan Lever",
   "variant": "100 Pcs",
-  "availability": "No",
+  "availability": "Not Available",
   "qty": 0,
   "unitRate":230,
   "amount":0
@@ -137,7 +137,7 @@
   "name": "Tissue Papers",
   "detail": "Hindusthan Lever",
   "variant": "300 Pcs",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":50,
   "amount":0
@@ -145,7 +145,7 @@
   "name": "Dettol Antiseptic",
   "detail": "Hindusthan Lever",
   "variant": "100 ml",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":110,
   "amount":0
@@ -153,7 +153,7 @@
   "name": "Dettol Antiseptic",
   "detail": "Hindusthan Lever",
   "variant": "500 ml",
-  "availability": "No",
+  "availability": "Not Available",
   "qty": 0,
   "unitRate":70,
   "amount":0
@@ -161,7 +161,7 @@
   "productName": "Toilet Paper",
   "detail": "Hindusthan Lever",
   "variant": "50 Pcs",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":50,
   "amount":0
@@ -169,7 +169,7 @@
   "name": "Toilet Paper",
   "detail": "Hindusthan Lever",
   "variant": "100 Pcs",
-  "availability": "Yes",
+  "availability": "Available",
   "qty": 0,
   "unitRate":20,
   "amount":0
@@ -177,7 +177,7 @@
   "name": "Toilet Paper",
   "detail": "Hindusthan Lever",
   "variant": "500 Pcs",
-  "availability": "No",
+  "availability": "Not Available",
   "qty": 0,
   "unitRate":40,
   "amount":0

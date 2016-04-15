@@ -14,7 +14,7 @@
 backgroud:#EAEAEA;
 }
 .inbox-section {
-  height: 500px;
+  height: 94vh;
   overflow: auto;
   overflow-x: hidden;
 }
