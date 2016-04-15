@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, OnDestroy} from 'angular2/core';
 import {DataProvider} from "./data-providers/data-provider";
 import {OrdersDataProvider} from "./data-providers/orders-data-provider";
 import {EmailDataProvider} from "./data-providers/email-data-provider";
@@ -9,27 +9,36 @@ import {EmailCompactView} from "./item-views/email-compact-view";
 import {AudioCompactView} from "./item-views/audio-compact-view";
 import {CreateOrder} from '../order/components/create-order.component';
 import {Order} from "./inbox.model";
-import {Component} from "angular2/core";
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {InboxFilterPipe} from "./inbox-filter.pipe"
-
+import {SearchService} from '../share/components/search.service';
+import {Subscription}   from 'rxjs/Subscription';
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styleUrls: ['app/inbox/inbox.component.css'],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES],
+ // providers: [SearchService],
   pipes:[InboxFilterPipe]
 })
-export class Inbox implements OnInit {
+export class Inbox implements OnInit, OnDestroy {
   errorMessage: string;
   showDetails: boolean = false;
   filterBy: string = '';
   itemList : Array<InboxItem>;
+  subscription:Subscription;
 
   constructor(private orderService: OrdersDataProvider,
               private emailService: EmailDataProvider,
-              private audioService: AudioDataProvider) {
+              private audioService: AudioDataProvider,
+              private searchService: SearchService) {
+    this.subscription =  searchService.applySearch$.subscribe(
+      searchString => {
+        console.log( "Apply new filter : " + searchString);
+        this.filterBy = searchString;
+      }
+    );
   }
 
   ngOnInit() {
@@ -37,6 +46,11 @@ export class Inbox implements OnInit {
     this.getItemList(this.orderService);
     this.getItemList(this.emailService);
     this.getItemList(this.audioService);
+  }
+
+  ngOnDestroy(){
+    // prevent memory leak when component destroyed
+    this.subscription.unsubscribe();
   }
 
   getItemList(service : DataProvider) {

@@ -13,10 +13,11 @@ import {OrdersDataProvider} from "./inbox/data-providers/orders-data-provider";
 import {AudioDataProvider} from "./inbox/data-providers/audio-data-provider";
 import {EmailDataProvider} from "./inbox/data-providers/email-data-provider";
 import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
+import {SearchService} from './share/components/search.service';
 
 @Component({
   selector: 'inbox-app',
-  providers: [HTTP_PROVIDERS, OrdersDataProvider, EmailDataProvider, AudioDataProvider],
+  providers: [HTTP_PROVIDERS, OrdersDataProvider, EmailDataProvider, AudioDataProvider, SearchService],
   templateUrl: 'app/inbox-app.html',
   styleUrls: ['app/inbox-app.css'],
   directives: [ROUTER_DIRECTIVES, Header, LeftNavigation, MATERIAL_DIRECTIVES],
@@ -30,7 +31,7 @@ import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
   new Route({ path: '/logout', component: LogOut, name: 'Logout'})
 ])
 
-export class SeedApp {
+export class OrderApp {
 
   hasMedia(breakSize: string): boolean {
     return Media.hasMedia(breakSize);

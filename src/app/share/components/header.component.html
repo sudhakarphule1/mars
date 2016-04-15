@@ -2,7 +2,7 @@
   <button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
     <i md-icon>menu</i>
   </button>
-  <input type="search" name="search" ng-model="search" class="search" md-maxlength="10" flex>
+  <input type="search" name="search" #search class="search" md-maxlength="10" flex (keyup)="onSearchChange(search.value)">
   <span flex></span>
   <md-button md-button class="md-warn" >
     <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
