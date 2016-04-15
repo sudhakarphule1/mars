@@ -11,6 +11,9 @@
   right: 16px;
   top: 8px;
 }
+.list-label {
+  width: 80%;
+}
 .pending{
   position: absolute;
   left: 0px;

@@ -45,7 +45,7 @@ md-list-item.md-no-style {
   color: #8AC249;
 }
 .order-details,.order-details{
-  height: 76vh;
+  height: 74vh;
   overflow: auto;
 }
 md-list-item {
@@ -146,4 +146,58 @@ input[type=number]::-webkit-outer-spin-button {
 }
 input[type=number] {
     -moz-appearance:textfield;
+}
+
+.radio-btn {
+      float: left;
+    width: 25px;
+    top: 0;
+}
+.radio-btn label {
+  border-radius: 3px;
+  float: left;
+  
+}
+.radio-btn input.radio:empty {
+  margin-left: -999px;
+}
+.radio-btn input.radio:empty ~ label {
+  position: relative;
+  float: left;
+  margin-top: 2px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  height: 15px;
+  user-select: none;
+}
+.radio-btn input.radio:empty ~ label:before {
+   position: absolute;
+    display: block;
+    top: 1px;
+    bottom: 0;
+    left: 3px;
+    content: '';
+    background: #f16b4f;
+    width: 20px;
+
+}
+.radio-btn input.radio:checked ~ label:before {
+  content:'\2714';
+  text-indent: 5px;
+    color: #FFFFFF;
+    background-color: #f16b4f;
+  
+}
+.radio-btn input.radio:focus ~ label:before {
+  box-shadow: 0 0 0 3px #fff;
+}
+.radio-btn1 input.radio:checked ~ label:before ,
+.radio-btn1 input.radio:empty ~ label:before{
+  background-color: #fec61b;
+}
+.radio-btn2 input.radio:checked ~ label:before ,
+.radio-btn2 input.radio:empty ~ label:before{
+  background-color: #88c24c;
 }

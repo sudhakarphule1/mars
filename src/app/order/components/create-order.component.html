@@ -37,13 +37,21 @@
     </div>
     <div flex class="status-update">
       <label flex>Status :</label>
-      <div layout="column" layout-wrap>
-        <md-radio-group >
-          <md-radio-button value="Apple" class="md-primary"></md-radio-button>
-          <md-radio-button value="Banana" checked="true"> </md-radio-button>
-          <md-radio-button value="Mango" class="md-warn"></md-radio-button>
-        </md-radio-group>
+      <div class="radio-btn">
+        <input type="radio" name="radio" id="radio1" class="radio" checked/>
+        <label for="radio1"></label>
       </div>
+
+      <div class="radio-btn radio-btn1">
+        <input type="radio" name="radio" id="radio2" class="radio"/>
+        <label for="radio2"></label>
+      </div>
+
+      <div class="radio-btn radio-btn2"> 
+        <input type="radio" name="radio" id="radio3" class="radio"/>
+        <label for="radio3"></label>
+      </div>
+
     </div>
     <div flex layout="row" layout-align="end center">
         Number of products : 84
@@ -74,12 +82,12 @@
                    [(ngModel)]="item.qty"
                    class='qty'>
             <button type='submit'
+                    class='qtyplus'
+                    (click)="item.qty=item.qty+1">+</button>
+            <button type='submit'
                     class='qtyminus'
                     (click)="item.qty=item.qty-1"
                     [disabled]="item.qty == 0">-</button>
-            <button type='submit'
-                    class='qtyplus'
-                    (click)="item.qty=item.qty+1">+</button>
           </div>
         </div>
         <div class="content-center" flex="20">
@@ -120,12 +128,12 @@
                    [(ngModel)]="item.qty"
                    class='qty'>
             <button type='submit'
+                    class='qtyplus'
+                    (click)="item.qty=item.qty+1">+</button>
+            <button type='submit'
                     class='qtyminus'
                     (click)="item.qty=item.qty-1"
                     [disabled]="item.qty == 0">-</button>
-            <button type='submit'
-                    class='qtyplus'
-                    (click)="item.qty=item.qty+1">+</button>
           </div>
 
       </div>
@@ -308,7 +316,7 @@
   </div>
 
   <div class="place-order" *ngIf="orderStage === 'fullPreview' && currentOrder.items.length > 0">
-    <h3 layout-padding>Order Details: </h3>
+    <h3 f layout-padding>Order Details: </h3>
     <div layout-gt-sm="row">
       <div class="md-block" flex-gt-sm flex="50" layout-padding>
         <label>Company Name:</label>
@@ -405,12 +413,13 @@
 
   </div>
 
-  <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
-  <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
-  <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
-  <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview'">Place this Order</button>
-  <button md-raised-button class="md-raised md-primary" (click)="orderStage='createOrder'" >Cancel</button>
-  <div *ngIf="displayError == true">{{ errorMessage }}</div>
-  <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
-
+  <div class="" style="postion:absolute;">
+    <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
+    <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
+    <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
+    <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview'">Place this Order</button>
+    <button md-raised-button class="md-raised md-primary" (click)="orderStage='createOrder'" >Cancel</button>
+    <div *ngIf="displayError == true">{{ errorMessage }}</div>
+    <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
+  </div>
 </div>

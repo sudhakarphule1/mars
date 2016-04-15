@@ -1,9 +1,7 @@
 import {Component} from 'angular2/core';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 
 @Component({
   selector: 'ib-email-compact-view',
-  directives: [MATERIAL_DIRECTIVES],
   templateUrl: 'app/inbox/item-views/email-compact-view.html',
   styleUrls: ['app/inbox/item-views/email-compact-view.css'],
   inputs: ['email']
