@@ -9,12 +9,12 @@ import {Task} from "../inbox.model";
 export class OrdersDataProvider implements DataProvider {
   constructor (private http: Http) {}
 
-  private _url = '/app/inbox/data-providers/orders-mock.json';  // URL to web api
+  private _url = 'http://localhost:5000/orders';  // URL to web api
 
   getAll() {
     return this.http.get(this._url)
       // initial transform - result to json
-      .map(res => res.json().data)
+      .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance
       .map((arrayList: Array<any>) => {

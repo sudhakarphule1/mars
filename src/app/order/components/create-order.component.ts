@@ -12,6 +12,7 @@ import {FORM_DIRECTIVES} from "angular2/common";
 
 import IItem = require("../classes/Item");
 import IAddress = require("../classes/Address");
+import ITask = require("../classes/Task");
 
 @Component({
   selector: 'ib-create-order',
@@ -25,6 +26,7 @@ export class CreateOrder {
 
   items : Array<IItem>;
   orderDetails: Array<IItem> = new Array();
+  task: ITask;
   orderStage: string = "createOrder";
   displayError = false;
   displaySuccess = false;
@@ -35,9 +37,16 @@ export class CreateOrder {
   currentOrder: order = new order();
 
   constructor(private orders: Orders) {
-    orders.getOrders().subscribe(res => this.items = res);
+    orders.getAllProducts().subscribe(res => this.items = res);
     this.currentOrder.shippingAddress = new IAddress();
     this.currentOrder.billingAddress = new IAddress();
+    this.currentOrder.orderDate = new Date();
+    this.currentOrder.completionDate = new Date();
+    this.task = new ITask();
+    this.task.assignedOn = new Date();
+    this.task.completeBy = new Date();
+    this.task.assignedTo = "Swapnil";
+    this.task.priority = "High";
   }
 
   createOrder(){
@@ -68,17 +77,13 @@ export class CreateOrder {
 
   proceedNext(){
     this.currentOrder.items = this.orderDetails;
-    this.currentOrder.orderDate = new Date();
-    this.currentOrder.completionDate = new Date();
+    this.currentOrder.task = this.task;
     this.currentOrder.totalAmount = 3434;
-    //this.currentOrder.contactNumber = 3452;
-    console.log(this.currentOrder);
-    /*this.orderStage = "fullPreview";*/
     if(this.currentOrder.companyName && this.currentOrder.orderType && this.currentOrder.remarks &&
-    this.currentOrder.contactPerson && this.currentOrder.venderName && this.currentOrder.contactNumber &&
-    this.currentOrder.status && this.currentOrder.shippingAddress.line1 && this.currentOrder.shippingAddress.line2 &&
-    this.currentOrder.shippingAddress.pinCode && this.currentOrder.shippingAddress.city &&
-    this.currentOrder.shippingAddress.state && this.currentOrder.shippingAddress.country &&
+      this.currentOrder.contactPerson && this.currentOrder.vendorName && this.currentOrder.contactNumber &&
+      this.currentOrder.status && this.currentOrder.shippingAddress.line1 && this.currentOrder.shippingAddress.line2 &&
+      this.currentOrder.shippingAddress.pinCode && this.currentOrder.shippingAddress.city &&
+      this.currentOrder.shippingAddress.state && this.currentOrder.shippingAddress.country &&
       this.currentOrder.billingAddress.line1 && this.currentOrder.billingAddress.line2 &&
       this.currentOrder.billingAddress.pinCode && this.currentOrder.billingAddress.city &&
       this.currentOrder.billingAddress.state && this.currentOrder.billingAddress.country){
@@ -86,28 +91,48 @@ export class CreateOrder {
       this.displayError = false;
     }
     else {
-      this.errorMessage = "One of the mandatory fields is missing";
-      this.displayError = true;
+      if (isNaN(this.currentOrder.contactNumber)){
+        this.errorMessage = "Contact Number needs to be numeric";
+        this.displayError = true;
+      }
+      else if (!isNaN(this.currentOrder.contactNumber) &&
+        (isNaN(this.currentOrder.billingAddress.pinCode) || isNaN(this.currentOrder.shippingAddress.pinCode))){
+        this.errorMessage = "Pin Code needs to be numeric";
+        this.displayError = true;
+      }
+      else{
+        this.errorMessage = "One of the mandatory fields is missing";
+        this.displayError = true;
+      }
     }
-
   }
 
   confirmOrder(){
     if(this.orderDetails.length > 0){
-      this.orderStage = "basicDetails"
+      this.orderStage = "basicDetails";
       this.displayError = false;
     }
     else{
       this.errorMessage = "You haven't selected any item for your order";
       this.displayError = true;
     }
-    //this.currentOrder.items = this.orderDetails;
-    /*this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
-     console.log(this.items);
-     this.successMessage = "Your order has been created The Order ID is :";
-     this.orderID = "OR200001";
-     this.orderStage = "confirm";
-     this.displaySuccess = true;*/
+  }
+
+  goToPrevious(){
+    if (this.orderStage === 'preview'){
+      this.orderStage === 'createOrder'
+    }
+    else if (this.orderStage === 'preview'){
+      this.orderStage === 'preview'
+    }
+  }
+
+  cancelOrder(){
+    this.orderStage = "createOrder";
+    this.orderDetails = [];
+    for(var i in this.items){
+      this.items[i].qty = 0 ;
+    }
   }
 
   placeOrder(){
@@ -115,10 +140,8 @@ export class CreateOrder {
     console.log(this.currentOrder);
     this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
     console.log(this.items);
+    this.successMessage = "Your order has been created.";
+    this.displaySuccess = true;
   }
 
-  cancelOrder(){
-    this.orderDetails = [];
-    this.orderStage = "createOrder";
-  }
 }

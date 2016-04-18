@@ -4,7 +4,7 @@
 
 import IItem = require("./Item");
 import Address = require("./Address");
-
+import Task = require("./Task");
 
 class OrderModel  {
 
@@ -15,18 +15,13 @@ class OrderModel  {
     orderType: string;
     remarks: string;
     contactPerson: string;
-    venderName: string;
+    vendorName: string;
     contactNumber: number;
     totalAmount: number;
     items: Array<IItem>;
     shippingAddress: Address;
     billingAddress: Address;
-
-  /*OrderModel(){
-    this.shippingAddress = new Address();
-    this.billingAddress = new Address();
-  }*/
-
+    task: Task;
 }
 
 export = OrderModel;

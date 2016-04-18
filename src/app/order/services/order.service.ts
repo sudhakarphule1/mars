@@ -13,8 +13,12 @@ import {RequestOptions} from "angular2/http";
 export class Orders {
   constructor(private http: Http){}
 
-  getOrders(){
-    return this.getOrdersFunction();
+  getAllProducts(){
+    return this.getAllProductsFunction();
+  }
+
+  getAllOrders(){
+    return this.getAllProductsFunction();
   }
 
   createOrder(value){
@@ -25,10 +29,26 @@ export class Orders {
   return this.deleteOrderFunction(value);
   }
 
-  public getOrdersFunction(){
+  public getAllOrdersFunction(){
+    let url = `http://localhost:5000/orders`;
+    return this.http.get(url).map((res) => res.json());
+    /*      .map((orders: Array<any>) => {
+     let result:Array<any> = [];
+     if (orders) {
+     orders.forEach((order) => {
+     result.push(new orders(order.productName, task.description,
+     task.dueDate, task.complete));
+     });
+     }
+     return result;
+     }
+     });*/
+  }
+
+  public getAllProductsFunction(){
       let url = `app/order/services/myOrders.json`;
     //let url = `http://localhost:5000/orders`;
-      return this.http.get(url).map((res) => res.json())
+      return this.http.get(url).map((res) => res.json());
 /*      .map((orders: Array<any>) => {
       let result:Array<any> = [];
       if (orders) {

@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {Orders} from '../../order/services/order.service';
 
 @Component({
   selector: 'ib-order-compact-view',
@@ -6,13 +7,13 @@ import {Component} from 'angular2/core';
   styleUrls: ['app/inbox/item-views/order-compact-view.css'],
   inputs: ['order']
 })
-export class OrderCompactView {
+export class OrderCompactView{
   order;
   isPending = true;
   isInProgress = false;
   isComplete = false;
-
-  constructor() {
-  }
+/*  constructor(private orders: Orders) {
+    orders.getAllOrdersFunction().subscribe(res => this.allOrders = res);
+  }*/
 }
 
