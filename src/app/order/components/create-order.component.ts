@@ -81,7 +81,7 @@ export class CreateOrder {
     this.currentOrder.totalAmount = 3434;
     if(this.currentOrder.companyName && this.currentOrder.orderType && this.currentOrder.remarks &&
       this.currentOrder.contactPerson && this.currentOrder.vendorName && this.currentOrder.contactNumber &&
-      this.currentOrder.status && this.currentOrder.shippingAddress.line1 && this.currentOrder.shippingAddress.line2 &&
+      this.currentOrder.shippingAddress.line1 && this.currentOrder.shippingAddress.line2 &&
       this.currentOrder.shippingAddress.pinCode && this.currentOrder.shippingAddress.city &&
       this.currentOrder.shippingAddress.state && this.currentOrder.shippingAddress.country &&
       this.currentOrder.billingAddress.line1 && this.currentOrder.billingAddress.line2 &&
@@ -120,10 +120,10 @@ export class CreateOrder {
 
   goToPrevious(){
     if (this.orderStage === 'preview'){
-      this.orderStage === 'createOrder'
+      this.orderStage = 'createOrder'
     }
-    else if (this.orderStage === 'preview'){
-      this.orderStage === 'preview'
+    else if (this.orderStage === 'basicDetails'){
+      this.orderStage = 'preview'
     }
   }
 
@@ -133,6 +133,15 @@ export class CreateOrder {
     for(var i in this.items){
       this.items[i].qty = 0 ;
     }
+  }
+
+  copyAddress(){
+    this.currentOrder.billingAddress = this.currentOrder.shippingAddress;
+  }
+
+  originalState(){
+    this.orderStage='createOrder';
+    this.displaySuccess = false
   }
 
   placeOrder(){

@@ -36,15 +36,36 @@
       </md-input-container>
       <img src="app/order/images/chat-box.svg" class="chat-icon" >
     </div>
-    <div flex class="status-update">
+<!--    <div flex class="status-update">
       <label flex>Status :</label>
       <div layout="column" layout-wrap>
-        <md-radio-group [(value)]="task.status">
+        <md-radio-group [(value)]="currentOrder.status">
           <md-radio-button value="In Progress" class="md-primary"></md-radio-button>
           <md-radio-button value="Completed" checked="true"> </md-radio-button>
           <md-radio-button value="Running Late" class="md-warn"></md-radio-button>
         </md-radio-group>
       </div>
+    </div>-->
+    <div flex class="status-update">
+      <label flex>Status :</label>
+      <div class="radio-btn">
+        <input type="radio" [(ngModel)]="currentOrder.status" value="Running Late"
+               name="radio" id="radio1" class="radio" checked/>
+        <label for="radio1"></label>
+      </div>
+
+      <div class="radio-btn radio-btn1">
+        <input type="radio" [(ngModel)]="currentOrder.status" value="In Progress"
+               name="radio" id="radio2" class="radio"/>
+        <label for="radio2"></label>
+      </div>
+
+      <div class="radio-btn radio-btn2">
+        <input type="radio" [(ngModel)]="currentOrder.status" value="Completed"
+               name="radio" id="radio3" class="radio"/>
+        <label for="radio3"></label>
+      </div>
+
     </div>
     <div flex layout="row" layout-align="end center">
       Number of products : 84
@@ -184,14 +205,14 @@
         </div>
       </div>
 
-      <div layout-gt-sm="row">
+      <!--<div layout-gt-sm="row">
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Status</label>
             <input md-input [(ngModel)] = "currentOrder.status" >
           </md-input-container>
         </div>
-      </div>
+      </div>-->
 
       <div class="tableClass" layout-padding>
         <h4>Shipping Address</h4>
@@ -238,7 +259,13 @@
           </div>
         </div>
 
-        <h4>Billing Address</h4>
+        <h4>Billing Address
+          <label>
+            <input type="checkbox" [checked]="copyAddress()"/>
+            Same as Shipping Address
+          </label>
+        </h4>
+
         <div layout-gt-sm="row" >
           <div layout-gt-sm="row" flex="50">
             <md-input-container class="md-block" flex-gt-sm>
@@ -384,13 +411,13 @@
     </div>
 
   </div>
-  <div *ngIf="displayError == true">{{ errorMessage }}</div>
-  <div *ngIf="displaySuccess == true">{{ successMessage }}</div>
+  <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
+  <div layout-padding *ngIf="displaySuccess == true">{{ successMessage }}</div>
   <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
   <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
   <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
-  <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview'">Place this Order</button>
-  <button md-raised-button class="md-raised md-primary" (click)="cancelOrder()" *ngIf="orderStage !== 'displaySuccess' || orderStage==='createOrder'">Cancel</button>
+  <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview' && !displaySuccess">Place this Order</button>
+  <button md-raised-button class="md-raised md-primary" (click)="cancelOrder()" *ngIf="orderStage !== 'displaySuccess' && orderStage !== 'createOrder' && !displaySuccess">Cancel</button>
   <button md-raised-button class="md-raised md-primary" (click)="goToPrevious()" *ngIf="orderStage === 'preview' || orderStage === 'basicDetails'">Previous</button>
-
+  <button md-raised-button class="md-raised md-primary" (click)="originalState()" *ngIf="displaySuccess">Place another order</button>
 </div>
