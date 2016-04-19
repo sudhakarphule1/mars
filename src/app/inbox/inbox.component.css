@@ -4,6 +4,9 @@
   margin-bottom: 5px;
   padding: 10px;
 }
+.assign-order span {
+	margin: 2px 0px;
+}
 .assign-order md-switch {
   margin: 0 0 0 15px;
 }
@@ -18,4 +21,8 @@ backgroud:#EAEAEA;
   overflow: auto;
   overflow-x: hidden;
 }
-
+.left-section {
+  height: 83vh;
+  overflow: auto;
+  overflow-x: hidden;
+}

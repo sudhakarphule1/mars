@@ -68,7 +68,7 @@
 
     </div>
     <div flex layout="row" layout-align="end center">
-      Number of products : 84
+      84 : Products
     </div>
   </div>
 
@@ -90,15 +90,15 @@
           <h4 layout-margin>{{item.name}}</h4>
           <h4 layout-margin>{{item.detail}}, {{item.variant}}</h4>
         </div>
-        <div class="content-center" flex="20">
+        <div class="content-center add-item" flex="20">
           <div *ngIf="item.availability == 'Available'">
-            <input type='number'
-                   [(ngModel)]="item.qty"
-                   class='qty'>
             <button type='submit'
                     class='qtyminus'
                     (click)="item.qty=item.qty-1"
                     [disabled]="item.qty == 0">-</button>
+            <input type='number'
+                   [(ngModel)]="item.qty"
+                   class='qty'>
             <button type='submit'
                     class='qtyplus'
                     (click)="item.qty=item.qty+1">+</button>
@@ -137,19 +137,18 @@
         </div>
 
         <div flex="20">
-          <div *ngIf="item.availability == 'Available'">
-            <input type='number'
-                   [(ngModel)]="item.qty"
-                   class='qty'>
+          <div class="add-item" *ngIf="item.availability == 'Available'">
             <button type='submit'
                     class='qtyminus'
                     (click)="item.qty=item.qty-1"
                     [disabled]="item.qty == 0">-</button>
+            <input type='number'
+                   [(ngModel)]="item.qty"
+                   class='qty'>
             <button type='submit'
                     class='qtyplus'
                     (click)="item.qty=item.qty+1">+</button>
           </div>
-
         </div>
 
         <div class="content-center" flex="20">

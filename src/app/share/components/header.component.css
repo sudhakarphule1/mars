@@ -1,7 +1,21 @@
 .search {
-  height: 24px;
-  margin: 5px;
+  height: 27px;
+  margin: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 0px;
+  color: #fff;
+  font-size: 16px;
+  padding: 0px 5px;
 }
 md-button {
   margin: 2px 5px;
+  text-transform: capitalize;
+  line-height: 26px;
+  min-width: 58px;
+	padding: 0 6px;
+}
+md-icon {
+	height: 21px;
+	width: 18px;
+	margin: 6px 0;
 }

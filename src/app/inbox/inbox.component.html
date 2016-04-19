@@ -1,32 +1,37 @@
-<div layout="row" layout-fill layout-align="top center" flex>
-  <md-content flex class="inbox-section">
-    <div class="assign-order" layout="row" >
-      <span> Sort By: </span>
-      <div layout="row" flex >
-        <select>
-          <option value="" class="" selected="selected">Select Sort Option:</option>
-          <option value="" label="Company Name">Company Name</option>
-          <option value="" label="Delivery Date">Delivery Date</option>
-          <option value="" label="Order Date">Order Date</option>
-          <option value="" label="Lead Type">Lead Type</option>
-          <option value="" label="Order Status">Order Status</option>
-        </select>
+<div layout="row" layout-fill layout-align="top center" >
+  <md-content flex class="inbox-section" flex="60">
+    <div class="left-section">
+      <div class="assign-order" layout="row" >
+        <span> Sort By: </span>
+        <div layout="row" flex >
+          <select>
+            <option value="" class="" selected="selected">Select Sort Option:</option>
+            <option value="" label="Company Name">Company Name</option>
+            <option value="" label="Delivery Date">Delivery Date</option>
+            <option value="" label="Order Date">Order Date</option>
+            <option value="" label="Lead Type">Lead Type</option>
+            <option value="" label="Order Status">Order Status</option>
+          </select>
+        </div>
+        <div layout="row" layout-align="end none" >
+          <span> Leads </span>
+          <md-switch flex layout-fill  aria-label="Switch 1"></md-switch>
+        </div>
       </div>
-      <div layout="row" layout-align="end none" >
-        <span> Leads </span>
-        <md-switch flex layout-fill  aria-label="Switch 1"></md-switch>
-      </div>
-    </div>
 
-    <md-list class="inbox-list">
-      <div *ngFor="#item of (itemList | inboxFilter:'filterBy': filterBy )">
-        <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
-        <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
-        <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
-        <md-divider></md-divider>
-      </div>
-    </md-list>
+      <md-list class="inbox-list">
+        <div *ngFor="#item of (itemList | inboxFilter:'filterBy': filterBy )">
+          <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
+          <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
+          <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
+          <md-divider></md-divider>
+        </div>
+      </md-list>
+    </div>
   </md-content>
-  <ib-create-order flex>Loading...</ib-create-order>
-  <ib-preview-order *ngIf="type == 'Order'" flex>Loading...</ib-preview-order>
+  <div layout="row" layout-fill layout-align="top center" flex="40">
+    <ib-create-order flex>Loading...</ib-create-order>
+    <ib-preview-order *ngIf="type == 'Order'" flex>Loading...</ib-preview-order>
+  </div>
 </div>
+  
