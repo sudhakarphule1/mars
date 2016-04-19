@@ -12,8 +12,8 @@ export class OrderCompactView{
   isPending = true;
   isInProgress = false;
   isComplete = false;
-/*  constructor(private orders: Orders) {
-    orders.getAllOrdersFunction().subscribe(res => this.allOrders = res);
-  }*/
+  constructor() {
+    console.log(this.order);
+  }
 }
 

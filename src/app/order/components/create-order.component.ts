@@ -1,12 +1,12 @@
 import {Component} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
-import {Observable} from 'rxjs/Observable';
+/*import {Observable} from 'rxjs/Observable';*/
 import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
-import {DOM} from "angular2/src/platform/dom/dom_adapter";
-import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
-import {Media} from "ng2-material/core/util/media";
-//import {order} from "./order.model";
+/*import {DOM} from "angular2/src/platform/dom/dom_adapter";
+ import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
+ import {Media} from "ng2-material/core/util/media";
+ //import {order} from "./order.model";*/
 import order =  require("../classes/OrderModel");
 import {FORM_DIRECTIVES} from "angular2/common";
 
@@ -46,10 +46,12 @@ export class CreateOrder {
     this.task.assignedOn = new Date();
     this.task.completeBy = new Date();
     this.task.assignedTo = "Swapnil";
+    /*this.task.status = "In Progress";*/
     this.task.priority = "High";
   }
 
   createOrder(){
+    console.log(this.task.status);
     for(var i in this.items){
       if (this.items[i].qty > 0 ){
         this.orderDetails.push(this.items[i]);
@@ -79,31 +81,29 @@ export class CreateOrder {
     this.currentOrder.items = this.orderDetails;
     this.currentOrder.task = this.task;
     this.currentOrder.totalAmount = 3434;
-    if(this.currentOrder.companyName && this.currentOrder.orderType && this.currentOrder.remarks &&
-      this.currentOrder.contactPerson && this.currentOrder.vendorName && this.currentOrder.contactNumber &&
-      this.currentOrder.shippingAddress.line1 && this.currentOrder.shippingAddress.line2 &&
-      this.currentOrder.shippingAddress.pinCode && this.currentOrder.shippingAddress.city &&
-      this.currentOrder.shippingAddress.state && this.currentOrder.shippingAddress.country &&
-      this.currentOrder.billingAddress.line1 && this.currentOrder.billingAddress.line2 &&
-      this.currentOrder.billingAddress.pinCode && this.currentOrder.billingAddress.city &&
-      this.currentOrder.billingAddress.state && this.currentOrder.billingAddress.country){
+    if(!this.currentOrder.companyName || !this.currentOrder.orderType || !this.currentOrder.remarks ||
+      !this.currentOrder.contactPerson || !this.currentOrder.vendorName || !this.currentOrder.contactNumber ||
+      !this.currentOrder.shippingAddress.line1 || !this.currentOrder.shippingAddress.line2 ||
+      !this.currentOrder.shippingAddress.pinCode || !this.currentOrder.shippingAddress.city ||
+      !this.currentOrder.shippingAddress.state || !this.currentOrder.shippingAddress.country ||
+      !this.currentOrder.billingAddress.line1 || !this.currentOrder.billingAddress.line2 ||
+      !this.currentOrder.billingAddress.pinCode || !this.currentOrder.billingAddress.city ||
+      !this.currentOrder.billingAddress.state || !this.currentOrder.billingAddress.country){
+      this.errorMessage = "One of the mandatory fields is missing";
+      this.displayError = true;
+    }
+    else if (isNaN(this.currentOrder.contactNumber)){
+      this.errorMessage = "Contact Number needs to be numeric";
+      this.displayError = true;
+    }
+    else if (!isNaN(this.currentOrder.contactNumber) &&
+      (isNaN(this.currentOrder.billingAddress.pinCode) || isNaN(this.currentOrder.shippingAddress.pinCode))){
+      this.errorMessage = "Pin Code needs to be numeric";
+      this.displayError = true;
+    }
+    else{
       this.orderStage = "fullPreview";
       this.displayError = false;
-    }
-    else {
-      if (isNaN(this.currentOrder.contactNumber)){
-        this.errorMessage = "Contact Number needs to be numeric";
-        this.displayError = true;
-      }
-      else if (!isNaN(this.currentOrder.contactNumber) &&
-        (isNaN(this.currentOrder.billingAddress.pinCode) || isNaN(this.currentOrder.shippingAddress.pinCode))){
-        this.errorMessage = "Pin Code needs to be numeric";
-        this.displayError = true;
-      }
-      else{
-        this.errorMessage = "One of the mandatory fields is missing";
-        this.displayError = true;
-      }
     }
   }
 

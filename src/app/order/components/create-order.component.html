@@ -36,34 +36,31 @@
       </md-input-container>
       <img src="app/order/images/chat-box.svg" class="chat-icon" >
     </div>
-<!--    <div flex class="status-update">
-      <label flex>Status :</label>
-      <div layout="column" layout-wrap>
-        <md-radio-group [(value)]="currentOrder.status">
-          <md-radio-button value="In Progress" class="md-primary"></md-radio-button>
-          <md-radio-button value="Completed" checked="true"> </md-radio-button>
-          <md-radio-button value="Running Late" class="md-warn"></md-radio-button>
-        </md-radio-group>
-      </div>
-    </div>-->
+
     <div flex class="status-update">
       <label flex>Status :</label>
       <div class="radio-btn">
-        <input type="radio" [(ngModel)]="currentOrder.status" value="Running Late"
-               name="radio" id="radio1" class="radio" checked/>
-        <label for="radio1"></label>
+        <label>
+          <input value="Running Late" type="checkbox"
+                 (click)="task.status = 'Running Late'"
+          [checked]="task.status == 'Running Late'">
+        </label>
       </div>
 
       <div class="radio-btn radio-btn1">
-        <input type="radio" [(ngModel)]="currentOrder.status" value="In Progress"
-               name="radio" id="radio2" class="radio"/>
-        <label for="radio2"></label>
+        <label>
+          <input value="Running Late" type="checkbox"
+                 (click)="task.status = 'In Progress'"
+                 [checked]="task.status == 'In Progress'">
+        </label>
       </div>
 
       <div class="radio-btn radio-btn2">
-        <input type="radio" [(ngModel)]="currentOrder.status" value="Completed"
-               name="radio" id="radio3" class="radio"/>
-        <label for="radio3"></label>
+        <label>
+          <input value="Running Late" type="checkbox"
+                 (click)="task.status = 'Completed'"
+                 [checked]="task.status == 'Completed'">
+        </label>
       </div>
 
     </div>
@@ -158,7 +155,7 @@
       </div>
     </div>
     <div class="tableClass customer-details" *ngIf="orderStage === 'basicDetails' && orderDetails.length >0" layout-padding >
-      <h3>Address details:</h3>
+      <h3>Details:</h3>
       <div layout-gt-sm="row">
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
@@ -203,15 +200,6 @@
           </md-input-container>
         </div>
       </div>
-
-      <!--<div layout-gt-sm="row">
-        <div layout-gt-sm="row" flex="50">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Status</label>
-            <input md-input [(ngModel)] = "currentOrder.status" >
-          </md-input-container>
-        </div>
-      </div>-->
 
       <div class="tableClass" layout-padding>
         <h4>Shipping Address</h4>
