@@ -1,6 +1,7 @@
 
 import IItem  = require("../classes/Item");
 import IAddress =  require("../classes/Address");
+import ITask =  require("../classes/Task");
 
 export class order{
   orderDate: Date;
@@ -16,7 +17,7 @@ export class order{
   items: Array<IItem>;
   shippingAddress: IAddress;
   billingAddress: IAddress;
-
+  defaultTask: ITask;
 }
 
 
