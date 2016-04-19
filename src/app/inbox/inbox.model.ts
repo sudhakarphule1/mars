@@ -41,30 +41,32 @@ export abstract class InboxItem {
 }
 
 export class Email extends InboxItem {
-  from:string;
-  to:string;
-  cc:string;
-  subject:string;
-  body:string;
-  priority:string;
-  attachments:string;
+  id: string;
+  html : string;
+  text : string;
+  subject : string;
+  from : Array<any>;
+  to : Array<any>;
+  date : Date;
+  receivedDate : Date;
+  attachments : Array<any>;
 
-  constructor(id:string,
-              from:string,
-              to:string,
-              cc:string,
-              subject:string,
-              body:string,
-              date:Date,
-              attachments:string,
-              fromCompany:string,
-              defaultTask:Task) {
-    super(id, 'Email', date, fromCompany, defaultTask);
+  constructor(id: string, html : string, text : string, subject : string, from : Array<any>,
+    to : Array<any>, date : Date, receivedDate : Date, attachments : Array<any>) {
+    super(id, 'Email', receivedDate, "tcs", {
+      "priority" : "High",
+      "assignedTo" : "Swapnil",
+      "completeBy" : "2016-04-18T05:53:00.427Z",
+      "assignedOn" : "2016-04-18T05:53:00.427Z"
+    });
+    this.id = id;
+    this.html = html;
+    this.text = text;
+    this.subject = subject;
     this.from = from;
     this.to = to;
-    this.cc = cc;
-    this.subject = subject;
-    this.body = body;
+    this.date = date;
+    this.receivedDate = receivedDate;
     this.attachments = attachments;
   }
 

@@ -6,7 +6,7 @@
   </div>
   <div class="md-list-item-text" layout="column" (click)="showDetails = !showDetails">
     <h3 class="list-label">{{ email.subject }}</h3>
-    <h4>{{ email.from }}</h4>
+    <h4>{{ email.from[0].address }}</h4>
     <p>{{ email.priority }}</p>
     <p>{{ email.defaultTask.assignedTo }}</p>
   </div>
@@ -37,7 +37,7 @@
     <template md-tab label="Content">
       <md-content class="md-padding">
 
-        <div>{{ email.body}}</div>
+        <div>{{ email.text}}</div>
       </md-content>
     </template>
     <template md-tab label="Attachments">
