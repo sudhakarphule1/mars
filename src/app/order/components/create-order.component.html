@@ -25,7 +25,7 @@
 
   <div layout="row" layout-xs="column" class="assigned-section">
     <div flex class="assigned-select" flex="40">
-      <label flex>Assigned to :</label>
+      <label flex="100" layout="column">Assigned to :</label>
       <md-input-container class="md-block" flex-gt-sm flex>
         <select [(ngModel)]="task.assignedTo">
           <option>Swapnil</option>
@@ -38,30 +38,36 @@
     </div>
 
     <div flex class="status-update">
-      <label flex>Status :</label>
+      <label flex="100" layout="column">Status :</label>
       <div class="radio-btn">
-        <label>
+        <label class="control control--checkbox">
           <input value="Running Late" type="checkbox"
                  (click)="task.status = 'Running Late'"
           [checked]="task.status == 'Running Late'">
+          <div class="control__indicator"></div>
         </label>
       </div>
 
-      <div class="radio-btn radio-btn1">
-        <label>
+      <div class="radio-btn1">
+        <label class="control control--checkbox">
           <input value="Running Late" type="checkbox"
                  (click)="task.status = 'In Progress'"
                  [checked]="task.status == 'In Progress'">
+                 <div class="control__indicator"></div>
         </label>
       </div>
 
-      <div class="radio-btn radio-btn2">
-        <label>
+      <div class="radio-btn2">
+        <label class="control control--checkbox">
           <input value="Running Late" type="checkbox"
                  (click)="task.status = 'Completed'"
                  [checked]="task.status == 'Completed'">
+                 <div class="control__indicator"></div>
         </label>
       </div>
+
+ 
+
 
     </div>
     <div flex layout="row" layout-align="end center">

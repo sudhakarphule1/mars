@@ -155,56 +155,72 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 
-.radio-btn {
+.radio-btn,.radio-btn1,.radio-btn2 {
       float: left;
     width: 25px;
     top: 0;
 }
-.radio-btn label {
-  border-radius: 3px;
-  float: left;
-  
+.control-group {
+  display: inline-block;
+  vertical-align: top;
+  background: #fff;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  padding: 30px;
+  width: 200px;
+  height: 210px;
+  margin: 10px;
 }
-.radio-btn input.radio:empty {
-  margin-left: -999px;
-}
-.radio-btn input.radio:empty ~ label {
+.control {
+  display: block;
   position: relative;
-  float: left;
-  margin-top: 2px;
+  padding-left: 30px;
+  margin-bottom: 15px;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  height: 15px;
-  user-select: none;
+  font-size: 18px;
 }
-.radio-btn input.radio:empty ~ label:before {
-   position: absolute;
-    display: block;
-    top: 1px;
-    bottom: 0;
-    left: 3px;
-    content: '';
-    background: #f16b4f;
-    width: 20px;
-
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
-.radio-btn input.radio:checked ~ label:before {
-  content:'\2714';
-  text-indent: 5px;
-    color: #FFFFFF;
-    background-color: #f16b4f;
-  
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #e6e6e6;
 }
-.radio-btn input.radio:focus ~ label:before {
-  box-shadow: 0 0 0 3px #fff;
+.radio-btn .control input:checked ~ .control__indicator,
+.radio-btn .control__indicator {
+  background: #f16b4f;
 }
-.radio-btn1 input.radio:checked ~ label:before ,
-.radio-btn1 input.radio:empty ~ label:before{
+.radio-btn1 .control input:checked ~ .control__indicator,
+.radio-btn1 .control__indicator {
   background-color: #fec61b;
 }
-.radio-btn2 input.radio:checked ~ label:before ,
-.radio-btn2 input.radio:empty ~ label:before{
+.radio-btn2 .control input:checked ~ .control__indicator,
+.radio-btn2 .control__indicator {
   background-color: #88c24c;
 }
+.control__indicator:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+.control--checkbox .control__indicator:after {
+  left: 8px;
+  top: 4px;
+  width: 3px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+
