@@ -4,8 +4,7 @@
 import {Injectable} from 'angular2/core';
 import {Http, URLSearchParams} from 'angular2/http';
 import 'rxjs/add/operator/map';
-import {Order} from "../../inbox/inbox.model";
-import {Task} from "../classes/Task";
+import {Order, Task} from "../../inbox/inbox.model";
 import OrderModel = require("../components/order.model");
 import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
