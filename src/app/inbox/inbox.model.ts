@@ -92,7 +92,6 @@ export class Order extends InboxItem {
     this.orderDetails = orderDetails;
     this.orderDate = orderDate;
     this.completionDate = completionDate;
-    console.log(Order);
   }
 
   companyName:string;

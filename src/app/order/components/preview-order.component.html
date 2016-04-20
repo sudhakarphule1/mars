@@ -45,7 +45,7 @@
 
   <div class="order-details">
 
-    <div *ngIf="orderStage === 'fullPreview' && currentOrder.items.length > 0">
+    <div>
       <h3>Order Details: </h3>
       <h4>Company Name:{{ currentOrder.companyName}}</h4>
       <h4>Order assigned to: Chetan U.</h4>
@@ -101,7 +101,5 @@
 
   </div>
   <button md-raised-button class="md-primary" (click)="editOrder()" flex="auto">Edit</button>
-  <div *ngIf="displayError == true">{{ errorMessage }}</div>
-  <div *ngIf="displaySuccess == true">{{ successMessage }} {{orderID}}</div>
 
 </div>

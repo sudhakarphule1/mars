@@ -2,7 +2,6 @@ import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {DataProvider}   from "./data-provider";
 import {Order}          from "../inbox.model";
-import {Observable}     from 'rxjs/Observable';
 import {Task} from "../inbox.model";
 
 @Injectable()

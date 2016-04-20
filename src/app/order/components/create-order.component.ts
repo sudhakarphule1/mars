@@ -1,12 +1,7 @@
 import {Component} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
-/*import {Observable} from 'rxjs/Observable';*/
 import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
-/*import {DOM} from "angular2/src/platform/dom/dom_adapter";
- import {MdDialogConfig, MdDialogBasic, MdDialogRef} from "ng2-material/components/dialog/dialog";
- import {Media} from "ng2-material/core/util/media";
- //import {order} from "./order.model";*/
 import order =  require("../classes/OrderModel");
 import {FORM_DIRECTIVES} from "angular2/common";
 
@@ -86,7 +81,8 @@ export class CreateOrder {
       !this.currentOrder.shippingAddress.state || !this.currentOrder.shippingAddress.country ||
       !this.currentOrder.billingAddress.line1 || !this.currentOrder.billingAddress.line2 ||
       !this.currentOrder.billingAddress.pinCode || !this.currentOrder.billingAddress.city ||
-      !this.currentOrder.billingAddress.state || !this.currentOrder.billingAddress.country){
+      !this.currentOrder.billingAddress.state || !this.currentOrder.billingAddress.country ||
+      !this.task.completeBy || !this.task.status){
       this.errorMessage = "One of the mandatory fields is missing";
       this.displayError = true;
     }
@@ -148,6 +144,7 @@ export class CreateOrder {
     this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
     this.successMessage = "Your order has been created.";
     this.displaySuccess = true;
+    this.orders.getAllOrdersFunction();
   }
 
 }
