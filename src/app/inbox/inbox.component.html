@@ -20,7 +20,7 @@
       </div>
 
       <md-list class="inbox-list">
-        <div *ngFor="#item of (itemList | inboxFilter:'filterBy': filterBy )" (click)="gotoDetail(item)" >
+        <div *ngFor="#item of (itemList | inboxFilter:'filterBy': filterBy )" (click)="navigateTo(item)" >
           <ib-email-compact-view [email]="item" *ngIf="item.type == 'Email'"></ib-email-compact-view>
           <ib-order-compact-view [order]="item" *ngIf="item.type == 'Order'"></ib-order-compact-view>
           <ib-audio-compact-view [audioContent]="item" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>

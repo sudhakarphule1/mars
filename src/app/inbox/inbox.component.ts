@@ -14,6 +14,7 @@ import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
 import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {PreviewOrder} from "../order/components/preview-order.component";
 
 @Component({
   selector: 'ib-inbox',
@@ -24,7 +25,8 @@ import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
   pipes:[InboxFilterPipe]
 })
 @RouteConfig([
-  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true})
+  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
+  new Route({ path: '/previeworder', component: PreviewOrder, name: 'PreviewOrder'})
 ])
 
 export class Inbox implements OnInit, OnDestroy {
@@ -72,11 +74,17 @@ export class Inbox implements OnInit, OnDestroy {
     this.selectedItem = item;
   };
 
-  gotoDetail(item: InboxItem) {
-    let link = ['CreateOrder', { leadId: item.id }];
+  navigateTo(item: InboxItem) {
+    let link;
+    if( item.type == 'Order' ) {
+      link = ['PreviewOrder', { orderId: item.id }];
+    } else {
+      link = ['CreateOrder', { leadId: item.id }];
+    }
     this._router.navigate(link);
   }
 }
+
 export default class SwitchBasicUsage {
   public data: any = {
     cb1: true,

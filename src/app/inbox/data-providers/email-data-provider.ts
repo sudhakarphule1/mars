@@ -25,7 +25,7 @@ export class EmailDataProvider implements DataProvider {
           let result:Array<Email> = [];
           if (arrayList) {
             arrayList.forEach((item)=> {
-              var email = new Email( item.id, item.html, item.text, item.subject, item.from,
+              var email = new Email( item._id, item.html, item.text, item.subject, item.from,
                 item.to, item.date, item.receivedDate, item.attachments, item.defaultTask);
               result.push(email);
             });
