@@ -22,12 +22,16 @@ export class Orders {
     return this.getAllProductsFunction();
   }
 
+  public getOrder(id){
+    return this.getOrderFunction(id);
+  }
+
   createOrder(value){
-  return this.createOrderFunction(value);
+    return this.createOrderFunction(value);
   }
 
   deleteOrder(value: Array<any>){
-  return this.deleteOrderFunction(value);
+    return this.deleteOrderFunction(value);
   }
 
   public getAllOrdersFunction(){
@@ -54,36 +58,15 @@ export class Orders {
   }
 
   public getAllProductsFunction(){
-      let url = `app/order/services/myOrders.json`;
-    //let url = `http://localhost:5000/orders`;
-      return this.http.get(url).map((res) => res.json());
-/*      .map((orders: Array<any>) => {
-      let result:Array<any> = [];
-      if (orders) {
-        orders.forEach((order) => {
-          result.push(new orders(order.productName, task.description,
-                                task.dueDate, task.complete));
-        });
-      }
-      return result;
-     }
-  });*/
+    let url = `app/order/services/myOrders.json`;
+    return this.http.get(url).map((res) => res.json());
   }
-  /*let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
 
-  this.http.post('http://localhost:3001/sessions/create', creds, {
-  headers: headers
-})
-.subscribe(
-  data => {
-    this.saveJwt(data.json().id_token);
-    username.value = null;
-    password.value = null;
-  },
-  err => this.logError(err.json().message),
-  () => console.log('Authentication Complete')
-);*/
+  public getOrderFunction(value){
+    let url = `http://localhost:5000/orders/` + value;
+    return this.http.get(url).map((res) => res.json());
+  }
+
   public createOrderFunction(value){
 
     let params = JSON.stringify(value);
@@ -95,8 +78,8 @@ export class Orders {
   }
 
   public deleteOrderFunction(value){
-      let url = `app/order/services/myOrders.json`;
-      return this.http.get(url).map((res) => res.json());
+    let url = `app/order/services/myOrders.json`;
+    return this.http.get(url).map((res) => res.json());
   }
 
 }

@@ -22,7 +22,7 @@ export class OrdersDataProvider implements DataProvider {
           arrayList.forEach((item) => {
             var defaultTask : Task = new Task(new Date(item.task.assignedOn), item.task.assignedTo,
               item.task.status, new Date(item.task.completeBy), item.task.priority);
-            var email = new Order(  item.id, new Date(item.orderDate),
+            var email = new Order(  item._id, new Date(item.orderDate),
                                     new Date(item.completionDate),
                                     item.items, item.companyName, defaultTask);
             result.push(email);

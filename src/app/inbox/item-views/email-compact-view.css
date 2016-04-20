@@ -47,3 +47,7 @@ md-list-item.selected {
 audio {
   width: 80%;
 }
+
+.email-compact {
+  cursor: pointer;
+}

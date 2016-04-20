@@ -15,9 +15,10 @@
       <md-list layout="column" layout-align="end end">
         <md-list-item class="md-3-line col-order-detail">
           <div class="md-list-item-text">
-            <h3>Order Date : {{task.assignedOn | date}} </h3>
+            <!--<h3>Order Date : {{task.assignedOn | date}} </h3>-->
+            <h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="task.assignedOn"/></h3>
             <!--<h3>Delivery Date : 02/02/15 </h3>-->
-            <h3>Delivery Date : <input type="date" [(ngModel)]="task.completeBy"/></h3>
+            <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="task.completeBy"/></h3>
           </div>
         </md-list-item>
       </md-list>
@@ -67,8 +68,8 @@
         </label>
       </div>
     </div>
-    
-    
+
+
   </div>
 
   <div class="order-details">
