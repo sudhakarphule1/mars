@@ -13,7 +13,6 @@ export class OrderCompactView{
   isInProgress = false;
   isComplete = false;
   constructor() {
-    console.log(this.order);
   }
 }
 

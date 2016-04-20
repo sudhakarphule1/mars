@@ -9,27 +9,26 @@ import {Task} from "../inbox.model";
 export class OrdersDataProvider implements DataProvider {
   constructor (private http: Http) {}
 
-  private _url = '/app/inbox/data-providers/orders-mock.json';  // URL to web api
+  private _url = 'http://localhost:5000/orders';  // URL to web api
 
   getAll() {
     return this.http.get(this._url)
       // initial transform - result to json
-      .map(res => res.json().data)
+      .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance
       .map((arrayList: Array<any>) => {
         let result:Array<Order> = [];
         if (arrayList) {
           arrayList.forEach((item) => {
-            var defaultTask : Task = new Task(item.defaultTask.assignedOn, item.defaultTask.assignedTo,
-              item.defaultTask.status, item.defaultTask.completeBy, item.defaultTask.priority);
+            var defaultTask : Task = new Task(item.task.assignedOn, item.task.assignedTo,
+              item.task.status, item.task.completeBy, item.task.priority);
             var email = new Order(  item.id, new Date(item.orderDate),
                                     new Date(item.completionDate),
-                                    item.orderDetails, item.fromCompany, defaultTask);
+                                    item.orderDetails, item.companyName, defaultTask);
             result.push(email);
           });
         }
-        console.log(result);
         return result;
       });
   }

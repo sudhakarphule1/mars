@@ -46,12 +46,10 @@ export class CreateOrder {
     this.task.assignedOn = new Date();
     this.task.completeBy = new Date();
     this.task.assignedTo = "Swapnil";
-    /*this.task.status = "In Progress";*/
     this.task.priority = "High";
   }
 
   createOrder(){
-    console.log(this.task.status);
     for(var i in this.items){
       if (this.items[i].qty > 0 ){
         this.orderDetails.push(this.items[i]);
@@ -148,7 +146,6 @@ export class CreateOrder {
     this.currentOrder.items = this.orderDetails;
     console.log(this.currentOrder);
     this.orders.createOrderFunction(this.currentOrder).subscribe(res => this.items = res);
-    console.log(this.items);
     this.successMessage = "Your order has been created.";
     this.displaySuccess = true;
   }

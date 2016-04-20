@@ -1,11 +1,7 @@
 import {Email} from "../inbox.model";
 import {Injectable}     from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Http, Response, Headers} from 'angular2/http';
 import {DataProvider}   from "./data-provider";
-import {Observable}     from 'rxjs/Observable';
-import {Task} from "../inbox.model";
-
-import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
 
 import {HTTP_PROVIDERS, Http, Request, RequestMethod} from 'angular2/http';
