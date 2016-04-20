@@ -67,9 +67,8 @@
         </label>
       </div>
     </div>
-<!--    <div flex layout="row" layout-align="end center">
-      84 : Products
-    </div>-->
+    
+    
   </div>
 
   <div class="order-details">
@@ -401,13 +400,13 @@
     </div>
 
   </div>
-  <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
+    <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
   <div layout-padding *ngIf="displaySuccess == true">{{ successMessage }}</div>
-  <button md-raised-button class="md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
-  <button md-raised-button class="md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
-  <button md-raised-button class="md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
-  <button md-raised-button class="md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview' && !displaySuccess">Place this Order</button>
-  <button md-raised-button class="md-raised md-primary" (click)="cancelOrder()" *ngIf="orderStage !== 'displaySuccess' && orderStage !== 'createOrder' && !displaySuccess">Cancel</button>
-  <button md-raised-button class="md-raised md-primary" (click)="goToPrevious()" *ngIf="orderStage === 'preview' || orderStage === 'basicDetails'">Previous</button>
-  <button md-raised-button class="md-raised md-primary" (click)="originalState()" *ngIf="displaySuccess">Place another order</button>
+  <button md-raised-button class="button md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
+  <button md-raised-button class="button md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
+  <button md-raised-button class="button md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
+  <button md-raised-button class="button md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview' && !displaySuccess">Place this Order</button>
+  <button md-raised-button class="cancel button md-raised md-warn" (click)="cancelOrder()" *ngIf="orderStage !== 'displaySuccess' && orderStage !== 'createOrder' && !displaySuccess">Cancel</button>
+  <button md-raised-button class="button md-raised" (click)="goToPrevious()" *ngIf="orderStage === 'preview' || orderStage === 'basicDetails'">Previous</button>
+  <button md-raised-button class="button md-raised md-primary" (click)="originalState()" *ngIf="displaySuccess">Place another order</button>
 </div>
