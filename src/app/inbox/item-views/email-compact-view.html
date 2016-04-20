@@ -42,7 +42,12 @@
     </template>
     <template md-tab label="Attachments">
       <md-content class="md-padding">
-        <iframe src="app/inbox/images/LicenseCertificate.pdf" style="width:100%; height:500px;" frameborder="0"></iframe>
+        <!--<iframe src='http://localhost:5000/{{email.attachments[0].fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>-->
+        <ul>
+          <li *ngFor="#attachment of email.attachments">
+            <iframe src='http://localhost:5000/{{attachment.fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>
+          </li>
+        </ul>
       </md-content>
     </template>
   </md-tabs>
