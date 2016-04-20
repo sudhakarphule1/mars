@@ -44,12 +44,12 @@ export class CreateOrder {
     this.currentOrder.completionDate = new Date();
     this.task = new ITask();
     this.task.assignedOn = new Date();
-    this.task.completeBy = new Date();
     this.task.assignedTo = "Swapnil";
     this.task.priority = "High";
   }
 
   createOrder(){
+    console.log(this.task.completeBy);
     for(var i in this.items){
       if (this.items[i].qty > 0 ){
         this.orderDetails.push(this.items[i]);

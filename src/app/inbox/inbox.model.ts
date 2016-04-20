@@ -56,8 +56,9 @@ export class Email extends InboxItem {
     super(id, 'Email', receivedDate, "tcs", {
       "priority" : "High",
       "assignedTo" : "Swapnil",
-      "completeBy" : "2016-04-18T05:53:00.427Z",
-      "assignedOn" : "2016-04-18T05:53:00.427Z"
+      "status": "Pending",
+      "completeBy" : new Date("2016-04-18T05:53:00.427Z"),
+      "assignedOn" : new Date("2016-04-18T05:53:00.427Z")
     });
     this.id = id;
     this.html = html;
@@ -71,13 +72,13 @@ export class Email extends InboxItem {
   }
 
   search(searchFor : string) : boolean{
-    return this.from.toLowerCase().search(searchFor) !== -1
-      || this.to.toLowerCase().search(searchFor) !== -1
-      || this.cc.toLowerCase().search(searchFor) !== -1
+    return this.from[0].address.toLowerCase().search(searchFor) !== -1
+      || this.to[0].address.toLowerCase().search(searchFor) !== -1
+      || this.to[0].name.toLowerCase().search(searchFor) !== -1
+      || this.from[0].name.toLowerCase().search(searchFor) !== -1
       || this.subject.toLowerCase().search(searchFor) !== -1
-      || this.body.toLowerCase().search(searchFor) !== -1;
+      || this.text.toLowerCase().search(searchFor) !== -1;
   }
-
 }
 
 export class Order extends InboxItem {
@@ -91,6 +92,7 @@ export class Order extends InboxItem {
     this.orderDetails = orderDetails;
     this.orderDate = orderDate;
     this.completionDate = completionDate;
+    console.log(Order);
   }
 
   companyName:string;
