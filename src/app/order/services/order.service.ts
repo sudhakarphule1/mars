@@ -4,7 +4,8 @@
 import {Injectable} from 'angular2/core';
 import {Http, URLSearchParams} from 'angular2/http';
 import 'rxjs/add/operator/map';
-
+import {Order} from "../../inbox/inbox.model";
+import {Task} from "../classes/Task";
 import OrderModel = require("../components/order.model");
 import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
@@ -31,18 +32,25 @@ export class Orders {
 
   public getAllOrdersFunction(){
     let url = `http://localhost:5000/orders`;
-    return this.http.get(url).map((res) => res.json());
-    /*      .map((orders: Array<any>) => {
-     let result:Array<any> = [];
-     if (orders) {
-     orders.forEach((order) => {
-     result.push(new orders(order.productName, task.description,
-     task.dueDate, task.complete));
-     });
-     }
-     return result;
-     }
-     });*/
+    return this.http.get(url)
+      // initial transform - result to json
+      .map(res => res.json())
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((arrayList: Array<any>) => {
+        let result:Array<Order> = [];
+        if (arrayList) {
+          arrayList.forEach((item) => {
+            var defaultTask : Task = new Task(new Date(item.task.assignedOn), item.task.assignedTo,
+              item.task.status, new Date(item.task.completeBy), item.task.priority);
+            var email = new Order(  item.id, new Date(item.orderDate),
+              new Date(item.completionDate),
+              item.items, item.companyName, defaultTask);
+            result.push(email);
+          });
+        }
+        return result;
+      });
   }
 
   public getAllProductsFunction(){

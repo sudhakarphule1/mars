@@ -52,14 +52,8 @@ export class Email extends InboxItem {
   attachments : Array<any>;
 
   constructor(id: string, html : string, text : string, subject : string, from : Array<any>,
-    to : Array<any>, date : Date, receivedDate : Date, attachments : Array<any>) {
-    super(id, 'Email', receivedDate, "tcs", {
-      "priority" : "High",
-      "assignedTo" : "Swapnil",
-      "status": "Pending",
-      "completeBy" : new Date("2016-04-18T05:53:00.427Z"),
-      "assignedOn" : new Date("2016-04-18T05:53:00.427Z")
-    });
+    to : Array<any>, date : Date, receivedDate : Date, attachments : Array<any>, defaultTask: Task) {
+    super(id, 'Email', receivedDate, "tcs", defaultTask);
     this.id = id;
     this.html = html;
     this.text = text;
@@ -92,7 +86,6 @@ export class Order extends InboxItem {
     this.orderDetails = orderDetails;
     this.orderDate = orderDate;
     this.completionDate = completionDate;
-    console.log(Order);
   }
 
   companyName:string;
