@@ -13,6 +13,7 @@ import {FORM_DIRECTIVES} from "angular2/common";
 import IItem = require("../classes/Item");
 import IAddress = require("../classes/Address");
 import ITask = require("../classes/Task");
+import {RouteParams} from "angular2/router";
 
 @Component({
   selector: 'ib-create-order',
@@ -23,7 +24,7 @@ import ITask = require("../classes/Task");
 })
 
 export class CreateOrder {
-
+  leadId: string;
   items : Array<IItem>;
   orderDetails: Array<IItem> = new Array();
   task: ITask;
@@ -36,7 +37,9 @@ export class CreateOrder {
 
   currentOrder: order = new order();
 
-  constructor(private orders: Orders) {
+  constructor(private orders: Orders, params: RouteParams) {
+    this.leadId = params.get('leadId');
+    console.log("Invoked CreateOrder for : " + this.leadId);
     orders.getAllProducts().subscribe(res => this.items = res);
     this.currentOrder.shippingAddress = new IAddress();
     this.currentOrder.billingAddress = new IAddress();

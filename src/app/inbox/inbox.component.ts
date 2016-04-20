@@ -13,15 +13,20 @@ import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
+import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styleUrls: ['app/inbox/inbox.component.css'],
-  directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES],
+  directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
  // providers: [SearchService],
   pipes:[InboxFilterPipe]
 })
+@RouteConfig([
+  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true})
+])
+
 export class Inbox implements OnInit, OnDestroy {
   errorMessage: string;
   showDetails: boolean = false;
@@ -32,7 +37,8 @@ export class Inbox implements OnInit, OnDestroy {
   constructor(private orderService: OrdersDataProvider,
               private emailService: EmailDataProvider,
               private audioService: AudioDataProvider,
-              private searchService: SearchService) {
+              private searchService: SearchService,
+              private _router: Router) {
     this.subscription =  searchService.applySearch$.subscribe(
       searchString => {
         console.log( "Apply new filter : " + searchString);
@@ -65,6 +71,11 @@ export class Inbox implements OnInit, OnDestroy {
     console.log(this.itemList);
     this.selectedItem = item;
   };
+
+  gotoDetail(item: InboxItem) {
+    let link = ['CreateOrder', { leadId: item.id }];
+    this._router.navigate(link);
+  }
 }
 export default class SwitchBasicUsage {
   public data: any = {

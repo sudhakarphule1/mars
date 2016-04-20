@@ -24,7 +24,7 @@ import {SearchService} from './share/components/search.service';
   pipes: []
 })
 @RouteConfig([
-  new Route({ path: '/inbox', component: Inbox, name: 'Inbox', useAsDefault: true}),
+  new Route({ path: '/inbox/...', component: Inbox, name: 'Inbox', useAsDefault: true}),
   new Route({ path: '/userAccount', component: UserAccount, name: 'UserAccount'}),
   new Route({ path: '/products', component: ProductMaster, name: 'Products'}),
   new Route({ path: '/customer', component: CustomerMaster, name: 'Customer'}),
