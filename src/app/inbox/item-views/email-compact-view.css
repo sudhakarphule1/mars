@@ -11,8 +11,9 @@
   right: 16px;
   top: 8px;
 }
-.list-label {
+.md-list-item-text h3.list-label {
   width: 90%;
+  font-weight: bold;
 }
 .pending{
   position: absolute;

@@ -72,7 +72,13 @@ md-list-item {
   margin: 5px;
   font-weight: normal;
   text-align: left;
+  font-size: 18px;
 }
+
+.col-order-detail .md-avatar {
+  margin-right: 0px;
+}
+
 .assigned-select label {
   float: left;
   padding: 6px 5px 0 0;
@@ -104,8 +110,8 @@ md-radio-button {
   height: 42px;
 }
 .assigned-section {
-  height: 50px;
-  padding: 10px 15px;
+  height: 32px;
+  margin: 5px 15px 0px;
   font-size: 14px;
 }
 
@@ -221,6 +227,30 @@ input[type=number] {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+.remove-button button {
+  text-transform: capitalize;
+    padding: 0px;
+    line-height: 28px;
+    border-radius: 0;
+    min-width: 73px;
+}
+.button {
+  text-transform: capitalize;
+    padding: 3px 10px;
+    line-height: 28px;
+    border-radius: 0;
+}
+.cancel {
+  float: right;
+}
 
-
-
+@media all and (max-width:1380px) and (min-width: 320px) {
+  .assigned-section {
+    height: 58px;
+    border-bottom: 1px solid #F3F3F3;
+  }
+  .status-update label,
+  .assigned-select label {
+    width: 100%;
+  }
+}
