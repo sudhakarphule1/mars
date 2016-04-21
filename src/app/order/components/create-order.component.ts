@@ -77,7 +77,7 @@ export class CreateOrder {
     this.currentOrder.items = this.orderDetails;
     this.currentOrder.defaultTask = this.task;
     this.currentOrder.totalAmount = 3434;
-    if(!this.currentOrder.companyName || !this.currentOrder.orderType || !this.currentOrder.remarks ||
+    if(!this.currentOrder.fromCompany || !this.currentOrder.orderType || !this.currentOrder.remarks ||
       !this.currentOrder.contactPerson || !this.currentOrder.vendorName || !this.currentOrder.contactNumber ||
       !this.currentOrder.shippingAddress.line1 || !this.currentOrder.shippingAddress.line2 ||
       !this.currentOrder.shippingAddress.pinCode || !this.currentOrder.shippingAddress.city ||

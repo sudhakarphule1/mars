@@ -69,7 +69,37 @@ export class Orders {
 
   public getOrderFunction(value){
     let url = `http://localhost:5000/orders/` + value;
-    return this.http.get(url).map((res) => res.json());
+    /*return this.http.get(url).map((res) => res.json());*/
+    return this.http.get(url)
+      // initial transform - result to json
+      .map(res => res.json())
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((item: any) => {
+        let order:Order = new Order();
+        if (item) {
+            var defaultTask : Task = new Task();
+            defaultTask.assignedOn = new Date(item.task.assignedOn);
+            defaultTask.assignedTo = item.task.assignedTo;
+            defaultTask.status = item.task.status;
+            defaultTask.completeBy = new Date(item.task.completeBy);
+            defaultTask.priority = item.task.priority;
+
+            //var order = new Order();
+            order.id = item._id;
+            order.remarks = item.remarks;
+            order.contactPerson = item.contactPerson;
+          order.vendorName = item.vendorName;
+            order.orderDetails = item.items;
+            order.orderDate = new Date(item.orderDate);
+            order.completionDate = new Date(item.completionDate);
+            order.fromCompany = item.companyName;
+            order.defaultTask = defaultTask;
+
+            //result.push(order);
+        }
+        return order;
+      });
   }
 
   public createOrderFunction(value){

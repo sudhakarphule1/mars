@@ -9,6 +9,7 @@ export abstract class InboxItem {
 
   constructor(type:string) {
     this.type = type;
+    this.defaultTask = new Task;
   }
 
   abstract search(searchFor : string) : boolean;

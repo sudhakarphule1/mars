@@ -1,7 +1,8 @@
 <div class="orders">
+
   <div layout="row" layout-xs="column" class="right-top-section">
     <div flex>
-      <md-list layout="column" layout-padding>
+      <md-list layout="column">
         <md-list-item class="md-3-line col-order-detail">
           <img src="app/share/images/avtars/Swapnil.jpg" class="md-avatar" >
           <div class="md-list-item-text">
@@ -11,89 +12,160 @@
       </md-list>
     </div>
     <div flex>
-      <md-list layout="column" layout-padding layout-align="end end">
+      <md-list layout="column" layout-align="end end">
         <md-list-item class="md-3-line col-order-detail">
           <div class="md-list-item-text">
-            <h3>Order Date : {{currentOrder.orderDate | date}}</h3>
-            <h3>Delivery Date : {{currentOrder.completionDate | date}}</h3>
+            <!--<h3>Order Date : {{task.assignedOn | date}} </h3>-->
+            <h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.assignedOn"/></h3>
+            <!--<h3>Delivery Date : 02/02/15 </h3>-->
+            <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.completeBy"/></h3>
           </div>
         </md-list-item>
       </md-list>
     </div>
   </div>
 
-  <div layout="row" layout-xs="column" layout-padding class="assigned-section">
-    <div flex class="assigned-select">
-      <label flex>Assigned to :</label>
+  <div layout="row" layout-xs="column" class="assigned-section">
+    <div flex class="assigned-select" flex="40">
+      <label flex="100" layout="column">Assigned to :</label>
+      <md-input-container class="md-block" flex-gt-sm flex>
+        <select [(ngModel)]="currentOrder.defaultTask.assignedTo">
+          <option>Swapnil</option>
+          <option>Waqar</option>
+          <option>Chetan</option>
+          <option>Sudhakar</option>
+        </select>
+      </md-input-container>
       <img src="app/order/images/chat-box.svg" class="chat-icon" >
     </div>
+
     <div flex class="status-update">
-      <label flex>Status :</label>
-      <div layout="column" layout-wrap>
-        <div flex-xs="100" flex="50">
-          <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-          <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-          <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-        </div>
+      <label flex="100" layout="column">Status :</label>
+      <div class="radio-btn">
+        <label class="control control--checkbox">
+          <input value="Running Late" type="checkbox"
+                 (click)="currentOrder.defaultTask.status = 'Running Late'"
+                 [checked]="currentOrder.defaultTask.status == 'Running Late'">
+          <div class="control__indicator"></div>
+        </label>
+      </div>
+
+      <div class="radio-btn1">
+        <label class="control control--checkbox">
+          <input value="Running Late" type="checkbox"
+                 (click)="currentOrder.defaultTask.status = 'In Progress'"
+                 [checked]="currentOrder.defaultTask.status == 'In Progress'">
+          <div class="control__indicator"></div>
+        </label>
+      </div>
+
+      <div class="radio-btn2">
+        <label class="control control--checkbox">
+          <input value="Running Late" type="checkbox"
+                 (click)="currentOrder.defaultTask.status = 'Completed'"
+                 [checked]="currentOrder.defaultTask.status == 'Completed'">
+          <div class="control__indicator"></div>
+        </label>
       </div>
     </div>
+
+
   </div>
 
   <div class="order-details">
 
-    <div>
-      <h3>Order Details: </h3>
-      <h4>Company Name: {{ currentOrder.companyName }}</h4>
-      <!--<h4>Order assigned to: {{currentOrder.defaultTask.assignedTo}}</h4>-->
-      <h4>Remarks:{{currentOrder.remarks}}</h4>
-      <h4>Contact Person:{{currentOrder.contactPerson}}</h4>
-      <h4>Contact Number:{{currentOrder.contactNumber}}</h4>
-      <h4>Shipping Address:{{currentOrder.shippingAddress.line1}},{{currentOrder.shippingAddress.line2}}
-        {{currentOrder.shippingAddress.pinCode}},{{currentOrder.shippingAddress.city}}
-        ,{{currentOrder.shippingAddress.state}},{{currentOrder.shippingAddress.country}}</h4>
-      <h4>Billing Address:{{currentOrder.billingAddress.line1}},{{currentOrder.billingAddress.line2}}
-        {{currentOrder.billingAddress.pinCode}},{{currentOrder.billingAddress.city}}
-        ,{{currentOrder.billingAddress.state}},{{currentOrder.billingAddress.country}}</h4>
+    <div class="place-order">
+      <h3 layout-padding>Order Details: </h3>
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Company Name:</label>
+          <h3 flex="65">{{ currentOrder.fromCompany}}</h3>
+        </div>
+<!--        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Order assigned to:</label>
+          <h3 flex="65">{{ currentOrder.defaultTask.assignedTo}}</h3>
+        </div>-->
+      </div>
 
-      <div layout="row" class="md-caption">
-        <div flex="20" layout-padding>
-          <b>Product Name</b>
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Completion Date:</label>
+          <h3 flex="65">{{currentOrder.completionDate | date}}</h3>
         </div>
-        <div flex="20" layout-padding>
-          <b>Details</b>
-        </div>
-        <div flex="20" layout-padding>
-          <b>Quantity</b>
-        </div>
-        <div flex="20" layout-padding>
-          <b>Unit Cost</b>
-        </div>
-        <div flex="20" layout-padding>
-          <b>Total Price</b>
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Remarks:</label>
+          <h3 flex="65">{{currentOrder.remarks}}</h3>
         </div>
       </div>
 
-      <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption">
-        <div flex="20" layout-padding>
-          {{item.name}}
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Contact Person:</label>
+          <h3 flex="65">{{currentOrder.contactPerson}}</h3>
         </div>
-        <div flex="20" layout-padding>
-          {{item.detail}}
-        </div>
-        <div flex="20" layout-padding>
-          {{item.qty}}
-        </div>
-        <div flex="20" layout-padding>
-          {{item.unitRate}}
-        </div>
-        <div flex="20" layout-padding>
-          200
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Vendor Name:</label>
+          <h3 flex="65">{{currentOrder.vendorName}}</h3>
         </div>
       </div>
 
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Contact Number:</label>
+          <h3 flex="65">{{currentOrder.contactNumber}}</h3>
+        </div>
+      </div>
+
+      <div layout-gt-sm="column">
+        <div class="md-block address-section" flex="100" layout-padding layout="row">
+          <label flex="35">Shipping Address:</label>
+          <h3 flex="65">
+            <span>{{currentOrder.shippingAddress.line1}},</span>
+            <span>{{currentOrder.shippingAddress.line2}},</span>
+            <span>{{currentOrder.shippingAddress.city}} - {{currentOrder.shippingAddress.pinCode}},</span>
+            <span>{{currentOrder.shippingAddress.state}}</span>
+          </h3>
+        </div>
+        <div class="md-block address-section" flex="100" layout-padding layout="row">
+          <label flex="35">Billing Address:</label>
+          <h3 flex="65">
+            <span>{{currentOrder.billingAddress.line1}},</span>
+            <span>{{currentOrder.billingAddress.line2}},</span>
+            <span>{{currentOrder.billingAddress.city}} - {{currentOrder.billingAddress.pinCode}},</span>
+            <span>{{currentOrder.billingAddress.state}}</span>
+          </h3>
+        </div>
+      </div>
+
+      <div class="order-details">
+        <div layout="row" layout-wrap class="row-title">
+          <div flex="50">
+            Product
+          </div>
+          <div class="content-center1" flex="30">
+            Variant
+          </div>
+          <div class="content-center1" flex="20">
+            Quantity
+          </div>
+        </div>
+
+        <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
+          <div flex="50">
+            <h4>{{item.name}}</h4>
+            <h4>{{item.detail}}</h4>
+          </div>
+          <div flex="30">
+            {{item.variant}}
+          </div>
+          <div flex="20">
+            {{item.qty}}
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
-  <button md-raised-button class="md-primary" (click)="editOrder()" flex="auto">Edit</button>
 
+  <button md-raised-button class="button md-raised md-primary" (click)="editOrder()">Edit Order</button>
 </div>
