@@ -1,5 +1,5 @@
-import {InboxItem} from './inbox.model';
 import {Pipe, PipeTransform} from 'angular2/core';
+import {InboxItem} from "../model/inbox-item";
 
 @Pipe({ name: 'inboxFilter' })
 export class InboxFilterPipe implements PipeTransform {

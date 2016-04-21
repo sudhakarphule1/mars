@@ -5,13 +5,12 @@ import {Component, OnInit} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
-import order =  require("../classes/OrderModel");
 import {FORM_DIRECTIVES} from "angular2/common";
 import {RouteParams} from 'angular2/router';
 import {Observable} from 'rxjs/Observable';
 
-import IItem = require("../classes/Item");
-import IAddress = require("../classes/Address");
+import {Order} from "../../model/order";
+import {Task} from "../../model/task";
 
 @Component({
   selector: 'ib-preview-order',
@@ -22,12 +21,13 @@ import IAddress = require("../classes/Address");
 })
 
 export class PreviewOrder implements OnInit{
-  currentOrder: Observable<order[]>;
+  currentOrder : Order;
   id: string;
  /* orders: Orders;*/
   constructor(private orders: Orders, params: RouteParams)
   {
     this.id = params.get('orderId');
+    this.currentOrder = new Order();
     /*this.orders = Orders;*/
 /*    orders.getOrder(this.id).subscribe(res => {
       this.currentOrder = res;

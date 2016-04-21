@@ -1,5 +1,5 @@
 
-import IItem  = require("../classes/Item");
+/*import IItem  = require("../classes/Item");
 import IAddress =  require("../classes/Address");
 import ITask =  require("../classes/Task");
 
@@ -19,5 +19,5 @@ export class order{
   billingAddress: IAddress;
   defaultTask: ITask;
 }
-
+*/
 

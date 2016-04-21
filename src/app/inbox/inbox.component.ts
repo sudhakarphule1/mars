@@ -3,18 +3,17 @@ import {DataProvider} from "./data-providers/data-provider";
 import {OrdersDataProvider} from "./data-providers/orders-data-provider";
 import {EmailDataProvider} from "./data-providers/email-data-provider";
 import {AudioDataProvider} from "./data-providers/audio-data-provider";
-import {InboxItem} from "./inbox.model";
 import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
 import {AudioCompactView} from "./item-views/audio-compact-view";
 import {CreateOrder} from '../order/components/create-order.component';
-import {Order} from "./inbox.model";
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
 import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {PreviewOrder} from "../order/components/preview-order.component";
+import {InboxItem} from "../model/inbox-item";
 
 @Component({
   selector: 'ib-inbox',

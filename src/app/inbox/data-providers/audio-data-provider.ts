@@ -1,9 +1,9 @@
-import {AudioContent} from "../inbox.model";
 import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {DataProvider}   from "./data-provider";
 import {Observable}     from 'rxjs/Observable';
-import {Task} from "../inbox.model";
+import {AudioContent} from "../../model/audio-content";
+import {Task} from "../../model/task";
 
 @Injectable()
 export class AudioDataProvider implements DataProvider {
@@ -21,10 +21,23 @@ export class AudioDataProvider implements DataProvider {
         let result:Array<AudioContent> = [];
         if (arrayList) {
           arrayList.forEach((item) => {
-            var defaultTask : Task = new Task(item.defaultTask.assignedOn, item.defaultTask.assignedTo,
-              item.defaultTask.status, item.defaultTask.completeBy, item.defaultTask.priority);
-            var audioContent : AudioContent= new AudioContent(item.id, item.from, item.subject,
-              new Date(item.date), item.attachment, item.fromCompany, defaultTask);
+            var defaultTask : Task = new Task();
+            defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
+            defaultTask.assignedTo = item.defaultTask.assignedTo;
+            defaultTask.status = item.defaultTask.status;
+            defaultTask.completeBy = new Date(item.defaultTask.completeBy);
+            defaultTask.priority = item.defaultTask.priority;
+
+            var audioContent : AudioContent= new AudioContent();
+
+            audioContent.from = item.from;
+            audioContent.subject = item.subject;
+            audioContent.attachment = item.attachment;
+            audioContent.id = item.id;
+            audioContent.date =  new Date(item.date);
+            audioContent.fromCompany = item.fromCompany;
+            audioContent.defaultTask = defaultTask;
+
             result.push(audioContent);
           });
         }

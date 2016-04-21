@@ -1,9 +1,9 @@
-import {Email} from "../inbox.model";
 import {Injectable}     from 'angular2/core';
 import {DataProvider}   from "./data-provider";
 import {RequestOptions} from "angular2/http";
 
 import {HTTP_PROVIDERS, Http, Request, RequestMethod, Headers} from 'angular2/http';
+import {Email} from "../../model/email";
 /*import any = jasmine.any;*/
 
 @Injectable()
@@ -25,8 +25,19 @@ export class EmailDataProvider implements DataProvider {
           let result:Array<Email> = [];
           if (arrayList) {
             arrayList.forEach((item)=> {
-              var email = new Email( item._id, item.html, item.text, item.subject, item.from,
-                item.to, item.date, item.receivedDate, item.attachments, item.defaultTask);
+
+              var email = new Email();
+              email.id = item._id;
+              email.html = item.html;
+              email.text = item.text;
+              email.subject = item.subject;
+              email.from = item.from;
+              email.to = item.to;
+              email.date = item.date;
+              email.receivedDate = item.receivedDate;
+              email.attachments = item.attachments;
+              email.defaultTask = item.defaultTask;
+
               result.push(email);
             });
           }

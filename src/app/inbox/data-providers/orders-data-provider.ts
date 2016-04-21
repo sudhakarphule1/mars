@@ -1,8 +1,8 @@
 import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {DataProvider}   from "./data-provider";
-import {Order}          from "../inbox.model";
-import {Task} from "../inbox.model";
+import {Order} from "../../model/order";
+import {Task} from "../../model/task";
 
 @Injectable()
 export class OrdersDataProvider implements DataProvider {
@@ -20,12 +20,22 @@ export class OrdersDataProvider implements DataProvider {
         let result:Array<Order> = [];
         if (arrayList) {
           arrayList.forEach((item) => {
-            var defaultTask : Task = new Task(new Date(item.task.assignedOn), item.task.assignedTo,
-              item.task.status, new Date(item.task.completeBy), item.task.priority);
-            var email = new Order(  item._id, new Date(item.orderDate),
-                                    new Date(item.completionDate),
-                                    item.items, item.companyName, defaultTask);
-            result.push(email);
+            var defaultTask : Task = new Task();
+            defaultTask.assignedOn = new Date(item.task.assignedOn);
+            defaultTask.assignedTo = item.task.assignedTo;
+            defaultTask.status = item.task.status;
+            defaultTask.completeBy = new Date(item.task.completeBy);
+            defaultTask.priority = item.task.priority;
+
+            var order = new Order();
+            order.id = item.id;
+            order.orderDetails = item.items;
+            order.orderDate = new Date(item.orderDate);
+            order.completionDate = new Date(item.completionDate);
+            order.fromCompany = item.companyName;
+            order.defaultTask = defaultTask;
+
+            result.push(order);
           });
         }
         return result;

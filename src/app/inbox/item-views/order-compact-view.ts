@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {Orders} from '../../order/services/order.service';
 
 @Component({
   selector: 'ib-order-compact-view',

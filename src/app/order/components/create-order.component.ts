@@ -2,13 +2,13 @@ import {Component} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
-import order =  require("../classes/OrderModel");
 import {FORM_DIRECTIVES} from "angular2/common";
 
-import IItem = require("../classes/Item");
-import IAddress = require("../classes/Address");
-import ITask = require("../classes/Task");
 import {RouteParams} from "angular2/router";
+import {Item} from "../../model/item";
+import {Order} from "../../model/order";
+import {Task} from "../../model/task";
+import {Address} from "../../model/address";
 
 @Component({
   selector: 'ib-create-order',
@@ -20,9 +20,9 @@ import {RouteParams} from "angular2/router";
 
 export class CreateOrder {
   leadId: string;
-  items : Array<IItem>;
-  orderDetails: Array<IItem> = new Array();
-  task: ITask;
+  items : Array<Item>;
+  orderDetails: Array<Item> = new Array();
+  task: Task;
   orderStage: string = "createOrder";
   displayError = false;
   displaySuccess = false;
@@ -30,17 +30,17 @@ export class CreateOrder {
   successMessage: string = "";
   orderID: string;
 
-  currentOrder: order = new order();
+  currentOrder: Order = new Order();
 
   constructor(private orders: Orders, params: RouteParams) {
     this.leadId = params.get('leadId');
     console.log("Invoked CreateOrder for : " + this.leadId);
     orders.getAllProducts().subscribe(res => this.items = res);
-    this.currentOrder.shippingAddress = new IAddress();
-    this.currentOrder.billingAddress = new IAddress();
+    this.currentOrder.shippingAddress = new Address();
+    this.currentOrder.billingAddress = new Address();
     this.currentOrder.orderDate = new Date();
     this.currentOrder.completionDate = new Date();
-    this.task = new ITask();
+    this.task = new Task();
     this.task.assignedOn = new Date();
     this.task.assignedTo = "Swapnil";
     this.task.priority = "High";
@@ -75,7 +75,7 @@ export class CreateOrder {
 
   proceedNext(){
     this.currentOrder.items = this.orderDetails;
-    this.currentOrder.task = this.task;
+    this.currentOrder.defaultTask = this.task;
     this.currentOrder.totalAmount = 3434;
     if(!this.currentOrder.companyName || !this.currentOrder.orderType || !this.currentOrder.remarks ||
       !this.currentOrder.contactPerson || !this.currentOrder.vendorName || !this.currentOrder.contactNumber ||

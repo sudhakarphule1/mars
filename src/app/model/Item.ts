@@ -1,11 +1,5 @@
-/**
- * Created by waqar on 24/3/16.
- */
-/**
- * Created by waqar on 23/3/16.
- */
 
-class ItemModel  {
+export class Item  {
     name: string;
     detail: string;
     variant: string;
@@ -14,4 +8,3 @@ class ItemModel  {
     amount: number;
 }
 
-export = ItemModel;
