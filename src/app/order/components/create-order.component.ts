@@ -133,7 +133,12 @@ export class CreateOrder {
   }
 
   copyAddress(){
-    this.currentOrder.billingAddress = this.currentOrder.shippingAddress;
+    this.currentOrder.billingAddress.line1 = this.currentOrder.shippingAddress.line1;
+    this.currentOrder.billingAddress.line2 = this.currentOrder.shippingAddress.line2;
+    this.currentOrder.billingAddress.pinCode = this.currentOrder.shippingAddress.pinCode;
+    this.currentOrder.billingAddress.city = this.currentOrder.shippingAddress.city;
+    this.currentOrder.billingAddress.state = this.currentOrder.shippingAddress.state;
+    this.currentOrder.billingAddress.country = this.currentOrder.shippingAddress.country;
   }
 
   originalState(){

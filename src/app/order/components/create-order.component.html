@@ -152,7 +152,9 @@
         </div>
 
         <div class="content-center remove-button" flex="20">
-          <button md-raised-button class="md-raised md-warn" (click)="removeItem(item)">Remove</button>
+          <button md-raised-button class="md-raised md-warn" (click)="removeItem(item)">
+          <img src="app/order/images/ic_close.svg" />
+          </button>
         </div>
 
       </div>
@@ -251,7 +253,7 @@
 
         <h4>Billing Address
           <label>
-            <input type="checkbox" [checked]="copyAddress()"/>
+            <input type="checkbox" (click)="copyAddress()"/>
             Same as Shipping Address
           </label>
         </h4>
@@ -307,94 +309,90 @@
 
     <div class="place-order" *ngIf="orderStage === 'fullPreview' && currentOrder.items.length > 0">
       <h3 layout-padding>Order Details: </h3>
-      <div layout-gt-sm="row">
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Company Name:</label>
-          <h3>{{ currentOrder.companyName}}</h3>
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Company Name:</label>
+          <h3 flex="65">{{ currentOrder.companyName}}</h3>
         </div>
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Order assigned to:</label>
-          <h3>Chetan U.</h3>
-        </div>
-      </div>
-
-      <div layout-gt-sm="row">
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Completion Date:</label>
-          <h3>{{currentOrder.completionDate}}</h3>
-        </div>
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Remarks:</label>
-          <h3>{{currentOrder.remarks}}</h3>
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Order assigned to:</label>
+          <h3 flex="65">{{ currentOrder.task.assignedTo}}</h3>
         </div>
       </div>
 
-      <div layout-gt-sm="row">
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Contact Person:</label>
-          <h3>{{currentOrder.contactPerson}}</h3>
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Completion Date:</label>
+          <h3 flex="65">{{currentOrder.completionDate | date}}</h3>
         </div>
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Vendor Name:</label>
-          <h3>{{currentOrder.vendorName}}</h3>
-        </div>
-      </div>
-
-      <div layout-gt-sm="row">
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Contact Number:</label>
-          <h3>{{currentOrder.contactNumber}}</h3>
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Remarks:</label>
+          <h3 flex="65">{{currentOrder.remarks}}</h3>
         </div>
       </div>
 
-      <div layout-gt-sm="row" flex="100">
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Shipping Address:</label>
-          <div>
-            {{currentOrder.shippingAddress.line1}},{{currentOrder.shippingAddress.line2}}
-            {{currentOrder.shippingAddress.pinCode}},{{currentOrder.shippingAddress.city}}
-            ,{{currentOrder.shippingAddress.state}},{{currentOrder.shippingAddress.country}}
-          </div>
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Contact Person:</label>
+          <h3 flex="65">{{currentOrder.contactPerson}}</h3>
         </div>
-        <div class="md-block" flex-gt-sm flex="50" layout-padding>
-          <label>Billing Address:</label>
-          <div>
-            {{currentOrder.billingAddress.line1}},{{currentOrder.billingAddress.line2}}
-            {{currentOrder.billingAddress.pinCode}},{{currentOrder.billingAddress.city}}
-            ,{{currentOrder.billingAddress.state}},{{currentOrder.billingAddress.country}}
-          </div>
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Vendor Name:</label>
+          <h3 flex="65">{{currentOrder.vendorName}}</h3>
+        </div>
+      </div>
+
+      <div layout-gt-sm="column">
+        <div class="md-block" flex="100" layout-padding layout="row">
+          <label flex="35">Contact Number:</label>
+          <h3 flex="65">{{currentOrder.contactNumber}}</h3>
+        </div>
+      </div>
+
+      <div layout-gt-sm="column">
+        <div class="md-block address-section" flex="100" layout-padding layout="row">
+          <label flex="35">Shipping Address:</label>
+          <h3 flex="65">
+            <span>{{currentOrder.shippingAddress.line1}}</span>
+            <span>{{currentOrder.shippingAddress.line2}}</span>
+            <span>{{currentOrder.shippingAddress.city}} - {{currentOrder.shippingAddress.pinCode}} </span>
+            <span>{{currentOrder.shippingAddress.state}}</span>
+          </h3>
+        </div>
+        <div class="md-block address-section" flex="100" layout-padding layout="row">
+          <label flex="35">Billing Address:</label>
+          <h3 flex="65">
+            <span>{{currentOrder.billingAddress.line1}}</span>
+            <span>{{currentOrder.billingAddress.line2}}</span>
+            <span>{{currentOrder.billingAddress.city}} - {{currentOrder.billingAddress.pinCode}}</span>
+            <span>{{currentOrder.billingAddress.state}}</span>
+          </h3>
         </div>
       </div>
 
       <div class="order-details">
         <div layout="row" layout-wrap class="row-title">
-          <div flex="35">
+          <div flex="50">
             Product
           </div>
-          <div class="content-center1" flex="20">
+          <div class="content-center1" flex="30">
             Variant
           </div>
           <div class="content-center1" flex="20">
             Quantity
           </div>
-          <div class="content-center" flex="20">
-            Action
-          </div>
         </div>
 
         <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
-          <div flex="35">
+          <div flex="50">
             <h4>{{item.name}}</h4>
             <h4>{{item.detail}}</h4>
           </div>
-          <div flex="20">
+          <div flex="30">
             {{item.variant}}
           </div>
           <div flex="20">
             {{item.qty}}
-          </div>
-          <div class="content-center" flex="20">
-            <button md-raised-button class="md-raised md-warn" (click)="removeItem(item)">Remove</button>
           </div>
         </div>
       </div>
@@ -407,7 +405,7 @@
   <button md-raised-button class="button md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
   <button md-raised-button class="button md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
   <button md-raised-button class="button md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview' && !displaySuccess">Place this Order</button>
-  <button md-raised-button class="cancel button md-raised md-warn" (click)="cancelOrder()" *ngIf="orderStage !== 'displaySuccess' && orderStage !== 'createOrder' && !displaySuccess">Cancel</button>
+  <button md-raised-button class="cancel button md-raised" (click)="cancelOrder()" *ngIf="orderStage !== 'displaySuccess' && orderStage !== 'createOrder' && !displaySuccess">Cancel</button>
   <button md-raised-button class="button md-raised" (click)="goToPrevious()" *ngIf="orderStage === 'preview' || orderStage === 'basicDetails'">Previous</button>
   <button md-raised-button class="button md-raised md-primary" (click)="originalState()" *ngIf="displaySuccess">Place another order</button>
 </div>

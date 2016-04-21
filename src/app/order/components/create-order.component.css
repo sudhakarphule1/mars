@@ -50,7 +50,7 @@ md-list-item.md-no-style {
   color: #8AC249;
 }
 .order-details,.order-details{
-  height: 73vh;
+  height: 72vh;
   overflow: auto;
 }
 md-list-item {
@@ -142,14 +142,28 @@ md-input-container {
   font-weight: normal;
 }
 
+.place-order .md-block {
+  padding: 0px 10px;
+}
+
 .place-order .md-block label {
   font-size: 14px;
   color: rgba(0, 0, 0, 0.54);
+  float: left;
 }
 
 .place-order h3 {
   margin: 0px;
   font-size: 18px;
+}
+
+.address-section h3 {
+  margin-left: 15px;
+}
+.address-section h3 span {
+  margin-bottom: 5px;
+  float: left;
+  width: 100%;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -233,10 +247,12 @@ input[type=number] {
     line-height: 28px;
     border-radius: 0;
     min-width: 73px;
+    background: none;
+    box-shadow: 0px 0px 0px;
 }
 .button {
   text-transform: capitalize;
-    padding: 3px 10px;
+    padding: 1px 10px;
     line-height: 28px;
     border-radius: 0;
 }

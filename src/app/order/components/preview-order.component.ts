@@ -22,7 +22,7 @@ import IAddress = require("../classes/Address");
 })
 
 export class PreviewOrder implements OnInit{
-  currentOrder = new order;
+  currentOrder: Observable<order[]>;
   id: string;
  /* orders: Orders;*/
   constructor(private orders: Orders, params: RouteParams)
