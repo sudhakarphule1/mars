@@ -262,12 +262,16 @@ input[type=number] {
 .datepicker {
   width :130px;
 }
-
+.assigned-section h3,
+.customer-details h3{
+  margin: 0px 0px 15px;
+  font-size: 16px;
+}
 
 @media all and (max-width:1380px) and (min-width: 320px) {
   .assigned-section {
     height: 58px;
-    border-bottom: 1px solid #F3F3F3;
+    border-bottom: 2px solid #F3F3F3;
   }
   .status-update label,
   .assigned-select label {
