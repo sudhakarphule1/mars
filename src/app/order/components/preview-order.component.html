@@ -16,9 +16,9 @@
         <md-list-item class="md-3-line col-order-detail">
           <div class="md-list-item-text">
             <!--<h3>Order Date : {{task.assignedOn | date}} </h3>-->
-            <h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.assignedOn"/></h3>
+            <h3>Order Date : {{currentOrder.defaultTask.assignedOn | date}}</h3>
             <!--<h3>Delivery Date : 02/02/15 </h3>-->
-            <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.completeBy"/></h3>
+            <h3>Delivery Date : {{currentOrder.defaultTask.completeBy | date}}</h3>
           </div>
         </md-list-item>
       </md-list>
@@ -81,10 +81,6 @@
           <label flex="35">Company Name:</label>
           <h3 flex="65">{{ currentOrder.fromCompany}}</h3>
         </div>
-<!--        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Order assigned to:</label>
-          <h3 flex="65">{{ currentOrder.defaultTask.assignedTo}}</h3>
-        </div>-->
       </div>
 
       <div layout-gt-sm="column">
@@ -150,7 +146,7 @@
           </div>
         </div>
 
-        <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
+        <div layout="row" *ngFor="#item of currentOrder.orderDetails" class="md-caption md-list-item-text order-row-list">
           <div flex="50">
             <h4>{{item.name}}</h4>
             <h4>{{item.detail}}</h4>

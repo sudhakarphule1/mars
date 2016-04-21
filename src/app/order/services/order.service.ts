@@ -78,25 +78,28 @@ export class Orders {
       .map((item: any) => {
         let order:Order = new Order();
         if (item) {
-            var defaultTask : Task = new Task();
-            defaultTask.assignedOn = new Date(item.task.assignedOn);
-            defaultTask.assignedTo = item.task.assignedTo;
-            defaultTask.status = item.task.status;
-            defaultTask.completeBy = new Date(item.task.completeBy);
-            defaultTask.priority = item.task.priority;
+          var defaultTask : Task = new Task();
+          defaultTask.assignedOn = new Date(item.task.assignedOn);
+          defaultTask.assignedTo = item.task.assignedTo;
+          defaultTask.status = item.task.status;
+          defaultTask.completeBy = new Date(item.task.completeBy);
+          defaultTask.priority = item.task.priority;
 
-            //var order = new Order();
-            order.id = item._id;
-            order.remarks = item.remarks;
-            order.contactPerson = item.contactPerson;
+          //var order = new Order();
+          order.id = item._id;
+          order.remarks = item.remarks;
+          order.contactPerson = item.contactPerson;
           order.vendorName = item.vendorName;
-            order.orderDetails = item.items;
-            order.orderDate = new Date(item.orderDate);
-            order.completionDate = new Date(item.completionDate);
-            order.fromCompany = item.companyName;
-            order.defaultTask = defaultTask;
+          order.shippingAddress = item.shippingAddress;
+          order.billingAddress = item.billingAddress;
+          order.orderDetails = item.items;
+          order.contactNumber = item.contactNumber;
+          order.orderDate = new Date(item.orderDate);
+          order.completionDate = new Date(item.completionDate);
+          order.fromCompany = item.companyName;
+          order.defaultTask = defaultTask;
 
-            //result.push(order);
+          //result.push(order);
         }
         return order;
       });
