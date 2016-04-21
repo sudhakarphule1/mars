@@ -2,7 +2,7 @@
  * Created by chetan on 8/3/16.
  */
 import {Injectable} from 'angular2/core';
-import {Http, URLSearchParams} from 'angular2/http';
+import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Order, Task} from "../../inbox/inbox.model";
 import OrderModel = require("../components/order.model");
@@ -14,10 +14,6 @@ export class Orders {
   constructor(private http: Http){}
 
   getAllProducts(){
-    return this.getAllProductsFunction();
-  }
-
-  getAllOrders(){
     return this.getAllProductsFunction();
   }
 

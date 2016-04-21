@@ -15,8 +15,8 @@
       <md-list layout="column" layout-padding layout-align="end end">
         <md-list-item class="md-3-line col-order-detail">
           <div class="md-list-item-text">
-            <h3>Order Date : 24/01/15 </h3>
-            <h3>Delivery Date : 02/02/15 </h3>
+            <h3>Order Date : {{currentOrder.orderDate | date}}</h3>
+            <h3>Delivery Date : {{currentOrder.completionDate | date}}</h3>
           </div>
         </md-list-item>
       </md-list>
@@ -38,26 +38,21 @@
         </div>
       </div>
     </div>
-    <div flex layout="row" layout-align="end start">
-      Number of products : 84
-    </div>
   </div>
 
   <div class="order-details">
 
     <div>
       <h3>Order Details: </h3>
-      <h4>Company Name: [( currentOrder.companyName )]</h4>
-      <h4>Order assigned to: Chetan U.</h4>
-      <h4>Completion Date:{{currentOrder.completionDate}}</h4>
-      <h4>remarks:{{currentOrder.remarks}}</h4>
-      <h4>contact person:{{currentOrder.contactPerson}}</h4>
-      <h4>vendor name:{{currentOrder.vendorName}}</h4>
-      <h4>contact number:{{currentOrder.contactNumber}}</h4>
-      <h4>shipping address:{{currentOrder.shippingAddress.line1}},{{currentOrder.shippingAddress.line2}}
+      <h4>Company Name: {{ currentOrder.companyName }}</h4>
+      <h4>Order assigned to: {{currentOrder.task.assignedTo}}</h4>
+      <h4>Remarks:{{currentOrder.remarks}}</h4>
+      <h4>Contact Person:{{currentOrder.contactPerson}}</h4>
+      <h4>Contact Number:{{currentOrder.contactNumber}}</h4>
+      <h4>Shipping Address:{{currentOrder.shippingAddress.line1}},{{currentOrder.shippingAddress.line2}}
         {{currentOrder.shippingAddress.pinCode}},{{currentOrder.shippingAddress.city}}
         ,{{currentOrder.shippingAddress.state}},{{currentOrder.shippingAddress.country}}</h4>
-      <h4>billing address:{{currentOrder.billingAddress.line1}},{{currentOrder.billingAddress.line2}}
+      <h4>Billing Address:{{currentOrder.billingAddress.line1}},{{currentOrder.billingAddress.line2}}
         {{currentOrder.billingAddress.pinCode}},{{currentOrder.billingAddress.city}}
         ,{{currentOrder.billingAddress.state}},{{currentOrder.billingAddress.country}}</h4>
 
@@ -87,13 +82,13 @@
           {{item.detail}}
         </div>
         <div flex="20" layout-padding>
-          {{item.quantity}}
+          {{item.qty}}
         </div>
         <div flex="20" layout-padding>
-          {{item.unitPrice}}
+          {{item.unitRate}}
         </div>
         <div flex="20" layout-padding>
-          {{totalPrice}}
+          200
         </div>
       </div>
 
