@@ -25,6 +25,7 @@ export class EmailDataProvider implements DataProvider {
           let result:Array<Email> = [];
           if (arrayList) {
             arrayList.forEach((item)=> {
+              console.log( item );
 
               var email = new Email();
               email.id = item._id;
@@ -37,6 +38,8 @@ export class EmailDataProvider implements DataProvider {
               email.receivedDate = item.receivedDate;
               email.attachments = item.attachments;
               email.defaultTask = item.defaultTask;
+
+              console.log( email );
 
               result.push(email);
             });

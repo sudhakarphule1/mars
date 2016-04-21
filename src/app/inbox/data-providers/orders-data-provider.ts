@@ -32,7 +32,7 @@ export class OrdersDataProvider implements DataProvider {
             order.orderDetails = item.items;
             order.orderDate = new Date(item.orderDate);
             order.completionDate = new Date(item.completionDate);
-            order.fromCompany = item.fromCompany;
+            order.fromCompany = item.companyName;
             order.defaultTask = defaultTask;
 
             result.push(order);
