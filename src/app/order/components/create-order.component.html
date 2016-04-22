@@ -4,7 +4,7 @@
     <div flex>
       <md-list layout="column">
         <md-list-item class="md-3-line col-order-detail">
-          <img src="app/share/images/avtars/Swapnil.jpg" class="md-avatar" >
+          <img src="app/share/images/avtars/{{task.assignedTo}}.jpg" class="md-avatar" >
           <div class="md-list-item-text">
             <h2>Order Details</h2>
           </div>
@@ -33,6 +33,7 @@
           <option>Swapnil</option>
           <option>Waqar</option>
           <option>Chetan</option>
+          <option>Parag</option>
           <option>Sudhakar</option>
         </select>
       </md-input-container>
@@ -165,7 +166,7 @@
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
             <label>Compnay Name</label>
-            <input md-input [(ngModel)] = "currentOrder.companyName" >
+            <input md-input [(ngModel)] = "currentOrder.fromCompany" >
           </md-input-container>
         </div>
         <div layout-gt-sm="row" flex="50">
@@ -312,7 +313,7 @@
       <div layout-gt-sm="column">
         <div class="md-block" flex="100" layout-padding layout="row">
           <label flex="35">Company Name:</label>
-          <h3 flex="65">{{ currentOrder.companyName}}</h3>
+          <h3 flex="65">{{ currentOrder.fromCompany}}</h3>
         </div>
         <div class="md-block" flex="100" layout-padding layout="row">
           <label flex="35">Order assigned to:</label>

@@ -28,11 +28,6 @@ export class PreviewOrder implements OnInit{
   {
     this.id = params.get('orderId');
     this.currentOrder = new Order();
-    /*this.orders = Orders;*/
-/*    orders.getOrder(this.id).subscribe(res => {
-      this.currentOrder = res;
-      console.log(this.currentOrder);
-    });*/
   }
 
   ngOnInit() {

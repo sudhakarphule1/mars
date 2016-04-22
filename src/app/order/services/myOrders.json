@@ -1,184 +1,918 @@
 [{
-  "name": "Dettol Hand wash",
-  "detail": "Dettol",
-  "variant": "300 ml",
+  "name": "Toilet Cleaner",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "One Litre",
   "availability": "Available",
+  "unit": "Per Litre",
   "qty": 0,
-  "unitRate":10,
-  "amount":0
+  "unitRate":10
 }, {
-  "name": "Dettol Hand wash",
-  "detail": "Dettol",
-  "variant": "500 ml",
+  "name": "Harpic",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "500 ML",
   "availability": "Available",
+  "unit": "500 ML",
   "qty": 0,
-  "unitRate":20,
-  "amount":0
-}, {
-  "name": "Dettol Hand wash",
-  "detail": "Dettol",
-  "variant": "1 Ltr",
+  "unitRate":10
+},{
+  "name": "Glass Cleaner",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "One Litre",
   "availability": "Available",
+  "unit": "Per Litre",
   "qty": 0,
-  "unitRate":0
-}, {
-  "name": "Tissue Papers",
-  "detail": "Hindusthan Lever",
-  "variant": "100 Pcs",
-  "availability": "Not Available",
-  "qty": 0,
-  "unitRate":40,
-  "amount":0
-}, {
-  "name": "Tissue Papers",
-  "detail": "Hindusthan Lever",
-  "variant": "300 Pcs",
+  "unitRate":10
+},{
+  "name": "Collin",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "One Litre",
   "availability": "Available",
+  "unit": "Per Litre",
   "qty": 0,
-  "unitRate":60,
-  "amount":0
-}, {
-  "name": "Dettol Antiseptic",
-  "detail": "Hindusthan Lever",
-  "variant": "100 ml",
+  "unitRate":10
+},{
+  "name": "Milky White Cleaner",
+  "type": "Chemical Product",
+  "detail": "Phenyl",
+  "variant": "One Litre",
   "availability": "Available",
+  "unit": "Per Litre",
   "qty": 0,
-  "unitRate":140,
-  "amount":0
-}, {
-  "name": "Dettol Antiseptic",
-  "detail": "Apple",
-  "variant": "500 ml",
-  "availability": "Not Available",
-  "qty": 0,
-  "unitRate":40,
-  "amount":0
-}, {
-  "name": "Toilet Paper",
-  "detail": "Orient",
-  "variant": "50 Pcs",
+  "unitRate":10
+
+},{
+  "name": "Concentrated Phenyl",
+  "type": "Chemical Product",
+  "detail": "Brown",
+  "variant": "One Litre",
   "availability": "Available",
+  "unit": "Per Litre",
   "qty": 0,
-  "unitRate":20,
-  "amount":0
-}, {
-  "name": "Toilet Paper",
-  "detail": "Orient",
-  "variant": "100 Pcs",
+  "unitRate":10
+},{
+  "name": "Concentrated Phenyl",
+  "type": "Chemical Product",
+  "detail": "Green",
+  "variant": "One Litre",
   "availability": "Available",
+  "unit": "Per Litre",
   "qty": 0,
-  "unitRate":20,
-  "amount":0
-}, {
-  "name": "Toilet Paper",
-  "detail": "Orient",
-  "variant": "500 Pcs",
-  "availability": "Not Available",
+  "unitRate":10
+},{
+  "name": "Floor Cleaner",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "One Litre",
+  "availability": "Available",
+  "unit": "Per Litre",
   "qty": 0,
-  "unitRate":20,
-  "amount":0
-}, {
+  "unitRate":10
+},{
+  "name": "Bathroom Acid",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "One Litre",
+  "availability": "Available",
+  "unit": "Per Litre",
+  "qty": 0,
+  "unitRate":10
+},{
+  "name": "Domex",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "500 ML",
+  "availability": "Available",
+  "unit": "500 ML",
+  "qty": 0,
+  "unitRate":10
+},{
+  "name": "Lizol",
+  "type": "Chemical Product",
+  "detail": "",
+  "variant": "500 ML",
+  "availability": "Available",
+  "unit": "500 ML",
+  "qty": 0,
+  "unitRate":10
+},{
+  "name": "Perfumed Liquid Cleaner",
+  "type": "Hand Wash/Cleaners",
+  "detail": "",
+  "variant": "One Litre",
+  "availability": "Available",
+  "unit": "Per Litre",
+  "qty": 0,
+  "unitRate":10
+},{
+  "name": "Hand Wash Soap",
+  "type": "Hand Wash/Cleaners",
+  "detail": "PuDumjee GreenLime",
+  "variant": "One Litre",
+  "availability": "Available",
+  "unit": "Per Litre",
+  "qty": 0,
+  "unitRate":10
+},{
+  "name": "Liquid Soap",
+  "type": "Hand Wash/Cleaners",
+  "detail": "Local",
+  "variant": "One Litre",
+  "availability": "Available",
+  "unit": "Per Litre",
+  "qty": 0,
+  "unitRate":10
+},{
+  "name": "Dettol",
+  "type": "Hand Wash/Cleaners",
+  "detail": "Red",
+  "variant": "500 ML",
+  "availability": "Available",
+  "unit": "500 ML",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dettol Liquid Soap",
+  "type": "Hand Wash/Cleaners",
+  "detail": "Refill",
+  "variant": "900 ML",
+  "availability": "Available",
+  "unit": "900 ML",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dettol Liquid Soap",
+  "type": "Hand Wash/Cleaners",
+  "detail": "",
+  "variant": "250 ML",
+  "availability": "Available",
+  "unit": "250 ML",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Check Duster",
+  "type": "Dusters",
+  "detail": "(Medium) Super",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Doz",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Glass Duster",
+  "type": "Dusters",
+  "detail": "Medium",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Doz",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "MicroFiber Duster",
+  "type": "Dusters",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Doz",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Yellow Duster",
+  "type": "Dusters",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Doz",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Floor Duster",
+  "type": "Dusters",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Doz",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Toilet Brush Round",
+  "type": "Brushes",
+  "detail": "Virgin Material",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Floor brush hard",
+  "type": "Brushes",
+  "detail": "Virgin Material",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Toilet Brush",
+  "type": "Brushes",
+  "detail": "Virgin Material Hocky",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Carpet Brush",
+  "type": "Brushes",
+  "detail": "Hard",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Bottle Brush",
+  "type": "Brushes",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Brush for Tea cup cleaning",
+  "type": "Brushes",
+  "detail": "For Tea cup cleaning",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dry Mop Set",
+  "type": "Mops and Tools",
+  "detail": "(1.5 Feet) Easy",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dry Mop Set",
+  "type": "Mops and Tools",
+  "detail": "(2 Feet) Heavy Blue",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dry Mop Refill",
+  "type": "Mops and Tools",
+  "detail": "(2 Feet) Blue",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Wet Mop Set",
+  "type": "Mops and Tools",
+  "detail": "6 inch",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Wet Mop Refill",
+  "type": "Mops and Tools",
+  "detail": "6 inch",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Wet Mop Refill",
+  "type": "Mops and Tools",
+  "detail": "Local",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Bathroom Wiper",
+  "type": "Mops and Tools",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Floor Wiper",
+  "type": "Mops and Tools",
+  "detail": "2 Foot",
+  "variant": "Taj",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dry Mop Set",
+  "type": "Mops and Tools",
+  "detail": "(2 Feet) Taj",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dry Mop Refill",
+  "type": "Mops and Tools",
+  "detail": "(2 Feet) White Taj",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Wet Mop Set",
+  "type": "Mops and Tools",
+  "detail": "6 Inch A2Z",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Chok Up Pump",
+  "type": "Genal Cleaning Tools",
+  "detail": "Medium",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Chok Up Pump",
+  "type": "Genal Cleaning Tools",
+  "detail": "Large",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dust Pan with broom and lobby stick",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dust Pan",
+  "type": "Genal Cleaning Tools",
+  "detail": "Plastic",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dust Pan",
+  "type": "Genal Cleaning Tools",
+  "detail": "Plastic",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Green Scruber",
+  "type": "Genal Cleaning Tools",
+  "detail": "Medium EZEE",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Green Scruber",
+  "type": "Genal Cleaning Tools",
+  "detail": "3M",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Steel Scruber",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Nylon Scruber",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Urinal Cubes",
+  "type": "Genal Cleaning Tools",
+  "detail": "Sani Cubes",
+  "variant": "150 GMS",
+  "availability": "Available",
+  "unit": "PKT",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Naptha Balls",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Per Kg",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Floor Scrapper",
+  "type": "Genal Cleaning Tools",
+  "detail": "Palti Patra",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Each",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Odonil Room Freshner",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "50 GMS",
+  "availability": "Available",
+  "unit": "PKT",
+  "qty": 0,
+  "unitRate":10
+
+},{
   "name": "Room Freshner",
-  "detail": "Orient",
-  "variant": "300 ml",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "5 LTR Can",
   "availability": "Available",
+  "unit": "LTR",
   "qty": 0,
-  "unitRate":20,
-  "amount":0
-}, {
-  "name": "Room Freshner",
-  "detail": "Hindusthan Lever",
-  "variant": "300 ml",
+  "unitRate":10
+
+},{
+  "name": "Hand Glose",
+  "type": "Genal Cleaning Tools",
+  "detail": "Rubber",
+  "variant": "",
   "availability": "Available",
+  "unit": "Per Pair",
   "qty": 0,
-  "unitRate":60,
-  "amount":0
-}, {
-  "name": "Room Freshner",
-  "detail": "Hindusthan Lever",
-  "Variant": "300 ml",
-  "availability": "Not Available",
-  "qty": 0,
-  "unitRate":40,
-  "amount":0
-}, {
-  "name": "Room Freshner",
-  "detail": "Hindusthan Lever",
-  "variant": "300 ml",
+  "unitRate":10
+
+},{
+  "name": "Black Garbage Bag",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "[30*50]",
   "availability": "Available",
+  "unit": "PKT",
   "qty": 0,
-  "unitRate":10,
-  "amount":0
-}, {
-  "name": "Dettol Hand wash",
-  "detail": "Hindusthan Lever",
-  "variant": "500 ml",
+  "unitRate":10
+
+},{
+  "name": "Black Garbage Bag",
+  "type": "Genal Cleaning Tools",
+  "detail": "Small",
+  "variant": "[19*21]",
   "availability": "Available",
+  "unit": "PKT",
   "qty": 0,
-  "unitRate":10,
-  "amount":0
-}, {
-  "name": "Dettol Hand wash",
-  "detail": "Hindusthan Lever",
-  "variant": "1 Ltr",
+  "unitRate":10
+
+},{
+  "name": "Soft Broom",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "",
   "availability": "Available",
+  "unit": "Each",
   "qty": 0,
-  "unitRate":20,
-  "amount":0
-}, {
-  "name": "Tissue Papers",
-  "detail": "Hindusthan Lever",
-  "variant": "100 Pcs",
-  "availability": "Not Available",
-  "qty": 0,
-  "unitRate":230,
-  "amount":0
-}, {
-  "name": "Tissue Papers",
-  "detail": "Hindusthan Lever",
-  "variant": "300 Pcs",
+  "unitRate":10
+
+},{
+  "name": "Hard Broom",
+  "type": "Genal Cleaning Tools",
+  "detail": "",
+  "variant": "",
   "availability": "Available",
+  "unit": "Each",
   "qty": 0,
-  "unitRate":50,
-  "amount":0
-}, {
-  "name": "Dettol Antiseptic",
-  "detail": "Hindusthan Lever",
-  "variant": "100 ml",
+  "unitRate":10
+
+},{
+  "name": "Paper Napkins",
+  "type": "Tissue Products",
+  "detail": "Royal",
+  "variant": "100's",
   "availability": "Available",
+  "unit": "PKT",
   "qty": 0,
-  "unitRate":110,
-  "amount":0
-}, {
-  "name": "Dettol Antiseptic",
-  "detail": "Hindusthan Lever",
-  "variant": "500 ml",
-  "availability": "Not Available",
-  "qty": 0,
-  "unitRate":70,
-  "amount":0
-}, {
-  "productName": "Toilet Paper",
-  "detail": "Hindusthan Lever",
-  "variant": "50 Pcs",
+  "unitRate":10
+
+},{
+  "name": "Paper Napkins",
+  "type": "Tissue Products",
+  "detail": "Cleen",
+  "variant": "50's",
   "availability": "Available",
+  "unit": "PKT",
   "qty": 0,
-  "unitRate":50,
-  "amount":0
-}, {
-  "name": "Toilet Paper",
-  "detail": "Hindusthan Lever",
-  "variant": "100 Pcs",
+  "unitRate":10
+
+},{
+  "name": "HRT Roll",
+  "type": "Tissue Products",
+  "detail": "GreenLime",
+  "variant": "170 MTR",
   "availability": "Available",
+  "unit": "No.",
   "qty": 0,
-  "unitRate":20,
-  "amount":0
-}, {
-  "name": "Toilet Paper",
-  "detail": "Hindusthan Lever",
-  "variant": "500 Pcs",
-  "availability": "Not Available",
+  "unitRate":10
+
+},{
+  "name": "Toilet Roll",
+  "type": "Tissue Products",
+  "detail": "GreenLime",
+  "variant": "450 Pulls",
+  "availability": "Available",
+  "unit": "No.",
   "qty": 0,
-  "unitRate":40,
-  "amount":0
+  "unitRate":10
+
+},{
+  "name": "Toilet Roll",
+  "type": "Tissue Products",
+  "detail": "GreenLime",
+  "variant": "200 GMS",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "JRT Roll",
+  "type": "Tissue Products",
+  "detail": "GreenLime",
+  "variant": "250 MTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "JRT Roll",
+  "type": "Tissue Products",
+  "detail": "GreenLime",
+  "variant": "180 MTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R1",
+  "type": "Taski Chemicals",
+  "detail": "Super",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R2",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R3",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R4",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R5",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R6",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R7",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Taski R9",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "TR 101",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "TR 103",
+  "type": "Taski Chemicals",
+  "detail": "",
+  "variant": "",
+  "availability": "Available",
+  "unit": "Can",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Toilet Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Mixed Material",
+  "variant": "",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Toilet Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Virgin Material",
+  "variant": "",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Virgin",
+  "variant": "13 LTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Virgin",
+  "variant": "16 LTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Virgin",
+  "variant": "18 LTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Virgin",
+  "variant": "20 LTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dust Bin Bag",
+  "type": "Dustbins and Buckets",
+  "detail": "",
+  "variant": "60 LTR Drum",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dust Bin Bag",
+  "type": "Dustbins and Buckets",
+  "detail": "",
+  "variant": "80 LTR Drum",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dust Bin Bag",
+  "type": "Dustbins and Buckets",
+  "detail": "",
+  "variant": "100 LTR Drum",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Dust Bin Bag",
+  "type": "Dustbins and Buckets",
+  "detail": "Swing Type",
+  "variant": "60 LTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Toilet Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Swing Type",
+  "variant": "80 LTR",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Toilet Bucket",
+  "type": "Dustbins and Buckets",
+  "detail": "Mixed Material",
+  "variant": "",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Pedal Bin",
+  "type": "Dustbins and Buckets",
+  "detail": "Small 07",
+  "variant": "",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Pedal Bin",
+  "type": "Dustbins and Buckets",
+  "detail": "Small 07",
+  "variant": "",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Pedal Bin",
+  "type": "Dustbins and Buckets",
+  "detail": "Mixed Material",
+  "variant": "Medium 08",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Liquid Soap Local",
+  "type": "Dustbins and Buckets",
+  "detail": "",
+  "variant": "09",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Floor Mat",
+  "type": "Dustbins and Buckets",
+  "detail": "Duro Turf",
+  "variant": "STD WIDTH 2 FT. AND 3.28 FT.",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
+},{
+  "name": "Floor Mat",
+  "type": "Dustbins and Buckets",
+  "detail": "Duro Turf",
+  "variant": "STD WIDTH 2 FT. AND 4 FT.",
+  "availability": "Available",
+  "unit": "No.",
+  "qty": 0,
+  "unitRate":10
+
 }]
