@@ -1,9 +1,11 @@
 import {Injectable}     from 'angular2/core';
 import {DataProvider}   from "./data-provider";
 import {RequestOptions} from "angular2/http";
+import {Task} from "../../model/task";
 
 import {HTTP_PROVIDERS, Http, Request, RequestMethod, Headers} from 'angular2/http';
 import {Email} from "../../model/email";
+import {Task} from "../../../../test/app/inbox/inbox.model";
 /*import any = jasmine.any;*/
 
 @Injectable()
@@ -37,7 +39,15 @@ export class EmailDataProvider implements DataProvider {
               email.date = item.date;
               email.receivedDate = item.receivedDate;
               email.attachments = item.attachments;
-              email.defaultTask = item.defaultTask;
+
+              var defaultTask : Task = new Task();
+              defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
+              defaultTask.assignedTo = item.defaultTask.assignedTo;
+              defaultTask.status = item.defaultTask.status;
+              defaultTask.completeBy = new Date(item.defaultTask.completeBy);
+              defaultTask.priority = item.defaultTask.priority;
+
+              email.defaultTask = defaultTask;
 
               console.log( email );
 

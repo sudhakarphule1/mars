@@ -1,3 +1,5 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "moment": "registry:npm/moment#2.10.5+20160211003958"
+  }
 }

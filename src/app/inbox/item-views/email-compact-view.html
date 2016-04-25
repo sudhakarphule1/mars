@@ -1,4 +1,5 @@
-<md-list-item class="md-3-line email-compact">
+<md-list-item class="md-3-line email-compact"  [ngClass]="{active: isOn, disabled: isDisabled}"
+              (click)="toggle(!isOn)">
   <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
   <div class="client-section">
     <span><img src="app/inbox/images/email.png"> </span>
@@ -12,9 +13,9 @@
   </div>
   <md-list-item class="md-2-line user-avtar">
     <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{email.defaultTask.assignedTo}}"/>
-    <span flex> 25min </span>
+    <span flex> {{email.defaultTask.assignedOn | amTimeAgo}}</span>
   </md-list-item>
-  <p class="delivery-date">Delivery by Mar 20, 2016</p>
+  <p class="delivery-date ">Delivery by {{email.defaultTask.completeBy|date }}</p>
 </md-list-item>
 
 <!--<div *ngIf="showDetails == true">

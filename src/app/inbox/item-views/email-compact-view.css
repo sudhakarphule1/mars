@@ -50,3 +50,11 @@ audio {
 .email-compact {
   cursor: pointer;
 }
+
+.active {
+  background-color: red;
+}
+.disabled {
+  color: gray;
+  border: medium solid gray;
+}
