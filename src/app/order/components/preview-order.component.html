@@ -96,10 +96,6 @@
           <label flex="35">Contact Person:</label>
           <h3 flex="65">{{currentOrder.contactPerson}}</h3>
         </div>
-        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Vendor Name:</label>
-          <h3 flex="65">{{currentOrder.vendorName}}</h3>
-        </div>
       </div>
 
       <div layout-gt-sm="column">
@@ -183,10 +179,6 @@
           <div class="md-block" flex="100" layout-padding layout="row">
             <label flex="35">Contact Person:</label>
             <input [(ngModel)] = "currentOrder.contactPerson" >
-          </div>
-          <div class="md-block" flex="100" layout-padding layout="row">
-            <label flex="35">Vendor Name:</label>
-            <input [(ngModel)] = "currentOrder.vendorName" >
           </div>
         </div>
 

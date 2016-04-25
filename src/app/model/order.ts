@@ -19,7 +19,6 @@ export class Order extends InboxItem {
   r
   remarks: string;
   contactPerson: string;
-  vendorName: string;
   contactNumber: number;
   totalAmount: number;
   items: Array<Item>;

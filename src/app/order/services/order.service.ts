@@ -93,7 +93,6 @@ export class Orders {
           order.id = item._id;
           order.remarks = item.remarks;
           order.contactPerson = item.contactPerson;
-          order.vendorName = item.vendorName;
           order.shippingAddress = item.shippingAddress;
           order.billingAddress = item.billingAddress;
           order.orderDetails = item.items;

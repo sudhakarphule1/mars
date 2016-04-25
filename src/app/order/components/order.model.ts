@@ -11,7 +11,6 @@ export class order{
   orderType: string;
   remarks: string;
   contactPerson: string;
-  vendorName: string;
   contactNumber: number;
   totalAmount: number;
   items: Array<IItem>;
