@@ -16,7 +16,7 @@ export class Order extends InboxItem {
   completionDate:Date;
   status:string;
   orderType:string;
-  
+  r
   remarks: string;
   contactPerson: string;
   vendorName: string;

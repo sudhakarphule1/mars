@@ -3,6 +3,7 @@ import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES, MdDialog} from "ng2-material/all";
 import {FORM_DIRECTIVES} from "angular2/common";
+/*import {MyDatePicker} from 'MyDatePicker/src/app/mydatepicker';*/
 
 import {RouteParams} from "angular2/router";
 import {Item} from "../../model/item";
@@ -47,7 +48,6 @@ export class CreateOrder {
   }
 
   createOrder(){
-    console.log(this.task.completeBy);
     for(var i in this.items){
       if (this.items[i].qty > 0 ){
         this.orderDetails.push(this.items[i]);

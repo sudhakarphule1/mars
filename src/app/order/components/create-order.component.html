@@ -6,7 +6,10 @@
         <md-list-item class="md-3-line col-order-detail">
           <img src="app/share/images/avtars/{{task.assignedTo}}.jpg" class="md-avatar" >
           <div class="md-list-item-text">
-            <h2>Order Details</h2>
+            <h2 *ngIf="orderStage === 'createOrder'">Create Order</h2>
+            <h2 *ngIf="orderStage === 'preview'">Preview Items</h2>
+            <h2 *ngIf="orderStage === 'basicDetails'">Enter Other Details</h2>
+            <h2 *ngIf="orderStage === 'fullPreview'">Order Details</h2>
           </div>
         </md-list-item>
       </md-list>

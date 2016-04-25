@@ -7,10 +7,8 @@ import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {FORM_DIRECTIVES} from "angular2/common";
 import {RouteParams} from 'angular2/router';
-import {Observable} from 'rxjs/Observable';
 
 import {Order} from "../../model/order";
-import {Task} from "../../model/task";
 
 @Component({
   selector: 'ib-preview-order',
@@ -22,8 +20,10 @@ import {Task} from "../../model/task";
 
 export class PreviewOrder implements OnInit{
   currentOrder : Order;
+  message: string = "";
+  orderState: string = "orderPreview";
+  displayMessage: boolean = false;
   id: string;
- /* orders: Orders;*/
   constructor(private orders: Orders, params: RouteParams)
   {
     this.id = params.get('orderId');
@@ -38,7 +38,19 @@ export class PreviewOrder implements OnInit{
   }
 
   editOrder(){
+    this.orders.editOrderFunction(this.currentOrder).subscribe(
+      err => this.message = "Something went wrong. Please try again later",
+      () => this.message = "Your order details have been successfully updated."
+    );
+    this.displayMessage = true;
+  }
 
+  removeItem(item){
+    var index = this.currentOrder.orderDetails.indexOf(item);
+    this.currentOrder.orderDetails.splice(index, 1);
+    if(this.currentOrder.orderDetails.length == 0){
+      this.orderState = "orderPreview";
+    }
   }
 
 }

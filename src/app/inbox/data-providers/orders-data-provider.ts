@@ -21,11 +21,11 @@ export class OrdersDataProvider implements DataProvider {
         if (arrayList) {
           arrayList.forEach((item) => {
             var defaultTask : Task = new Task();
-            defaultTask.assignedOn = new Date(item.task.assignedOn);
-            defaultTask.assignedTo = item.task.assignedTo;
-            defaultTask.status = item.task.status;
-            defaultTask.completeBy = new Date(item.task.completeBy);
-            defaultTask.priority = item.task.priority;
+            defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
+            defaultTask.assignedTo = item.defaultTask.assignedTo;
+            defaultTask.status = item.defaultTask.status;
+            defaultTask.completeBy = new Date(item.defaultTask.completeBy);
+            defaultTask.priority = item.defaultTask.priority;
 
             var order = new Order();
             order.id = item._id;

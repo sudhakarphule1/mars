@@ -1,10 +1,10 @@
 <div class="orders">
-
+<div>
   <div layout="row" layout-xs="column" class="right-top-section">
     <div flex>
       <md-list layout="column">
         <md-list-item class="md-3-line col-order-detail">
-          <img src="app/share/images/avtars/Swapnil.jpg" class="md-avatar" >
+          <img src="app/share/images/avtars/{{currentOrder.defaultTask.assignedTo}}.jpg" class="md-avatar" >
           <div class="md-list-item-text">
             <h2>Order Details</h2>
           </div>
@@ -15,10 +15,8 @@
       <md-list layout="column" layout-align="end end">
         <md-list-item class="md-3-line col-order-detail">
           <div class="md-list-item-text">
-            <!--<h3>Order Date : {{task.assignedOn | date}} </h3>-->
-            <h3>Order Date : {{currentOrder.defaultTask.assignedOn | date}}</h3>
-            <!--<h3>Delivery Date : 02/02/15 </h3>-->
-            <h3>Delivery Date : {{currentOrder.defaultTask.completeBy | date}}</h3>
+            <h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.assignedOn"/></h3>
+            <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.completeBy"/></h3>
           </div>
         </md-list-item>
       </md-list>
@@ -72,10 +70,9 @@
 
   </div>
 
-  <div class="order-details">
+  <div class="order-details"  *ngIf="orderState === 'orderPreview'">
 
     <div class="place-order">
-      <h3 layout-padding>Order Details: </h3>
       <div layout-gt-sm="column">
         <div class="md-block" flex="100" layout-padding layout="row">
           <label flex="35">Company Name:</label>
@@ -162,6 +159,203 @@
     </div>
 
   </div>
+</div>
 
-  <button md-raised-button class="button md-raised md-primary" (click)="editOrder()">Edit Order</button>
+  <div *ngIf="orderState === 'editOrder'">
+    <div class="order-details">
+
+      <div class="place-order">
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Company Name:</label>
+            <input [(ngModel)] = "currentOrder.fromCompany" >
+          </div>
+        </div>
+
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Remarks:</label>
+            <input [(ngModel)] = "currentOrder.remarks" >
+          </div>
+        </div>
+
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Contact Person:</label>
+            <input [(ngModel)] = "currentOrder.contactPerson" >
+          </div>
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Vendor Name:</label>
+            <input [(ngModel)] = "currentOrder.vendorName" >
+          </div>
+        </div>
+
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Contact Number:</label>
+            <input [(ngModel)] = "currentOrder.contactNumber" >
+          </div>
+        </div>
+        <div class="tableClass" layout-padding>
+          <h4>Shipping Address</h4>
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Line1</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.line1" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Line2</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.line2" >
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Pincode</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.city" >
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.state" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Country</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.country" >
+              </md-input-container>
+            </div>
+          </div>
+
+          <h4>Billing Address
+          </h4>
+
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label >Line1</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.line1" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Line2</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.line2" >
+              </md-input-container>
+            </div>
+          </div>
+
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Pincode</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.pinCode" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.city" >
+              </md-input-container>
+            </div>
+          </div>
+
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.state" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Country</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.country" >
+              </md-input-container>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <div layout="row" layout-wrap class="row-title">
+            <div flex="35">
+              Product
+            </div>
+            <div class="content-center1" flex="20">
+              Variant
+            </div>
+            <div class="content-center1" flex="20">
+              Quantity
+            </div>
+            <div class="content-center" flex="20">
+              Action
+            </div>
+          </div>
+          <div layout="row" *ngFor="#item of currentOrder.orderDetails" class="md-caption md-list-item-text order-row-list">
+
+            <div flex="35">
+              <h4 layout-margin>{{item.name}}</h4>
+              <h4 layout-margin>{{item.detail}}</h4>
+            </div>
+
+            <div flex="20">
+              {{item.variant}}
+            </div>
+
+            <div flex="20">
+              <div class="add-item" *ngIf="item.availability == 'Available'">
+                <button type='submit'
+                        class='qtyminus'
+                        (click)="item.qty=item.qty-1"
+                        [disabled]="item.qty == 0">-</button>
+                <input type='number'
+                       [(ngModel)]="item.qty"
+                       class='qty'>
+                <button type='submit'
+                        class='qtyplus'
+                        (click)="item.qty=item.qty+1">+</button>
+              </div>
+            </div>
+
+            <div class="content-center remove-button" flex="20">
+              <button md-raised-button class="md-raised md-warn" (click)="removeItem(item)">
+                <img src="app/order/images/ic_close.svg" />
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div layout-padding *ngIf="displayMessage == true">{{ message }}</div>
+  <button md-raised-button class="button md-raised md-primary"
+          *ngIf="orderState==='orderPreview'"
+          (click)="orderState = 'editOrder'">Edit Order</button>
+  <button md-raised-button class="button md-raised md-primary"
+          *ngIf="orderState==='orderPreview'"
+          (click)="editOrder()">Save Order</button>
+  <button md-raised-button class="button md-raised md-primary"
+          *ngIf="orderState==='editOrder'"
+          (click)="orderState = 'orderPreview'">Cancel</button>
+  <button md-raised-button class="button md-raised md-primary"
+          *ngIf="orderState==='editOrder'"
+          (click)="editOrder()">Confirm</button>
 </div>

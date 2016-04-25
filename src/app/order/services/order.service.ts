@@ -25,6 +25,10 @@ export class Orders {
     return this.createOrderFunction(value);
   }
 
+  editOrder(value){
+    return this.editOrderFunction(value);
+  }
+
   deleteOrder(value: Array<any>){
     return this.deleteOrderFunction(value);
   }
@@ -41,11 +45,11 @@ export class Orders {
         if (arrayList) {
           arrayList.forEach((item) => {
             var defaultTask : Task = new Task();
-            defaultTask.assignedOn = new Date(item.task.assignedOn);
-            defaultTask.assignedTo = item.task.assignedTo;
-            defaultTask.status = item.task.status;
-            defaultTask.completeBy = new Date(item.task.completeBy);
-            defaultTask.priority = item.task.priority;
+            defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
+            defaultTask.assignedTo = item.defaultTask.assignedTo;
+            defaultTask.status = item.defaultTask.status;
+            defaultTask.completeBy = new Date(item.defaultTask.completeBy);
+            defaultTask.priority = item.defaultTask.priority;
 
             var order = new Order();
             order.id = item.id;
@@ -79,11 +83,11 @@ export class Orders {
         let order:Order = new Order();
         if (item) {
           var defaultTask : Task = new Task();
-          defaultTask.assignedOn = new Date(item.task.assignedOn);
-          defaultTask.assignedTo = item.task.assignedTo;
-          defaultTask.status = item.task.status;
-          defaultTask.completeBy = new Date(item.task.completeBy);
-          defaultTask.priority = item.task.priority;
+          defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
+          defaultTask.assignedTo = item.defaultTask.assignedTo;
+          defaultTask.status = item.defaultTask.status;
+          defaultTask.completeBy = new Date(item.defaultTask.completeBy);
+          defaultTask.priority = item.defaultTask.priority;
 
           //var order = new Order();
           order.id = item._id;
@@ -96,7 +100,7 @@ export class Orders {
           order.contactNumber = item.contactNumber;
           order.orderDate = new Date(item.orderDate);
           order.completionDate = new Date(item.completionDate);
-          order.fromCompany = item.companyName;
+          order.fromCompany = item.fromCompany;
           order.defaultTask = defaultTask;
 
           //result.push(order);
@@ -113,6 +117,16 @@ export class Orders {
     let options = new RequestOptions({ headers: headers });
     let url = `http://localhost:5000/orders`;
     return this.http.post(url, params,options).map((res) => res.json());
+  }
+
+  public editOrderFunction(value){
+
+    let params = JSON.stringify(value);
+    console.log(params);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/orders/` + value.id;
+    return this.http.put(url, params,options).map((res) => res.json());
   }
 
   public deleteOrderFunction(value){
