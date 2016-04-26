@@ -60,5 +60,6 @@ audio {
 }
 
 
-
-
+.user-avtar div {
+  padding: 0px !important; 
+}

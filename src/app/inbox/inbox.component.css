@@ -32,3 +32,6 @@ backgroud:#EAEAEA;
 }
 
 
+ *  {
+  padding: 0px !important; 
+}

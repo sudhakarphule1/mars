@@ -1,5 +1,5 @@
-<div layout="row" layout-fill layout-align="top center" >
-  <md-content flex class="inbox-section" flex="60">
+<div layout="row" layout-md="column" layout-fill layout-align="top center" >
+  <md-content flex class="inbox-section"flex-xs="100" flex-sm="100" flex-md="50" flex-gt-lg="60">
     <div class="left-section">
       <div class="assign-order" layout="row" >
         <span> Sort By: </span>
@@ -29,10 +29,9 @@
       </md-list>
     </div>
   </md-content>
-  <div layout="column" layout-fill layout-align="top center" flex="40">
-    <router-outlet></router-outlet>
-    <!--<ib-create-order flex>Loading...</ib-create-order>-->
-    <!--<ib-preview-order *ngIf="type == 'Order'" flex>Loading...</ib-preview-order>-->
+  <div layout="column" layout-fill layout-align="top center" hide-xs hide-sm hide-md hide-lg flex-gt-lg="40">
+    <div class="left-section">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
 
