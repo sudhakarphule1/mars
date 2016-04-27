@@ -2,7 +2,7 @@
   "data": [
     {
       "fromCompany": "hsbc",
-      "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
+      "items": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
       "orderDate" : "2016-03-20T09:03:49.285Z",
       "completionDate" : "2016-03-20T09:03:49.285Z",
       "defaultTask" : {
@@ -15,7 +15,7 @@
     },
     {
       "fromCompany": "tcs",
-      "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
+      "items": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
       "orderDate" : "2016-03-20T09:03:49.285Z",
       "completionDate" : "2016-03-20T09:03:49.285Z",
       "defaultTask" : {
@@ -28,7 +28,7 @@
     },
     {
       "fromCompany": "hsbc",
-      "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
+      "items": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
       "orderDate" : "2016-03-20T09:03:49.285Z",
       "completionDate" : "2016-03-20T09:03:49.285Z",
       "defaultTask" : {
@@ -41,7 +41,7 @@
     },
      {
       "fromCompany": "tcs",
-      "orderDetails": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
+      "items": "6 Tissue boxes, 10 Hand dryers, 20 paper towels",
       "orderDate" : "2016-03-20T09:03:49.285Z",
       "completionDate" : "2016-03-20T09:03:49.285Z",
       "defaultTask" : {

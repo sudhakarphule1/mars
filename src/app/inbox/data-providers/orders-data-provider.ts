@@ -29,7 +29,7 @@ export class OrdersDataProvider implements DataProvider {
 
             var order = new Order();
             order.id = item._id;
-            order.orderDetails = item.items;
+            order.items = item.items;
             order.orderDate = new Date(item.orderDate);
             order.completionDate = new Date(item.completionDate);
             order.fromCompany = item.fromCompany;

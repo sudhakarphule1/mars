@@ -33,22 +33,22 @@ export class PreviewOrder implements OnInit{
   ngOnInit() {
     this.orders.getOrder(this.id).subscribe(res => {
       this.currentOrder = res;
-      console.log(this.currentOrder);
+      console.log(this.currentOrder.items);
     });
   }
 
   editOrder(){
     this.orders.editOrderFunction(this.currentOrder).subscribe(
-      err => this.message = "Something went wrong. Please try again later",
+      err => this.message = "Your order details have been successfully updated.",
       () => this.message = "Your order details have been successfully updated."
     );
     this.displayMessage = true;
   }
 
   removeItem(item){
-    var index = this.currentOrder.orderDetails.indexOf(item);
-    this.currentOrder.orderDetails.splice(index, 1);
-    if(this.currentOrder.orderDetails.length == 0){
+    var index = this.currentOrder.items.indexOf(item);
+    this.currentOrder.items.splice(index, 1);
+    if(this.currentOrder.items.length == 0){
       this.orderState = "orderPreview";
     }
   }

@@ -5,7 +5,7 @@
     <img [src]="'app/share/images/company-logo/'+order.fromCompany + '.png'" class="md-avatar client-img" alt="{{order.fromCompany}}"/>
   </div>
   <div class="md-list-item-text" layout="column">
-    <p *ngFor="#item of order.orderDetails">{{item.name}}, {{item.variant}}, {{item.qty}}</p>
+    <p *ngFor="#item of order.items">{{item.name}}, {{item.variant}}, {{item.qty}}</p>
     <!--<h3 class="list-label">{{ order.orderDetails }}</h3>-->
     <!--<h4>{{ order.orderDate | date }}</h4>-->
     <p>{{ order.orderType }}</p>

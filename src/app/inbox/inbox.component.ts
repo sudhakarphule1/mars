@@ -42,7 +42,6 @@ export class Inbox implements OnInit, OnDestroy {
               private _router: Router) {
     this.subscription =  searchService.applySearch$.subscribe(
       searchString => {
-        console.log( "Apply new filter : " + searchString);
         this.filterBy = searchString;
       }
     );
@@ -69,7 +68,6 @@ export class Inbox implements OnInit, OnDestroy {
   selectedItem: string;
 
   displayDetails(item) {
-    console.log(this.itemList);
     this.selectedItem = item;
   };
 

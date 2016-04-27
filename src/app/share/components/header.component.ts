@@ -16,7 +16,6 @@ export class Header {
   }
 
   onSearchChange(value:string){
-    console.log('got the change : ' + value);
     this.searchService.applyFilter(value);
   }
 

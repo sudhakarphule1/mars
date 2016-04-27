@@ -35,7 +35,6 @@ export class CreateOrder {
 
   constructor(private orders: Orders, params: RouteParams) {
     this.leadId = params.get('leadId');
-    console.log("Invoked CreateOrder for : " + this.leadId);
     orders.getAllProducts().subscribe(res => this.items = res);
     this.currentOrder.shippingAddress = new Address();
     this.currentOrder.billingAddress = new Address();

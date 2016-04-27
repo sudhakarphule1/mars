@@ -80,6 +80,7 @@
     <div *ngIf="orderStage === 'createOrder'" layout="row" layout-wrap class="row-title">
       <div flex="60">
         Product
+        <input type="search" name="search" placeholder="Search" #search class="search" md-maxlength="10" flex="40" (keyup)="onSearchChange(search.value)">
       </div>
       <div class="content-center1" flex="20">
         Quantity
@@ -92,7 +93,7 @@
       <div layout-wrap *ngFor="#item of items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
         <div flex="60">
           <h4 layout-margin>{{item.name}}</h4>
-          <h4 layout-margin>{{item.detail}}, {{item.variant}}</h4>
+          <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
         </div>
         <div class="content-center add-item" flex="20">
           <div *ngIf="item.availability == 'Available'">
@@ -118,6 +119,7 @@
       <div layout="row" layout-wrap class="row-title">
         <div flex="35">
           Product
+
         </div>
         <div class="content-center1" flex="20">
           Variant

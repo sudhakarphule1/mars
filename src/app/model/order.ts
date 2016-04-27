@@ -11,12 +11,10 @@ export class Order extends InboxItem {
     this.completionDate = new Date();
   }
 
-  orderDetails:string;
   orderDate:Date;
   completionDate:Date;
   status:string;
   orderType:string;
-  r
   remarks: string;
   contactPerson: string;
   contactNumber: number;
@@ -26,7 +24,10 @@ export class Order extends InboxItem {
   billingAddress: Address;
 
   search(searchFor : string) : boolean{
-    return this.orderDetails.toLowerCase().search(searchFor) !== -1;
+    var item;
+    /*this.items.forEach((item));*/
+    //return this.items.toLowerCase().search(searchFor) !== -1;
+    return false;
   }
 
 }
