@@ -18,9 +18,7 @@
       <md-list layout="column" layout-align="end end">
         <md-list-item class="md-3-line col-order-detail">
           <div class="md-list-item-text">
-            <!--<h3>Order Date : {{task.assignedOn | date}} </h3>-->
             <h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="task.assignedOn"/></h3>
-            <!--<h3>Delivery Date : 02/02/15 </h3>-->
             <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="task.completeBy"/></h3>
           </div>
         </md-list-item>
@@ -49,7 +47,7 @@
         <label class="control control--checkbox">
           <input value="Running Late" type="checkbox"
                  (click)="task.status = 'Running Late'"
-          [checked]="task.status == 'Running Late'">
+                 [checked]="task.status == 'Running Late'">
           <div class="control__indicator"></div>
         </label>
       </div>
@@ -59,7 +57,7 @@
           <input value="Running Late" type="checkbox"
                  (click)="task.status = 'In Progress'"
                  [checked]="task.status == 'In Progress'">
-                 <div class="control__indicator"></div>
+          <div class="control__indicator"></div>
         </label>
       </div>
 
@@ -68,340 +66,13 @@
           <input value="Running Late" type="checkbox"
                  (click)="task.status = 'Completed'"
                  [checked]="task.status == 'Completed'">
-                 <div class="control__indicator"></div>
+          <div class="control__indicator"></div>
         </label>
       </div>
     </div>
 
-
   </div>
 
-  <div class="order-details">
-    <div *ngIf="orderStage === 'createOrder'" layout="row" layout-wrap class="row-title">
-      <div flex="60">
-        Product
-        <input type="search" name="search" placeholder="Search" #search class="search" md-maxlength="10" flex="40" (keyup)="onSearchChange(search.value)">
-      </div>
-      <div class="content-center1" flex="20">
-        Quantity
-      </div>
-      <div class="content-center" flex="20">
-        Availability
-      </div>
-    </div>
-    <div *ngIf="orderStage === 'createOrder'">
-      <div layout-wrap *ngFor="#item of items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
-        <div flex="60">
-          <h4 layout-margin>{{item.name}}</h4>
-          <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
-        </div>
-        <div class="content-center add-item" flex="20">
-          <div *ngIf="item.availability == 'Available'">
-            <button type='submit'
-                    class='qtyminus'
-                    (click)="item.qty=item.qty-1"
-                    [disabled]="item.qty == 0">-</button>
-            <input type='number'
-                   [(ngModel)]="item.qty"
-                   class='qty'>
-            <button type='submit'
-                    class='qtyplus'
-                    (click)="item.qty=item.qty+1">+</button>
-          </div>
-        </div>
-        <div class="content-center" flex="20">
-          <h3 layout-margin>{{item.availability}}</h3>
-        </div>
-      </div>
-    </div>
+  <router-outlet></router-outlet>
 
-    <div *ngIf="orderStage === 'preview' && orderDetails.length > 0">
-      <div layout="row" layout-wrap class="row-title">
-        <div flex="35">
-          Product
-
-        </div>
-        <div class="content-center1" flex="20">
-          Variant
-        </div>
-        <div class="content-center1" flex="20">
-          Quantity
-        </div>
-        <div class="content-center" flex="20">
-          Action
-        </div>
-      </div>
-      <div layout="row" *ngFor="#item of orderDetails" class="md-caption md-list-item-text order-row-list">
-
-        <div flex="35">
-          <h4 layout-margin>{{item.name}}</h4>
-          <h4 layout-margin>{{item.detail}}</h4>
-        </div>
-
-        <div flex="20">
-          {{item.variant}}
-        </div>
-
-        <div flex="20">
-          <div class="add-item" *ngIf="item.availability == 'Available'">
-            <button type='submit'
-                    class='qtyminus'
-                    (click)="item.qty=item.qty-1"
-                    [disabled]="item.qty == 0">-</button>
-            <input type='number'
-                   [(ngModel)]="item.qty"
-                   class='qty'>
-            <button type='submit'
-                    class='qtyplus'
-                    (click)="item.qty=item.qty+1">+</button>
-          </div>
-        </div>
-
-        <div class="content-center remove-button" flex="20">
-          <button md-raised-button class="md-raised md-warn" (click)="removeItem(item)">
-          <img src="app/order/images/ic_close.svg" />
-          </button>
-        </div>
-
-      </div>
-    </div>
-    <div class="tableClass customer-details" *ngIf="orderStage === 'basicDetails' && orderDetails.length >0" layout-padding >
-      <h3>Details:</h3>
-      <div layout-gt-sm="row">
-        <div layout-gt-sm="row" flex="50">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Compnay Name</label>
-            <input md-input [(ngModel)] = "currentOrder.fromCompany" >
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row" flex="50">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Order Type</label>
-            <input md-input [(ngModel)] = "currentOrder.orderType" >
-          </md-input-container>
-        </div>
-      </div>
-
-      <div layout-gt-sm="row">
-        <div layout-gt-sm="row" flex="50">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Remarks</label>
-            <input md-input [(ngModel)] = "currentOrder.remarks" >
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row" flex="50">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Contact Person</label>
-            <input md-input [(ngModel)] = "currentOrder.contactPerson" >
-          </md-input-container>
-        </div>
-      </div>
-
-      <div layout-gt-sm="row" >
-        <div layout-gt-sm="row" flex="50">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Contact Number</label>
-            <input md-input [(ngModel)] = "currentOrder.contactNumber" >
-          </md-input-container>
-        </div>
-      </div>
-
-      <div class="tableClass" layout-padding>
-        <h4>Shipping Address</h4>
-        <div layout-gt-sm="row" >
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Line1</label>
-              <input md-input [(ngModel)] = "currentOrder.shippingAddress.line1" >
-            </md-input-container>
-          </div>
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Line2</label>
-              <input md-input [(ngModel)] = "currentOrder.shippingAddress.line2" >
-            </md-input-container>
-          </div>
-        </div>
-        <div layout-gt-sm="row" >
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Pincode</label>
-              <input md-input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
-            </md-input-container>
-          </div>
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>City</label>
-              <input md-input [(ngModel)] = "currentOrder.shippingAddress.city" >
-            </md-input-container>
-          </div>
-        </div>
-        <div layout-gt-sm="row" >
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>State</label>
-              <input md-input [(ngModel)] = "currentOrder.shippingAddress.state" >
-            </md-input-container>
-          </div>
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Country</label>
-              <input md-input [(ngModel)] = "currentOrder.shippingAddress.country" >
-            </md-input-container>
-          </div>
-        </div>
-
-        <h4>Billing Address
-          <label>
-            <input type="checkbox" (click)="copyAddress()"/>
-            Same as Shipping Address
-          </label>
-        </h4>
-
-        <div layout-gt-sm="row" >
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label >Line1</label>
-              <input md-input [(ngModel)] = "currentOrder.billingAddress.line1" >
-            </md-input-container>
-          </div>
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Line2</label>
-              <input md-input [(ngModel)] = "currentOrder.billingAddress.line2" >
-            </md-input-container>
-          </div>
-        </div>
-
-        <div layout-gt-sm="row" >
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Pincode</label>
-              <input md-input [(ngModel)] = "currentOrder.billingAddress.pinCode" >
-            </md-input-container>
-          </div>
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>City</label>
-              <input md-input [(ngModel)] = "currentOrder.billingAddress.city" >
-            </md-input-container>
-          </div>
-        </div>
-
-        <div layout-gt-sm="row" >
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>State</label>
-              <input md-input [(ngModel)] = "currentOrder.billingAddress.state" >
-            </md-input-container>
-          </div>
-          <div layout-gt-sm="row" flex="50">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Country</label>
-              <input md-input [(ngModel)] = "currentOrder.billingAddress.country" >
-            </md-input-container>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="place-order" *ngIf="orderStage === 'fullPreview' && currentOrder.items.length > 0">
-      <h3 layout-padding>Order Details: </h3>
-      <div layout-gt-sm="column">
-        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Company Name:</label>
-          <h3 flex="65">{{ currentOrder.fromCompany}}</h3>
-        </div>
-        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Order assigned to:</label>
-          <h3 flex="65">{{ currentOrder.defaultTask.assignedTo}}</h3>
-        </div>
-      </div>
-
-      <div layout-gt-sm="column">
-        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Completion Date:</label>
-          <h3 flex="65">{{currentOrder.completionDate | date}}</h3>
-        </div>
-        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Remarks:</label>
-          <h3 flex="65">{{currentOrder.remarks}}</h3>
-        </div>
-      </div>
-
-      <div layout-gt-sm="column">
-        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Contact Person:</label>
-          <h3 flex="65">{{currentOrder.contactPerson}}</h3>
-        </div>
-      </div>
-
-      <div layout-gt-sm="column">
-        <div class="md-block" flex="100" layout-padding layout="row">
-          <label flex="35">Contact Number:</label>
-          <h3 flex="65">{{currentOrder.contactNumber}}</h3>
-        </div>
-      </div>
-
-      <div layout-gt-sm="column">
-        <div class="md-block address-section" flex="100" layout-padding layout="row">
-          <label flex="35">Shipping Address:</label>
-          <h3 flex="65">
-            <span>{{currentOrder.shippingAddress.line1}},</span>
-            <span>{{currentOrder.shippingAddress.line2}},</span>
-            <span>{{currentOrder.shippingAddress.city}} - {{currentOrder.shippingAddress.pinCode}},</span>
-            <span>{{currentOrder.shippingAddress.state}}</span>
-          </h3>
-        </div>
-        <div class="md-block address-section" flex="100" layout-padding layout="row">
-          <label flex="35">Billing Address:</label>
-          <h3 flex="65">
-            <span>{{currentOrder.billingAddress.line1}},</span>
-            <span>{{currentOrder.billingAddress.line2}},</span>
-            <span>{{currentOrder.billingAddress.city}} - {{currentOrder.billingAddress.pinCode}},</span>
-            <span>{{currentOrder.billingAddress.state}}</span>
-          </h3>
-        </div>
-      </div>
-
-      <div class="order-details">
-        <div layout="row" layout-wrap class="row-title">
-          <div flex="50">
-            Product
-          </div>
-          <div class="content-center1" flex="30">
-            Variant
-          </div>
-          <div class="content-center1" flex="20">
-            Quantity
-          </div>
-        </div>
-
-        <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
-          <div flex="50">
-            <h4>{{item.name}}</h4>
-            <h4>{{item.detail}}</h4>
-          </div>
-          <div flex="30">
-            {{item.variant}}
-          </div>
-          <div flex="20">
-            {{item.qty}}
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-    <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
-  <div layout-padding *ngIf="displaySuccess == true">{{ successMessage }}</div>
-  <button md-raised-button class="button md-primary" (click)="createOrder()" flex="auto" *ngIf="orderStage==='createOrder'">Create Order</button>
-  <button md-raised-button class="button md-raised md-primary" (click)="confirmOrder()" *ngIf="orderStage === 'preview'">Confirm Order</button>
-  <button md-raised-button class="button md-raised md-primary" (click)="proceedNext()" *ngIf="orderStage === 'basicDetails'">Proceed Next</button>
-  <button md-raised-button class="button md-raised md-primary" (click)="placeOrder()" *ngIf="orderStage === 'fullPreview' && !displaySuccess">Place this Order</button>
-  <button md-raised-button class="cancel button md-raised" (click)="cancelOrder()" *ngIf="orderStage !== 'displaySuccess' && orderStage !== 'createOrder' && !displaySuccess">Cancel</button>
-  <button md-raised-button class="button md-raised" (click)="goToPrevious()" *ngIf="orderStage === 'preview' || orderStage === 'basicDetails'">Previous</button>
-  <button md-raised-button class="button md-raised md-primary" (click)="originalState()" *ngIf="displaySuccess">Place another order</button>
 </div>

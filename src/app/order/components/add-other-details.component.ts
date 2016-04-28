@@ -1,6 +1,3 @@
-/**
- * Created by chetan on 27/4/16.
- */
 
 import {Component} from 'angular2/core';
 
@@ -20,6 +17,6 @@ import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
   pipes: []
 })
 
-export class PreviewOrder {
+export class AddOtherDetails {
 
 }

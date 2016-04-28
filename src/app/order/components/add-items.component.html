@@ -1,0 +1,46 @@
+<div class="orders">
+
+  <div class="order-details">
+    <div layout="row" layout-wrap class="row-title">
+      <div flex="60">
+        Product
+        <input type="search" name="search" placeholder="Search" #search class="search" md-maxlength="10" flex="40" (keyup)="onSearchChange(search.value)">
+      </div>
+      <div class="content-center1" flex="20">
+        Quantity
+      </div>
+      <div class="content-center" flex="20">
+        Availability
+      </div>
+    </div>
+    <div>
+      <div layout-wrap *ngFor="#item of items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+        <div flex="60">
+          <h4 layout-margin>{{item.name}}</h4>
+          <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
+        </div>
+        <div class="content-center add-item" flex="20">
+          <div *ngIf="item.availability == 'Available'">
+            <button type='submit'
+                    class='qtyminus'
+                    (click)="item.qty=item.qty-1"
+                    [disabled]="item.qty == 0">-</button>
+            <input type='number'
+                   [(ngModel)]="item.qty"
+                   class='qty'>
+            <button type='submit'
+                    class='qtyplus'
+                    (click)="item.qty=item.qty+1">+</button>
+          </div>
+        </div>
+        <div class="content-center" flex="20">
+          <h3 layout-margin>{{item.availability}}</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
+  <div layout-padding *ngIf="displaySuccess == true">{{ successMessage }}</div>
+  <button md-raised-button class="button md-primary" (click)="createOrder()" flex="auto">Create Order</button>
+  </div>

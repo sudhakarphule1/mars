@@ -12,7 +12,7 @@ import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
 import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {PreviewOrder} from "../order/components/preview-order.component";
+import {ViewOrder} from "../order/components/view-order.component.ts";
 import {InboxItem} from "../model/inbox-item";
 
 @Component({
@@ -24,8 +24,8 @@ import {InboxItem} from "../model/inbox-item";
   pipes:[InboxFilterPipe]
 })
 @RouteConfig([
-  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
-  new Route({ path: '/previeworder', component: PreviewOrder, name: 'PreviewOrder'})
+  new Route({ path: '/createorder/...', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
+  new Route({ path: '/previeworder', component: ViewOrder, name: 'ViewOrder'})
 ])
 
 export class Inbox implements OnInit, OnDestroy {
