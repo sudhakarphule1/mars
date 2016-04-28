@@ -5,7 +5,7 @@ import {MATERIAL_DIRECTIVES, SidenavService} from "ng2-material/all";
 @Component({
   selector: 'ib-left-nav',
   templateUrl: 'app/share/components/left-navigation.component.html',
-  styleUrls: ['app/share/components/left-navigation.component.css'],
+  styles: [ require('./left-navigation.component.scss') ],
   providers: [SidenavService],
   directives: [ROUTER_DIRECTIVES, MATERIAL_DIRECTIVES]
 })
