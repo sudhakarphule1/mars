@@ -22,7 +22,8 @@ export class Header {
   }
 
   hasMedia(breakSize: string): boolean {
-    return Media.hasMedia(breakSize);
+    return true;
+  //  return Media.hasMedia(breakSize);
   }
   open(name: string) {
     this.sidenav.show(name);

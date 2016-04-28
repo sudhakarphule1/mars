@@ -34,6 +34,7 @@ import {SearchService} from './share/components/search.service';
 export class OrderApp {
 
   hasMedia(breakSize: string): boolean {
-    return Media.hasMedia(breakSize);
+    return true;
+  //  return Media.hasMedia(breakSize);
   }
 }
