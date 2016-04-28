@@ -8,9 +8,12 @@ import {Order} from "../../model/order";
 import {RouteParams, ROUTER_DIRECTIVES, Location} from 'angular2/router';
 import {Address} from "../../model/address";
 import {Task} from "../../model/task";
+import {SearchService}     from '../../share/components/search.service';
+import {ProductsFilterPipe} from "./products-filter.pipe"
 
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'addItems',
@@ -18,7 +21,7 @@ import {MATERIAL_DIRECTIVES} from "ng2-material/all";
   templateUrl: 'app/order/components/add-items.component.html',
   styleUrls: ['app/order/components/add-items.component.css'],
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
-  pipes: []
+  pipes:[ProductsFilterPipe]
 })
 
 export class AddItems {
@@ -30,12 +33,14 @@ export class AddItems {
   task: Task;
   orderStage: string = "createOrder";
   displayError = false;
+  search: string = '';
   displaySuccess = false;
   errorMessage: string = "";
+  subscription:Subscription;
 
   currentOrder: Order = new Order();
 
-  constructor(private orders: Orders, params: RouteParams) {
+  constructor(private orders: Orders, params: RouteParams, private searchService: SearchService) {
     this.leadId = params.get('leadId');
     orders.getAllProducts().subscribe(res => this.items = res);
     this.currentOrder.shippingAddress = new Address();
@@ -46,6 +51,11 @@ export class AddItems {
     this.task.assignedOn = new Date();
     this.task.assignedTo = "Swapnil";
     this.task.priority = "High";
+/*    this.subscription =  searchService.applySearch$.subscribe(
+      searchString => {
+        this.search = searchString;
+      }
+    );*/
   }
 
   createOrder(location: Location){
@@ -67,5 +77,11 @@ export class AddItems {
     }
 
   }
+/*
+
+  onSearchChange(value:string){
+    this.searchService.applyFilter(value);
+  }
+*/
 
 }

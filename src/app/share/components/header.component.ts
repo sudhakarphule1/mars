@@ -18,8 +18,7 @@ export class Header {
   onSearchChange(value:string){
     this.searchService.applyFilter(value);
   }
-
-
+  
   hasMedia(breakSize: string): boolean {
     return Media.hasMedia(breakSize);
   }

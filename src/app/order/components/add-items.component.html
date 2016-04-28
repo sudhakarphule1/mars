@@ -4,7 +4,7 @@
     <div layout="row" layout-wrap class="row-title">
       <div flex="60">
         Product
-        <input type="search" name="search" placeholder="Search" #search class="search" md-maxlength="10" flex="40" (keyup)="onSearchChange(search.value)">
+        <input type="search" name="search" placeholder="Search" [(ngModel)]="search" class="search" md-maxlength="10" flex="40">
       </div>
       <div class="content-center1" flex="20">
         Quantity
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div>
-      <div layout-wrap *ngFor="#item of items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+      <div layout-wrap *ngFor="#item of (items| productsFilter:'filterBy': search )" layout="row" class="md-caption md-list-item-text order-row-list" flex >
         <div flex="60">
           <h4 layout-margin>{{item.name}}</h4>
           <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
