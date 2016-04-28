@@ -17,6 +17,10 @@ export class Orders {
     return this.getAllProductsFunction();
   }
 
+  getOrdersByStatus(status){
+    return this.getOrdersByStatusFunction(status);
+  }
+
   public getOrder(id){
     return this.getOrderFunction(id);
   }
@@ -66,13 +70,47 @@ export class Orders {
       });
   }
 
+  public getOrdersByStatusFunction(value){
+    let url = `http://localhost:5000/orders?defaultTask.status=` + value;
+    return this.http.get(url).map((res) => res.json());
+/*    return this.http.get(url)
+      // initial transform - result to json
+      .map(res => res.json())
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((arrayList: Array<any>) => {
+        let result:Array<Order> = [];
+        if (arrayList) {
+          arrayList.forEach((item) => {
+            var defaultTask : Task = new Task();
+            defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
+            defaultTask.assignedTo = item.defaultTask.assignedTo;
+            defaultTask.status = item.defaultTask.status;
+            defaultTask.completeBy = new Date(item.defaultTask.completeBy);
+            defaultTask.priority = item.defaultTask.priority;
+
+            var order = new Order();
+            order.id = item.id;
+            order.items = item.items;
+            order.orderDate = new Date(item.orderDate);
+            order.completionDate = new Date(item.completionDate);
+            order.fromCompany = item.fromCompany;
+            order.defaultTask = defaultTask;
+
+            result.push(order);
+          });
+        }
+        return result;
+      });*/
+  }
+
   public getAllProductsFunction(){
     let url = `app/order/services/myOrders.json`;
     return this.http.get(url).map((res) => res.json());
   }
 
   public getOrderFunction(value){
-    let url = `http://localhost:5000/orders/` + value;
+    let url = `http://localhost:5000/orders?_id=` + value;
     /*return this.http.get(url).map((res) => res.json());*/
     return this.http.get(url)
       // initial transform - result to json

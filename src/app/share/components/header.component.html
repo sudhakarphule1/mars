@@ -16,7 +16,7 @@
     <md-icon><img class="" src="app/share/images/dashboard.svg"></md-icon>
     Dashboard
   </md-button>
-  <md-button md-button class="md-warn" >
+  <md-button md-button [routerLink]="['/Inbox', {'showHistory':true}]" class="md-warn">
     <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
     History
   </md-button>
@@ -24,8 +24,4 @@
     <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
     Settings
   </md-button>
-
-  <!-- <button md-button class="md-icon-button" aria-label="More" (click)="clicked('Show More')">
-    <i md-icon>more_vert</i>
-  </button> -->
 </div>

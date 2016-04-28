@@ -11,16 +11,17 @@ import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
-import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
 import {ViewOrder} from "../order/components/view-order.component.ts";
 import {InboxItem} from "../model/inbox-item";
+import {Orders} from '../order/services/order.service';
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styleUrls: ['app/inbox/inbox.component.css'],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
- // providers: [SearchService],
+  providers: [Orders],
   pipes:[InboxFilterPipe]
 })
 @RouteConfig([
@@ -31,6 +32,7 @@ import {InboxItem} from "../model/inbox-item";
 export class Inbox implements OnInit, OnDestroy {
   errorMessage: string;
   showDetails: boolean = false;
+  showHistory: boolean = false;
   filterBy: string = '';
   itemList : Array<InboxItem>;
   subscription:Subscription;
@@ -38,6 +40,8 @@ export class Inbox implements OnInit, OnDestroy {
   constructor(private orderService: OrdersDataProvider,
               private emailService: EmailDataProvider,
               private audioService: AudioDataProvider,
+              params: RouteParams,
+              private orders: Orders,
               private searchService: SearchService,
               private _router: Router) {
     this.subscription =  searchService.applySearch$.subscribe(
@@ -45,13 +49,21 @@ export class Inbox implements OnInit, OnDestroy {
         this.filterBy = searchString;
       }
     );
+    this.showHistory = Boolean(params.get('showHistory'));
+    console.log(this.showHistory);
   }
 
   ngOnInit() {
+    if(!this.showHistory){
     this.itemList = new Array<InboxItem>();
     this.getItemList(this.orderService);
     this.getItemList(this.emailService);
     this.getItemList(this.audioService);
+    }
+    else if (this.showHistory === true){
+      this.orders.getOrdersByStatus("Completed").subscribe(res => this.itemList = res);
+      console.log(this.itemList);
+    }
   }
 
   ngOnDestroy(){
@@ -82,14 +94,3 @@ export class Inbox implements OnInit, OnDestroy {
   }
 }
 
-export default class SwitchBasicUsage {
-  public data: any = {
-    cb1: true,
-    cb4: true,
-    cb5: false
-  };
-  public message = 'false';
-  public onChange(cbState) {
-    this.message = cbState;
-  };
-}

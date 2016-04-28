@@ -1,5 +1,5 @@
 import {Component, OnChanges, SimpleChange} from 'angular2/core';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
 import {SearchService}     from './search.service';
 
@@ -12,17 +12,20 @@ import {SearchService}     from './search.service';
 })
 export class Header {
 
-  constructor(public sidenav: SidenavService, private searchService: SearchService) {
+  constructor(public sidenav: SidenavService, private searchService: SearchService, private _router: Router)
+  {
+
   }
 
   onSearchChange(value:string){
     this.searchService.applyFilter(value);
   }
-  
+
   hasMedia(breakSize: string): boolean {
     return Media.hasMedia(breakSize);
   }
   open(name: string) {
     this.sidenav.show(name);
   }
+
 }

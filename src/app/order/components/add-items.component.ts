@@ -13,7 +13,6 @@ import {ProductsFilterPipe} from "./products-filter.pipe"
 
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
-import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'addItems',
@@ -36,7 +35,6 @@ export class AddItems {
   search: string = '';
   displaySuccess = false;
   errorMessage: string = "";
-  subscription:Subscription;
 
   currentOrder: Order = new Order();
 
