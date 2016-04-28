@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "moment": "registry:npm/moment#2.10.5+20160211003958"
+  },
+  "ambientDependencies": {
+    "require": "registry:dt/require#2.1.20+20160316155526"
   }
 }
