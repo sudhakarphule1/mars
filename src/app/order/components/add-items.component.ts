@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
 import {Orders} from '../services/order.service';
 import {Item} from "../../model/item";
 import {Order} from "../../model/order";
-import {RouteParams, ROUTER_DIRECTIVES, Location} from 'angular2/router';
+import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Address} from "../../model/address";
 import {Task} from "../../model/task";
 import {SearchService}     from '../../share/components/search.service';
