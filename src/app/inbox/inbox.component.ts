@@ -50,7 +50,6 @@ export class Inbox implements OnInit, OnDestroy {
       }
     );
     this.showHistory = Boolean(params.get('showHistory'));
-    console.log(this.showHistory);
   }
 
   ngOnInit() {
@@ -61,8 +60,9 @@ export class Inbox implements OnInit, OnDestroy {
     this.getItemList(this.audioService);
     }
     else if (this.showHistory === true){
+      this.itemList = new Array<InboxItem>();
       this.orders.getOrdersByStatus("Completed").subscribe(res => this.itemList = res);
-      console.log(this.itemList);
+
     }
   }
 

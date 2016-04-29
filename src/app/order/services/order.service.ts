@@ -56,7 +56,7 @@ export class Orders {
             defaultTask.priority = item.defaultTask.priority;
 
             var order = new Order();
-            order.id = item.id;
+            order.id = item._id;
             order.items = item.items;
             order.orderDate = new Date(item.orderDate);
             order.completionDate = new Date(item.completionDate);
@@ -72,8 +72,7 @@ export class Orders {
 
   public getOrdersByStatusFunction(value){
     let url = `http://localhost:5000/orders?defaultTask.status=` + value;
-    return this.http.get(url).map((res) => res.json());
-/*    return this.http.get(url)
+    return this.http.get(url)
       // initial transform - result to json
       .map(res => res.json())
       // next transform - each element in the
@@ -90,7 +89,7 @@ export class Orders {
             defaultTask.priority = item.defaultTask.priority;
 
             var order = new Order();
-            order.id = item.id;
+            order.id = item._id;
             order.items = item.items;
             order.orderDate = new Date(item.orderDate);
             order.completionDate = new Date(item.completionDate);
@@ -100,8 +99,9 @@ export class Orders {
             result.push(order);
           });
         }
+        console.log(result);
         return result;
-      });*/
+      });
   }
 
   public getAllProductsFunction(){
