@@ -16,13 +16,14 @@ import {AddItems} from "./add-items.component";
 import {PreviewItems} from "./preview-items.component";
 import {AddOtherDetails} from "./add-other-details.component";
 import {PreviewOrder} from "./preview-order.component";
+import {MyDatePicker} from "../../share/components/date-picker/mydatepicker";
 
 @Component({
   selector: 'ib-create-order',
   templateUrl: 'app/order/components/create-order.component.html',
   styleUrls: ['app/order/components/create-order.component.css'],
   providers: [HTTP_PROVIDERS, Orders],
-  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES],
+  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 @RouteConfig([
    new Route({ path: '/addItems', component: AddItems, name: 'AddItems', useAsDefault: true}),
@@ -32,6 +33,17 @@ import {PreviewOrder} from "./preview-order.component";
 ])
 
 export class CreateOrder {
+
+  private myDatePickerOptions = {
+    todayBtnTxt: 'Today',
+    dateFormat: 'dd.mm.yyyy',
+    firstDayOfWeek: 'mo',
+    sunHighlight: true,
+    height: '34px',
+    width: '260px'
+  };
+
+  selectedDate: string = '20.12.2015';
 
   leadId: string;
   task: Task;
@@ -47,4 +59,7 @@ export class CreateOrder {
     this.currentOrder.defaultTask = this.task;
   }
 
+  onDateChanged(event) {
+    console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+  }
 }
