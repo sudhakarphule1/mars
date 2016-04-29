@@ -39,8 +39,8 @@
 md-list-item.md-3-line {
   min-height: inherit;
 }
-md-list-item.selected {
-  background: #EAEAEA;
+.selected md-list-item {
+  background: #ea3365;
   cursor: pointer;
 }
 audio {
@@ -61,5 +61,5 @@ audio {
 
 
 .user-avtar div {
-  padding: 0px !important; 
+  padding: 0px !important;
 }

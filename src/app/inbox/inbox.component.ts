@@ -38,6 +38,11 @@ export class Inbox implements OnInit, OnDestroy {
   itemList : Array<InboxItem>;
   subscription:Subscription;
 
+  selected : string;
+  select( selected : string){
+    this.selected = selected;
+    console.log("selected value is  = "+selected);
+  }
   constructor(private orderService: Orders,
               private emailService: Emails,
               private audioService: AudioDataProvider,
