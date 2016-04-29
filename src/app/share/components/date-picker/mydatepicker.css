@@ -23,6 +23,7 @@
     border-radius: 2px;
     background-color: #DDD;
     z-index: 100;
+    left: 0px;
 }
 
 .mydp .selectiongroup {
@@ -133,6 +134,7 @@
     background-color: #DDD;
     font-size: 12px;
     vertical-align: middle;
+    color: #000;
 }
 
 .mydp .caltable td {
@@ -156,21 +158,22 @@
 .mydp .currmonth {
     background-color: #F6F6F6;
     font-weight: bold;
+    color: #000;
 }
 
 .mydp .currday div {
-    border: 1px solid #004198;
-    border-radius: 50%;
+    border: 1px solid #f36523;
 }
 
 .mydp .selectedday div {
-    border: 1px solid #004198;
-    background-color: #8EBFFF !important;
+    background-color: #f36523 !important;
     border-radius: 0;
+    color: #fff;
 }
 
 .mydp .caltable tbody .currmonth:hover {
-    background-color: #6AD0EB;
+    background-color: #f36523;
+    color: #fff;
 }
 
 .mydp .selectmenu {
@@ -229,7 +232,8 @@
 .mydp .btnpicker:focus,
 .mydp .btnclear:hover,
 .mydp .btnpicker:hover {
-    background: #ADD8E6;
+    background: #f36523;
+    color: #fff;
 }
 
 .mydp .icon-calendar,
@@ -244,7 +248,7 @@
 
 .mydp .icon-left:hover,
 .mydp .icon-right:hover {
-    color: #63B2CC;
+    color: #f36523;
 }
 
 .mydp table {

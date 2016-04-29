@@ -20,7 +20,7 @@ import {OrderLocalStore} from "./order-local-store";
   selector: 'addItems',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/add-items.component.html',
-  styleUrls: ['app/order/components/add-items.component.css'],
+  styles: [ require('./view-order.scss') ],
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   pipes:[ProductsFilterPipe]
 })
