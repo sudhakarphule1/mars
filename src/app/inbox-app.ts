@@ -9,8 +9,6 @@ import {LogOut} from "./share/components/logout.component";
 import {Header} from "./share/components/header.component";
 import {LeftNavigation} from "./share/components/left.navigation.component";
 import {HTTP_PROVIDERS}    from 'angular2/http';
-/*import {OrdersDataProvider} from "./inbox/data-providers/orders-data-provider";
-import {EmailDataProvider} from "./inbox/data-providers/email-data-provider";*/
 import {AudioDataProvider} from "./inbox/data-providers/audio-data-provider";
 import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
 import {SearchService} from './share/components/search.service';

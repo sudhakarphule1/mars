@@ -7,10 +7,8 @@ import {FORM_DIRECTIVES} from "angular2/common";
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
-import {Item} from "../../model/item";
 import {Order} from "../../model/order";
 import {Task} from "../../model/task";
-import {Address} from "../../model/address";
 
 import {AddItems} from "./add-items.component";
 import {PreviewItems} from "./preview-items.component";
@@ -36,14 +34,15 @@ export class CreateOrder {
 
   private myDatePickerOptions = {
     todayBtnTxt: 'Today',
-    dateFormat: 'dd.mm.yyyy',
+    dateFormat: 'yyyy-mm-dd',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
-    height: '34px',
-    width: '260px'
+    height: '20px',
+    width: '150px'
   };
 
-  selectedDate: string = '20.12.2015';
+  selectedDate1: string = '2016-04-01';
+  selectedDate2: string = '2016-04-01';
 
   leadId: string;
   task: Task;
@@ -59,7 +58,15 @@ export class CreateOrder {
     this.currentOrder.defaultTask = this.task;
   }
 
-  onDateChanged(event) {
+  onDate1Changed(event) {
     console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    this.task.assignedOn = new Date(event.formatted);
+    console.log("assigned on:" + this.task.assignedOn);
+  }
+
+  onDate2Changed(event) {
+    console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    this.task.completeBy = new Date(event.formatted);
+    console.log(" complete by:" + this.task.completeBy);
   }
 }

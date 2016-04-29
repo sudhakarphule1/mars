@@ -59,7 +59,6 @@ export class Emails {
             result.push(email);
           });
         }
-        console.log(result);
         return result;
       });
   }

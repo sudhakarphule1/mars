@@ -1,12 +1,11 @@
 import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
-import {DataProvider}   from "./data-provider";
 import {Observable}     from 'rxjs/Observable';
 import {AudioContent} from "../../model/audio-content";
 import {Task} from "../../model/task";
 
 @Injectable()
-export class AudioDataProvider implements DataProvider {
+export class AudioDataProvider{
   constructor (private http: Http) {}
 
   private _url = '/app/inbox/data-providers/audio-contents-mock.json';  // URL to web api

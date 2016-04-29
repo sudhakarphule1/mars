@@ -1,7 +1,4 @@
 import {Component, OnInit, OnDestroy} from 'angular2/core';
-/*import {DataProvider} from "./data-providers/data-provider";*/
-/*import {OrdersDataProvider} from "./data-providers/orders-data-provider";
-import {EmailDataProvider} from "./data-providers/email-data-provider";*/
 import {AudioDataProvider} from "./data-providers/audio-data-provider";
 import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
