@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from 'angular2/core';
-import {DataProvider} from "./data-providers/data-provider";
-import {OrdersDataProvider} from "./data-providers/orders-data-provider";
-import {EmailDataProvider} from "./data-providers/email-data-provider";
+/*import {DataProvider} from "./data-providers/data-provider";*/
+/*import {OrdersDataProvider} from "./data-providers/orders-data-provider";
+import {EmailDataProvider} from "./data-providers/email-data-provider";*/
 import {AudioDataProvider} from "./data-providers/audio-data-provider";
 import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
@@ -15,13 +15,14 @@ import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angula
 import {ViewOrder} from "../order/components/view-order.component.ts";
 import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
+import {Emails} from '../order/services/email.service';
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styleUrls: ['app/inbox/inbox.component.css'],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
-  providers: [Orders],
+  providers: [Orders, Emails],
   pipes:[InboxFilterPipe]
 })
 @RouteConfig([
@@ -37,11 +38,12 @@ export class Inbox implements OnInit, OnDestroy {
   itemList : Array<InboxItem>;
   subscription:Subscription;
 
-  constructor(private orderService: OrdersDataProvider,
-              private emailService: EmailDataProvider,
+  constructor(private orderService: Orders,
+              private emailService: Emails,
               private audioService: AudioDataProvider,
               params: RouteParams,
               private orders: Orders,
+              private emails: Emails,
               private searchService: SearchService,
               private _router: Router) {
     this.subscription =  searchService.applySearch$.subscribe(
@@ -55,9 +57,14 @@ export class Inbox implements OnInit, OnDestroy {
   ngOnInit() {
     if(!this.showHistory){
     this.itemList = new Array<InboxItem>();
-    this.getItemList(this.orderService);
+/*    this.getItemList(this.orderService);
     this.getItemList(this.emailService);
-    this.getItemList(this.audioService);
+    this.getItemList(this.audioService);*/
+      this.orders.getAllOrders().subscribe(items => this.itemList = this.itemList.concat(items));
+      this.emails.getAllEmails().subscribe(items => this.itemList = this.itemList.concat(items));
+      this.audioService.getAll().subscribe(items => this.itemList = this.itemList.concat(items));
+      /*
+      this.orders.getAllOrders().subscribe(items => this.itemList = this.itemList.concat(items));*/
     }
     else if (this.showHistory === true){
       this.itemList = new Array<InboxItem>();
@@ -71,11 +78,11 @@ export class Inbox implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  getItemList(service : DataProvider) {
-    service.getAll()
+/*  getItemList() {
+    getAll()
       .subscribe(
         items => this.itemList = this.itemList.concat(items));
-  }
+  }*/
 
   selectedItem: string;
 

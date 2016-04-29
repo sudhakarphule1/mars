@@ -13,32 +13,50 @@ import {Task} from "../../model/task";
 export class Orders {
   constructor(private http: Http){}
 
-  getAllProducts(){
-    return this.getAllProductsFunction();
+  public getAllProducts(){
+    let url = `app/order/services/myProducts.json`;
+    return this.http.get(url).map((res) => res.json());
   }
 
-  getOrdersByStatus(status){
-    return this.getOrdersByStatusFunction(status);
+  public getAllOrders(){
+    let url = `http://localhost:5000/orders`;
+    return this.getOrdersObjectFunction(url);
   }
 
-  public getOrder(id){
-    return this.getOrderFunction(id);
+  public getOrdersByStatus(value){
+    let url = `http://localhost:5000/orders?defaultTask.status=` + value;
+    return this.getOrdersObjectFunction(url);
+  }
+
+  public getOrderById(value){
+    let url = `http://localhost:5000/orders?_id=` + value;
+    return this.getOrdersObjectFunction(url);
   }
 
   createOrder(value){
-    return this.createOrderFunction(value);
+    let params = JSON.stringify(value);
+    console.log(params);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/orders`;
+    return this.http.post(url, params,options).map((res) => res.json());
   }
 
   editOrder(value){
-    return this.editOrderFunction(value);
+    let params = JSON.stringify(value);
+    console.log(params);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/orders/` + value.id;
+    return this.http.put(url, params,options).map((res) => res.json());
   }
 
   deleteOrder(value: Array<any>){
-    return this.deleteOrderFunction(value);
+    let url = `app/order/services/myOrders.json`;
+    return this.http.get(url).map((res) => res.json());
   }
 
-  public getAllOrdersFunction(){
-    let url = `http://localhost:5000/orders`;
+  public getOrdersObjectFunction(url){
     return this.http.get(url)
       // initial transform - result to json
       .map(res => res.json())
@@ -62,39 +80,11 @@ export class Orders {
             order.completionDate = new Date(item.completionDate);
             order.fromCompany = item.fromCompany;
             order.defaultTask = defaultTask;
-
-            result.push(order);
-          });
-        }
-        return result;
-      });
-  }
-
-  public getOrdersByStatusFunction(value){
-    let url = `http://localhost:5000/orders?defaultTask.status=` + value;
-    return this.http.get(url)
-      // initial transform - result to json
-      .map(res => res.json())
-      // next transform - each element in the
-      // array to a Typed class instance
-      .map((arrayList: Array<any>) => {
-        let result:Array<Order> = [];
-        if (arrayList) {
-          arrayList.forEach((item) => {
-            var defaultTask : Task = new Task();
-            defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
-            defaultTask.assignedTo = item.defaultTask.assignedTo;
-            defaultTask.status = item.defaultTask.status;
-            defaultTask.completeBy = new Date(item.defaultTask.completeBy);
-            defaultTask.priority = item.defaultTask.priority;
-
-            var order = new Order();
-            order.id = item._id;
-            order.items = item.items;
-            order.orderDate = new Date(item.orderDate);
-            order.completionDate = new Date(item.completionDate);
-            order.fromCompany = item.fromCompany;
-            order.defaultTask = defaultTask;
+            order.remarks = item.remarks;
+            order.contactPerson = item.contactPerson;
+            order.shippingAddress = item.shippingAddress;
+            order.billingAddress = item.billingAddress;
+            order.contactNumber = item.contactNumber;
 
             result.push(order);
           });
@@ -104,14 +94,9 @@ export class Orders {
       });
   }
 
-  public getAllProductsFunction(){
-    let url = `app/order/services/myOrders.json`;
-    return this.http.get(url).map((res) => res.json());
-  }
-
-  public getOrderFunction(value){
+/*  public getOrderFunction(value){
     let url = `http://localhost:5000/orders?_id=` + value;
-    /*return this.http.get(url).map((res) => res.json());*/
+    /!*return this.http.get(url).map((res) => res.json());*!/
     return this.http.get(url)
       // initial transform - result to json
       .map(res => res.json())
@@ -144,8 +129,9 @@ export class Orders {
         }
         return order;
       });
-  }
+  }*/
 
+/*
   public createOrderFunction(value){
 
     let params = JSON.stringify(value);
@@ -154,8 +140,8 @@ export class Orders {
     let options = new RequestOptions({ headers: headers });
     let url = `http://localhost:5000/orders`;
     return this.http.post(url, params,options).map((res) => res.json());
-  }
-
+  }*/
+/*
   public editOrderFunction(value){
 
     let params = JSON.stringify(value);
@@ -164,11 +150,11 @@ export class Orders {
     let options = new RequestOptions({ headers: headers });
     let url = `http://localhost:5000/orders/` + value.id;
     return this.http.put(url, params,options).map((res) => res.json());
-  }
-
+  }*/
+/*
   public deleteOrderFunction(value){
     let url = `app/order/services/myOrders.json`;
     return this.http.get(url).map((res) => res.json());
-  }
+  }*/
 
 }

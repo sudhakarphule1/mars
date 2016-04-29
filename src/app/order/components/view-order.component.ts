@@ -31,14 +31,14 @@ export class ViewOrder implements OnInit{
   }
 
   ngOnInit() {
-    this.orders.getOrder(this.id).subscribe(res => {
+    this.orders.getOrderById(this.id).subscribe(res => {
       this.currentOrder = res;
       console.log(this.currentOrder.items);
     });
   }
 
   editOrder(){
-    this.orders.editOrderFunction(this.currentOrder).subscribe(
+    this.orders.editOrder(this.currentOrder).subscribe(
       err => this.message = "Your order details have been successfully updated.",
       () => this.message = "Your order details have been successfully updated."
     );
