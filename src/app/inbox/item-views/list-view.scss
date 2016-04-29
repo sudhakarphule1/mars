@@ -1,0 +1,144 @@
+.assign-order {
+  background:#EAEAEA;
+  box-shadow: 1px 4px 6px #ccc;
+  margin-bottom: 5px;
+  padding: 0px 10px;
+  span {
+    margin: 5px 0px 0px;
+    font-size: 14px;
+  }
+  md-switch {
+    margin: 0 0 0 15px;
+  }
+  select {
+    font-size: 14px;
+  }
+}
+.inbox-list {
+  padding: 0px;
+  &:hover {
+    backgroud:#EAEAEA;
+  }
+}
+.inbox-section {
+  height: 94vh;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.left-section {
+  height: 93vh;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.client-img{
+  padding: 10px;
+  border:1px solid #b7b7b7;
+  margin:5px 20px 0px 30px;
+}
+.client-section {
+  position: relative;
+}
+.client-section span img {
+  position: absolute;
+  right: 16px;
+  top: 8px;
+}
+.md-list-item-text h3.list-label {
+  width: 90%;
+}
+.pending{
+  position: absolute;
+  left: 0px;
+  height: 96%;
+  width: 5px;
+  background: red;
+}
+.delivery-date{
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  font-size: 11px;
+  text-align: right;
+  background: lemonchiffon;
+}
+.user-avtar {
+  margin-right: 10px;
+  span {
+    padding: 15px 0;
+    font-size: 11px;
+  }
+}
+.md-3-line {
+  min-height: inherit;
+}
+.selected {
+  background: #EAEAEA;
+  cursor: pointer;
+}
+.email-compact {
+  cursor: pointer;
+}
+.active {
+  background-color: red;
+}
+.disabled {
+  color: gray;
+  border: medium solid gray;
+}
+.user-avtar {
+  div {
+    padding: 0px !important; 
+  }
+}
+audio {
+  width: 80%;
+}
+audio::-webkit-media-controls-play-button {
+  color: green;
+}
+audio::-webkit-media-controls-panel {
+  background: none;
+}
+audio::-webkit-media-controls-volume-slider,
+audio::-webkit-media-controls-mute-button {
+  display: none;
+}
+audio::-moz-media-controls-panel {
+  background: none;
+}
+audio::-moz-media-controls-volume-slider,
+audio::-webkit-media-controls-mute-button {
+  display: none;
+}
+.button {
+  text-transform: capitalize;
+  padding: 1px 10px;
+  line-height: 28px;
+  border-radius: 0;
+  margin:0px;
+  box-shadow: 0px 0px 0px;
+}
+.text-editor {
+  background:#b2b2b2;
+  height: 29px
+}
+md-icon {
+  height: 24px;
+  padding: 5px 2px;
+  width: 20px;
+}
+.reply-content {
+  min-height:182px;
+  border:1px solid #ccc;
+  margin-top: 10px;
+  md-input-container {
+    padding : 0px 15px;
+    margin:0px;
+  }
+}
+textarea {
+  width:100%;border:0px;
+}
+.md-errors-spacer {
+  display: none;
+}
