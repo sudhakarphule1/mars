@@ -11,6 +11,7 @@ import {Task} from "../../model/task";
 
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {OrderLocalStore} from "./order-local-store";
 
 @Component({
   selector: 'previewItems',
@@ -32,17 +33,21 @@ export class PreviewItems {
 
   currentOrder: Order = new Order();
 
-  constructor(private orders: Orders, params: RouteParams) {
+  constructor(private orders: Orders, params: RouteParams,
+              private orderLocalStore : OrderLocalStore ) {
     this.leadId = params.get('leadId');
-    orders.getAllProducts().subscribe(res => this.items = res);
-    this.currentOrder.shippingAddress = new Address();
+    //orders.getAllProducts().subscribe(res => this.items = res);
+    this.currentOrder = orderLocalStore.order;
+    console.log(this.currentOrder);
+
+    /*this.currentOrder.shippingAddress = new Address();
     this.currentOrder.billingAddress = new Address();
     this.currentOrder.orderDate = new Date();
     this.currentOrder.completionDate = new Date();
     this.task = new Task();
     this.task.assignedOn = new Date();
     this.task.assignedTo = "Swapnil";
-    this.task.priority = "High";
+    this.task.priority = "High";*/
   }
 
   removeItem(item){

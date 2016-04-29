@@ -13,6 +13,8 @@ import {ProductsFilterPipe} from "./products-filter.pipe"
 
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {Router} from "angular2/router";
+import {OrderLocalStore} from "./order-local-store";
 
 @Component({
   selector: 'addItems',
@@ -36,24 +38,22 @@ export class AddItems {
   displaySuccess = false;
   errorMessage: string = "";
 
-  currentOrder: Order = new Order();
+  currentOrder: Order;
 
-  constructor(private orders: Orders, params: RouteParams, private searchService: SearchService) {
+  constructor(private _router: Router,
+              private orders: Orders, params: RouteParams,
+              private searchService: SearchService,
+              private orderLocalStore : OrderLocalStore) {
     this.leadId = params.get('leadId');
     orders.getAllProducts().subscribe(res => this.items = res);
-    this.currentOrder.shippingAddress = new Address();
-    this.currentOrder.billingAddress = new Address();
-    this.currentOrder.orderDate = new Date();
-    this.currentOrder.completionDate = new Date();
+    this.currentOrder = orderLocalStore.order;
+    console.log(this.currentOrder);
+
+
     this.task = new Task();
     this.task.assignedOn = new Date();
     this.task.assignedTo = "Swapnil";
     this.task.priority = "High";
-/*    this.subscription =  searchService.applySearch$.subscribe(
-      searchString => {
-        this.search = searchString;
-      }
-    );*/
   }
 
   createOrder(location: Location){
@@ -72,6 +72,7 @@ export class AddItems {
       this.displayError = false;
       /*location.go('/inbox/createorder/previewItems');*/
       /*window.location.href='/inbox/createorder/previewItems'*/
+      this._router.navigate(['PreviewItems']);
     }
 
   }

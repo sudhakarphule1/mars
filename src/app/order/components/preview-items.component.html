@@ -18,7 +18,7 @@
           Action
         </div>
       </div>
-      <div layout="row" *ngFor="#item of orderDetails" class="md-caption md-list-item-text order-row-list">
+      <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
 
         <div flex="35">
           <h4 layout-margin>{{item.name}}</h4>

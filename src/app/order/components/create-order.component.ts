@@ -15,12 +15,13 @@ import {PreviewItems} from "./preview-items.component";
 import {AddOtherDetails} from "./add-other-details.component";
 import {PreviewOrder} from "./preview-order.component";
 import {MyDatePicker} from "../../share/components/date-picker/mydatepicker";
+import {OrderLocalStore} from "./order-local-store";
 
 @Component({
   selector: 'ib-create-order',
   templateUrl: 'app/order/components/create-order.component.html',
   styleUrls: ['app/order/components/create-order.component.css'],
-  providers: [HTTP_PROVIDERS, Orders],
+  providers: [HTTP_PROVIDERS, Orders, OrderLocalStore],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 @RouteConfig([
@@ -50,12 +51,15 @@ export class CreateOrder {
 
   currentOrder: Order = new Order();
 
-  constructor(params: RouteParams) {
+  constructor(params: RouteParams, private orderLocalStore : OrderLocalStore) {
     this.leadId = params.get('leadId');
     this.task = new Task();
     this.task.assignedTo = "Swapnil";
     this.task.priority = "High";
     this.currentOrder.defaultTask = this.task;
+    orderLocalStore.order = this.currentOrder;
+    console.log(this.currentOrder);
+    console.log(orderLocalStore.order);
   }
 
   onDate1Changed(event) {
