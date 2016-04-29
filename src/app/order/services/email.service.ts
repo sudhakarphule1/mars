@@ -9,7 +9,6 @@ import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
-import {Order} from "../../model/order";
 import {Task} from "../../model/task";
 import {Email} from "../../model/email";
 
