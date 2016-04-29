@@ -20,7 +20,7 @@ import {Emails} from '../order/services/email.service';
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
-  styleUrls: ['app/inbox/inbox.component.css'],
+  styles: [ require('./item-views/list-view.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   providers: [Orders, Emails],
   pipes:[InboxFilterPipe]

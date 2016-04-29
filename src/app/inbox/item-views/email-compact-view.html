@@ -39,6 +39,31 @@
       <md-content class="md-padding">
 
         <p [innerHTML]="email.html"></p>
+        <button md-raised-button class="button md-primary">Reply</button>
+        <div class="reply-content">
+          <md-input-container layout="row" flex="100">
+            <input md-input type="text" id="content" >
+          </md-input-container>
+          <md-input-container layout="row" flex="100" class="md-block" >
+            <textarea ng-model="user.biography" rows="5" ></textarea>
+          </md-input-container>
+          <section layout="row" class="text-editor" layout-sm="column" layout-wrap>
+            <md-button flex="80">
+              <md-icon><img class="" src="app/inbox/images/text-style.svg"></md-icon>
+              <md-icon><img class="" src="app/inbox/images/bold.svg"></md-icon>
+              <md-icon><img class="" src="app/inbox/images/italic.svg"></md-icon>
+              <md-icon><img class="" src="app/inbox/images/underline.svg"></md-icon>
+              <md-icon><img class="" src="app/inbox/images/alignment.svg"></md-icon>
+              <md-icon><img class="" src="app/inbox/images/numbers.svg"></md-icon>
+              <md-icon><img class="" src="app/inbox/images/bullets.svg"></md-icon>
+              <md-icon><img class="" src="app/inbox/images/attachment.svg"></md-icon>
+            </md-button>
+            <section layout="row" flex="20" layout-sm="column" layout-align="end start" layout-wrap>
+              <button md-raised-button class="button">Cancel</button>
+              <button md-raised-button class="md-primary button">Send</button>
+            </section>
+          </section>
+        </div>
       </md-content>
     </template>
     <template md-tab label="Attachments">
