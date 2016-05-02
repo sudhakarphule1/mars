@@ -42,7 +42,7 @@ $ca-text-editor-bg: #b2b2b2;
   margin:5px 20px 0px 30px;
 }
 .client-section {
-  position: relative; 
+  position: relative;
   span img {
     position: absolute;
     right: 16px;
@@ -89,7 +89,7 @@ $ca-text-editor-bg: #b2b2b2;
 }
 .user-avtar {
   div {
-    padding: 0px !important; 
+    padding: 0px !important;
   }
 }
 audio {
@@ -121,7 +121,7 @@ audio::-webkit-media-controls-mute-button {
   box-shadow: 0px 0px 0px;
 }
 .reply-content {
-  min-height:182px;
+  min-height:175px;
   border:1px solid $ca-gray;
   margin-top: 10px;
   md-input-container {

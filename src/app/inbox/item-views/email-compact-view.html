@@ -47,7 +47,7 @@
             <textarea [(ngModel)] = "replyText" rows="5" ></textarea>
           </md-input-container>
           <section layout="row" class="text-editor" layout-sm="column" layout-wrap>
-            <md-button flex="80">
+            <md-button flex="50">
               <md-icon><img class="" src="app/inbox/images/text-style.svg"></md-icon>
               <md-icon><img class="" src="app/inbox/images/bold.svg"></md-icon>
               <md-icon><img class="" src="app/inbox/images/italic.svg"></md-icon>
@@ -57,7 +57,7 @@
               <md-icon><img class="" src="app/inbox/images/bullets.svg"></md-icon>
               <md-icon><img class="" src="app/inbox/images/attachment.svg"></md-icon>
             </md-button>
-            <section layout="row" flex="20" layout-sm="column" layout-align="end start" layout-wrap>
+            <section layout="row" flex="50" layout-sm="column" layout-align="end start" layout-wrap>
               <button md-raised-button class="button" (click)="reply = !reply">Cancel</button>
               <button md-raised-button class="md-primary button" (click)="sendReply()">Send</button>
             </section>
