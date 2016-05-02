@@ -11,6 +11,8 @@ export class Email extends InboxItem {
   date : Date;
   receivedDate : Date;
   attachments : Array<any>;
+  messageId : string;
+  conversation: Array<any>;
 
   constructor() {
     super('Email');

@@ -13,7 +13,7 @@ import {Task} from "../../model/task";
 import {Email} from "../../model/email";
 
 @Injectable()
-export class Emails {
+export class EmailService {
   constructor(private http: Http){}
 
 
@@ -22,8 +22,18 @@ export class Emails {
     return this.getEmailObjectFunction(url);
   }
 
-  public getEmailObjectFunction(url){
+  public replyEmail(value){
+    let params = JSON.stringify(value);
+    console.log("service parama => "+params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/sendmail`;
+    return this.http.post(url, params,options);
+  }
+
+
+  public getEmailObjectFunction(url){
+    let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     return this.http.get(url, {
         headers: headers
@@ -55,6 +65,8 @@ export class Emails {
             email.receivedDate = item.receivedDate;
             email.attachments = item.attachments;
             email.defaultTask = defaultTask;
+            email.messageId = item.messageId;
+            email.conversation = item.conversation;
 
             result.push(email);
           });
