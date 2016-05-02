@@ -71,7 +71,7 @@ export class Orders {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let url = `http://localhost:5000/orders`;
-    return this.http.post(url, params,options).map((res) => res.json());
+    return this.http.post(url, params,options);
   }
 
   editOrder(value){

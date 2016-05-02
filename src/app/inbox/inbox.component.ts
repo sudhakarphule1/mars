@@ -12,14 +12,14 @@ import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angula
 import {ViewOrder} from "../order/components/view-order.component.ts";
 import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
-import {Emails} from '../order/services/email.service';
+import {EmailService} from '../order/services/email.service';
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styles: [ require('./item-views/list-view.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
-  providers: [Orders, Emails],
+  providers: [Orders, EmailService],
   pipes:[InboxFilterPipe]
 })
 @RouteConfig([
@@ -41,11 +41,11 @@ export class Inbox implements OnInit, OnDestroy {
     console.log("selected value is  = "+selected);
   }
   constructor(private orderService: Orders,
-              private emailService: Emails,
+              private emailService: EmailService,
               private audioService: AudioDataProvider,
               params: RouteParams,
               private orders: Orders,
-              private emails: Emails,
+              private emails: EmailService,
               private searchService: SearchService,
               private _router: Router) {
     this.subscription =  searchService.applySearch$.subscribe(

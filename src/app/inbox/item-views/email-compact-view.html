@@ -38,13 +38,13 @@
       <md-content class="md-padding">
 
         <p [innerHTML]="email.html"></p>
-        <button md-raised-button class="button md-primary">Reply</button>
-        <div class="reply-content">
+        <button md-raised-button class="button md-primary" (click)="reply = !reply">Reply</button>
+        <div class="reply-content" *ngIf="reply == true">
           <md-input-container layout="row" flex="100">
-            <input md-input type="text" id="content" >
+            <input md-input type="text" id="content" value="{{ email.from[0].address }}" >
           </md-input-container>
           <md-input-container layout="row" flex="100" class="md-block" >
-            <textarea ng-model="user.biography" rows="5" ></textarea>
+            <textarea [(ngModel)] = "replyText" rows="5" ></textarea>
           </md-input-container>
           <section layout="row" class="text-editor" layout-sm="column" layout-wrap>
             <md-button flex="80">
@@ -58,8 +58,8 @@
               <md-icon><img class="" src="app/inbox/images/attachment.svg"></md-icon>
             </md-button>
             <section layout="row" flex="20" layout-sm="column" layout-align="end start" layout-wrap>
-              <button md-raised-button class="button">Cancel</button>
-              <button md-raised-button class="md-primary button">Send</button>
+              <button md-raised-button class="button" (click)="reply = !reply">Cancel</button>
+              <button md-raised-button class="md-primary button" (click)="sendReply()">Send</button>
             </section>
           </section>
         </div>
