@@ -27,6 +27,8 @@ export class EmailCompactView {
   }
 
   sendReply(){
+    this.reply = false;
+    console.log(this.reply);
     console.log("email => "+this.email.from[0].address);
     console.log("reply text => "+this.replyText);
     var replyEmail ={from:this.email.to[0].address,
@@ -43,8 +45,11 @@ export class EmailCompactView {
 
     console.log("replay email body =>" +JSON.stringify(replyEmail));
     this.emailService.replyEmail(replyEmail).subscribe(
-      () => console.log("Your mail sent successfully ."),
-      err => console.log( "There is some problem with sending your mail.")
+      function(){
+        alert("mail sent.");
+      }
+      /*() => console.log("Your mail sent successfully ."),
+      err => console.log( "There is some problem with sending your mail.")*/
     );
   }
 
