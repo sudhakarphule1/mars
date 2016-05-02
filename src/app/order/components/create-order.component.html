@@ -4,7 +4,7 @@
     <div flex>
       <md-list layout="column">
         <md-list-item class="md-3-line col-order-detail">
-          <img src="app/share/images/avtars/{{task.assignedTo}}.jpg" class="md-avatar" >
+          <img src="app/share/images/avtars/{{currentOrder.defaultTask.assignedTo}}.jpg" class="md-avatar" >
           <div class="md-list-item-text">
             <h2 *ngIf="orderStage === 'createOrder'">Create Order</h2>
             <h2 *ngIf="orderStage === 'preview'">Preview Items</h2>
@@ -36,7 +36,7 @@
     <div flex class="assigned-select" flex="40">
       <label flex="100" layout="column">Assigned to :</label>
       <md-input-container class="md-block" flex-gt-sm flex>
-        <select [(ngModel)]="task.assignedTo">
+        <select [(ngModel)]="currentOrder.defaultTask.assignedTo">
           <option>Swapnil</option>
           <option>Waqar</option>
           <option>Chetan</option>
@@ -52,8 +52,8 @@
       <div class="radio-btn">
         <label class="control control--checkbox">
           <input value="Running Late" type="checkbox"
-                 (click)="task.status = 'Running Late'"
-                 [checked]="task.status == 'Running Late'">
+                 (click)="currentOrder.defaultTask.status = 'Running Late'"
+                 [checked]="currentOrder.defaultTask.status == 'Running Late'">
           <div class="control__indicator"></div>
         </label>
       </div>
@@ -61,8 +61,8 @@
       <div class="radio-btn1">
         <label class="control control--checkbox">
           <input value="Running Late" type="checkbox"
-                 (click)="task.status = 'In Progress'"
-                 [checked]="task.status == 'In Progress'">
+                 (click)="currentOrder.defaultTask.status = 'In Progress'"
+                 [checked]="currentOrder.defaultTask.status == 'In Progress'">
           <div class="control__indicator"></div>
         </label>
       </div>
@@ -70,8 +70,8 @@
       <div class="radio-btn2">
         <label class="control control--checkbox">
           <input value="Running Late" type="checkbox"
-                 (click)="task.status = 'Completed'"
-                 [checked]="task.status == 'Completed'">
+                 (click)="currentOrder.defaultTask.status = 'Completed'"
+                 [checked]="currentOrder.defaultTask.status == 'Completed'">
           <div class="control__indicator"></div>
         </label>
       </div>

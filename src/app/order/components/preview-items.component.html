@@ -49,13 +49,11 @@
             <img src="app/order/images/ic_close.svg" />
           </button>
         </div>
-
       </div>
     </div>
 
   </div>
   <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
-  <div layout-padding *ngIf="displaySuccess == true">{{ successMessage }}</div>
 
   <button md-raised-button class="button md-raised md-primary" (click)="confirmOrder()">Confirm Order</button>
   <button md-raised-button class="cancel button md-raised" (click)="cancelOrder()">Cancel</button>

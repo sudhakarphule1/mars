@@ -9,6 +9,7 @@ export class Order extends InboxItem {
     this.billingAddress = new Address;
     this.orderDate = new Date();
     this.completionDate = new Date();
+    this.items = Array<Item>();
   }
 
   orderDate:Date;

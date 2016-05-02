@@ -1,10 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="orders">
 
-</body>
-</html>
+  <div class="order-details">
+    <div class="tableClass customer-details" layout-padding >
+      <h3>Details:</h3>
+      <div layout-gt-sm="row">
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Compnay Name</label>
+            <input md-input [(ngModel)] = "currentOrder.fromCompany" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Order Type</label>
+            <input md-input [(ngModel)] = "currentOrder.orderType" >
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout-gt-sm="row">
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Remarks</label>
+            <input md-input [(ngModel)] = "currentOrder.remarks" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Contact Person</label>
+            <input md-input [(ngModel)] = "currentOrder.contactPerson" >
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout-gt-sm="row" >
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Contact Number</label>
+            <input md-input [(ngModel)] = "currentOrder.contactNumber" >
+          </md-input-container>
+        </div>
+      </div>
+
+      <div class="tableClass" layout-padding>
+        <h4>Shipping Address</h4>
+        <div layout-gt-sm="row" >
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Line1</label>
+              <input md-input [(ngModel)] = "currentOrder.shippingAddress.line1" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Line2</label>
+              <input md-input [(ngModel)] = "currentOrder.shippingAddress.line2" >
+            </md-input-container>
+          </div>
+        </div>
+        <div layout-gt-sm="row" >
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Pincode</label>
+              <input md-input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>City</label>
+              <input md-input [(ngModel)] = "currentOrder.shippingAddress.city" >
+            </md-input-container>
+          </div>
+        </div>
+        <div layout-gt-sm="row" >
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>State</label>
+              <input md-input [(ngModel)] = "currentOrder.shippingAddress.state" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Country</label>
+              <input md-input [(ngModel)] = "currentOrder.shippingAddress.country" >
+            </md-input-container>
+          </div>
+        </div>
+
+        <h4>Billing Address
+          <label>
+            <input type="checkbox" (click)="copyAddress()"/>
+            Same as Shipping Address
+          </label>
+        </h4>
+
+        <div layout-gt-sm="row" >
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label >Line1</label>
+              <input md-input [(ngModel)] = "currentOrder.billingAddress.line1" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Line2</label>
+              <input md-input [(ngModel)] = "currentOrder.billingAddress.line2" >
+            </md-input-container>
+          </div>
+        </div>
+
+        <div layout-gt-sm="row" >
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Pincode</label>
+              <input md-input [(ngModel)] = "currentOrder.billingAddress.pinCode" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>City</label>
+              <input md-input [(ngModel)] = "currentOrder.billingAddress.city" >
+            </md-input-container>
+          </div>
+        </div>
+
+        <div layout-gt-sm="row" >
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>State</label>
+              <input md-input [(ngModel)] = "currentOrder.billingAddress.state" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Country</label>
+              <input md-input [(ngModel)] = "currentOrder.billingAddress.country" >
+            </md-input-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
+  <button md-raised-button class="button md-raised md-primary" (click)="proceedNext()">Proceed Next</button>
+  <button md-raised-button class="cancel button md-raised" (click)="cancelOrder()" >Cancel</button>
+  <button md-raised-button class="button md-raised" (click)="goToPrevious()">Previous</button>
+</div>

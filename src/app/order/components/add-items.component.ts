@@ -6,8 +6,6 @@ import {Orders} from '../services/order.service';
 import {Item} from "../../model/item";
 import {Order} from "../../model/order";
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Address} from "../../model/address";
-import {Task} from "../../model/task";
 import {SearchService}     from '../../share/components/search.service';
 import {ProductsFilterPipe} from "./products-filter.pipe"
 
@@ -30,8 +28,6 @@ export class AddItems {
 
   leadId: string;
   items : Array<Item>;
-  orderDetails: Array<Item> = new Array();
-  task: Task;
   orderStage: string = "createOrder";
   displayError = false;
   search: string = '';
@@ -48,39 +44,23 @@ export class AddItems {
     orders.getAllProducts().subscribe(res => this.items = res);
     this.currentOrder = orderLocalStore.order;
     console.log(this.currentOrder);
-
-
-    this.task = new Task();
-    this.task.assignedOn = new Date();
-    this.task.assignedTo = "Swapnil";
-    this.task.priority = "High";
   }
 
-  createOrder(location: Location){
+  createOrder(){
     for(var i in this.items){
       if (this.items[i].qty > 0 ){
-        this.orderDetails.push(this.items[i]);
+        this.currentOrder.items.push(this.items[i]);
       }
     }
 
-    if (this.orderDetails.length == 0){
+    if (this.currentOrder.items.length == 0){
       this.errorMessage = "You haven't selected any item for your order";
       this.displayError = true;
     }
     else {
       this.orderStage = "preview";
       this.displayError = false;
-      /*location.go('/inbox/createorder/previewItems');*/
-      /*window.location.href='/inbox/createorder/previewItems'*/
       this._router.navigate(['PreviewItems']);
     }
-
   }
-/*
-
-  onSearchChange(value:string){
-    this.searchService.applyFilter(value);
-  }
-*/
-
 }

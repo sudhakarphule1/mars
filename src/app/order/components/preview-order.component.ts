@@ -1,25 +1,57 @@
-/**
- * Created by chetan on 27/4/16.
- */
-
 import {Component} from 'angular2/core';
-
 import {HTTP_PROVIDERS}    from 'angular2/http';
-/*import {OrdersDataProvider} from "./inbox/data-providers/orders-data-provider";
- import {AudioDataProvider} from "./inbox/data-providers/audio-data-provider";
- import {EmailDataProvider} from "./inbox/data-providers/email-data-provider";*/
-import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
-/*import {SearchService} from './share/components/search.service';*/
+import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {Order} from "../../model/order";
+import {RouteParams, Router} from "angular2/router";
+import {OrderLocalStore} from "./order-local-store";
+import {Orders} from "../services/order.service";
 
 @Component({
   selector: 'inbox-app',
   providers: [HTTP_PROVIDERS],
-  templateUrl: 'app/inbox-app.html',
-  styleUrls: ['app/inbox-app.css'],
+  templateUrl: 'app/order/components/preview-order.component.html',
+  styleUrls: ['app/order/components/preview-order.component.css'],
   directives: [MATERIAL_DIRECTIVES],
   pipes: []
 })
 
 export class PreviewOrder {
+
+  leadId: string;
+  displayError = false;
+  displaySuccess = false;
+  errorMessage: string = "";
+  successMessage: string = "";
+
+  currentOrder: Order = new Order();
+  private response;
+
+  constructor(private orders: Orders,
+              params: RouteParams,
+              private _router: Router,
+              private orderLocalStore : OrderLocalStore) {
+    this.leadId = params.get('leadId');
+    this.currentOrder = orderLocalStore.order;
+  }
+
+  goToPrevious(){
+    this._router.navigate(['AddOtherDetails']);
+  }
+
+  cancelOrder(){
+    this._router.navigate(['AddItems']);
+    this.currentOrder.items = [];
+    for(var i in this.currentOrder.items){
+      this.currentOrder.items[i].qty = 0 ;
+    }
+  }
+
+  placeOrder(){
+    console.log(this.currentOrder);
+    this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);
+    this.successMessage = "Your order has been created.";
+    this.displaySuccess = true;
+    /*this.orders.getAllOrdersFunction();*/
+  }
 
 }

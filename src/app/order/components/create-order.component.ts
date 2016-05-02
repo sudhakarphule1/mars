@@ -8,7 +8,6 @@ import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
 import {Order} from "../../model/order";
-import {Task} from "../../model/task";
 
 import {AddItems} from "./add-items.component";
 import {PreviewItems} from "./preview-items.component";
@@ -25,10 +24,10 @@ import {OrderLocalStore} from "./order-local-store";
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 @RouteConfig([
-   new Route({ path: '/addItems', component: AddItems, name: 'AddItems', useAsDefault: true}),
-   new Route({ path: '/previewItems', component: PreviewItems, name: 'PreviewItems'}),
-   new Route({ path: '/addOtherDetails', component: AddOtherDetails, name: 'AddOtherDetails'}),
-   new Route({ path: '/previewOrder', component: PreviewOrder, name: 'PreviewOrder'})
+  new Route({ path: '/addItems', component: AddItems, name: 'AddItems', useAsDefault: true}),
+  new Route({ path: '/previewItems', component: PreviewItems, name: 'PreviewItems'}),
+  new Route({ path: '/addOtherDetails', component: AddOtherDetails, name: 'AddOtherDetails'}),
+  new Route({ path: '/previewOrder', component: PreviewOrder, name: 'PreviewOrder'})
 ])
 
 export class CreateOrder {
@@ -46,31 +45,25 @@ export class CreateOrder {
   selectedDate2: string = '2016-04-01';
 
   leadId: string;
-  task: Task;
-  orderStage: string = "createOrder";
 
   currentOrder: Order = new Order();
 
   constructor(params: RouteParams, private orderLocalStore : OrderLocalStore) {
     this.leadId = params.get('leadId');
-    this.task = new Task();
-    this.task.assignedTo = "Swapnil";
-    this.task.priority = "High";
-    this.currentOrder.defaultTask = this.task;
+    this.currentOrder.defaultTask.assignedTo = "Swapnil";
+    this.currentOrder.defaultTask.priority = "High";
     orderLocalStore.order = this.currentOrder;
-    console.log(this.currentOrder);
-    console.log(orderLocalStore.order);
   }
 
   onDate1Changed(event) {
     console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-    this.task.assignedOn = new Date(event.formatted);
-    console.log("assigned on:" + this.task.assignedOn);
+    this.currentOrder.defaultTask.assignedOn = new Date(event.formatted);
+    console.log("assigned on:" + this.currentOrder.defaultTask.assignedOn);
   }
 
   onDate2Changed(event) {
     console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-    this.task.completeBy = new Date(event.formatted);
-    console.log(" complete by:" + this.task.completeBy);
+    this.currentOrder.defaultTask.completeBy = new Date(event.formatted);
+    console.log(" complete by:" + this.currentOrder.defaultTask.completeBy);
   }
 }
