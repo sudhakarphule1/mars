@@ -19,7 +19,7 @@ import {Order} from "../../model/order";
 })
 
 export class ViewOrder implements OnInit{
-  currentOrder : Order;
+  currentOrder : Order = new Order();
   message: string = "";
   orderState: string = "orderPreview";
   displayMessage: boolean = false;
@@ -27,13 +27,12 @@ export class ViewOrder implements OnInit{
   constructor(private orders: Orders, params: RouteParams)
   {
     this.id = params.get('orderId');
-    this.currentOrder = new Order();
+    /*this.currentOrder = new Order();*/
   }
 
   ngOnInit() {
     this.orders.getOrderById(this.id).subscribe(res => {
       this.currentOrder = res;
-      console.log(this.currentOrder.items);
     });
   }
 

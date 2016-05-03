@@ -36,27 +36,29 @@ export class Orders {
       .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance
-      .map((item: any) => {
+      .map((item: Array<any>) => {
         let order:Order = new Order();
-        if (item) {
+        let result:Array<Order> = [];
+        if (item)
+        {
           var defaultTask : Task = new Task();
-          defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
-          defaultTask.assignedTo = item.defaultTask.assignedTo;
-          defaultTask.status = item.defaultTask.status;
-          defaultTask.completeBy = new Date(item.defaultTask.completeBy);
-          defaultTask.priority = item.defaultTask.priority;
+          defaultTask.assignedOn = new Date(item[0].defaultTask.assignedOn);
+          defaultTask.assignedTo = item[0].defaultTask.assignedTo;
+          defaultTask.status = item[0].defaultTask.status;
+          defaultTask.completeBy = new Date(item[0].defaultTask.completeBy);
+          defaultTask.priority = item[0].defaultTask.priority;
 
           //var order = new Order();
-          order.id = item._id;
-          order.remarks = item.remarks;
-          order.contactPerson = item.contactPerson;
-          order.shippingAddress = item.shippingAddress;
-          order.billingAddress = item.billingAddress;
-          order.items = item.items;
-          order.contactNumber = item.contactNumber;
-          order.orderDate = new Date(item.orderDate);
-          order.completionDate = new Date(item.completionDate);
-          order.fromCompany = item.fromCompany;
+          order.id = item[0]._id;
+          order.remarks = item[0].remarks;
+          order.contactPerson = item[0].contactPerson;
+          order.shippingAddress = item[0].shippingAddress;
+          order.billingAddress = item[0].billingAddress;
+          order.items = item[0].items;
+          order.contactNumber = item[0].contactNumber;
+          order.orderDate = new Date(item[0].orderDate);
+          order.completionDate = new Date(item[0].completionDate);
+          order.fromCompany = item[0].fromCompany;
           order.defaultTask = defaultTask;
 
           //result.push(order);

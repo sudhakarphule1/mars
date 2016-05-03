@@ -1,7 +1,8 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {TimeAgoPipe} from "angular2-moment/TimeAgoPipe";
 import {EmailService} from "./../../order/services/email.service"
+import {Email} from "../../model/email";
 /*import {EmailModel} from "./../../model/email"*/
 /*import {LeftNavigation} from "./../../share/components/left.navigation.component";*/
 
@@ -14,10 +15,9 @@ import {EmailService} from "./../../order/services/email.service"
   inputs: ['email','isDisabled']
 })
 export class EmailCompactView {
-  email;
-  isPending = true;
-  isInProgress = false;
-  isComplete = false;
+  @Input() email:Email;
+  @Input() selected:string;
+
   showDetails = false;
   replyText: string = "";
   reply :Boolean = false;

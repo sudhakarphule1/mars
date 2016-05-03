@@ -1,6 +1,3 @@
-/**
- * Created by chetan on 27/4/16.
- */
 import {Component} from 'angular2/core';
 import {Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams, Router} from 'angular2/router';
 import {FORM_DIRECTIVES} from "angular2/common";

@@ -1,5 +1,6 @@
-import {Component} from 'angular2/core';
-
+import {Component, Input} from 'angular2/core';
+import {NgClass} from 'angular2/common';
+import {Order} from "../../model/order";
 
 @Component({
   selector: 'ib-order-compact-view',
@@ -8,7 +9,9 @@ import {Component} from 'angular2/core';
   inputs: ['order']
 })
 export class OrderCompactView{
-  order;
+  @Input() order: Order;
+  @Input() selected:string;
+
   isPending = true;
   isInProgress = false;
   isComplete = false;

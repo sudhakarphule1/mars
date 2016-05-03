@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from 'angular2/core';
+import {Component, OnInit, OnDestroy, AfterViewInit, AfterContentChecked} from 'angular2/core';
 import {AudioDataProvider} from "./data-providers/audio-data-provider";
 import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
@@ -24,25 +24,17 @@ import {EmailService} from '../order/services/email.service';
 })
 @RouteConfig([
   new Route({ path: '/createorder/...', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
-  new Route({ path: '/previeworder', component: ViewOrder, name: 'ViewOrder'})
+  new Route({ path: '/vieworder', component: ViewOrder, name: 'ViewOrder'})
 ])
 
 export class Inbox implements OnInit, OnDestroy {
-  errorMessage: string;
   showDetails: boolean = false;
   showHistory: boolean = false;
   filterBy: string = '';
   itemList : Array<InboxItem>;
   subscription:Subscription;
 
-  selected : string;
-  select( selected : string){
-    this.selected = selected;
-    console.log("selected value is  = "+selected);
-  }
-  constructor(private orderService: Orders,
-              private emailService: EmailService,
-              private audioService: AudioDataProvider,
+  constructor(private audioService: AudioDataProvider,
               params: RouteParams,
               private orders: Orders,
               private emails: EmailService,
@@ -54,19 +46,19 @@ export class Inbox implements OnInit, OnDestroy {
       }
     );
     this.showHistory = Boolean(params.get('showHistory'));
+    console.log(this.itemList);
   }
 
   ngOnInit() {
     if(!this.showHistory){
     this.itemList = new Array<InboxItem>();
-/*    this.getItemList(this.orderService);
-    this.getItemList(this.emailService);
-    this.getItemList(this.audioService);*/
-      this.orders.getAllOrders().subscribe(items => this.itemList = this.itemList.concat(items));
+      this.orders.getAllOrders().subscribe(items => {
+        this.itemList = this.itemList.concat(items);
+        //this.navigateTo(this.itemList[0]);
+      }
+    );
       this.emails.getAllEmails().subscribe(items => this.itemList = this.itemList.concat(items));
       this.audioService.getAll().subscribe(items => this.itemList = this.itemList.concat(items));
-      /*
-      this.orders.getAllOrders().subscribe(items => this.itemList = this.itemList.concat(items));*/
     }
     else if (this.showHistory === true){
       this.itemList = new Array<InboxItem>();
@@ -80,22 +72,12 @@ export class Inbox implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-/*  getItemList() {
-    getAll()
-      .subscribe(
-        items => this.itemList = this.itemList.concat(items));
-  }*/
-
-  selectedItem: string;
-
-  displayDetails(item) {
-    this.selectedItem = item;
-  };
-
+  selected : string;
   navigateTo(item: InboxItem) {
+    this.selected = item.id;
     let link;
     if( item.type == 'Order' ) {
-      link = ['PreviewOrder', { orderId: item.id }];
+      link = ['ViewOrder', { orderId: item.id }];
     } else {
       link = ['CreateOrder', { leadId: item.id }];
     }

@@ -1,4 +1,4 @@
-<md-list-item class="md-3-line">
+<md-list-item class="md-3-line" [class.active]="selected == order.id">
   <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
   <div class="client-section">
     <span><img src="app/inbox/images/mobile-app.png"> </span>

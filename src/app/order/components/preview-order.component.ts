@@ -46,6 +46,11 @@ export class PreviewOrder {
     }
   }
 
+/*  resetCurrentOrder(){
+    this.currentOrder.items = [];
+    this.currentOrder.shippingAddress.line1 = "";
+  }*/
+
   placeOrder(){
     console.log(this.currentOrder);
     this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);

@@ -1,6 +1,3 @@
-/**
- * Created by chetan on 27/4/16.
- */
 import {Component} from 'angular2/core';
 import {Orders} from '../services/order.service';
 import {Item} from "../../model/item";

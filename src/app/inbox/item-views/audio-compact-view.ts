@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 
 
 @Component({
@@ -8,11 +8,9 @@ import {Component} from 'angular2/core';
   styles: [ require('./list-view.scss') ],
 })
 export class AudioCompactView {
-  audioContent;
-  isPending = true;
-  isInProgress = false;
-  isComplete = false;
-
+  @Input() audioContent;
+  @Input() selected:string;
+  
   constructor() {
   }
 }
