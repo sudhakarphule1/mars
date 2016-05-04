@@ -12,6 +12,7 @@ import {HTTP_PROVIDERS}    from 'angular2/http';
 import {AudioDataProvider} from "./inbox/data-providers/audio-data-provider";
 import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
 import {SearchService} from './share/components/search.service';
+import {Login} from "./share/components/login.component";
 
 @Component({
   selector: 'inbox-app',
@@ -22,7 +23,8 @@ import {SearchService} from './share/components/search.service';
   pipes: []
 })
 @RouteConfig([
-  new Route({ path: '/inbox/...', component: Inbox, name: 'Inbox', useAsDefault: true}),
+  new Route({ path: '/login', component: Login, name: 'Login', useAsDefault: true}),
+  new Route({ path: '/inbox/...', component: Inbox, name: 'Inbox'}),
   new Route({ path: '/userAccount', component: UserAccount, name: 'UserAccount'}),
   new Route({ path: '/products', component: ProductMaster, name: 'Products'}),
   new Route({ path: '/customer', component: CustomerMaster, name: 'Customer'}),
