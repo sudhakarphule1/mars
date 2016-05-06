@@ -13,13 +13,15 @@ import {ViewOrder} from "../order/components/view-order.component.ts";
 import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
 import {EmailService} from '../order/services/email.service';
+import {OrderLocalStore} from "../order/components/order-local-store";
+/*import {link} from "fs";*/
 
 @Component({
   selector: 'ib-inbox',
   templateUrl: 'app/inbox/inbox.component.html',
   styles: [ require('./item-views/list-view.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
-  providers: [Orders, EmailService],
+  providers: [Orders, EmailService, OrderLocalStore],
   pipes:[InboxFilterPipe]
 })
 @RouteConfig([
@@ -37,6 +39,7 @@ export class Inbox implements OnInit, OnDestroy {
   constructor(private audioService: AudioDataProvider,
               params: RouteParams,
               private orders: Orders,
+              private orderLocalStore: OrderLocalStore,
               private emails: EmailService,
               private searchService: SearchService,
               private _router: Router) {
@@ -46,7 +49,6 @@ export class Inbox implements OnInit, OnDestroy {
       }
     );
     this.showHistory = Boolean(params.get('showHistory'));
-    console.log(this.itemList);
   }
 
   ngOnInit() {
@@ -75,6 +77,7 @@ export class Inbox implements OnInit, OnDestroy {
   selected : string;
   navigateTo(item: InboxItem) {
     this.selected = item.id;
+    this.orderLocalStore.inboxItem = item;
     let link;
     if( item.type == 'Order' ) {
       link = ['ViewOrder', { orderId: item.id }];

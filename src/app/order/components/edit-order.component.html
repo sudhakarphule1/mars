@@ -1,0 +1,187 @@
+<div class="orders">
+  <div>
+    <div class="order-details">
+
+      <div class="place-order">
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Company Name:</label>
+            <input [(ngModel)] = "currentOrder.fromCompany" >
+          </div>
+        </div>
+
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Remarks:</label>
+            <input [(ngModel)] = "currentOrder.remarks" >
+          </div>
+        </div>
+
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Contact Person:</label>
+            <input [(ngModel)] = "currentOrder.contactPerson" >
+          </div>
+        </div>
+
+        <div layout-gt-sm="column">
+          <div class="md-block" flex="100" layout-padding layout="row">
+            <label flex="35">Contact Number:</label>
+            <input [(ngModel)] = "currentOrder.contactNumber" >
+          </div>
+        </div>
+        <div class="tableClass edit-order" layout-padding>
+          <h4>Shipping Address</h4>
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Line1</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.line1" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Line2</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.line2" >
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Pincode</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.city" >
+              </md-input-container>
+            </div>
+          </div>
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.state" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Country</label>
+                <input [(ngModel)] = "currentOrder.shippingAddress.country" >
+              </md-input-container>
+            </div>
+          </div>
+
+          <h4>Billing Address
+          </h4>
+
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label >Line1</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.line1" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Line2</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.line2" >
+              </md-input-container>
+            </div>
+          </div>
+
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Pincode</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.pinCode" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.city" >
+              </md-input-container>
+            </div>
+          </div>
+
+          <div layout-gt-sm="row" >
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.state" >
+              </md-input-container>
+            </div>
+            <div layout-gt-sm="row" flex="50">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Country</label>
+                <input [(ngModel)] = "currentOrder.billingAddress.country" >
+              </md-input-container>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <div layout="row" layout-wrap class="row-title">
+            <div flex="35">
+              Product
+            </div>
+            <div class="content-center1" flex="20">
+              Variant
+            </div>
+            <div class="content-center1" flex="20">
+              Quantity
+            </div>
+            <div class="content-center" flex="20">
+              Action
+            </div>
+          </div>
+          <div *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list" layout="row">
+
+            <div flex="35">
+              <h4 layout-margin>{{item.name}}</h4>
+              <h4 layout-margin>{{item.detail}}</h4>
+            </div>
+
+            <div flex="20">
+              {{item.variant}}
+            </div>
+
+            <div flex="20">
+              <div class="add-item" *ngIf="item.availability == 'Available'">
+                <button type='submit'
+                        class='qtyminus'
+                        (click)="item.qty=item.qty-1"
+                        [disabled]="item.qty == 0">-</button>
+                <input type='number'
+                       [(ngModel)]="item.qty"
+                       class='qty'>
+                <button type='submit'
+                        class='qtyplus'
+                        (click)="item.qty=item.qty+1">+</button>
+              </div>
+            </div>
+
+            <div class="content-center remove-button" flex="20">
+              <button md-raised-button class="md-raised md-warn" (click)="removeItem(item)">
+                <img src="app/order/images/ic_close.svg" />
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div layout-padding *ngIf="displayMessage == true">{{ message }}</div>
+  <button md-raised-button class="button md-raised md-primary"
+          (click)="orderState = 'orderPreview'">Cancel</button>
+  <button md-raised-button class="button md-raised md-primary"
+          (click)="editOrder()">Confirm</button>
+  </div>

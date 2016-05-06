@@ -17,7 +17,7 @@ import {OrderLocalStore} from "./order-local-store";
   selector: 'ib-create-order',
   templateUrl: 'app/order/components/create-order.component.html',
   styleUrls: ['app/order/components/create-order.component.css'],
-  providers: [HTTP_PROVIDERS, Orders, OrderLocalStore],
+  providers: [HTTP_PROVIDERS, Orders],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 @RouteConfig([

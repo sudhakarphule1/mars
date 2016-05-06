@@ -22,7 +22,6 @@ import {OrderLocalStore} from "./order-local-store";
 
 export class AddItems {
 
-
   leadId: string;
   items : Array<Item>;
   orderStage: string = "createOrder";
@@ -32,15 +31,18 @@ export class AddItems {
   errorMessage: string = "";
 
   currentOrder: Order;
+  oldOrders: Array<Order>;
+  private inboxItem;
 
   constructor(private _router: Router,
               private orders: Orders, params: RouteParams,
               private searchService: SearchService,
-              private orderLocalStore : OrderLocalStore) {
+              public orderLocalStore : OrderLocalStore) {
     this.leadId = params.get('leadId');
     orders.getAllProducts().subscribe(res => this.items = res);
     this.currentOrder = orderLocalStore.order;
-    console.log(this.currentOrder);
+/*    this.inboxItem = orderLocalStore.inboxItem;
+    console.log(this.inboxItem);*/
   }
 
   createOrder(){
@@ -59,5 +61,13 @@ export class AddItems {
       this.displayError = false;
       this._router.navigate(['PreviewItems']);
     }
+  }
+
+  viewHistory(){
+    this.inboxItem = this.orderLocalStore.inboxItem;
+    console.log(this.inboxItem);
+    this.orders.getLastOrder("Completed", this.inboxItem.fromCompany)
+      .subscribe(res => this.orderLocalStore.order = res[0]);
+    this._router.navigate(['PreviewItems']);
   }
 }
