@@ -1,6 +1,8 @@
+import {User} from "./user";
+
 export class Task {
   assignedOn:Date;
-  assignedTo:string;
+  assignedTo:User;
   status:string;
   priority:string;
   completeBy:Date;

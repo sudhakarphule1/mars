@@ -11,6 +11,7 @@ import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
 import {Task} from "../../model/task";
 import {Email} from "../../model/email";
+import {User} from "../../model/user";
 
 @Injectable()
 export class EmailService {
@@ -46,13 +47,19 @@ export class EmailService {
         let result:Array<Email> = [];
         if (arrayList) {
           arrayList.forEach((item) => {
+            console.log(item);
             var defaultTask : Task = new Task();
             defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
-            defaultTask.assignedTo = item.defaultTask.assignedTo;
+            defaultTask.assignedTo = new User();
+            defaultTask.assignedTo._id = item.defaultTask.assignedTo._id;
+            defaultTask.assignedTo.firstName = item.defaultTask.assignedTo.firstName;
+            defaultTask.assignedTo.lastName = item.defaultTask.assignedTo.lastName;
             defaultTask.status = item.defaultTask.status;
             defaultTask.completeBy = new Date(item.defaultTask.completeBy);
             defaultTask.priority = item.defaultTask.priority;
 
+            console.log(item.defaultTask.assignedTo.firstName);
+            console.log(defaultTask.assignedTo.firstName);
             var email = new Email();
             email.id = item._id;
             email.html = item.html;
