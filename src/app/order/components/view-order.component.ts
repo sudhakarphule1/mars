@@ -24,6 +24,7 @@ export class ViewOrder implements OnInit{
   message: string = "";
   orderState: string = "orderPreview";
   displayMessage: boolean = false;
+  editOrder: boolean = false;
   id: string;
   constructor(private orders: Orders,
               private orderLocalStore: OrderLocalStore,

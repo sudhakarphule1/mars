@@ -72,7 +72,7 @@ export class Orders {
       });
   }
 
-  createOrder(value){
+  public createOrder(value){
     let params = JSON.stringify(value);
     console.log(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -81,7 +81,7 @@ export class Orders {
     return this.http.post(url, params,options);
   }
 
-  editOrder(value){
+  public editOrder(value){
     let params = JSON.stringify(value);
     console.log(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -90,7 +90,7 @@ export class Orders {
     return this.http.put(url, params,options).map((res) => res.json());
   }
 
-  deleteOrder(value: Array<any>){
+  public deleteOrder(value: Array<any>){
     let url = `app/order/services/myOrders.json`;
     return this.http.get(url).map((res) => res.json());
   }
@@ -131,68 +131,5 @@ export class Orders {
         return result;
       });
   }
-
-  /*public getOrderFunction(value){
-    let url = `http://localhost:5000/orders?_id=` + value;
-    /!*return this.http.get(url).map((res) => res.json());*!/
-    return this.http.get(url)
-      // initial transform - result to json
-      .map(res => res.json())
-      // next transform - each element in the
-      // array to a Typed class instance
-      .map((item: any) => {
-        let order:Order = new Order();
-        if (item) {
-          var defaultTask : Task = new Task();
-          defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
-          defaultTask.assignedTo = item.defaultTask.assignedTo;
-          defaultTask.status = item.defaultTask.status;
-          defaultTask.completeBy = new Date(item.defaultTask.completeBy);
-          defaultTask.priority = item.defaultTask.priority;
-
-          //var order = new Order();
-          order.id = item._id;
-          order.remarks = item.remarks;
-          order.contactPerson = item.contactPerson;
-          order.shippingAddress = item.shippingAddress;
-          order.billingAddress = item.billingAddress;
-          order.items = item.items;
-          order.contactNumber = item.contactNumber;
-          order.orderDate = new Date(item.orderDate);
-          order.completionDate = new Date(item.completionDate);
-          order.fromCompany = item.fromCompany;
-          order.defaultTask = defaultTask;
-
-          //result.push(order);
-        }
-        return order;
-      });
-  }*/
-
-/*
-  public createOrderFunction(value){
-
-    let params = JSON.stringify(value);
-    console.log(params);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/orders`;
-    return this.http.post(url, params,options).map((res) => res.json());
-  }*/
-/*
-  public editOrderFunction(value){
-
-    let params = JSON.stringify(value);
-    console.log(params);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/orders/` + value.id;
-    return this.http.put(url, params,options).map((res) => res.json());
-  }*/
-/*
-  public deleteOrderFunction(value){
-    let url = `app/order/services/myOrders.json`;
-    return this.http.get(url).map((res) => res.json());
-  }*/
 
 }

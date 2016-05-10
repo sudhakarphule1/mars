@@ -8,10 +8,6 @@ export class Task {
   completeBy:Date;
 
   constructor() {
-    /*this.assignedOn = assignedOn;
-    this.assignedTo = assignedTo;
-    this.status = status;
-    this.completeBy = completeBy;
-    this.priority = priority;*/
+    this.assignedTo = new User;
   }
 }

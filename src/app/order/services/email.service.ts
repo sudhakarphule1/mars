@@ -47,7 +47,6 @@ export class EmailService {
         let result:Array<Email> = [];
         if (arrayList) {
           arrayList.forEach((item) => {
-            console.log(item);
             var defaultTask : Task = new Task();
             defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
             defaultTask.assignedTo = new User();
@@ -58,8 +57,6 @@ export class EmailService {
             defaultTask.completeBy = new Date(item.defaultTask.completeBy);
             defaultTask.priority = item.defaultTask.priority;
 
-            console.log(item.defaultTask.assignedTo.firstName);
-            console.log(defaultTask.assignedTo.firstName);
             var email = new Email();
             email.id = item._id;
             email.html = item.html;

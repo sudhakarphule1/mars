@@ -1,0 +1,69 @@
+/**
+ * Created by chetan on 8/3/16.
+ */
+import {Injectable} from 'angular2/core';
+import {Http} from 'angular2/http';
+import 'rxjs/add/operator/map';
+import {Headers} from "angular2/http";
+import {RequestOptions} from "angular2/http";
+import {Order} from "../../model/order";
+import {Task} from "../../model/task";
+import {User} from "../../model/user";
+
+@Injectable()
+export class SharedServices {
+  constructor(private http: Http){}
+
+  public getAllUsers(){
+    let url = `http://localhost:5000/user`;
+    return this.http.get(url).map((res) => res.json());
+  }
+
+  public getUserById(value){
+/*    let url = `http://localhost:5000/orders?_id=` + value;
+    /!*return this.getOrdersObjectFunction(url);*!/
+    return this.http.get(url)
+      // initial transform - result to json
+      .map(res => res.json())
+      // next transform - each element in the
+      // array to a Typed class instance
+      .map((item: Array<any>) => {
+        let order:Order = new Order();
+        let result:Array<Order> = [];
+        if (item)
+        {
+          var defaultTask : Task = new Task();
+          defaultTask.assignedOn = new Date(item[0].defaultTask.assignedOn);
+          defaultTask.assignedTo = item[0].defaultTask.assignedTo;
+          defaultTask.status = item[0].defaultTask.status;
+          defaultTask.completeBy = new Date(item[0].defaultTask.completeBy);
+          defaultTask.priority = item[0].defaultTask.priority;
+
+          //var order = new Order();
+          order.id = item[0]._id;
+          order.remarks = item[0].remarks;
+          order.contactPerson = item[0].contactPerson;
+          order.shippingAddress = item[0].shippingAddress;
+          order.billingAddress = item[0].billingAddress;
+          order.items = item[0].items;
+          order.contactNumber = item[0].contactNumber;
+          order.orderDate = new Date(item[0].orderDate);
+          order.completionDate = new Date(item[0].completionDate);
+          order.fromCompany = item[0].fromCompany;
+          order.defaultTask = defaultTask;
+
+          //result.push(order);
+        }
+        return order;
+      });*/
+  }
+
+  createUser(value){
+    let params = JSON.stringify(value);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/user`;
+    return this.http.post(url, params,options);
+  }
+
+}

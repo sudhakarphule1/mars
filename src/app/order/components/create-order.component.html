@@ -4,9 +4,9 @@
     <div flex>
       <md-list layout="column">
         <md-list-item class="md-3-line col-order-detail">
-          <img src="app/share/images/avtars/{{currentOrder.defaultTask.assignedTo}}.jpg" class="md-avatar" >
+          <img src="app/share/images/avtars/{{currentOrder.defaultTask.assignedTo.firstName}}.jpg" class="md-avatar" >
           <div class="md-list-item-text">
-            <h2 *ngIf="orderStage === 'createOrder'">Create Order</h2>
+            <h2>Create Order</h2>
             <h2 *ngIf="orderStage === 'preview'">Preview Items</h2>
             <h2 *ngIf="orderStage === 'basicDetails'">Enter Other Details</h2>
             <h2 *ngIf="orderStage === 'fullPreview'">Order Details</h2>
@@ -36,12 +36,13 @@
     <div flex class="assigned-select" flex="40">
       <label flex="100" layout="column">Assigned to :</label>
       <md-input-container class="md-block" flex-gt-sm flex>
-        <select [(ngModel)]="currentOrder.defaultTask.assignedTo">
-          <option>Swapnil</option>
+        <select  [(ngModel)]="currentOrder.defaultTask.assignedTo._id" (ngModelChange)="onChange($event)">
+          <option *ngFor="#user of allUsers" [value]="user._id">{{user.firstName}}</option>
+<!--          <option>Swapnil</option>
           <option>Waqar</option>
           <option>Chetan</option>
           <option>Parag</option>
-          <option>Sudhakar</option>
+          <option>Sudhakar</option>-->
         </select>
       </md-input-container>
       <img src="app/order/images/chat-box.svg" class="chat-icon" >

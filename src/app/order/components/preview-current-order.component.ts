@@ -18,6 +18,7 @@ export class PreviewCurrentItems{
   /*currentOrder : Order = new Order();*/
   @Input() currentOrder: Order;
   message: string = "";
+  editOrder: boolean = false;
   displayMessage: boolean = false;
   constructor(private orders: Orders,
               private orderLocalStore: OrderLocalStore) {

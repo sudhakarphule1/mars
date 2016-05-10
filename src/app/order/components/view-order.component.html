@@ -75,5 +75,5 @@
 
   <or-order-header [currentOrder]="currentOrder"></or-order-header>
   <or-preview-current-order [currentOrder]="currentOrder"></or-preview-current-order>
-  <or-edit-order [currentOrder]="currentOrder"></or-edit-order>
+  <or-edit-order *ngIf="editOrder" [currentOrder]="currentOrder"></or-edit-order>
 </div>
