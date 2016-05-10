@@ -67,11 +67,10 @@ export class CreateOrder implements OnInit{
 
   onChange(value){
     for(var i in this.allUsers){
-        if (this.allUsers[i]._id === this.currentOrder.defaultTask.assignedTo._id){
-          this.currentOrder.defaultTask.assignedTo = this.allUsers[i];
+        if (this.allUsers[i].firstName === this.currentOrder.defaultTask.assignedTo.firstName){
+          this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
         };
     }
-    console.log(this.currentOrder.defaultTask.assignedTo);
   }
 
   onDate2Changed(event) {

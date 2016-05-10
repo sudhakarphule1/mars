@@ -1,6 +1,5 @@
 <div class="orders">
   <div class="order-details">
-
   <div class="place-order">
     <div layout-gt-sm="column">
       <div class="md-block" flex="100" layout-padding layout="row">
@@ -87,7 +86,7 @@
 
   <div layout-padding *ngIf="displayMessage == true">{{ message }}</div>
   <button md-raised-button class="button md-raised md-primary"
-          (click)="editOrder = true">Edit Order</button>
+          (click)="editOrder()">Edit Order</button>
   <button md-raised-button class="button md-raised md-primary"
-          (click)="editOrder()">Save Order</button>
+          (click)="saveOrder()">Save Order</button>
 </div>

@@ -3,7 +3,7 @@ import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {FORM_DIRECTIVES} from "angular2/common";
-import {RouteParams, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {OrderLocalStore} from "../components/order-local-store";
 
 import {Order} from "../../model/order";
@@ -23,8 +23,8 @@ export class ViewOrder implements OnInit{
   currentOrder : Order = new Order();
   message: string = "";
   orderState: string = "orderPreview";
+  editMode: boolean = false;
   displayMessage: boolean = false;
-  editOrder: boolean = false;
   id: string;
   constructor(private orders: Orders,
               private orderLocalStore: OrderLocalStore,
@@ -40,6 +40,7 @@ export class ViewOrder implements OnInit{
     });
   }
 
+/*
   editOrder(){
     this.orders.editOrder(this.currentOrder).subscribe(
       err => this.message = "Your order details have been successfully updated.",
@@ -55,5 +56,6 @@ export class ViewOrder implements OnInit{
       this.orderState = "orderPreview";
     }
   }
+*/
 
 }

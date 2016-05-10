@@ -74,6 +74,7 @@
 -->
 
   <or-order-header [currentOrder]="currentOrder"></or-order-header>
-  <or-preview-current-order [currentOrder]="currentOrder"></or-preview-current-order>
-  <or-edit-order *ngIf="editOrder" [currentOrder]="currentOrder"></or-edit-order>
+  <div>{{editMode}}</div>
+  <or-preview-current-order *ngIf="!editMode" [currentOrder]="currentOrder" [(editMode)]="editMode"></or-preview-current-order>
+  <or-edit-order *ngIf="editMode" [currentOrder]="currentOrder" [(editMode)]="editMode"></or-edit-order>
 </div>

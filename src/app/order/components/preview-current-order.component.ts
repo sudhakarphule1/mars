@@ -15,16 +15,24 @@ import {Order} from "../../model/order";
 })
 
 export class PreviewCurrentItems{
-  /*currentOrder : Order = new Order();*/
   @Input() currentOrder: Order;
+
   message: string = "";
-  editOrder: boolean = false;
+  @Input editMode: boolean;
   displayMessage: boolean = false;
-  constructor(private orders: Orders,
-              private orderLocalStore: OrderLocalStore) {
+  constructor(private orders: Orders) {
   }
 
   editOrder(){
+    this.editMode = true;
+/*    this.orders.editOrder(this.currentOrder).subscribe(
+      err => this.message = "Your order details have been successfully updated.",
+      () => this.message = "Your order details have been successfully updated."
+    );
+    this.displayMessage = true;*/
+  }
+
+  saveOrder(){
     this.orders.editOrder(this.currentOrder).subscribe(
       err => this.message = "Your order details have been successfully updated.",
       () => this.message = "Your order details have been successfully updated."

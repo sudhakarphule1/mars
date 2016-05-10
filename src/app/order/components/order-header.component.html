@@ -14,8 +14,14 @@
     <md-list layout="column" layout-align="end end">
       <md-list-item class="md-3-line col-order-detail">
         <div class="md-list-item-text">
-          <h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.assignedOn"/></h3>
-          <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.completeBy"/></h3>
+          <!--<h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.assignedOn"/></h3>
+          <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.completeBy"/></h3>-->
+          <h3>Order Date : <my-date-picker [options]="myDatePickerOptions"
+                                           (dateChanged)="onDate1Changed($event)"
+                                           [selDate]="selectedDate1"></my-date-picker></h3>
+          <h3>Delivery Date : <my-date-picker [options]="myDatePickerOptions"
+                                              (dateChanged)="onDate2Changed($event)"
+                                              [selDate]="selectedDate2"></my-date-picker></h3>
         </div>
       </md-list-item>
     </md-list>
@@ -26,11 +32,8 @@
   <div flex class="assigned-select" flex="40">
     <label flex="100" layout="column">Assigned to :</label>
     <md-input-container class="md-block" flex-gt-sm flex>
-      <select [(ngModel)]="currentOrder.defaultTask.assignedTo.firstName">
-        <option>Swapnil</option>
-        <option>Waqar</option>
-        <option>Chetan</option>
-        <option>Sudhakar</option>
+      <select  [(ngModel)]="currentOrder.defaultTask.assignedTo.firstName" (ngModelChange)="onChange($event)">
+        <option *ngFor="#user of allUsers" [value]="user.firstName">{{user.firstName}}</option>
       </select>
     </md-input-container>
     <img src="app/order/images/chat-box.svg" class="chat-icon" >

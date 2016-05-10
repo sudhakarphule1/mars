@@ -23,6 +23,7 @@ export class EditOrder {
   successMessage: string = "";
 
   @Input() currentOrder: Order;
+  @Input() editMode: boolean;
   private response;
 
   constructor(private orders: Orders,

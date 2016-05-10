@@ -17,21 +17,6 @@
   <p class="delivery-date ">Delivery by {{email.defaultTask.completeBy|date }}</p>
 </md-list-item>
 
-<!--<div *ngIf="showDetails == true">
-  <div layout="row" layout-xs="column">
-    <div flex>
-      <h3>Content </h3>
-      <div>{{ email.body}}</div>
-    </div>
-    <div flex>
-      <h3>Attachments</h3>
-      <iframe src="app/inbox/images/LicenseCertificate.pdf" style="width:100%; height:500px;" frameborder="0"></iframe>
-    </div>
-  </div>
-</div>-->
-
-
-
 <div *ngIf="showDetails == true">
   <md-tabs md-dynamic-height md-border-bottom>
     <template md-tab label="Content">
