@@ -19,7 +19,7 @@ export class Orders {
   }
 
   public getLastOrder(value1, value2){
-    let url = `http://localhost:5000/orders?defaultTask.status=` + value1 + `&fromCompany=` + value2;
+    let url = `http://localhost:5000/orders?fromCompany=` + value2;
     return this.http.get(url).map((res) => res.json());
   }
 

@@ -1,9 +1,7 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {Order} from "../../model/order";
-import {RouteParams, Router} from "angular2/router";
-import {Orders} from "../services/order.service";
 
 @Component({
   selector: 'or-edit-order',
@@ -16,38 +14,18 @@ import {Orders} from "../services/order.service";
 
 export class EditOrder {
 
-  leadId: string;
-  displayError = false;
-  displaySuccess = false;
-  errorMessage: string = "";
-  successMessage: string = "";
-
   @Input() currentOrder: Order;
-  @Input() editMode: boolean;
-  private response;
+  private edit: boolean = false;
 
-  constructor(private orders: Orders,
-              params: RouteParams,
-              private _router: Router) {
+  constructor() {
   }
 
-  goToPrevious(){
-    this._router.navigate(['AddOtherDetails']);
-  }
-
-  cancelOrder(){
-    this._router.navigate(['AddItems']);
-    this.currentOrder.items = [];
-    for(var i in this.currentOrder.items){
-      this.currentOrder.items[i].qty = 0 ;
+  removeItem(item){
+    var index = this.currentOrder.items.indexOf(item);
+    this.currentOrder.items.splice(index, 1);
+    if(this.currentOrder.items.length == 0){
+        /*this.edit = false;*/
     }
-  }
-
-  placeOrder(){
-    console.log(this.currentOrder);
-    this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);
-    this.successMessage = "Your order has been created.";
-    this.displaySuccess = true;
   }
 
 }

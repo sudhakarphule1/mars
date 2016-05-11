@@ -1,80 +1,45 @@
-<div class="orders">
 <!--
-  <div layout="row" layout-xs="column" class="right-top-section">
-    <div flex>
-      <md-list layout="column">
-        <md-list-item class="md-3-line col-order-detail">
-          <img src="app/share/images/avtars/{{currentOrder.defaultTask.assignedTo}}.jpg" class="md-avatar" >
-          <div class="md-list-item-text">
-            <h2>Order Details</h2>
-          </div>
-        </md-list-item>
-      </md-list>
-    </div>
-    <div flex>
-      <md-list layout="column" layout-align="end end">
-        <md-list-item class="md-3-line col-order-detail">
-          <div class="md-list-item-text">
-            <h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.assignedOn"/></h3>
-            <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.completeBy"/></h3>
-          </div>
-        </md-list-item>
-      </md-list>
-    </div>
+<div class="orders">
+  <or-order-header [currentOrder]="currentOrder"></or-order-header>
+  <or-preview-current-order *ngIf="!editMode" [currentOrder]="currentOrder" [editMode]="editMode" (editModeSet)="onEditModeChange($event)"></or-preview-current-order>
+
+  <div>
+  <div layout-padding *ngIf="displayMessage == true">{{ message }}</div>
+  <button md-raised-button class="button md-raised md-primary"
+          (click)="goToEditOrder()">Edit Order</button>
+  <button md-raised-button class="button md-raised md-primary"
+          (click)="saveOrder()">Save Order</button>
   </div>
 
-  <div layout="row" layout-xs="column" class="assigned-section">
-    <div flex class="assigned-select" flex="40">
-      <label flex="100" layout="column">Assigned to :</label>
-      <md-input-container class="md-block" flex-gt-sm flex>
-        <select [(ngModel)]="currentOrder.defaultTask.assignedTo">
-          <option>Swapnil</option>
-          <option>Waqar</option>
-          <option>Chetan</option>
-          <option>Parag</option>
-          <option>Sudhakar</option>
-        </select>
-      </md-input-container>
-      <img src="app/order/images/chat-box.svg" class="chat-icon" >
-    </div>
-
-    <div flex class="status-update">
-      <label flex="100" layout="column">Status :</label>
-      <div class="radio-btn">
-        <label class="control control&#45;&#45;checkbox">
-          <input value="Running Late" type="checkbox"
-                 (click)="currentOrder.defaultTask.status = 'Running Late'"
-                 [checked]="currentOrder.defaultTask.status == 'Running Late'">
-          <div class="control__indicator"></div>
-        </label>
-      </div>
-
-      <div class="radio-btn1">
-        <label class="control control&#45;&#45;checkbox">
-          <input value="Running Late" type="checkbox"
-                 (click)="currentOrder.defaultTask.status = 'In Progress'"
-                 [checked]="currentOrder.defaultTask.status == 'In Progress'">
-          <div class="control__indicator"></div>
-        </label>
-      </div>
-
-      <div class="radio-btn2">
-        <label class="control control&#45;&#45;checkbox">
-          <input value="Running Late" type="checkbox"
-                 (click)="currentOrder.defaultTask.status = 'Completed'"
-                 [checked]="currentOrder.defaultTask.status == 'Completed'">
-          <div class="control__indicator"></div>
-        </label>
-      </div>
-    </div>
-
-  </div>-->
-  <!--
-  <router-outlet></router-outlet>
+  <or-edit-order *ngIf="editMode" [currentOrder]="currentOrder" [(editMode)]="editMode" (editModeSet)="onEditModeChange($event)"></or-edit-order>
+  <div>
+    <div layout-padding *ngIf="displayMessage == true">{{ message }}</div>
+    <button md-raised-button class="button md-raised md-primary"
+            (click)="cancelEdit">Cancel</button>
+    <button md-raised-button class="button md-raised md-primary"
+            (click)="editOrder()">Confirm</button>
+  </div>
+</div>
 -->
 
+<div class="orders">
   <or-order-header [currentOrder]="currentOrder"></or-order-header>
-  <div>{{editMode}}</div>
-  <or-preview-current-order *ngIf="!editMode" [currentOrder]="currentOrder" [(editMode)]="editMode"></or-preview-current-order>
-  <or-edit-order *ngIf="editMode" [currentOrder]="currentOrder" [(editMode)]="editMode"></or-edit-order>
+  <or-preview-current-order *ngIf="!edit" [currentOrder]="currentOrder"></or-preview-current-order>
+
+  <div  *ngIf="!edit">
+    <div layout-padding *ngIf="displayMessage">{{ message }}</div>
+    <button md-raised-button class="button md-raised md-primary"
+            (click)="edit = true">Edit Order</button>
+    <button md-raised-button class="button md-raised md-primary"
+            (click)="editOrder()">Save Order</button>
+  </div>
+
+  <or-edit-order *ngIf="edit" [currentOrder]="currentOrder"></or-edit-order>
+  <div *ngIf="edit">
+    <div layout-padding *ngIf="displayMessage">{{ message }}</div>
+    <button md-raised-button class="button md-raised md-primary"
+            (click)="edit = false">Cancel</button>
+    <button md-raised-button class="button md-raised md-primary"
+            (click)="editOrder()">Confirm</button>
+  </div>
 </div>

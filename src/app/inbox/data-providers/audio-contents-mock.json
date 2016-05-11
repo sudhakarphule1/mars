@@ -17,7 +17,7 @@
     },
     {
       "id" : "2",
-      "fromCompany": "tcs",
+      "fromCompany": "hsbc",
       "from" : "admin.clerk@hsbc.com",
       "date" : "2016-03-21T09:03:49.285Z",
       "subject" : "Mrs Gupta from HSBC requested quote for these items",
@@ -47,7 +47,7 @@
     },
     {
       "id" : "4",
-      "fromCompany": "tcs",
+      "fromCompany": "hsbc",
       "from" : "admin.clerk@hsbc.com",
       "date" : "2016-03-21T09:03:49.285Z",
       "subject" : "Mrs Gupta from HSBC requested quote for these items",

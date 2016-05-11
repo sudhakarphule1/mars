@@ -35,13 +35,7 @@
       <label flex="100" layout="column">Assigned to :</label>
       <md-input-container class="md-block" flex-gt-sm flex>
         <select  [(ngModel)]="currentOrder.defaultTask.assignedTo.firstName" (ngModelChange)="onChange($event)">
-          <!--<option [value]="">Select Assignee</option>-->
         <option *ngFor="#user of allUsers" [value]="user.firstName">{{user.firstName}}</option>
-<!--          <option>Swapnil</option>
-          <option>Waqar</option>
-          <option>Chetan</option>
-          <option>Parag</option>
-          <option>Sudhakar</option>-->
         </select>
       </md-input-container>
       <img src="app/order/images/chat-box.svg" class="chat-icon" >

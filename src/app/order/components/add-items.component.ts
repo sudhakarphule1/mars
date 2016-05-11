@@ -41,8 +41,6 @@ export class AddItems {
     this.leadId = params.get('leadId');
     orders.getAllProducts().subscribe(res => this.items = res);
     this.currentOrder = orderLocalStore.order;
-/*    this.inboxItem = orderLocalStore.inboxItem;
-    console.log(this.inboxItem);*/
   }
 
   createOrder(){
@@ -67,7 +65,12 @@ export class AddItems {
     this.inboxItem = this.orderLocalStore.inboxItem;
     console.log(this.inboxItem);
     this.orders.getLastOrder("Completed", this.inboxItem.fromCompany)
-      .subscribe(res => this.orderLocalStore.order = res[0]);
-    this._router.navigate(['PreviewItems']);
+      .subscribe(res => {
+        this.orderLocalStore.order = res[0];
+        console.log(this.orderLocalStore.order);
+        this._router.parent.navigate(['ViewOrder', { orderId: this.orderLocalStore.order._id, cloneOrder: true }])
+      });
+    ;
   }
+
 }
