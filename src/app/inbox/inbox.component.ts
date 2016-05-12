@@ -14,7 +14,6 @@ import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
 import {EmailService} from '../order/services/email.service';
 import {OrderLocalStore} from "../order/components/order-local-store";
-/*import {link} from "fs";*/
 
 @Component({
   selector: 'ib-inbox',
