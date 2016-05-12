@@ -19,7 +19,7 @@ export class Orders {
   }
 
   public getLastOrder(value1, value2){
-    let url = `http://localhost:5000/orders?fromCompany=` + value2;
+    let url = `http://localhost:5000/orders?fromCompany=` + value2 + `&sendLastOrder=true`;
     return this.http.get(url).map((res) => res.json());
   }
 
@@ -86,7 +86,7 @@ export class Orders {
     console.log(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/orders/` + value.id;
+    let url = `http://localhost:5000/orders?_id=` + value.id;
     return this.http.put(url, params,options).map((res) => res.json());
   }
 
