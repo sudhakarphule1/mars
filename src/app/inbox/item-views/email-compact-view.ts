@@ -36,7 +36,7 @@ export class EmailCompactView {
       "subject": this.email.subject,
       "text": this.replyText,
       /*"html": "Hello world ",*/
-      "replyTo": this.email.messageId,
+      "replyTo": this.email.from[0].address,
       "inReplyTo" : this.email.messageId,
       "references": [this.email.messageId],
       "date": new Date(),

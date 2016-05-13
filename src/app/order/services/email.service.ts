@@ -19,7 +19,7 @@ export class EmailService {
 
 
   public getAllEmails(){
-    let url = `http://localhost:5000/emails`;
+    let url = `http://localhost:5000/emails?access_token=`+localStorage.getItem("access_token");
     return this.getEmailObjectFunction(url);
   }
 
@@ -43,7 +43,11 @@ export class EmailService {
       .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance
-      .map((arrayList: Array<any>) => {
+      .map((data) => {
+        var arrayList: Array<any> = data.result;
+
+        localStorage.setItem("access_token", data.access_token);
+        /*console.log(data.access_token);*/
         let result:Array<Email> = [];
         if (arrayList) {
           arrayList.forEach((item) => {
