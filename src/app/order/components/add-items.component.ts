@@ -69,7 +69,7 @@ export class AddItems {
       .subscribe(res => {
         this.orderLocalStore.order = res[0];
         console.log(this.orderLocalStore.order);
-        this._router.parent.navigate(['ViewOrder', { orderId: this.orderLocalStore.order._id, cloneOrder: true }])
+        this._router.parent.navigate(['ViewOrder', { orderId: this.orderLocalStore.order.id, cloneOrder: true }])
       });
     ;
   }
