@@ -35,7 +35,8 @@ export class AddItems {
   private inboxItem;
 
   constructor(private _router: Router,
-              private orders: Orders, params: RouteParams,
+              private orders: Orders,
+              params: RouteParams,
               private searchService: SearchService,
               public orderLocalStore : OrderLocalStore) {
     this.leadId = params.get('leadId');

@@ -24,13 +24,17 @@ export class ViewOrder implements OnInit{
   message: string = "";
   edit: boolean = false;
   displayMessage: boolean = false;
+  saveOrder: boolean = false;
   id: string;
   response;
+  cloneOrder: string = '';
 
   constructor(private orders: Orders,
               private orderLocalStore: OrderLocalStore,
               params: RouteParams) {
     this.id = params.get('orderId');
+    this.cloneOrder = params.get('cloneOrder');
+    console.log(this.cloneOrder);
   }
 
   ngOnInit() {
@@ -46,6 +50,13 @@ export class ViewOrder implements OnInit{
       err => this.message = "Your order details have been successfully updated.",
       () => this.message = "Your order details have been successfully updated."
     );
+    this.displayMessage = true;
+  }
+
+  createOrder(){
+    console.log(this.currentOrder);
+    this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);
+    this.message = "Your order has been created.";
     this.displayMessage = true;
   }
 }

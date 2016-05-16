@@ -24,17 +24,19 @@
 
 <div class="orders">
   <or-order-header [currentOrder]="currentOrder"></or-order-header>
-  <or-preview-current-order *ngIf="!edit" [currentOrder]="currentOrder"></or-preview-current-order>
+  <or-preview-current-order *ngIf="!edit && !saveOrder" [currentOrder]="currentOrder" [cloneOrder]="cloneOrder"></or-preview-current-order>
 
-  <div  *ngIf="!edit">
+  <div *ngIf="!edit">
     <div layout-padding *ngIf="displayMessage">{{ message }}</div>
-    <button md-raised-button class="button md-raised md-primary"
+    <button *ngIf="!cloneOrder" md-raised-button class="button md-raised md-primary"
             (click)="edit = true">Edit Order</button>
-    <button md-raised-button class="button md-raised md-primary"
+    <button *ngIf="!cloneOrder" md-raised-button class="button md-raised md-primary"
             (click)="editOrder()">Save Order</button>
+    <button *ngIf="cloneOrder && !saveOrder" md-raised-button class="button md-raised md-primary"
+            (click)="saveOrder = true">Create Similar Order</button>
   </div>
 
-  <or-edit-order *ngIf="edit" [currentOrder]="currentOrder"></or-edit-order>
+  <or-edit-order *ngIf="edit || saveOrder" [currentOrder]="currentOrder"></or-edit-order>
   <div *ngIf="edit">
     <div layout-padding *ngIf="displayMessage">{{ message }}</div>
     <button md-raised-button class="button md-raised md-primary"
@@ -42,4 +44,11 @@
     <button md-raised-button class="button md-raised md-primary"
             (click)="editOrder()">Confirm</button>
   </div>
+
+  <div *ngIf="saveOrder">
+    <div layout-padding *ngIf="displayMessage">{{ message }}</div>
+    <button md-raised-button class="button md-raised md-primary"
+            (click)="createOrder()">Save</button>
+  </div>
+
 </div>

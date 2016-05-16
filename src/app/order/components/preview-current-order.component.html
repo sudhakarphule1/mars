@@ -1,6 +1,34 @@
 <div class="orders">
   <div class="order-details">
   <div class="place-order">
+
+    <div class="order-details">
+      <div layout="row" layout-wrap class="row-title">
+        <div flex="50">
+          Product
+        </div>
+        <div class="content-center1" flex="30">
+          Variant
+        </div>
+        <div class="content-center1" flex="20">
+          Quantity
+        </div>
+      </div>
+
+      <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
+        <div flex="50">
+          <h4>{{item.name}}</h4>
+          <h4>{{item.detail}}</h4>
+        </div>
+        <div flex="30">
+          {{item.variant}}
+        </div>
+        <div flex="20">
+          {{item.qty}}
+        </div>
+      </div>
+    </div>
+
     <div layout-gt-sm="column">
       <div class="md-block" flex="100" layout-padding layout="row">
         <label flex="35">Company Name:</label>
@@ -9,10 +37,6 @@
     </div>
 
     <div layout-gt-sm="column">
-      <div class="md-block" flex="100" layout-padding layout="row">
-        <label flex="35">Completion Date:</label>
-        <h3 flex="65">{{currentOrder.completionDate | date}}</h3>
-      </div>
       <div class="md-block" flex="100" layout-padding layout="row">
         <label flex="35">Remarks:</label>
         <h3 flex="65">{{currentOrder.remarks}}</h3>
@@ -54,32 +78,6 @@
       </div>
     </div>
 
-    <div class="order-details">
-      <div layout="row" layout-wrap class="row-title">
-        <div flex="50">
-          Product
-        </div>
-        <div class="content-center1" flex="30">
-          Variant
-        </div>
-        <div class="content-center1" flex="20">
-          Quantity
-        </div>
-      </div>
-
-      <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
-        <div flex="50">
-          <h4>{{item.name}}</h4>
-          <h4>{{item.detail}}</h4>
-        </div>
-        <div flex="30">
-          {{item.variant}}
-        </div>
-        <div flex="20">
-          {{item.qty}}
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 </div>
