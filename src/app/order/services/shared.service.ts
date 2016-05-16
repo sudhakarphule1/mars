@@ -15,7 +15,7 @@ export class SharedServices {
   constructor(private http: Http){}
 
   public getAllUsers(){
-    let url = `http://localhost:5000/user`;
+    let url = `http://localhost:5000/user?access_token=`+localStorage.getItem("access_token");
     return this.http.get(url).map((res) => res.json());
   }
 
@@ -63,6 +63,13 @@ export class SharedServices {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let url = `http://localhost:5000/user`;
+    return this.http.post(url, params,options);
+  }
+  public userLogin(value){
+    let params = JSON.stringify(value);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/user/login`;
     return this.http.post(url, params,options);
   }
 

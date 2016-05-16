@@ -24,8 +24,8 @@
                     <label class="sr-only control-label" for="user_email_address">Username</label>
                     <input class="form-control"
                            type="email"
-                           value=""
                            name="email"
+                           [(ngModel)]="userName"
                            id="user_email_address"
                            required>
                   </div>
@@ -37,6 +37,7 @@
                              type="password"
                              style="margin-top: 40px"
                              name="password"
+                             [(ngModel)]="password"
                              id="user_current_password"
                              required>
                       <div class="row form-help-row">
