@@ -14,8 +14,21 @@ export class Orders {
   constructor(private http: Http){}
 
   public getAllProducts(){
-    let url = `app/order/services/myProducts.json`;
-    return this.http.get(url).map((res) => res.json());
+    /*let url = `app/order/services/myProducts.json`;
+    return this.http.get(url).map((res) => res.json());*/
+    let url = `http://localhost:5000/product?access_token=`+localStorage.getItem("access_token");
+    return this.http.get(url).map((res) => res.json()).map((data) => {
+      localStorage.setItem("access_token", data.access_token);
+      /*console.log(data.result);*/
+      let result:Array<Order> = [];
+      if (data.result) {
+        data.result.forEach((item) => {
+          item.qty = 0;
+          result.push(item);
+        });
+      }
+      return result;
+    });
   }
 
   public getLastOrder(value1, value2){

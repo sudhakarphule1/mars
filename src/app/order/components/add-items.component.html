@@ -20,7 +20,7 @@
           <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
         </div>
         <div class="content-center add-item" flex="20">
-          <div *ngIf="item.availability == 'Available'">
+          <div *ngIf="item.available == true">
             <button type='submit'
                     class='qtyminus'
                     (click)="item.qty=item.qty-1"
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="content-center" flex="20">
-          <h3 layout-margin>{{item.availability}}</h3>
+          <h3 layout-margin>{{item.available}}</h3>
         </div>
       </div>
     </div>
