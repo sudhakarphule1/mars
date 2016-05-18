@@ -24,6 +24,7 @@ export class EmailService {
   }
 
   public replyEmail(value){
+    value.access_token= localStorage.getItem("access_token");
     let params = JSON.stringify(value);
     console.log("service parama => "+params);
     let headers = new Headers({ 'Content-Type': 'application/json' });

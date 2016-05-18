@@ -17,12 +17,29 @@
   <p class="delivery-date ">Delivery by {{email.defaultTask.completeBy|date }}</p>
 </md-list-item>
 
+
 <div *ngIf="showDetails == true">
   <md-tabs md-dynamic-height md-border-bottom>
     <template md-tab label="Content">
       <md-content class="md-padding">
 
         <p [innerHTML]="email.html"></p>
+
+
+        <div *ngFor="#message of email.conversation">
+          <!--{{message.text}}-->
+
+          <div *ngIf="message.by=='User'" class="user-conversation">
+            <p> {{message.text}}</p>
+          </div>
+          <div *ngIf="message.by=='Client'" class="client-conversation">
+            <p [innerHTML]="message.html"></p>
+          </div>
+
+        </div>
+
+
+
         <button md-raised-button class="button md-primary" (click)="reply = !reply">Reply</button>
         <div class="reply-content" *ngIf="reply == true">
           <md-input-container layout="row" flex="100">

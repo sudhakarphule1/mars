@@ -30,7 +30,7 @@
         </div>
 
         <div flex="20">
-          <div class="add-item" *ngIf="item.availability == 'Available'">
+          <div class="add-item" *ngIf="item.available == true">
             <button type='submit'
                     class='qtyminus'
                     (click)="item.qty=item.qty-1"
