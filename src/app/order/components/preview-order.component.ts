@@ -49,11 +49,16 @@ export class PreviewOrder {
   resetCurrentOrder(){
     this.currentOrder.items = [];
     this.currentOrder.shippingAddress.line1 = "";
-    
+
   }
 
   placeOrder(){
     console.log(this.currentOrder);
+    var items: Array<any> = new Array();
+    this.currentOrder.items.forEach((item) =>{  // foreach statement
+      items.push({productId: item._id, qty: item.qty});
+    })
+    this.currentOrder.items = items;
     this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);
     this.successMessage = "Your order has been created.";
     this.displaySuccess = true;

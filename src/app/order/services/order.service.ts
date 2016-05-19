@@ -86,8 +86,9 @@ export class Orders {
   }
 
   public createOrder(value){
+    value.access_token = localStorage.getItem("access_token");
     let params = JSON.stringify(value);
-    console.log(params);
+    console.log("create order params =>"+params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let url = `http://localhost:5000/orders`;
