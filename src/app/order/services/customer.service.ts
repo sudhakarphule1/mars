@@ -1,5 +1,5 @@
 /**
- * Created by chetan on 8/3/16.
+ * Created by chetan on 19/5/16.
  */
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
@@ -8,30 +8,18 @@ import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
 import {Order} from "../../model/order";
 import {Task} from "../../model/task";
+import {Customer} from "../../model/customer";
 
 @Injectable()
-export class Orders {
+export class CustomerServices {
   constructor(private http: Http){}
 
-  public getAllProducts(){
-    /*let url = `app/order/services/myProducts.json`;
-    return this.http.get(url).map((res) => res.json());*/
-    let url = `http://localhost:5000/product?access_token=`+localStorage.getItem("access_token");
-    return this.http.get(url).map((res) => res.json()).map((data) => {
-      localStorage.setItem("access_token", data.access_token);
-      /*console.log(data.result);*/
-      let result:Array<Order> = [];
-      if (data.result) {
-        data.result.forEach((item) => {
-          item.qty = 0;
-          result.push(item);
-        });
-      }
-      return result;
-    });
+  public getAllCustomers(){
+    let url = `http://localhost:5000/customer?access_token=`+localStorage.getItem("access_token");
+    return this.http.get(url).map((res) => res.json());
   }
 
-  public getLastOrder(value1, value2){
+/*  public getLastOrder(value1, value2){
     let url = `http://localhost:5000/orders?fromCompany=` + value2 + `&sendLastOrder=true`  + `&access_token=`+ localStorage.getItem("access_token");
     return this.http.get(url).map((res) => res.json());
   }
@@ -48,7 +36,7 @@ export class Orders {
 
   public getOrderById(value){
     let url = `http://localhost:5000/orders?_id=` + value  + `&access_token=`+ localStorage.getItem("access_token");
-    /*return this.getOrdersObjectFunction(url);*/
+    /!*return this.getOrdersObjectFunction(url);*!/
     return this.http.get(url)
       // initial transform - result to json
       .map(res => res.json())
@@ -86,9 +74,8 @@ export class Orders {
   }
 
   public createOrder(value){
-    value.access_token = localStorage.getItem("access_token");
     let params = JSON.stringify(value);
-    console.log("create order params =>"+params);
+    console.log(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let url = `http://localhost:5000/orders`;
@@ -144,6 +131,6 @@ export class Orders {
         }
         return result;
       });
-  }
+  }*/
 
 }

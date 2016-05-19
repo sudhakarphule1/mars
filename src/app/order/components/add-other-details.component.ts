@@ -1,34 +1,44 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {Order} from "../../model/order";
 import {RouteParams, Router} from "angular2/router";
 import {OrderLocalStore} from "./order-local-store";
+import {CustomerServices} from "../services/customer.service";
+import {Customer} from "../../model/customer";
 
 @Component({
   selector: 'addOtherDetails',
-  providers: [HTTP_PROVIDERS],
+  providers: [HTTP_PROVIDERS, CustomerServices],
   templateUrl: 'app/order/components/add-other-details.component.html',
   styleUrls: ['app/order/components/add-other-details.component.css'],
   directives: [MATERIAL_DIRECTIVES],
   pipes: []
 })
 
-export class AddOtherDetails {
+export class AddOtherDetails implements  OnInit{
 
   leadId: string;
   displayError = false;
   errorMessage: string = "";
 
   currentOrder: Order = new Order();
+  private allCustomers: Array<Customer>;
+  private selectedCustomer: Customer = new Customer();
+  private showDetails: boolean = false;
 
   constructor(params: RouteParams,
               private _router: Router,
-              private orderLocalStore : OrderLocalStore) {
+              private orderLocalStore : OrderLocalStore,
+              private customerServices: CustomerServices) {
     this.leadId = params.get('leadId');
     this.currentOrder = orderLocalStore.order;
     this.currentOrder.orderDate = new Date();
     this.currentOrder.completionDate = new Date();
+  }
+
+  ngOnInit() {
+    this.customerServices.getAllCustomers().subscribe(res => this.allCustomers = res.result);
   }
 
   proceedNext(){
@@ -79,6 +89,18 @@ export class AddOtherDetails {
     this.currentOrder.billingAddress.city = this.currentOrder.shippingAddress.city;
     this.currentOrder.billingAddress.state = this.currentOrder.shippingAddress.state;
     this.currentOrder.billingAddress.country = this.currentOrder.shippingAddress.country;
+  }
+
+  getCustomerDetails(customer){
+/*    this.selectedCustomer = customer;*/
+    for (var i = 0; i < this.allCustomers.length; i++)
+    {
+      if (this.allCustomers[i].fromCompany == customer) {
+        this.selectedCustomer = this.allCustomers[i];
+      }
+    }
+    console.log(this.selectedCustomer);
+    this.showDetails =  true;
   }
 
 }

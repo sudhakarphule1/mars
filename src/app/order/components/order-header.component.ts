@@ -45,7 +45,7 @@ export class OrderHeader implements OnInit{
   }
 
   ngOnInit() {
-    this.sharedServices.getAllUsers().subscribe(res => this.allUsers = res.result);
+    this.sharedServices.getAllUsers().subscribe(res => this.allUsers = res);
   }
 
   editOrder(){
