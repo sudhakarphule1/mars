@@ -1,67 +1,40 @@
-<section class="low-padding bg-light-gray">
-  <div class="container">
-<!--    <div class="row">
-        <div class="clearfix text-center fullwidth overflow-hidden border"><img src="images/divider4.png" height="80" width="640" alt="Border" class="" /></div>
-      </div>-->
-    </div>
-    <div class="row">
-      <div class="col-lg-6 col-md-8 col-sm-9 login-area">
-        <div id="account-settings">
-
-          <form role="form"
-                class="edit_user"
-                style="margin-top: 20px"
-                id="edit_user"
-                name="signInForm"
-                accept-charset="UTF-8"
-                method="post"
-                novalidate>
-            <fieldset>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="{{ msgClass }}">{{ message1 }}</span>
-                    <label class="sr-only control-label" for="user_email_address">Username</label>
-                    <input class="form-control"
-                           type="email"
-                           name="email"
-                           [(ngModel)]="userName"
-                           id="user_email_address"
-                           required>
-                  </div>
-                  <div class="help-right">
-                    <div class="form-group">
-                      <span class="{{ msgClass }}">{{ message2 }}</span>
-                      <label class="sr-only control-label" for="user_current_password">Password</label>
-                      <input class="form-control"
-                             type="password"
-                             style="margin-top: 40px"
-                             name="password"
-                             [(ngModel)]="password"
-                             id="user_current_password"
-                             required>
-                      <div class="row form-help-row">
-                        <div class="col-sm-6">
-                          <div class="checkbox"><label for="user_remember_me" class="stay-sign">
-                            <input type="checkbox" id="user_remember_me" name="user[remember_me]" checked="checked" value="1"> Stay Signed In</label></div>
-                        </div>
-                        <div class="col-sm-6 text-right checkbox">
-                          <span class="stay-sign"><a href="/inbox">Password trouble?</a></span>
-                        </div>
+<section class="low-padding login-section">
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-9 login-area">
+      <div id="account-settings">
+        <form role="form" class="edit_user" style="margin-top: 20px" id="edit_user" name="signInForm" accept-charset="UTF-8" method="post" novalidate>
+            <div class="login-logo">
+              <img class="" src="app/share/images/logo.png">
+              <img class="" src="app/share/images/logo-text.png">
+            </div>
+            <div class="login-form">
+              <div class="form-group">
+                <span class="{{ msgClass }}">{{ message1 }}</span>
+                <label class="sr-only control-label" for="user_email_address">Username</label>
+                <input class="form-control" type="email" name="email" [(ngModel)]="userName" id="user_email_address" required>
+              </div>
+              <div class="help-right">
+                <div class="form-group">
+                  <span class="{{ msgClass }}">{{ message2 }}</span>
+                  <label class="sr-only control-label" for="user_current_password">Password</label>
+                  <input class="form-control" type="password" name="password" [(ngModel)]="password" id="user_current_password" required>
+                  <div class="row form-help-row">
+                    <div class="col-sm-6">
+                      <div class="checkbox">
+                        <label for="user_remember_me" class="stay-sign">
+                          <input type="checkbox" id="user_remember_me" name="user[remember_me]" checked="checked" value="1"> Stay Signed In</label>
                       </div>
                     </div>
+                    <div class="col-sm-6 text-right checkbox">
+                      <span class="stay-sign"><a href="/inbox">Password trouble?</a></span>
+                    </div>
                   </div>
-                  <button type="submit"
-                          name="commit"
-                          (click)="submitForm()"
-                          class="btn btn-primary"
-                          id="account-email-submit">Sign in</button>
                 </div>
               </div>
-            </fieldset>
-          </form>
-        </div>
+              <button type="submit" name="commit" (click)="submitForm()" class="btn btn-primary" id="account-email-submit">Sign in</button>
+            </div>
+        </form>
       </div>
+    </div>
   </div>
 </section>
-
