@@ -4,7 +4,7 @@
   <div layout-gt-sm="column">
     <div class="md-block" flex="100" layout-padding layout="row">
       <label flex="35">Company Name:</label>
-      <h3 flex="65">{{ currentOrder.fromCompany}}</h3>
+      <h3 flex="65">{{ customer.fromCompany}}</h3>
     </div>
     <div class="md-block" flex="100" layout-padding layout="row">
       <label flex="35">Order assigned to:</label>
@@ -26,14 +26,14 @@
   <div layout-gt-sm="column">
     <div class="md-block" flex="100" layout-padding layout="row">
       <label flex="35">Contact Person:</label>
-      <h3 flex="65">{{currentOrder.contactPerson}}</h3>
+      <h3 flex="65">{{customer.contactPerson}}</h3>
     </div>
   </div>
 
   <div layout-gt-sm="column">
     <div class="md-block" flex="100" layout-padding layout="row">
       <label flex="35">Contact Number:</label>
-      <h3 flex="65">{{currentOrder.contactNumber}}</h3>
+      <h3 flex="65">{{customer.contactNumber}}</h3>
     </div>
   </div>
 
@@ -41,19 +41,19 @@
     <div class="md-block address-section" flex="100" layout-padding layout="row">
       <label flex="35">Shipping Address:</label>
       <h3 flex="65">
-        <span>{{currentOrder.shippingAddress.line1}},</span>
-        <span>{{currentOrder.shippingAddress.line2}},</span>
-        <span>{{currentOrder.shippingAddress.city}} - {{currentOrder.shippingAddress.pinCode}},</span>
-        <span>{{currentOrder.shippingAddress.state}}</span>
+        <span>{{customer.shippingAddress.line1}},</span>
+        <span>{{customer.shippingAddress.line2}},</span>
+        <span>{{customer.shippingAddress.city}} - {{customer.shippingAddress.pinCode}},</span>
+        <span>{{customer.shippingAddress.state}}</span>
       </h3>
     </div>
     <div class="md-block address-section" flex="100" layout-padding layout="row">
       <label flex="35">Billing Address:</label>
       <h3 flex="65">
-        <span>{{currentOrder.billingAddress.line1}},</span>
-        <span>{{currentOrder.billingAddress.line2}},</span>
-        <span>{{currentOrder.billingAddress.city}} - {{currentOrder.billingAddress.pinCode}},</span>
-        <span>{{currentOrder.billingAddress.state}}</span>
+        <span>{{customer.billingAddress.line1}},</span>
+        <span>{{customer.billingAddress.line2}},</span>
+        <span>{{customer.billingAddress.city}} - {{customer.billingAddress.pinCode}},</span>
+        <span>{{customer.billingAddress.state}}</span>
       </h3>
     </div>
   </div>

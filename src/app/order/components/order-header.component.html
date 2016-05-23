@@ -14,8 +14,6 @@
     <md-list layout="column" layout-align="end end">
       <md-list-item class="md-3-line col-order-detail">
         <div class="md-list-item-text">
-          <!--<h3>Order Date : <input class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.assignedOn"/></h3>
-          <h3>Delivery Date : <input  class="datepicker" type="date" [(ngModel)]="currentOrder.defaultTask.completeBy"/></h3>-->
           <h3>Order Date : <my-date-picker [options]="myDatePickerOptions"
                                            (dateChanged)="onDate1Changed($event)"
                                            [selDate]="selectedDate1"></my-date-picker></h3>

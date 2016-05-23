@@ -19,6 +19,16 @@ export class CustomerServices {
     return this.http.get(url).map((res) => res.json());
   }
 
+  public createCustomer(value){
+    value.access_token = localStorage.getItem("access_token");
+    let params = JSON.stringify(value);
+    console.log("create customer params =>"+params);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = `http://localhost:5000/customer`;
+    return this.http.post(url, params,options);
+  }
+
 /*  public getLastOrder(value1, value2){
     let url = `http://localhost:5000/orders?fromCompany=` + value2 + `&sendLastOrder=true`  + `&access_token=`+ localStorage.getItem("access_token");
     return this.http.get(url).map((res) => res.json());

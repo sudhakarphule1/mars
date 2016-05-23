@@ -1,9 +1,9 @@
 import {Component} from 'angular2/core';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Router} from "angular2/router";
 
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
-import {Router} from "angular2/router";
 import {SharedServices} from "./../../order/services/shared.service";
 
 @Component({
@@ -27,7 +27,9 @@ export class Login {
   submitForm(){
     this.sharedServices.userLogin({firstName:this.userName, password:this.password}).
     subscribe(res => {localStorage.setItem("access_token", res.json().access_token)
-    console.log(res.json().access_token);
-    });
+        console.log(res.json().access_token);
+        this._router.navigate(['Inbox']);
+      }
+    );
   }
 }

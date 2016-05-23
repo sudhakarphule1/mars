@@ -5,6 +5,7 @@ import {Order} from "../../model/order";
 import {RouteParams, Router} from "angular2/router";
 import {OrderLocalStore} from "./order-local-store";
 import {Orders} from "../services/order.service";
+import {Customer} from "../../model/customer";
 
 @Component({
   selector: 'inbox-app',
@@ -25,6 +26,7 @@ export class PreviewOrder {
 
   currentOrder: Order = new Order();
   private response;
+  private customer: Customer =  new Customer();
 
   constructor(private orders: Orders,
               params: RouteParams,
@@ -32,6 +34,7 @@ export class PreviewOrder {
               private orderLocalStore : OrderLocalStore) {
     this.leadId = params.get('leadId');
     this.currentOrder = orderLocalStore.order;
+    this.customer = orderLocalStore.customer;
   }
 
   goToPrevious(){

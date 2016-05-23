@@ -4,9 +4,14 @@
 import {Address} from "./address";
 
 export class Customer  {
+
+  constructor() {
+    this.shippingAddress = new Address;
+    this.billingAddress = new Address;
+  }
   fromCompany: string;
   contactPerson: string;
-  contactNumber: string;
+  contactNumber: number;
   billingAddress: Address;
   shippingAddress: Address;
 }

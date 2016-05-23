@@ -1,6 +1,7 @@
 import {InboxItem} from "./inbox-item";
 import {Item} from "./item";
 import {Address} from "./address";
+import {Customer} from "./customer";
 
 export class Order extends InboxItem {
   constructor() {
@@ -17,8 +18,9 @@ export class Order extends InboxItem {
   status:string;
   orderType:string;
   remarks: string;
-  contactPerson: string;
-  contactNumber: number;
+/*  contactPerson: string;
+  contactNumber: number;*/
+  customer: Customer;
   totalAmount: number;
   items: Array<Item>;
   shippingAddress: Address;

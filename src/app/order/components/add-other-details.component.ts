@@ -21,11 +21,15 @@ export class AddOtherDetails implements  OnInit{
   leadId: string;
   displayError = false;
   errorMessage: string = "";
-
   currentOrder: Order = new Order();
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
   private showDetails: boolean = false;
+  private oldCustomers: boolean = true;
+  newCustomer : Customer = new Customer();
+  private displayCustomer:boolean = false;
+  private customerMessage:string = '';
+  private response;
 
   constructor(params: RouteParams,
               private _router: Router,
@@ -43,30 +47,23 @@ export class AddOtherDetails implements  OnInit{
 
   proceedNext(){
     this.currentOrder.totalAmount = 3434;
-    if(!this.currentOrder.fromCompany || !this.currentOrder.orderType || !this.currentOrder.remarks ||
-      !this.currentOrder.contactPerson || !this.currentOrder.contactNumber ||
-      !this.currentOrder.shippingAddress.line1 || !this.currentOrder.shippingAddress.line2 ||
-      !this.currentOrder.shippingAddress.pinCode || !this.currentOrder.shippingAddress.city ||
-      !this.currentOrder.shippingAddress.state || !this.currentOrder.shippingAddress.country ||
-      !this.currentOrder.billingAddress.line1 || !this.currentOrder.billingAddress.line2 ||
-      !this.currentOrder.billingAddress.pinCode || !this.currentOrder.billingAddress.city ||
-      !this.currentOrder.billingAddress.state || !this.currentOrder.billingAddress.country ||
-      !this.currentOrder.defaultTask.completeBy || !this.currentOrder.defaultTask.status){
+
+    if(this.oldCustomers){
+    this.orderLocalStore.customer = this.selectedCustomer;
+      console.log(this.orderLocalStore.customer);
+    }
+    else{
+      this.orderLocalStore.customer = this.newCustomer;
+      console.log(this.orderLocalStore.customer);
+    }
+    if(!this.currentOrder.fromCompany || !this.currentOrder.orderType || !this.currentOrder.remarks
+      || !this.currentOrder.defaultTask.completeBy || !this.currentOrder.defaultTask.status){
       this.errorMessage = "One of the mandatory fields is missing";
       this.displayError = true;
     }
-    else if (isNaN(this.currentOrder.contactNumber)){
-      this.errorMessage = "Contact Number needs to be numeric";
-      this.displayError = true;
-    }
-    else if (!isNaN(this.currentOrder.contactNumber) &&
-      (isNaN(this.currentOrder.billingAddress.pinCode) || isNaN(this.currentOrder.shippingAddress.pinCode))){
-      this.errorMessage = "Pin Code needs to be numeric";
-      this.displayError = true;
-    }
+
     else{
       this._router.navigate(['PreviewOrder']);
-      /*this.displayError = false;*/
     }
   }
 
@@ -83,24 +80,64 @@ export class AddOtherDetails implements  OnInit{
   }
 
   copyAddress(){
-    this.currentOrder.billingAddress.line1 = this.currentOrder.shippingAddress.line1;
-    this.currentOrder.billingAddress.line2 = this.currentOrder.shippingAddress.line2;
-    this.currentOrder.billingAddress.pinCode = this.currentOrder.shippingAddress.pinCode;
-    this.currentOrder.billingAddress.city = this.currentOrder.shippingAddress.city;
-    this.currentOrder.billingAddress.state = this.currentOrder.shippingAddress.state;
-    this.currentOrder.billingAddress.country = this.currentOrder.shippingAddress.country;
+    this.newCustomer.billingAddress.line1 = this.newCustomer.shippingAddress.line1;
+    this.newCustomer.billingAddress.line2 = this.newCustomer.shippingAddress.line2;
+    this.newCustomer.billingAddress.pinCode = this.newCustomer.shippingAddress.pinCode;
+    this.newCustomer.billingAddress.city = this.newCustomer.shippingAddress.city;
+    this.newCustomer.billingAddress.state = this.newCustomer.shippingAddress.state;
+    this.newCustomer.billingAddress.country = this.newCustomer.shippingAddress.country;
   }
 
   getCustomerDetails(customer){
-/*    this.selectedCustomer = customer;*/
     for (var i = 0; i < this.allCustomers.length; i++)
     {
       if (this.allCustomers[i].fromCompany == customer) {
         this.selectedCustomer = this.allCustomers[i];
       }
     }
-    console.log(this.selectedCustomer);
+
+    this.currentOrder.customer = this.selectedCustomer._id;
+    this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
+    this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
+    this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;
     this.showDetails =  true;
+  }
+
+  createCustomer(){
+
+      if (!this.newCustomer.fromCompany || !this.newCustomer.contactPerson ||
+        !this.newCustomer.contactNumber || !this.newCustomer.shippingAddress.line1 ||
+        !this.newCustomer.shippingAddress.line2 || !this.newCustomer.shippingAddress.pinCode ||
+        !this.newCustomer.shippingAddress.city || !this.newCustomer.shippingAddress.state ||
+        !this.newCustomer.shippingAddress.country || !this.newCustomer.billingAddress.line1 ||
+        !this.newCustomer.billingAddress.line2 || !this.newCustomer.billingAddress.pinCode ||
+        !this.newCustomer.billingAddress.city || !this.newCustomer.billingAddress.state ||
+        !this.newCustomer.billingAddress.country) {
+        this.errorMessage = "One of the mandatory fields is missing";
+        this.displayError = true;
+      }
+      else if (isNaN(this.newCustomer.contactNumber)) {
+        this.errorMessage = "Contact Number needs to be numeric";
+        this.displayError = true;
+      }
+      else if (!isNaN(this.newCustomer.contactNumber) &&
+        (isNaN(this.newCustomer.billingAddress.pinCode) || isNaN(this.newCustomer.shippingAddress.pinCode))) {
+        this.errorMessage = "Pin Code needs to be numeric";
+        this.displayError = true;
+      }
+      else {
+        this.displayError = false;
+        this.currentOrder.fromCompany = this.newCustomer.fromCompany;
+        this.currentOrder.billingAddress = this.newCustomer.billingAddress;
+        this.currentOrder.shippingAddress = this.newCustomer.shippingAddress;
+        this.customerServices.createCustomer(this.newCustomer).subscribe
+          (res =>
+          {this.response = res.json();
+            this.currentOrder.customer = this.response.result._id;
+          });
+        this.customerMessage = "A new customer has been created.";
+        this.displayCustomer = true;
+      }
   }
 
 }
