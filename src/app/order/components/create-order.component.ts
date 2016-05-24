@@ -56,7 +56,15 @@ export class CreateOrder implements OnInit{
   }
 
   ngOnInit() {
-    this.sharedServices.getAllUsers().subscribe(res => this.allUsers = res.result);
+    this.sharedServices.getAllUsers()
+      .subscribe(res => {this.allUsers = res.result;
+        for(var i in this.allUsers){
+          if (this.currentOrder.defaultTask.assignedTo.firstName === this.allUsers[i].firstName){
+            this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
+          };
+        }
+        console.log(this.currentOrder.defaultTask.assignedTo);
+    });
   }
 
   onDate1Changed(event) {
