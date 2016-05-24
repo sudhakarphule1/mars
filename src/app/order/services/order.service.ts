@@ -56,6 +56,7 @@ export class Orders {
       // array to a Typed class instance
       .map((item: Array<>) => {
         let order:Order = new Order();
+        
         let result:Array<Order> = [];
         if (item)
         {
