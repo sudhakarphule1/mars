@@ -10,7 +10,7 @@ import {SharedServices} from "./../../order/services/shared.service";
   selector: 'login',
   providers: [HTTP_PROVIDERS, SharedServices],
   templateUrl: 'app/share/components/login.component.html',
-  styleUrls: ['app/share/components/login.component.css'],
+  styleUrls: ['app/share/components/login.component.scss'],
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 
