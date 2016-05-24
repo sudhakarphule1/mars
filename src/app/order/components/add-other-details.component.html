@@ -149,8 +149,8 @@
       </div>
       <button md-raised-button class="button md-raised md-primary" (click)="newContract()">New Contract</button>
       <div layout-padding *ngIf="displayCustomer">{{ customerMessage }}</div>
-      <button (click)="createCustomer()">Create Customer</button>
-      <button (click)="oldCustomers = true">Go Back To Old Customers</button>
+      <button md-raised-button class="button md-raised md-primary" (click)="createCustomer()">Create Customer</button>
+      <button md-raised-button class="button md-raised" (click)="oldCustomers = true">Go Back To Old Customers</button>
 
       <h4>More Details</h4>
       <div layout-gt-sm="row">
@@ -186,7 +186,7 @@
 
     <div>
       <h2>OR</h2>
-      <button (click)="oldCustomers = false">Create New Customer</button>
+      <button md-raised-button class="button md-raised md-primary" (click)="oldCustomers = false">Create New Customer</button>
     </div>
 
     <div class="tableClass customer-details" layout-padding *ngIf="showDetails">

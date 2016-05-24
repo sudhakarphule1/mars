@@ -135,6 +135,13 @@ md-input-container {
   padding: 0px;
 }
 
+.place-order {
+  height: 74vh;
+}
+.place-order .order-details {
+  height: auto;
+}
+
 .place-order .md-block h3 {
   margin: 0px;
   font-size: 14px;

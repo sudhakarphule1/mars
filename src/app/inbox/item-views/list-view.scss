@@ -142,4 +142,29 @@ textarea {
   width:100%;
   border:0px;
 }
-
+.client-conversation {
+  display: inline-block;
+  width: 100%;
+  p {
+    background: #FFFFE7;
+    display: inline-block;
+    float: right;
+    min-height: 30px;
+    margin: 0px;
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+.user-conversation {
+  display: inline-block;
+  width: 100%;
+  p {
+    background: #E7FCFF;
+    display: inline-block;
+    float: left;
+    min-height: 30px;
+    margin: 0px;
+    padding: 15px;
+    font-size: 14px;
+  }
+}
