@@ -62,6 +62,8 @@ export class PreviewOrder {
       items.push({productId: item._id, qty: item.qty});
     })
     this.currentOrder.items = items;
+    console.log(this.currentOrder.defaultTask.assignedTo._id);
+    this.currentOrder.defaultTask.assignedTo = this.currentOrder.defaultTask.assignedTo._id;
     this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);
     this.successMessage = "Your order has been created.";
     this.displaySuccess = true;

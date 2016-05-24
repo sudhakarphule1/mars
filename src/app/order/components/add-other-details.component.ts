@@ -6,6 +6,7 @@ import {RouteParams, Router} from "angular2/router";
 import {OrderLocalStore} from "./order-local-store";
 import {CustomerServices} from "../services/customer.service";
 import {Customer} from "../../model/customer";
+import {Contract} from "../../model/contract";
 
 @Component({
   selector: 'addOtherDetails',
@@ -140,4 +141,12 @@ export class AddOtherDetails implements  OnInit{
       }
   }
 
+  newContract(){
+    var  contract : Contract = new Contract();
+    /*contract.item = " ";
+    contract.productId = " ";
+    contract.unitRate = 4;*/
+    console.log("new contract element is created.");
+    this.selectedCustomer.contract.push(contract);
+  }
 }

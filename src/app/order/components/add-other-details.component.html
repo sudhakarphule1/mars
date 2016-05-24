@@ -1,5 +1,7 @@
 <div class="orders">
 
+
+
   <div class="order-details" *ngIf="!oldCustomers">
     <div class="tableClass customer-details" layout-padding >
       <h3>Details:</h3>
@@ -124,6 +126,28 @@
           </div>
         </div>
       </div>
+      <h3>Contract Details: </h3>
+      <div *ngFor="#contract of (selectedCustomer.contract)">
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>item</label>
+            <input md-input [(ngModel)] = "contract.item" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>product</label>
+            <input md-input [(ngModel)] = "contract.productId" >
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row" flex="50">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>unit price</label>
+            <input md-input [(ngModel)] = "contract.unitRate" >
+          </md-input-container>
+        </div>
+      </div>
+      <button md-raised-button class="button md-raised md-primary" (click)="newContract()">New Contract</button>
       <div layout-padding *ngIf="displayCustomer">{{ customerMessage }}</div>
       <button (click)="createCustomer()">Create Customer</button>
       <button (click)="oldCustomers = true">Go Back To Old Customers</button>
@@ -283,6 +307,29 @@
           </div>
         </div>
 
+
+        <h3>Contract Details: </h3>
+        <div *ngFor="#contract of (selectedCustomer.contract)">
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>item</label>
+              <input md-input [(ngModel)] = "contract.item" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>product</label>
+              <input md-input [(ngModel)] = "contract.productId" >
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row" flex="50">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>unit price</label>
+              <input md-input [(ngModel)] = "contract.unitRate" >
+            </md-input-container>
+          </div>
+        </div>
+        <button md-raised-button class="button md-raised md-primary" (click)="newContract()">New Contract</button>
         <div layout-gt-sm="row">
           <h5>Please fill up a few more details in order to complete your order: </h5>
           <div layout-gt-sm="row" flex="50">
