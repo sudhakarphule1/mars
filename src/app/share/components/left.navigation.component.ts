@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
 import {MATERIAL_DIRECTIVES, SidenavService} from "ng2-material/all";
 
 @Component({
@@ -12,9 +12,12 @@ import {MATERIAL_DIRECTIVES, SidenavService} from "ng2-material/all";
 
 export class LeftNavigation {
   selected : string;
+  private access_token: string = "";
 
-  constructor(public sidenav: SidenavService) {
+  constructor(private _router: Router,
+              public sidenav: SidenavService) {
     this.selected = "Inbox";
+    this.access_token = localStorage.access_token;
   }
 
   close(name: string) {
@@ -23,5 +26,10 @@ export class LeftNavigation {
 
   select( selected : string){
     this.selected = selected;
+  }
+
+  logout(){
+    localStorage.removeItem("access_token");
+    this._router.navigate(['Login']);
   }
 }

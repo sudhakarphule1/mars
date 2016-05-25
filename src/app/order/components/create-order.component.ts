@@ -61,9 +61,8 @@ export class CreateOrder implements OnInit{
         for(var i in this.allUsers){
           if (this.currentOrder.defaultTask.assignedTo.firstName === this.allUsers[i].firstName){
             this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
-          };
+          }
         }
-        console.log(this.currentOrder.defaultTask.assignedTo);
     });
   }
 

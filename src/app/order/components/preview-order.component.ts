@@ -21,10 +21,10 @@ export class PreviewOrder {
   leadId: string;
   displayError = false;
   displaySuccess = false;
-  errorMessage: string = "";
   successMessage: string = "";
 
   currentOrder: Order = new Order();
+  sendOrder: Order = new Order();
   private response;
   private customer: Customer =  new Customer();
 
@@ -56,18 +56,17 @@ export class PreviewOrder {
   }
 
   placeOrder(){
-    console.log(this.currentOrder);
     var items: Array<any> = new Array();
     this.currentOrder.items.forEach((item) =>{  // foreach statement
       items.push({productId: item._id, qty: item.qty});
-    })
-    this.currentOrder.items = items;
-    console.log(this.currentOrder.defaultTask.assignedTo._id);
-    this.currentOrder.defaultTask.assignedTo = this.currentOrder.defaultTask.assignedTo._id;
-    this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);
+    });
+    this.sendOrder = this.currentOrder;
+    this.sendOrder = Object.assign({}, this.currentOrder);
+    this.sendOrder.items = items;
+    console.log("send order:" + JSON.stringify(this.sendOrder));
+    this.orders.createOrder(this.sendOrder).subscribe(res => this.response = res);
     this.successMessage = "Your order has been created.";
     this.displaySuccess = true;
-    /*this.orders.getAllOrdersFunction();*/
   }
 
 }

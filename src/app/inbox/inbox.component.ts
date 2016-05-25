@@ -14,6 +14,7 @@ import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
 import {EmailService} from '../order/services/email.service';
 import {OrderLocalStore} from "../order/components/order-local-store";
+import {Item} from "../model/item";
 
 @Component({
   selector: 'ib-inbox',
@@ -34,6 +35,7 @@ export class Inbox implements OnInit, OnDestroy {
   filterBy: string = '';
   itemList : Array<InboxItem>;
   subscription:Subscription;
+  private allProducts: Array<Item>;
 
   constructor(private audioService: AudioDataProvider,
               params: RouteParams,
@@ -48,6 +50,8 @@ export class Inbox implements OnInit, OnDestroy {
       }
     );
     this.showHistory = Boolean(params.get('showHistory'));
+    this.allProducts = orderLocalStore.items;
+    console.log(this.allProducts);
   }
 
   ngOnInit() {
@@ -55,7 +59,13 @@ export class Inbox implements OnInit, OnDestroy {
     this.itemList = new Array<InboxItem>();
       this.orders.getAllOrders().subscribe(items => {
         this.itemList = this.itemList.concat(items);
-        //this.navigateTo(this.itemList[0]);
+        /*console.log(this.itemList);*/
+        this.itemList.forEach((item) =>{
+/*          for(var i=0; i <item.items.length; i++){
+            /!*if(item.items[i]._id = )*!/
+
+          }*/
+        });
       }
     );
       this.emails.getAllEmails().subscribe(items => this.itemList = this.itemList.concat(items));

@@ -1,4 +1,4 @@
-<div class="leftarea" layout="column" layout-align="center center">
+<div class="leftarea" layout="column" layout-align="center center" [hidden]="!access_token">
   <h1><img class="logo" src="app/share/images/logo.png"></h1>
   <!--<h2 layout-align="center center" layout="row" layout-fill layout-padding><img src="app/share/images/profile.png"></h2>-->
   <h3 layout-align="center center" layout="row" layout-fill layout-padding>Comfort Agencies </h3>
@@ -32,7 +32,7 @@
       <img src="app/share/images/customer.svg" width="20" height="20" layout-padding>
       <h3 layout-padding layout-fill>Customer</h3>
     </li>
-    <li [routerLink]="['/Logout']" layout="" [class.selected]="selected === 'Logout' "  (click)="select('Logout')">
+    <li layout="" [class.selected]="selected === 'Logout' "  (click)="select('Logout'); logout()">
       <img src="app/share/images/logout.svg" width="20" height="20" layout-padding>
       <h3 layout-padding layout-fill>Logout</h3>
     </li>

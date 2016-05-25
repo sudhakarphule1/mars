@@ -12,9 +12,11 @@ import {SearchService}     from './search.service';
 })
 export class Header {
 
+  private access_token: string = "";
+
   constructor(public sidenav: SidenavService, private searchService: SearchService, private _router: Router)
   {
-
+    this.access_token = localStorage.access_token;
   }
 
   onSearchChange(value:string){

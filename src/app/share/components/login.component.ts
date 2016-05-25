@@ -26,8 +26,8 @@ export class Login {
 
   submitForm(){
     this.sharedServices.userLogin({firstName:this.userName, password:this.password}).
-    subscribe(res => {localStorage.setItem("access_token", res.json().access_token)
-        console.log(res.json().access_token);
+    subscribe(res => {
+        localStorage.setItem("access_token", res.json().access_token);
         this._router.navigate(['Inbox']);
       }
     );

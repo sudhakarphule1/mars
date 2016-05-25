@@ -40,7 +40,9 @@ export class AddItems {
               private searchService: SearchService,
               public orderLocalStore : OrderLocalStore) {
     this.leadId = params.get('leadId');
-    orders.getAllProducts().subscribe(res => this.items = res);
+    orders.getAllProducts()
+      .subscribe(res => {this.items = res;
+        orderLocalStore.items = this.items;});
     this.currentOrder = orderLocalStore.order;
   }
 
