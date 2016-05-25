@@ -7,6 +7,7 @@ import {OrderLocalStore} from "./order-local-store";
 import {CustomerServices} from "../services/customer.service";
 import {Customer} from "../../model/customer";
 import {Contract} from "../../model/contract";
+import {Item} from "../../model/item";
 
 @Component({
   selector: 'addOtherDetails',
@@ -31,7 +32,8 @@ export class AddOtherDetails implements  OnInit{
   private displayCustomer:boolean = false;
   private customerMessage:string = '';
   private response;
-  private items;
+  private items: Array<Item>;
+  private selectedItemId: string;
 
   constructor(params: RouteParams,
               private _router: Router,
@@ -42,7 +44,6 @@ export class AddOtherDetails implements  OnInit{
     this.currentOrder.orderDate = new Date();
     this.currentOrder.completionDate = new Date();
     this.items = orderLocalStore.items;
-    console.log("item objects "+ this.items);
   }
 
   ngOnInit() {
