@@ -128,6 +128,21 @@
       </div>
       <h3>Contract Details: </h3>
       <div *ngFor="#contract of (selectedCustomer.contract)">
+
+        <label>item:</label>
+        <select [(ngModel)]="selectedCountry.id"
+                (change)="onSelect($event.target.value)">
+          <option value="0">--Select--</option>
+          <option *ngFor="#item of items"
+                  value= {{item._id}}>{{item._id}}
+          </option>
+        </select>
+
+
+        <!--<select (change)="onSelect($event.target.value)">
+          <option *ngFor="#item of items" [value]="item._id">{{item._id}}</option>
+        </select>
+        <div>selection={{item.name}}</div>-->
         <div layout-gt-sm="row" flex="50">
           <md-input-container class="md-block" flex-gt-sm>
             <label>item</label>

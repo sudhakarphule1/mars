@@ -31,6 +31,7 @@ export class AddOtherDetails implements  OnInit{
   private displayCustomer:boolean = false;
   private customerMessage:string = '';
   private response;
+  private items;
 
   constructor(params: RouteParams,
               private _router: Router,
@@ -40,6 +41,8 @@ export class AddOtherDetails implements  OnInit{
     this.currentOrder = orderLocalStore.order;
     this.currentOrder.orderDate = new Date();
     this.currentOrder.completionDate = new Date();
+    this.items = orderLocalStore.items;
+    console.log("item objects "+ this.items);
   }
 
   ngOnInit() {
@@ -148,5 +151,17 @@ export class AddOtherDetails implements  OnInit{
     contract.unitRate = 4;*/
     console.log("new contract element is created.");
     this.selectedCustomer.contract.push(contract);
+  }
+
+  onSelect(productId) {
+    /*this.selectedProduct = null;*/
+    /*for (var i = 0; i < this.items.length; i++)
+    {
+      if (this.ite[i].id == productId) {
+        this.selectedProduct = this.products[i];
+      }
+    }*/
+    console.log(this.items);
+    console.log("git hti fir" + productId);
   }
 }
