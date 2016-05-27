@@ -22,6 +22,7 @@ $ca-text-editor-bg: #b2b2b2;
 }
 .inbox-list {
   padding: 0px;
+  cursor: pointer;
   &:hover {
     backgroud:$ca-light-gray;
   }
@@ -62,7 +63,7 @@ $ca-text-editor-bg: #b2b2b2;
 .delivery-date{
   position: absolute;
   right: 10px;
-  bottom: 5px;
+  bottom: 13px;
   font-size: 11px;
   text-align: right;
   background: $ca-drak-yellow;
@@ -166,5 +167,11 @@ textarea {
     margin: 0px;
     padding: 15px;
     font-size: 14px;
+  }
+}
+md-list-item {
+  .md-avatar {
+    width: 30px;
+    height: 30px;
   }
 }

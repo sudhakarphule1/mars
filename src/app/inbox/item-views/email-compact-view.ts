@@ -9,7 +9,7 @@ import {Email} from "../../model/email";
 @Component({
   selector: 'ib-email-compact-view',
   templateUrl: 'app/inbox/item-views/email-compact-view.html',
-    styles: [ require('./list-view.scss') ],
+  styles: [ require('./list-view.scss') ],
   directives: [MATERIAL_DIRECTIVES],
   pipes: [TimeAgoPipe],
   inputs: ['email','isDisabled']

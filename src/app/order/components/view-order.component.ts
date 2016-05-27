@@ -14,7 +14,7 @@ import {PreviewCurrentItems} from "./preview-current-order.component";
 @Component({
   selector: 'ib-preview-order',
   templateUrl: 'app/order/components/view-order.component.html',
-  styleUrls: ['app/order/components/view-order.component.css'],
+  styles: [ require('./common.scss') ],
   providers: [Orders],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, OrderHeader, EditOrder, PreviewCurrentItems],
 })

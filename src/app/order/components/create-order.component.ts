@@ -18,7 +18,7 @@ import {User} from "../../model/user";
 @Component({
   selector: 'ib-create-order',
   templateUrl: 'app/order/components/create-order.component.html',
-  styleUrls: ['app/order/components/create-order.component.css'],
+  styles: [ require('./common.scss') ],
   providers: [HTTP_PROVIDERS, Orders, SharedServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })

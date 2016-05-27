@@ -6,7 +6,7 @@ import {Order} from "../../model/order";
 @Component({
   selector: 'or-preview-current-order',
   templateUrl: 'app/order/components/preview-current-order.component.html',
-  styleUrls: ['app/order/components/preview-current-order.component.css'],
+  styles: [ require('./common.scss') ],
   providers: [],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES],
 })

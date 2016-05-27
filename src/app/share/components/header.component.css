@@ -19,3 +19,13 @@ md-icon {
 	width: 18px;
 	margin: 6px 0;
 }
+.selbtngroup {
+  display: none;
+}
+.logo {
+  margin: 0px;
+}
+.logo img {
+  float: left;
+  width: 30px;
+}

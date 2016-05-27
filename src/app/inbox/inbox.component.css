@@ -17,6 +17,9 @@ select {
 .inbox-list {
   padding: 0px;
 }
+md-list-item {
+  cursor: pointer;
+}
 .inbox-list:hover{
 backgroud:#EAEAEA;
 }

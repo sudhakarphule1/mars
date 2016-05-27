@@ -11,7 +11,7 @@ import {Customer} from "../../model/customer";
   selector: 'inbox-app',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/preview-order.component.html',
-  styleUrls: ['app/order/components/preview-order.component.css'],
+  styles: [ require('./common.scss') ],
   directives: [MATERIAL_DIRECTIVES],
   pipes: []
 })

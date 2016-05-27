@@ -7,7 +7,7 @@ import {Order} from "../../model/order";
   selector: 'or-edit-order',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/edit-order.component.html',
-  styleUrls: ['app/order/components/edit-order.component.css'],
+  styles: [ require('./common.scss') ],
   directives: [MATERIAL_DIRECTIVES],
   pipes: []
 })

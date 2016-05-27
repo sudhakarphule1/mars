@@ -13,7 +13,7 @@ import {MATERIAL_DIRECTIVES} from "ng2-material/all";
   selector: 'previewItems',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/preview-items.component.html',
-  styleUrls: ['app/order/components/preview-items.component.css'],
+  styles: [ require('./common.scss') ],
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   pipes: []
 })

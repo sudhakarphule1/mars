@@ -15,7 +15,7 @@ import {OrderLocalStore} from "./order-local-store";
   selector: 'addItems',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/add-items.component.html',
-  styles: [ require('./view-order.scss') ],
+  styles: [ require('./common.scss') ],
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   pipes:[ProductsFilterPipe]
 })

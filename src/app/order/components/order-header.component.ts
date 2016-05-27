@@ -13,7 +13,7 @@ import {User} from "../../model/user";
 @Component({
   selector: 'or-order-header',
   templateUrl: 'app/order/components/order-header.component.html',
-  styleUrls: ['app/order/components/order-header.component.css'],
+  styles: [ require('./common.scss') ],
   providers: [HTTP_PROVIDERS, Orders, SharedServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })

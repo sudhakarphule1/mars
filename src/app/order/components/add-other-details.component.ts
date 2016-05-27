@@ -13,7 +13,7 @@ import {Item} from "../../model/item";
   selector: 'addOtherDetails',
   providers: [HTTP_PROVIDERS, CustomerServices],
   templateUrl: 'app/order/components/add-other-details.component.html',
-  styleUrls: ['app/order/components/add-other-details.component.css'],
+  styles: [ require('./common.scss') ],
   directives: [MATERIAL_DIRECTIVES],
   pipes: []
 })
