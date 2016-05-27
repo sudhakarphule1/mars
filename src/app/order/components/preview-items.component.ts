@@ -28,7 +28,6 @@ export class PreviewItems {
               private orderLocalStore : OrderLocalStore ) {
     this.leadId = params.get('leadId');
     this.currentOrder = orderLocalStore.order;
-    console.log(this.currentOrder);
   }
 
   removeItem(item){

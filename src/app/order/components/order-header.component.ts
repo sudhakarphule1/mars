@@ -41,7 +41,7 @@ export class OrderHeader implements OnInit{
               params: RouteParams,
               private sharedServices: SharedServices) {
     this.id = params.get('orderId');
-    console.log(this.currentOrder);
+    console.log("header order" + this.currentOrder);
   }
 
   ngOnInit() {

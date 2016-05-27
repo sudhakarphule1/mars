@@ -56,7 +56,7 @@ export class Orders {
       // array to a Typed class instance
       .map((item: Array<>) => {
         let order:Order = new Order();
-        
+
         let result:Array<Order> = [];
         if (item)
         {
@@ -70,17 +70,13 @@ export class Orders {
           //var order = new Order();
           order.id = item.result[0]._id;
           order.remarks = item.result[0].remarks;
-          order.contactPerson = item.result[0].contactPerson;
           order.shippingAddress = item.result[0].shippingAddress;
           order.billingAddress = item.result[0].billingAddress;
           order.items = item.result[0].items;
-          order.contactNumber = item.result[0].contactNumber;
+          order.customer = item.result[0].customer;
           order.orderDate = new Date(item.result[0].orderDate);
           order.completionDate = new Date(item.result[0].completionDate);
-          order.fromCompany = item.result[0].fromCompany;
           order.defaultTask = defaultTask;
-
-          //result.push(order);
         }
         return order;
       });
@@ -135,10 +131,9 @@ export class Orders {
             order.fromCompany = item.fromCompany;
             order.defaultTask = defaultTask;
             order.remarks = item.remarks;
-            order.contactPerson = item.contactPerson;
             order.shippingAddress = item.shippingAddress;
             order.billingAddress = item.billingAddress;
-            order.contactNumber = item.contactNumber;
+            order.customer = item.customer;
 
             result.push(order);
           });

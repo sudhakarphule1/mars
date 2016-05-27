@@ -47,7 +47,8 @@ export class AddOtherDetails implements  OnInit{
   }
 
   ngOnInit() {
-    this.customerServices.getAllCustomers().subscribe(res => this.allCustomers = res.result);
+    this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;
+    console.log(this.allCustomers);});
   }
 
   proceedNext(){

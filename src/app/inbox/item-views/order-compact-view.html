@@ -2,10 +2,10 @@
   <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
   <div class="client-section">
     <span><img src="app/inbox/images/mobile-app.png"> </span>
-    <img [src]="'app/share/images/company-logo/'+order.fromCompany + '.png'" class="md-avatar client-img" alt="{{order.fromCompany}}"/>
+    <img [src]="'app/share/images/company-logo/'+order.customer.fromCompany + '.png'" class="md-avatar client-img" alt="{{order.customer.fromCompany}}"/>
   </div>
   <div class="md-list-item-text" layout="column">
-    <p *ngFor="#item of order.items">{{item.name}}, {{item.variant}}, {{item.qty}}</p>
+    <p *ngFor="#item of order.items">{{item.productId.name}}, {{item.productId.variant}}, {{item.qty}}</p>
     <p>{{ order.orderType }}</p>
     <p><b>Assigned to: {{ order.defaultTask.assignedTo.firstName }}</b></p>
   </div>

@@ -1,4 +1,4 @@
-<div class="leftarea" layout="column" layout-align="center center" [hidden]="!access_token">
+<div class="leftarea" layout="column" layout-align="center center" *ngIf="access_token">
   <h1><img class="logo" src="app/share/images/logo.png"></h1>
   <!--<h2 layout-align="center center" layout="row" layout-fill layout-padding><img src="app/share/images/profile.png"></h2>-->
   <h3 layout-align="center center" layout="row" layout-fill layout-padding>Comfort Agencies </h3>

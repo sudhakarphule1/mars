@@ -10,14 +10,26 @@
             <div class="login-form">
               <div class="form-group">
                 <span class="{{ msgClass }}">{{ message1 }}</span>
-                <label class="sr-only control-label" for="user_email_address">Username</label>
-                <input class="form-control" type="email" name="email" [(ngModel)]="userName" id="user_email_address" required>
+                <label class="sr-only control-label" for="userName">Username</label>
+                <input class="form-control"
+                       type="text"
+                       name="userName"
+                       [(ngModel)]="userName"
+                       ngControl="userName"
+                       id="userName"
+                       required>
               </div>
               <div class="help-right">
                 <div class="form-group">
                   <span class="{{ msgClass }}">{{ message2 }}</span>
-                  <label class="sr-only control-label" for="user_current_password">Password</label>
-                  <input class="form-control" type="password" name="password" [(ngModel)]="password" id="user_current_password" required>
+                  <label class="sr-only control-label" for="password">Password</label>
+                  <input class="form-control"
+                         type="password"
+                         name="password"
+                         [(ngModel)]="password"
+                         ngControl="password"
+                         id="password"
+                         required>
                   <div class="row form-help-row">
                     <div class="col-sm-6">
                       <div class="checkbox">

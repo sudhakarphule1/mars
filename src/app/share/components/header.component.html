@@ -1,4 +1,4 @@
-<div class="top-header" flex layout="row" [hidden]="!access_token">
+<div class="top-header" flex layout="row" *ngIf="access_token">
   <button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
     <i md-icon>menu</i>
   </button>

@@ -17,11 +17,11 @@
 
       <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
         <div flex="50">
-          <h4>{{item.name}}</h4>
-          <h4>{{item.detail}}</h4>
+          <h4>{{item.productId.name}}</h4>
+          <h4>{{item.productId.detail}}</h4>
         </div>
         <div flex="30">
-          {{item.variant}}
+          {{item.productId.variant}}
         </div>
         <div flex="20">
           {{item.qty}}
@@ -32,7 +32,7 @@
     <div layout-gt-sm="column">
       <div class="md-block" flex="100" layout-padding layout="row">
         <label flex="35">Company Name:</label>
-        <h3 flex="65">{{ currentOrder.fromCompany}}</h3>
+        <h3 flex="65">{{ currentOrder.customer.fromCompany}}</h3>
       </div>
     </div>
 
@@ -46,14 +46,14 @@
     <div layout-gt-sm="column">
       <div class="md-block" flex="100" layout-padding layout="row">
         <label flex="35">Contact Person:</label>
-        <h3 flex="65">{{currentOrder.contactPerson}}</h3>
+        <h3 flex="65">{{currentOrder.customer.contactPerson}}</h3>
       </div>
     </div>
 
     <div layout-gt-sm="column">
       <div class="md-block" flex="100" layout-padding layout="row">
         <label flex="35">Contact Number:</label>
-        <h3 flex="65">{{currentOrder.contactNumber}}</h3>
+        <h3 flex="65">{{currentOrder.customer.contactNumber}}</h3>
       </div>
     </div>
 
