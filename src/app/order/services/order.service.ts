@@ -138,6 +138,7 @@ export class Orders {
             result.push(order);
           });
         }
+        console.log(result);
         return result;
       });
   }

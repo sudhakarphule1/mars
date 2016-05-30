@@ -29,3 +29,46 @@ md-icon {
   float: left;
   width: 30px;
 }
+.my-account {
+  width: 40px;
+  min-width: 38px;
+}
+.my-account .user-avtar {
+  width: auto;
+  float: right;
+}
+.my-account .user-avtar img {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+}
+.menu-dropdown {
+  position: fixed;
+  background: #831D27;
+  padding: 10px;
+  z-index: 1;
+  display: none;
+  top: 32px;
+  min-width: 120px;
+}
+
+.menu-dropdown ul {
+  margin: 0px;
+  padding: 0px;
+}
+.menu-dropdown ul li {
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+}
+.master-btn:hover .menu-dropdown {
+  display: block !important;
+}
+
+.my-account:hover .menu-dropdown {
+  display: block !important;
+}
+
+.my-account .menu-dropdown {
+  right: 0px;
+}

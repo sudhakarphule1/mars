@@ -5,24 +5,37 @@
   </button>
   <input type="search" name="search" #search class="search" md-maxlength="10" flex (keyup)="onSearchChange(search.value)">
   <span flex></span>
+  <md-button md-button class="md-warn master-btn" >
+    <md-icon><img src="app/share/images/orders.svg"></md-icon> Master
+    <div class="menu-dropdown"> 
+      <ul>
+        <li> Products </li>
+        <li> Customers </li>
+      </ul>
+    </div>
+  </md-button>
   <md-button md-button class="md-warn" >
     <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
-    Orders
+    My Orders
   </md-button>
   <md-button md-button class="md-warn" >
     <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
     Leads
   </md-button>
-  <md-button md-button class="md-warn" >
-    <md-icon><img class="" src="app/share/images/dashboard.svg"></md-icon>
-    Dashboard
-  </md-button>
   <md-button md-button [routerLink]="['/Inbox', {'showHistory':true}]" class="md-warn">
     <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
     History
   </md-button>
-  <md-button md-button class="md-warn" aria-label="Settings" (click)="open('right')" >
-    <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
-    Settings
+  <md-button md-button class="md-war my-account">
+    <div class="user-avtar">
+      <img class="md-user-avatar" src="app/share/images/avtars/Swapnil.jpg"/>
+    </div>
+    <div class="menu-dropdown"> 
+      <ul>
+        <li> Notes </li>
+        <li> Account Setting </li>
+        <li> Logout </li>
+      </ul>
+    </div>
   </md-button>
 </div>
