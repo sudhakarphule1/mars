@@ -60,6 +60,8 @@ md-icon {
   margin: 0px;
   padding: 0px;
   text-align: left;
+  display: block;
+  border-bottom: 1px solid #A54E56;
 }
 .master-btn:hover .menu-dropdown {
   display: block !important;
