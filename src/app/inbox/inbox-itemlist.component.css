@@ -5,7 +5,7 @@
   padding: 0px 10px;
 }
 .assign-order span {
-	margin: 5px 0px 0px;
+  margin: 5px 0px 0px;
   font-size: 14px;
 }
 .assign-order md-switch {
@@ -21,7 +21,7 @@ md-list-item {
   cursor: pointer;
 }
 .inbox-list:hover{
-backgroud:#EAEAEA;
+  backgroud:#EAEAEA;
 }
 .inbox-section {
   height: 94vh;

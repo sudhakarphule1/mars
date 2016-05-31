@@ -30,5 +30,10 @@ export class Header {
   open(name: string) {
     this.sidenav.show(name);
   }
+  
+  logout(){
+    localStorage.removeItem("access_token");
+    this._router.navigate(['Login']);
+  }
 
 }

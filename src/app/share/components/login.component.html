@@ -2,49 +2,56 @@
   <div class="row">
     <div class="col-lg-6 col-md-8 col-sm-9 login-area">
       <div id="account-settings">
-        <form role="form" class="edit_user" style="margin-top: 20px" id="edit_user" name="signInForm" accept-charset="UTF-8" method="post" novalidate>
-            <div class="login-logo">
-              <img class="" src="app/share/images/logo.png">
-              <img class="" src="app/share/images/logo-text.png">
+        <form role="form"
+              class="edit_user"
+              style="margin-top: 20px"
+              id="signInForm"
+              name="signInForm"
+              accept-charset="UTF-8"
+              method="post"
+              novalidate>
+          <div class="login-logo">
+            <img class="" src="app/share/images/logo.png">
+            <img class="" src="app/share/images/logo-text.png">
+          </div>
+          <div class="login-form">
+            <div class="form-group">
+              <span class="{{ msgClass }}">{{ message1 }}</span>
+              <label class="sr-only control-label" for="userName">Username</label>
+              <input class="form-control"
+                     type="text"
+                     name="userName"
+                     [(ngModel)]="userName"
+                     ngControl="userName"
+                     id="userName"
+                     required>
             </div>
-            <div class="login-form">
+            <div class="help-right">
               <div class="form-group">
-                <span class="{{ msgClass }}">{{ message1 }}</span>
-                <label class="sr-only control-label" for="userName">Username</label>
+                <span class="{{ msgClass }}">{{ message2 }}</span>
+                <label class="sr-only control-label" for="password">Password</label>
                 <input class="form-control"
-                       type="text"
-                       name="userName"
-                       [(ngModel)]="userName"
-                       ngControl="userName"
-                       id="userName"
+                       type="password"
+                       name="password"
+                       [(ngModel)]="password"
+                       ngControl="password"
+                       id="password"
                        required>
-              </div>
-              <div class="help-right">
-                <div class="form-group">
-                  <span class="{{ msgClass }}">{{ message2 }}</span>
-                  <label class="sr-only control-label" for="password">Password</label>
-                  <input class="form-control"
-                         type="password"
-                         name="password"
-                         [(ngModel)]="password"
-                         ngControl="password"
-                         id="password"
-                         required>
-                  <div class="row form-help-row">
-                    <div class="col-sm-6">
-                      <div class="checkbox">
-                        <label for="user_remember_me" class="stay-sign">
-                          <input type="checkbox" id="user_remember_me" name="user[remember_me]" checked="checked" value="1"> Stay Signed In</label>
-                      </div>
+                <div class="row form-help-row">
+                  <div class="col-sm-6">
+                    <div class="checkbox">
+                      <label for="user_remember_me" class="stay-sign">
+                        <input type="checkbox" id="user_remember_me" name="user[remember_me]" checked="checked" value="1"> Stay Signed In</label>
                     </div>
-                    <div class="col-sm-6 text-right checkbox">
-                      <span class="stay-sign"><a href="/inbox">Password trouble?</a></span>
-                    </div>
+                  </div>
+                  <div class="col-sm-6 text-right checkbox">
+                    <span class="stay-sign"><a href="/inbox">Password trouble?</a></span>
                   </div>
                 </div>
               </div>
-              <button type="submit" name="commit" (click)="submitForm()" class="btn btn-primary" id="account-email-submit">Sign in</button>
             </div>
+            <button type="submit" name="commit" (click)="submitForm()" class="btn btn-primary" id="account-email-submit">Sign in</button>
+          </div>
         </form>
       </div>
     </div>

@@ -1,4 +1,6 @@
-/*
+/**
+ * Created by chetan on 31/5/16.
+ */
 import {Component, OnInit, OnDestroy} from 'angular2/core';
 import {AudioDataProvider} from "./data-providers/audio-data-provider";
 import {OrderCompactView} from "./item-views/order-compact-view";
@@ -14,29 +16,23 @@ import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
 import {EmailService} from '../order/services/email.service';
 import {OrderLocalStore} from "../order/components/order-local-store";
-import {UserAccount} from "../share/components/user-account.component";
-import {ProductMaster} from "../master/components/product-master.component";
-import {CustomerMaster} from "../master/components/customer-master.component";
-import {LogOut} from "../share/components/logout.component";
-import {ViewInbox} from "./view-inbox.component";
+import {ViewOrder} from "../order/components/view-order.component";
 
 @Component({
-  selector: 'inbox',
-  templateUrl: 'app/inbox/inbox.component.html',
+  selector: 'inbox-itemlist',
+  templateUrl: 'app/inbox/inbox-itemlist.component.html',
   styles: [ require('./item-views/list-view.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   providers: [Orders, EmailService, OrderLocalStore, AudioDataProvider, SearchService],
   pipes:[InboxFilterPipe]
 })
+
 @RouteConfig([
-  new Route({ path: '/viewInbox/...', component: ViewInbox, name: 'ViewInbox', useAsDefault: true}),
-  new Route({ path: '/userAccount', component: UserAccount, name: 'UserAccount'}),
-  new Route({ path: '/products', component: ProductMaster, name: 'Products'}),
-  new Route({ path: '/customer', component: CustomerMaster, name: 'Customer'}),
-  new Route({ path: '/logout', component: LogOut, name: 'Logout'})
+  new Route({ path: '/createorder/...', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
+  new Route({ path: '/vieworder', component: ViewOrder, name: 'ViewOrder'})
 ])
 
-export class Inbox implements OnInit, OnDestroy {
+export class ViewInbox implements OnInit, OnDestroy {
   showDetails: boolean = false;
   showHistory: boolean = false;
   filterBy: string = '';
@@ -60,11 +56,11 @@ export class Inbox implements OnInit, OnDestroy {
 
   ngOnInit() {
     if(!this.showHistory){
-    this.itemList = new Array<InboxItem>();
+      this.itemList = new Array<InboxItem>();
       this.orders.getAllOrders().subscribe(items => {
-        this.itemList = this.itemList.concat(items);
-      }
-    );
+          this.itemList = this.itemList.concat(items);
+        }
+      );
       this.emails.getAllEmails().subscribe(items => this.itemList = this.itemList.concat(items));
       this.audioService.getAll().subscribe(items => this.itemList = this.itemList.concat(items));
     }
@@ -94,36 +90,3 @@ export class Inbox implements OnInit, OnDestroy {
   }
 }
 
-*/
-
-import {Component} from 'angular2/core';
-import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
-import {ViewInbox} from "./inbox-itemlist.component.ts";
-import {Header} from "../share/components/header.component";
-import {UserAccount} from "../share/components/user-account.component";
-import {ProductMaster} from "../master/components/product-master.component";
-import {CustomerMaster} from "../master/components/customer-master.component";
-import {LogOut} from "../share/components/logout.component";
-import {SearchService} from "../share/components/search.service";
-
-@Component({
-  selector: 'inbox',
-  providers: [HTTP_PROVIDERS, SearchService],
-  templateUrl: 'app/inbox/inbox.component.html',
-  styleUrl: 'app/inbox/inbox.component.css',
-  directives: [ROUTER_DIRECTIVES, Header, MATERIAL_DIRECTIVES],
-  pipes: []
-})
-@RouteConfig([
-  new Route({ path: '/viewInbox/...', component: ViewInbox, name: 'ViewInbox', useAsDefault: true}),
-  new Route({ path: '/userAccount', component: UserAccount, name: 'UserAccount'}),
-  new Route({ path: '/products', component: ProductMaster, name: 'Products'}),
-  new Route({ path: '/customer', component: CustomerMaster, name: 'Customer'}),
-  new Route({ path: '/logout', component: LogOut, name: 'Logout'})
-])
-
-export class Inbox {
-
-}

@@ -6,9 +6,9 @@ import {ROUTER_PROVIDERS} from 'angular2/router';
 import {MATERIAL_PROVIDERS} from 'ng2-material/all';
 
 
-import {OrderApp} from './app/inbox-app';
+import {MainApp} from './app/main-app';
 // Add all operators to Observable
 import 'rxjs/Rx';
 
-bootstrap(OrderApp, [HTTP_PROVIDERS, ROUTER_PROVIDERS, MATERIAL_PROVIDERS ])
+bootstrap(MainApp, [HTTP_PROVIDERS, ROUTER_PROVIDERS, MATERIAL_PROVIDERS ])
   .catch(err => console.error(err));

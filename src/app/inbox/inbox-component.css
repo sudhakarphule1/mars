@@ -1,0 +1,23 @@
+md-sidenav.leftnav  {
+  background-image: url("../share/images/dock-bg.png");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  width:200px;
+}
+
+/* Plese move to header component css */
+md-toolbar.toolbar {
+  background: transparent url("../share/images/header-bg.png") repeat-x scroll 0 0 / 100% 100%;
+  min-height: 34px;
+  height: 34px;
+}
+
+md-sidenav-container.md-pushed{
+  padding-left: 200px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

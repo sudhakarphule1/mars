@@ -1,4 +1,4 @@
-<div class="top-header" flex layout="row" *ngIf="access_token">
+<div class="top-header" flex layout="row">
   <h1 class="logo"><img src="app/share/images/logo.png"></h1>
   <button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
     <i md-icon>menu</i>
@@ -7,7 +7,7 @@
   <span flex></span>
   <md-button md-button class="md-warn master-btn" >
     <md-icon><img src="app/share/images/orders.svg"></md-icon> Master
-    <div class="menu-dropdown"> 
+    <div class="menu-dropdown">
       <ul>
         <li> Products </li>
         <li> Customers </li>
@@ -30,11 +30,11 @@
     <div class="user-avtar">
       <img class="md-user-avatar" src="app/share/images/avtars/Swapnil.jpg"/>
     </div>
-    <div class="menu-dropdown"> 
+    <div class="menu-dropdown">
       <ul>
         <li> Notes </li>
         <li> Account Setting </li>
-        <li> Logout </li>
+        <li (click)="select('Logout'); logout()"> Logout </li>
       </ul>
     </div>
   </md-button>

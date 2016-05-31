@@ -1,10 +1,11 @@
 import {Component} from 'angular2/core';
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteParams, ROUTER_DIRECTIVES, Route, RouteConfig} from 'angular2/router';
 import {Router} from "angular2/router";
 
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
-import {SharedServices} from "./../../order/services/shared.service";
+import {SharedServices} from "../../order/services/shared.service.ts";
+import {Inbox} from "../../inbox/inbox.component.ts";
 
 @Component({
   selector: 'login',
