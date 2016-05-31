@@ -1,74 +1,74 @@
+$ca-formcontrol-bg: rgba(255, 255, 255, 0.4);
+$ca-white: #ffffff;
 
-.login-section{
-  background-image: url("../app/share/images/login-screen-bg.png");
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100%;
-  background-size: 100% 100%;
-  position: fixed;
+.login-section {
+	background-image: url("../app/share/images/login-screen-bg.png");
+	background-repeat: no-repeat;
+	height: 100vh;
+	width: 100%;
+	background-size: 100% 100%;
+	position: fixed;
 }
-.login-area{
-  border-style: solid;
-  height: 100vh;
-  text-align: center;
-  width: 100%;
+.login-area {
+	border-style: solid;
+	height: 100vh;
+	text-align: center;
+	width: 100%;
+	&:before {
+		content: ' ';
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+	}
 }
 #account-settings {
-  max-width: 400px;
-  min-width: 400px;
-  margin: 0 auto;
-  display: inline-block;
-  vertical-align: middle;
+	max-width: 475px;
+	min-width: 475px;
+	margin: 0 auto;
+	display: inline-block;
+	vertical-align: middle;
 }
-
-.login-area:before {
-  content: ' ';
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-}
-
 .login-logo {
-  width: 120px;
-  float: left;
-  border-right: 1px solid #fff;
-  margin-right: 30px;
-  height: 180px;
-  padding-top: 30px;
+	width: 194px;
+	float: left;
+	border-right: 1px solid $ca-white;
+	margin-right: 30px;
+	height: 180px;
+	padding-top: 30px;
+	label {
+		float: left;
+		color: $ca-white;
+	}
 }
 .login-form {
-  width: 200px;
-  float: left;
-}
-
-.login-logo label,
-.login-form label {
-  float: left;
-  color: #fff;
-}
-
-.login-form .form-control {
-  margin-bottom: 8px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  width: 100%;
-  height: 28px;
-}
-
-.login-form button {
-  margin-bottom: 8px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  width: 100%;
-  height: 32px;
-  margin-top: 10px;
-  color: #fff;
-}
-
-.login-form a {
-  width: 100%;
-  display: inline-block;
-  text-align: right;
-  margin-top: 10px;
-  color: #fff;
+	width: 210px;
+	float: left;
+	margin-left: 30px;
+	label {
+		float: left;
+		color: $ca-white;
+	}
+	.form-control {
+		margin-bottom: 8px;
+		background: $ca-formcontrol-bg;
+		border: 1px solid $ca-formcontrol-bg;
+		width: 100%;
+		height: 28px;
+	}
+	button {
+		margin-bottom: 8px;
+		background: $ca-formcontrol-bg;
+		border: 1px solid $ca-formcontrol-bg;
+		width: 100%;
+		height: 32px;
+		margin-top: 10px;
+		color: $ca-white;
+	}
+	a {
+		width: 100%;
+		display: inline-block;
+		text-align: right;
+		margin-top: 10px;
+		color: $ca-white;
+	}
 }

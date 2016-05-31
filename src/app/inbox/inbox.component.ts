@@ -112,7 +112,7 @@ import {SearchService} from "../share/components/search.service";
   selector: 'inbox',
   providers: [HTTP_PROVIDERS, SearchService],
   templateUrl: 'app/inbox/inbox.component.html',
-  styleUrl: 'app/inbox/inbox.component.css',
+  styles: [ require('./item-views/list-view.scss') ],
   directives: [ROUTER_DIRECTIVES, Header, MATERIAL_DIRECTIVES],
   pipes: []
 })

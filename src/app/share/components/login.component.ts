@@ -11,7 +11,7 @@ import {Inbox} from "../../inbox/inbox.component.ts";
   selector: 'login',
   providers: [HTTP_PROVIDERS, SharedServices],
   templateUrl: 'app/share/components/login.component.html',
-  styleUrls: ['app/share/components/login.component.scss'],
+  styles: [ require('./login.component.scss') ],
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 

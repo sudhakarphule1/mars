@@ -9,7 +9,7 @@ import "../../../../node_modules/ng2-material/dist/font.css";
 @Component({
   selector: 'ib-product-master',
   templateUrl: 'app/master/components/product-master.component.html',
-  styleUrls: ['app/master/components/product-master.component.css'],
+  styleUrls: [''],
   directives: [ROUTER_DIRECTIVES]
 })
 

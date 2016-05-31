@@ -6,7 +6,7 @@ import {SearchService}     from './search.service';
 @Component({
   selector: 'ib-header',
   templateUrl: 'app/share/components/header.component.html',
-  styleUrls: ['app/share/components/header.component.css'],
+  styles: [ require('./header.component.scss') ],
   providers: [SidenavService/*, SearchService*/],
   directives: [ROUTER_DIRECTIVES, MATERIAL_DIRECTIVES]
 })

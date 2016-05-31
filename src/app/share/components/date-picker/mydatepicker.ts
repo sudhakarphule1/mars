@@ -7,7 +7,7 @@ declare var require: any;
 @Component({
     selector: 'my-date-picker',
     templateUrl: 'app/share/components/date-picker/mydatepicker.html',
-    styleUrls: ['app/share/components/date-picker/mydatepicker.css'],
+    styles: [ require('./mydatepicker.scss') ],
     directives: [NgIf, NgFor, NgClass, NgStyle]
 })
 

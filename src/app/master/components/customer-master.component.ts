@@ -5,7 +5,7 @@ import {Http} from 'angular2/http';
 @Component({
   selector: 'ib-customer-master',
   templateUrl: 'app/master/components/customer-master.component.html',
-  styleUrls: ['app/master/components/customer-master.component.css'],
+  styleUrls: [''],
   directives: [ROUTER_DIRECTIVES]
 })
 export class CustomerMaster {
