@@ -12,6 +12,7 @@ import {RequestOptions} from "angular2/http";
 import {Task} from "../../model/task";
 import {Email} from "../../model/email";
 import {User} from "../../model/user";
+import {Config} from "../../../config/config";
 
 @Injectable()
 export class EmailService {
@@ -19,7 +20,7 @@ export class EmailService {
 
 
   public getAllEmails(){
-    let url = `http://localhost:5000/emails?access_token=`+localStorage.getItem("access_token");
+    let url = Config.RESTServer + `emails?access_token=`+localStorage.getItem("access_token");
     return this.getEmailObjectFunction(url);
   }
 
@@ -29,7 +30,7 @@ export class EmailService {
     console.log("service parama => "+params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/sendmail`;
+    let url = Config.RESTServer + `sendmail`;
     return this.http.post(url, params,options);
   }
 

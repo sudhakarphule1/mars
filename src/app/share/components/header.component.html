@@ -5,6 +5,14 @@
   </button>
   <input type="search" name="search" #search class="search" md-maxlength="10" flex (keyup)="onSearchChange(search.value)">
   <span flex></span>
+  <md-button md-button class="md-warn" >
+    <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
+    My Orders
+  </md-button>
+  <md-button md-button class="md-warn" >
+    <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
+    Leads
+  </md-button>
   <md-button md-button class="md-warn master-btn" >
     <md-icon><img src="app/share/images/orders.svg"></md-icon> Master
     <div class="menu-dropdown">
@@ -13,14 +21,6 @@
         <li> Customers </li>
       </ul>
     </div>
-  </md-button>
-  <md-button md-button class="md-warn" >
-    <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
-    My Orders
-  </md-button>
-  <md-button md-button class="md-warn" >
-    <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
-    Leads
   </md-button>
   <md-button md-button [routerLink]="['/Inbox', {'showHistory':true}]" class="md-warn">
     <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
@@ -34,7 +34,7 @@
       <ul>
         <li> Notes </li>
         <li> Account Setting </li>
-        <li (click)="select('Logout'); logout()"> Logout </li>
+        <li (click)="logout()"> Logout </li>
       </ul>
     </div>
   </md-button>

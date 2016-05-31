@@ -6,21 +6,19 @@ import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
-import {Order} from "../../model/order";
-import {Task} from "../../model/task";
-import {User} from "../../model/user";
+import {Config} from "../../../config/config";
 
 @Injectable()
 export class SharedServices {
   constructor(private http: Http){}
 
   public getAllUsers(){
-    let url = `http://localhost:5000/user?access_token=`+localStorage.getItem("access_token");
+    let url = Config.RESTServer + `user?access_token=`+localStorage.getItem("access_token");
     return this.http.get(url).map((res) => res.json());
   }
 
   public getUserById(value){
-/*    let url = `http://localhost:5000/orders?_id=` + value;
+/*    let url = Config.RESTServer + `orders?_id=` + value;
     /!*return this.getOrdersObjectFunction(url);*!/
     return this.http.get(url)
       // initial transform - result to json
@@ -62,14 +60,14 @@ export class SharedServices {
     let params = JSON.stringify(value);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/user`;
+    let url = Config.RESTServer + `user`;
     return this.http.post(url, params,options);
   }
   public userLogin(value){
     let params = JSON.stringify(value);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/user/login`;
+    let url = Config.RESTServer + `user/login`;
     return this.http.post(url, params,options);
   }
 

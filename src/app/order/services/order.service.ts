@@ -8,18 +8,21 @@ import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
 import {Order} from "../../model/order";
 import {Task} from "../../model/task";
+import {Config} from "../../../config/config";
+import {HttpClient} from "../../share/components/interceptor"
 
 @Injectable()
 export class Orders {
-  constructor(private http: Http){}
+  constructor(private http: Http,
+              private httpClient: HttpClient){
+    this.httpClient = httpClient;
+  }
 
   public getAllProducts(){
-    /*let url = `app/order/services/myProducts.json`;
-    return this.http.get(url).map((res) => res.json());*/
-    let url = `http://localhost:5000/product?access_token=`+localStorage.getItem("access_token");
-    return this.http.get(url).map((res) => res.json()).map((data) => {
+    let url = Config.RESTServer + `product`;
+/*    return this.http.get(url).map((res) => res.json()).map((data) => {
       localStorage.setItem("access_token", data.access_token);
-      /*console.log(data.result);*/
+      /!*console.log(data.result);*!/
       let result:Array<Order> = [];
       if (data.result) {
         data.result.forEach((item) => {
@@ -28,29 +31,39 @@ export class Orders {
         });
       }
       return result;
-    });
+    });*/
+    return this.httpClient.get(url).map((res) => res.json()).map((data) => {
+      localStorage.setItem("access_token", data.access_token);
+      let result:Array<Order> = [];
+      if (data.result) {
+        data.result.forEach((item) => {
+          item.qty = 0;
+          result.push(item);
+        });
+      }
+      return result;});
   }
 
   public getLastOrder(value1, value2){
-    let url = `http://localhost:5000/orders?fromCompany=` + value2 + `&sendLastOrder=true`  + `&access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders?fromCompany=` + value2 + `&sendLastOrder=true`  + `&access_token=`+ localStorage.getItem("access_token");
     return this.http.get(url).map((res) => res.json());
   }
 
   public getAllOrders(){
-    let url = `http://localhost:5000/orders?access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders?access_token=`+ localStorage.getItem("access_token");
     return this.getOrdersObjectFunction(url);
   }
 
   public getOrdersByStatus(value){
-    let url = `http://localhost:5000/orders?defaultTask.status=` + value + `&access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders?defaultTask.status=` + value + `&access_token=`+ localStorage.getItem("access_token");
     return this.getOrdersObjectFunction(url);
   }
 
   public getOrderById(value){
-    let url = `http://localhost:5000/orders?_id=` + value  + `&access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders?_id=` + value  + `&access_token=`+ localStorage.getItem("access_token");
     /*return this.getOrdersObjectFunction(url);*/
     return this.http.get(url)
-      // initial transform - result to json
+    // initial transform - result to json
       .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance
@@ -88,7 +101,7 @@ export class Orders {
     console.log("create order params =>"+params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/orders`;
+    let url = Config.RESTServer + `orders`;
     return this.http.post(url, params,options);
   }
 
@@ -97,18 +110,18 @@ export class Orders {
     console.log(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = `http://localhost:5000/orders?_id=` + value.id;
+    let url = Config.RESTServer + `orders?_id=` + value.id;
     return this.http.put(url, params,options).map((res) => res.json());
   }
 
   public deleteOrder(value: Array<any>){
-    let url = `app/order/services/myOrders.json`;
-    return this.http.get(url).map((res) => res.json());
+    let url = Config.RESTServer + `orders`;
+    return this.http.delete(url).map((res) => res.json());
   }
 
   public getOrdersObjectFunction(url){
     return this.http.get(url)
-      // initial transform - result to json
+    // initial transform - result to json
       .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance

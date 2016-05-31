@@ -62,3 +62,46 @@ class HttpInterceptor extends Http {
   }
 }
 */
+import {Http, Headers} from 'angular2/http';
+import {Injectable} from "angular2/core";
+
+@Injectable()
+export class HttpClient {
+  private http;
+  constructor(http: Http) {
+    this.http = http;
+  }
+
+  createAuthorizationHeader(headers:Headers) {
+    headers.append('access_token', localStorage.access_token);
+  }
+
+  get(url) {
+    let headers = new Headers();
+    var isQuestionPresent : number = url.indexOf("?");debugger
+    if(isQuestionPresent > -1){
+      let newUrl = url + '&access_token=' + localStorage.access_token;
+    }else{
+      let newUrl = url + '?access_token=' + localStorage.access_token;
+    }
+    //this.createAuthorizationHeader(headers);
+    return this.http.get(newUrl, {
+      headers: headers
+    }).map((response) => {
+      localStorage.setItem("access_token", response.json().access_token);
+      return response;})
+      .catch(this.handleError);
+
+  }
+  private handleError (error: any) {
+      console.log("Error Occured.......");
+  }
+
+  post(url, data) {
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.post(url, data, {
+      headers: headers
+    });
+  }
+}

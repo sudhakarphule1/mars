@@ -6,7 +6,7 @@ import {Http} from "angular2/http";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class Config {
+export class Configfile {
   private _config: Object;
   private _env: Object;
   constructor(private http: Http) {
@@ -37,4 +37,8 @@ export class Config {
   get(key: any) {
     return this._config[key];
   }
-};
+}
+
+export class Config {
+  public static get RESTServer(): string { return 'http://localhost:5000/'; }
+}
