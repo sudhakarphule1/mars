@@ -1,5 +1,6 @@
 
 export class Item  {
+  _id: string;
   name: string;
   type: string;
   detail: string;

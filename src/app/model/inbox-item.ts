@@ -1,15 +1,16 @@
-import {Task} from "./task";
+import * as task from "./task";
+/*import NewTask = require ("./task");*/
 
 export abstract class InboxItem {
   id:string;
   type:string;
   date:Date;
   fromCompany:string;
-  defaultTask:Task;
+  defaultTask:task.Task;
 
   constructor(type:string) {
     this.type = type;
-    this.defaultTask = new Task;
+    this.defaultTask = new task.Task;
   }
 
   abstract search(searchFor : string) : boolean;

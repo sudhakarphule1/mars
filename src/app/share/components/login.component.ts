@@ -29,6 +29,7 @@ export class Login {
     this.sharedServices.userLogin({firstName:this.userName, password:this.password}).
     subscribe(res => {
         localStorage.setItem("access_token", res.json().access_token);
+      localStorage.getItem("access_token");
         this._router.navigate(['Inbox']);
       }
     );

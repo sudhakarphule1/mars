@@ -73,16 +73,17 @@ export class HttpClient {
   }
 
   createAuthorizationHeader(headers:Headers) {
-    headers.append('access_token', localStorage.access_token);
+    headers.append('access_token', localStorage.getItem("access_token"));
   }
 
   get(url) {
     let headers = new Headers();
-    var isQuestionPresent : number = url.indexOf("?");debugger
+    var isQuestionPresent : number = url.indexOf("?");
+    var newUrl : string;
     if(isQuestionPresent > -1){
-      let newUrl = url + '&access_token=' + localStorage.access_token;
+      newUrl = url + '&access_token=' + localStorage.getItem("access_token");
     }else{
-      let newUrl = url + '?access_token=' + localStorage.access_token;
+      newUrl = url + '?access_token=' + localStorage.getItem("access_token");
     }
     //this.createAuthorizationHeader(headers);
     return this.http.get(newUrl, {

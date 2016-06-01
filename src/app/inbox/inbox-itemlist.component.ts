@@ -28,7 +28,7 @@ import {ViewOrder} from "../order/components/view-order.component";
 })
 
 @RouteConfig([
-  new Route({ path: '/createorder/...', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
+  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
   new Route({ path: '/vieworder', component: ViewOrder, name: 'ViewOrder'})
 ])
 

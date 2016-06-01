@@ -6,6 +6,8 @@ import {RouteParams, Router} from "angular2/router";
 import {OrderLocalStore} from "./order-local-store";
 import {Orders} from "../services/order.service";
 import {Customer} from "../../model/customer";
+import {Item} from "../../model/item";
+import {Product} from "../../model/product";
 
 @Component({
   selector: 'inbox-app',
@@ -56,11 +58,10 @@ export class PreviewOrder {
   }
 
   placeOrder(){
-    var items: Array<any> = new Array();
+    var items: Array<any> = new Array<any>();
     this.currentOrder.items.forEach((item) =>{  // foreach statement
       items.push({productId: item._id, qty: item.qty});
     });
-    this.sendOrder = this.currentOrder;
     this.sendOrder = Object.assign({}, this.currentOrder);
     this.sendOrder.items = items;
     console.log("send order:" + JSON.stringify(this.sendOrder));

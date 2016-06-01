@@ -10,7 +10,7 @@ import {Contract} from "../../model/contract";
 import {Item} from "../../model/item";
 
 @Component({
-  selector: 'addOtherDetails',
+  selector: 'add-other-details',
   providers: [HTTP_PROVIDERS, CustomerServices],
   templateUrl: 'app/order/components/add-other-details.component.html',
   styles: [ require('./common.scss') ],

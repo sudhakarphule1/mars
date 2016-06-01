@@ -3,8 +3,6 @@ import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {TimeAgoPipe} from "angular2-moment/TimeAgoPipe";
 import {EmailService} from "./../../order/services/email.service"
 import {Email} from "../../model/email";
-/*import {EmailModel} from "./../../model/email"*/
-/*import {LeftNavigation} from "./../../share/components/left.navigation.component";*/
 
 @Component({
   selector: 'ib-email-compact-view',

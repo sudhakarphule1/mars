@@ -12,7 +12,7 @@ import {Router} from "angular2/router";
 import {OrderLocalStore} from "./order-local-store";
 
 @Component({
-  selector: 'addItems',
+  selector: 'add-items',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/add-items.component.html',
   styles: [ require('./common.scss') ],

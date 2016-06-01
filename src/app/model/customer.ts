@@ -11,6 +11,7 @@ export class Customer  {
     this.billingAddress = new Address;
     this.contract = new Array<Contract>();
   }
+  _id: string;
   fromCompany: string;
   contactPerson: string;
   contactNumber: number;

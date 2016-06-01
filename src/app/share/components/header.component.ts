@@ -16,7 +16,6 @@ export class Header {
 
   constructor(public sidenav: SidenavService, private searchService: SearchService, private _router: Router)
   {
-    this.access_token = localStorage.access_token;
   }
 
   onSearchChange(value:string){
@@ -30,7 +29,7 @@ export class Header {
   open(name: string) {
     this.sidenav.show(name);
   }
-  
+
   logout(){
     localStorage.removeItem("access_token");
     this._router.navigate(['Login']);

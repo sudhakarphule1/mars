@@ -16,18 +16,18 @@ import {SharedServices} from "../services/shared.service";
 import {User} from "../../model/user";
 
 @Component({
-  selector: 'ib-create-order',
+  selector: 'create-order',
   templateUrl: 'app/order/components/create-order.component.html',
   styles: [ require('./common.scss') ],
   providers: [HTTP_PROVIDERS, Orders, SharedServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
-@RouteConfig([
+/*@RouteConfig([
   new Route({ path: '/addItems', component: AddItems, name: 'AddItems', useAsDefault: true}),
   new Route({ path: '/previewItems', component: PreviewItems, name: 'PreviewItems'}),
   new Route({ path: '/addOtherDetails', component: AddOtherDetails, name: 'AddOtherDetails'}),
   new Route({ path: '/previewOrder', component: PreviewOrder, name: 'PreviewOrder'})
-])
+])*/
 
 export class CreateOrder implements OnInit{
 
@@ -76,7 +76,7 @@ export class CreateOrder implements OnInit{
     for(var i in this.allUsers){
         if (this.allUsers[i].firstName === this.currentOrder.defaultTask.assignedTo.firstName){
           this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
-        };
+        }
       console.log(this.currentOrder.defaultTask.assignedTo);
     }
   }

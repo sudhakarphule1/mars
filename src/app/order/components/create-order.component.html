@@ -1,6 +1,6 @@
 <div class="orders">
 
-  <div layout="row" layout-xs="column" class="right-top-section">
+  <!--<div layout="row" layout-xs="column" class="right-top-section">
     <div flex>
       <md-list layout="column">
         <md-list-item class="md-3-line col-order-detail">
@@ -44,7 +44,7 @@
     <div flex class="status-update">
       <label flex="100" layout="column">Status :</label>
       <div class="radio-btn">
-        <label class="control control--checkbox">
+        <label class="control control&#45;&#45;checkbox">
           <input value="Running Late" type="checkbox"
                  (click)="currentOrder.defaultTask.status = 'Running Late'"
                  [checked]="currentOrder.defaultTask.status == 'Running Late'">
@@ -53,7 +53,7 @@
       </div>
 
       <div class="radio-btn1">
-        <label class="control control--checkbox">
+        <label class="control control&#45;&#45;checkbox">
           <input value="Running Late" type="checkbox"
                  (click)="currentOrder.defaultTask.status = 'In Progress'"
                  [checked]="currentOrder.defaultTask.status == 'In Progress'">
@@ -62,7 +62,7 @@
       </div>
 
       <div class="radio-btn2">
-        <label class="control control--checkbox">
+        <label class="control control&#45;&#45;checkbox">
           <input value="Running Late" type="checkbox"
                  (click)="currentOrder.defaultTask.status = 'Completed'"
                  [checked]="currentOrder.defaultTask.status == 'Completed'">
@@ -71,8 +71,10 @@
       </div>
     </div>
 
-  </div>
+  </div>-->
 
-  <router-outlet></router-outlet>
-
+  <!--<router-outlet></router-outlet>-->
+  <order-header></order-header>
+<!--  <add-items></add-items>
+  <add-other-details></add-other-details>-->
 </div>

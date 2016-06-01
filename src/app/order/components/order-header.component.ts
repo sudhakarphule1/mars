@@ -11,7 +11,7 @@ import {SharedServices} from "../services/shared.service";
 import {User} from "../../model/user";
 
 @Component({
-  selector: 'or-order-header',
+  selector: 'order-header',
   templateUrl: 'app/order/components/order-header.component.html',
   styles: [ require('./common.scss') ],
   providers: [HTTP_PROVIDERS, Orders, SharedServices],

@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
 import {Order} from "../../model/order";
-import {Task} from "../../model/task";
+import * as task from "../../model/task";
 import {Config} from "../../../config/config";
 import {HttpClient} from "../../share/components/interceptor"
 
@@ -20,18 +20,6 @@ export class Orders {
 
   public getAllProducts(){
     let url = Config.RESTServer + `product`;
-/*    return this.http.get(url).map((res) => res.json()).map((data) => {
-      localStorage.setItem("access_token", data.access_token);
-      /!*console.log(data.result);*!/
-      let result:Array<Order> = [];
-      if (data.result) {
-        data.result.forEach((item) => {
-          item.qty = 0;
-          result.push(item);
-        });
-      }
-      return result;
-    });*/
     return this.httpClient.get(url).map((res) => res.json()).map((data) => {
       localStorage.setItem("access_token", data.access_token);
       let result:Array<Order> = [];
@@ -67,13 +55,11 @@ export class Orders {
       .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance
-      .map((item: Array<>) => {
+      .map((item: any) => {
         let order:Order = new Order();
-
-        let result:Array<Order> = [];
         if (item)
         {
-          var defaultTask : Task = new Task();
+          var defaultTask : task.Task = new task.Task();
           defaultTask.assignedOn = new Date(item.result[0].defaultTask.assignedOn);
           defaultTask.assignedTo = item.result[0].defaultTask.assignedTo;
           defaultTask.status = item.result[0].defaultTask.status;
@@ -125,11 +111,12 @@ export class Orders {
       .map(res => res.json())
       // next transform - each element in the
       // array to a Typed class instance
-      .map((arrayList: Array<any>) => {
+      .map((arrayList: any) => {
         let result:Array<Order> = [];
         if (arrayList) {
-          arrayList.result.forEach((item) => {
-            var defaultTask : Task = new Task();
+          console.log(arrayList);
+          arrayList.result.forEach((item: any) => {
+            var defaultTask : task.Task = new task.Task();
             defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
             defaultTask.assignedTo = item.defaultTask.assignedTo;
             defaultTask.status = item.defaultTask.status;
@@ -151,7 +138,6 @@ export class Orders {
             result.push(order);
           });
         }
-        console.log(result);
         return result;
       });
   }
