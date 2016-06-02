@@ -439,7 +439,19 @@ ul.checkout-bar {
       text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
       top: 4px;
       width: 35px;
-      z-index: 999;      
+      z-index: 999;    
+
+    }
+    span {
+      color: #ccc;
+    }
+    my-date-picker  {
+      background: #ccc;
+      display: inline-block;
+      color: #fff;
+      border-radius: 16px;
+      outline: none;
+      margin-left: 24px;
     }
      &.active {
       color: #FBB03B;
@@ -447,6 +459,17 @@ ul.checkout-bar {
       &:before {
         background: #FBB03B; 
         z-index: 99999;
+      }
+      span {
+        color: #FBB03B;
+      }
+      my-date-picker  {
+        background: #FBB03B;
+        display: inline-block;
+        color: #fff;
+        border-radius: 16px;
+        outline: none;
+        margin-left: 24px;
       }
     }
     &.visited {
@@ -456,6 +479,20 @@ ul.checkout-bar {
       &:before {
        background: #59B2A8; 
         z-index: 99999;
+      }
+      span {
+        color: #59B2A8;
+      }
+      .mydp {
+        background: #59B2A8;
+      }
+      my-date-picker  {
+        background: #59B2A8;
+        display: inline-block;
+        color: #fff;
+        border-radius: 16px;
+        outline: none;
+        margin-left: 24px;
       }
     }
     &:nth-child(1) {
@@ -501,7 +538,8 @@ ul.checkout-bar {
     font-weight: 200;
     text-decoration: none;
     padding-left: 13px;
-    margin-top: -13px;
+    margin-top: -18px;
+    margin-bottom: 6px;
     float: left;
     text-align: center;
     width: 100%;
@@ -509,18 +547,24 @@ ul.checkout-bar {
 }
 
 select {
-   background: #78B1BA;
-   width: 100px;
-   padding: 5px 10px;
-   font-size: 14px;
-   line-height: 1;
-   border: 0;
-   border-radius: 22px;
-   height: 24px;
-   -webkit-appearance: none;
-   outline: none;
-   color: #fff;
-   }
+  background-color: #78B1BA;
+  width: 100px;
+  padding: 0px 20px 0px 10px;
+  font-size: 14px;
+  line-height: 1;
+  border: 0;
+  border-radius: 22px;
+  height: 22px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  color: #fff;
+  margin-top: 8px;
+  background-image: url("../app/share/images/down-arrow.svg");
+  background-size: 9px 6px;
+  background-repeat: no-repeat;
+  background-position: 83px 9px;
+}
 
 @media all and (min-width: 800px) {
  .checkout-bar li.active:after {
@@ -546,7 +590,7 @@ select {
   margin: 0 auto;
   padding: 0;
   /*position: absolute;*/
-  width: 80%;
+  width: 100%;
   /*&:before {
     @include blue-stripe;
     @include inner-shadow;
@@ -589,4 +633,18 @@ select {
     }
   }
 }
-/*checkout bar css */
+.customer-details {
+  display: inline-block;
+  width: 100%;
+  .select-customer,
+  .assigned-customer {
+    float: left;
+    width:15%;
+    text-align: center;
+    margin-top: 15px;
+  }
+  .checkout-section {
+    float: left;
+    width:70%;
+  }
+}

@@ -34,7 +34,6 @@ $ca-white: #ffffff;
 	border-right: 1px solid $ca-white;
 	margin-right: 30px;
 	height: 180px;
-	padding-top: 30px;
 	label {
 		float: left;
 		color: $ca-white;
@@ -43,7 +42,8 @@ $ca-white: #ffffff;
 .login-form {
 	width: 210px;
 	float: left;
-	margin-left: 30px;
+	margin-left: 15px;
+    margin-top: 28px;
 	label {
 		float: left;
 		color: $ca-white;
@@ -51,9 +51,11 @@ $ca-white: #ffffff;
 	.form-control {
 		margin-bottom: 8px;
 		background: $ca-formcontrol-bg;
-		border: 1px solid $ca-formcontrol-bg;
+		border: 0px solid $ca-formcontrol-bg;
 		width: 100%;
 		height: 28px;
+		text-indent: 6px;
+		color: $ca-white;
 	}
 	button {
 		margin-bottom: 8px;
@@ -71,4 +73,23 @@ $ca-white: #ffffff;
 		margin-top: 10px;
 		color: $ca-white;
 	}
+}
+/*checkout bar css */
+.form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $ca-white;
+}
+.form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: $ca-white;
+   opacity:  1;
+}
+.form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: $ca-white;
+   opacity:  1;
+}
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: $ca-white;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #99A3A5 inset;
+    border: 0;
 }

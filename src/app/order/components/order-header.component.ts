@@ -27,7 +27,7 @@ export class OrderHeader implements OnInit{
     dateFormat: 'yyyy-mm-dd',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
-    height: '20px',
+    height: '17px',
     width: '150px'
   };
 

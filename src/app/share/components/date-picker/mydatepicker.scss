@@ -19,7 +19,10 @@ $ca-caltable-bg: #003366;
     line-height: 1.1;
     display: inline-block;
     width: 84px !important;
-    border: 1px solid $ca-date-bg;
+    height: 17px !important;
+    &:focus {
+      outline: none;
+    }
     * {
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
@@ -46,19 +49,17 @@ $ca-caltable-bg: #003366;
         background-color: $ca-date-white;
     }
     .selection {
-        background-color: $ca-date-white;
         display: table-cell;
         position: absolute;
         width: 100%;
         text-align: left;
         font-size: 14px;
         font-weight: 500;
-        padding: 0 80px 0 4px;
+        padding: 3px 80px 0 4px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         text-align: center;
-        color: $ca-date-black;
     }
     .selbtngroup {
         position: relative;

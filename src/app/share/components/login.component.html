@@ -17,10 +17,9 @@
           <div class="login-form">
             <div class="form-group">
               <span class="{{ msgClass }}">{{ message1 }}</span>
-              <label class="sr-only control-label" for="userName">Username</label>
               <input class="form-control"
                      type="text"
-                     name="userName"
+                     name="userName" placeholder="Username"
                      [(ngModel)]="userName"
                      ngControl="userName"
                      id="userName"
@@ -29,28 +28,29 @@
             <div class="help-right">
               <div class="form-group">
                 <span class="{{ msgClass }}">{{ message2 }}</span>
-                <label class="sr-only control-label" for="password">Password</label>
+                <label class="sr-only control-label" for="password"></label>
                 <input class="form-control"
                        type="password"
-                       name="password"
+                       name="password" placeholder="Password"
                        [(ngModel)]="password"
                        ngControl="password"
                        id="password"
                        required>
-                <div class="row form-help-row">
+                <!-- <div class="row form-help-row">
                   <div class="col-sm-6">
                     <div class="checkbox">
                       <label for="user_remember_me" class="stay-sign">
-                        <input type="checkbox" id="user_remember_me" name="user[remember_me]" checked="checked" value="1"> Stay Signed In</label>
+                        <input type="checkbox" id="user_remember_me" name="user[remember_me]" checked="checked" value="1"> Stay Signed In
+                      </label>
                     </div>
                   </div>
                   <div class="col-sm-6 text-right checkbox">
                     <span class="stay-sign"><a href="/inbox">Password trouble?</a></span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
-            <button type="submit" name="commit" (click)="submitForm()" class="btn btn-primary" id="account-email-submit">Sign in</button>
+            <button type="submit" name="commit" (click)="submitForm()" class="btn btn-primary" id="account-email-submit">Log In</button>
           </div>
         </form>
       </div>
