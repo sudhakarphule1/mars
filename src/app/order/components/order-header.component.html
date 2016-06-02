@@ -1,4 +1,4 @@
-
+<!-- 
 <div layout="row" layout-xs="column" class="right-top-section">
   <div flex>
     <md-list layout="column">
@@ -66,5 +66,105 @@
       </label>
     </div>
   </div>
+
+</div>
+ -->
+
+ <div class="orders">
+
+  <div layout="row" layout-xs="column" class="right-top-section">
+<!--     <div flex>
+      <md-list layout="column">
+        <md-list-item class="md-3-line col-order-detail">
+          <img src="app/share/images/avtars/{{currentOrder.defaultTask.assignedTo.firstName}}.jpg" class="md-avatar" >
+          <div class="md-list-item-text">
+            <h2>Create Order</h2>
+            <h2 *ngIf="orderStage === 'preview'">Preview Items</h2>
+            <h2 *ngIf="orderStage === 'basicDetails'">Enter Other Details</h2>
+            <h2 *ngIf="orderStage === 'fullPreview'">Order Details</h2>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div> -->
+    <!-- <div flex>
+      <md-list layout="column" layout-align="end end">
+        <md-list-item class="md-3-line col-order-detail">
+          <div class="md-list-item-text">
+            <h3><span>Order Date :</span> <my-date-picker [options]="myDatePickerOptions"
+                                             (dateChanged)="onDate1Changed($event)"
+                                             [selDate]="selectedDate1"></my-date-picker></h3>
+            <h3><span>Delivery Date :</span> <my-date-picker [options]="myDatePickerOptions"
+                                             (dateChanged)="onDate2Changed($event)"
+                                             [selDate]="selectedDate2"></my-date-picker></h3>
+          </div>
+        </md-list-item>
+      </md-list>
+    </div> -->
+  </div>
+
+<!--   <div layout="row" layout-xs="column" class="assigned-section">
+    <div flex class="assigned-select" flex="40">
+      <label flex="100" layout="column">Assigned to :</label>
+      <md-input-container class="md-block" flex-gt-sm flex>
+        <select  [(ngModel)]="currentOrder.defaultTask.assignedTo.firstName" (ngModelChange)="onChange($event)">
+        <option *ngFor="#user of allUsers" [value]="user.firstName">{{user.firstName}}</option>
+        </select>
+      </md-input-container>
+      <img src="app/order/images/chat-box.svg" class="chat-icon" >
+    </div>
+  </div> -->
+
+  <div class="show-details">
+    <span>Show Details</span>
+  </div>
+  <div style="display: inline-block;width: 100%;">
+    <div style="float: left; width:15%;">
+      <div class="header-details">
+        <div flex class="client-section">
+          <img class="client-img" src="app/share/images/company-logo/infosys.png">
+        </div>
+        <select>
+          <option value=""> Test1 </option>
+          <option value=""> Test2 </option>
+          <option value=""> Test3 </option>
+        </select>
+      </div>
+    </div>
+    <div style="float: left;width:70%;">
+      <div class="checkout-wrap">
+        <ul class="checkout-bar">
+          <li class="visited first">
+            <span>Order Recived</span>
+            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate1Changed($event)"  [selDate]="selectedDate1"></my-date-picker>
+          </li>
+          <li class="previous visited">
+            <span>Order Placed</span>
+            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate2Changed($event)" [selDate]="selectedDate2"></my-date-picker>
+          </li>
+          <li class="active">
+            <span>In Transit</span>
+            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate2Changed($event)" [selDate]="selectedDate1"></my-date-picker>
+          </li>
+          <li class="next">
+            <span>Delivery</span>
+            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate2Changed($event)" [selDate]="selectedDate2"></my-date-picker>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div style="float: left; width:15%;">
+      <div class="header-details">
+        <div flex class="client-section">
+          <img class="client-img" src="app/share/images/company-logo/infosys.png">
+        </div>
+        <select>
+          <option value=""> Test1 </option>
+          <option value=""> Test2 </option>
+          <option value=""> Test3 </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
 
 </div>
