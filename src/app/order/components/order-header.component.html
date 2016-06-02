@@ -1,4 +1,4 @@
-<!-- 
+<!--
 <div layout="row" layout-xs="column" class="right-top-section">
   <div flex>
     <md-list layout="column">
@@ -123,10 +123,14 @@
         <div flex class="client-section">
           <img class="client-img" src="app/share/images/company-logo/infosys.png">
         </div>
-        <select>
+<!--        <select>
           <option value=""> Test1 </option>
           <option value=""> Test2 </option>
           <option value=""> Test3 </option>
+        </select>-->
+        <select (change)="getCustomerDetails($event.target.value)">
+          <option selected="selected">Choose Customer</option>
+          <option *ngFor="#customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
         </select>
       </div>
     </div>
@@ -165,6 +169,4 @@
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
-
 </div>

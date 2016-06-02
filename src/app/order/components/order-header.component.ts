@@ -9,12 +9,14 @@ import {Order} from "../../model/order";
 import {MyDatePicker} from "../../share/components/date-picker/mydatepicker";
 import {SharedServices} from "../services/shared.service";
 import {User} from "../../model/user";
+import {CustomerServices} from "../services/customer.service";
+import {Customer} from "../../model/customer";
 
 @Component({
   selector: 'order-header',
   templateUrl: 'app/order/components/order-header.component.html',
   styles: [ require('./common.scss') ],
-  providers: [HTTP_PROVIDERS, Orders, SharedServices],
+  providers: [HTTP_PROVIDERS, Orders, SharedServices, CustomerServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 
@@ -34,18 +36,24 @@ export class OrderHeader implements OnInit{
   @Input() currentOrder: Order;
   message: string = "";
   orderState: string = "orderPreview";
+  private allCustomers: Array<Customer>;
+  private selectedCustomer: Customer = new Customer();
   displayMessage: boolean = false;
   id: string;
   allUsers: Array<User>;
+  private showDetails: boolean = false;
   constructor(private orders: Orders,
               params: RouteParams,
-              private sharedServices: SharedServices) {
+              private sharedServices: SharedServices,
+              private customerServices: CustomerServices) {
     this.id = params.get('orderId');
     console.log("header order" + this.currentOrder);
   }
 
   ngOnInit() {
     this.sharedServices.getAllUsers().subscribe(res => this.allUsers = res.result);
+    this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;
+      console.log(this.allCustomers);});
   }
 
   editOrder(){
@@ -80,8 +88,22 @@ export class OrderHeader implements OnInit{
     for(var i in this.allUsers){
       if (this.allUsers[i].firstName === this.currentOrder.defaultTask.assignedTo.firstName){
         this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
-      };
+      }
     }
+  }
+
+  getCustomerDetails(customer){
+    for (var i = 0; i < this.allCustomers.length; i++)
+    {
+      if (this.allCustomers[i].fromCompany == customer) {
+        this.selectedCustomer = this.allCustomers[i];
+      }
+    }
+    this.currentOrder.customer = this.selectedCustomer._id;
+    this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
+    this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
+    this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;
+    this.showDetails =  true;
   }
 
 }

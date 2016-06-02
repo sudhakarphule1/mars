@@ -44,6 +44,7 @@ export class AddItems {
       .subscribe(res => {this.items = res;
         orderLocalStore.items = this.items;});
     this.currentOrder = orderLocalStore.order;
+    console.log("he items ahet"+this.items);
   }
 
   createOrder(){

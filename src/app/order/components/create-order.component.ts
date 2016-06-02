@@ -1,7 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams, Router} from 'angular2/router';
-import {FORM_DIRECTIVES} from "angular2/common";
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {RouteParams} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
 import {Order} from "../../model/order";
@@ -18,7 +16,7 @@ import {AddItems} from "./add-items.component";
   templateUrl: 'app/order/components/create-order.component.html',
   styles: [ require('./common.scss') ],
   providers: [HTTP_PROVIDERS, Orders, SharedServices],
-  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker, OrderHeader, AddOtherDetails, AddItems],
+  directives: [MyDatePicker, OrderHeader, AddOtherDetails, AddItems],
 })
 
 export class CreateOrder implements OnInit{
@@ -57,24 +55,4 @@ export class CreateOrder implements OnInit{
     });
   }
 
-  onDate1Changed(event) {
-    console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-    this.currentOrder.defaultTask.assignedOn = new Date(event.formatted);
-    console.log("assigned on:" + this.currentOrder.defaultTask.assignedOn);
-  }
-
-  onChange(value){
-    for(var i in this.allUsers){
-        if (this.allUsers[i].firstName === this.currentOrder.defaultTask.assignedTo.firstName){
-          this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
-        }
-      console.log(this.currentOrder.defaultTask.assignedTo);
-    }
-  }
-
-  onDate2Changed(event) {
-    console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-    this.currentOrder.defaultTask.completeBy = new Date(event.formatted);
-    console.log(" complete by:" + this.currentOrder.defaultTask.completeBy);
-  }
 }

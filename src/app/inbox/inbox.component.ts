@@ -7,7 +7,6 @@ import {Header} from "../share/components/header.component";
 import {UserAccount} from "../share/components/user-account.component";
 import {ProductMaster} from "../master/components/product-master.component";
 import {CustomerMaster} from "../master/components/customer-master.component";
-import {LogOut} from "../share/components/logout.component";
 import {SearchService} from "../share/components/search.service";
 
 @Component({
