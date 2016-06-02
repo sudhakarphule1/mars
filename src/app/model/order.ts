@@ -9,17 +9,19 @@ export class Order extends InboxItem {
     this.shippingAddress = new Address;
     this.billingAddress = new Address;
     this.orderDate = new Date();
+    this.orderPlacedDate =  new Date();
+    this.transitDate = new Date();
     this.completionDate = new Date();
     this.items = Array<Item>();
   }
 
   orderDate:Date;
+  orderPlacedDate: Date;
+  transitDate: Date;
   completionDate:Date;
   status:string;
   orderType:string;
   remarks: string;
-/*  contactPerson: string;
-  contactNumber: number;*/
   customer: Customer;
   totalAmount: number;
   items: Array<Item>;

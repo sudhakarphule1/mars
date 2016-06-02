@@ -123,13 +123,8 @@
         <div flex class="client-section">
           <img class="client-img" src="app/share/images/company-logo/infosys.png">
         </div>
-<!--        <select>
-          <option value=""> Test1 </option>
-          <option value=""> Test2 </option>
-          <option value=""> Test3 </option>
-        </select>-->
         <select (change)="getCustomerDetails($event.target.value)">
-          <option selected="selected">Choose Customer</option>
+          <option selected="selected">Select Customer</option>
           <option *ngFor="#customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
         </select>
       </div>
@@ -138,20 +133,28 @@
       <div class="checkout-wrap">
         <ul class="checkout-bar">
           <li class="visited first">
-            <span>Order Recived</span>
-            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate1Changed($event)"  [selDate]="selectedDate1"></my-date-picker>
+            <span>Order Received</span>
+            <my-date-picker [options]="myDatePickerOptions"
+                            (dateChanged)="onDate1Changed($event)"
+                            [selDate]="orderDate"></my-date-picker>
           </li>
           <li class="previous visited">
             <span>Order Placed</span>
-            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate2Changed($event)" [selDate]="selectedDate2"></my-date-picker>
+            <my-date-picker [options]="myDatePickerOptions"
+                            (dateChanged)="onDate2Changed($event)"
+                            [selDate]="orderPlacedDate"></my-date-picker>
           </li>
           <li class="active">
             <span>In Transit</span>
-            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate2Changed($event)" [selDate]="selectedDate1"></my-date-picker>
+            <my-date-picker [options]="myDatePickerOptions"
+                            (dateChanged)="onDate3Changed($event)"
+                            [selDate]="transitDate"></my-date-picker>
           </li>
           <li class="next">
             <span>Delivery</span>
-            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDate2Changed($event)" [selDate]="selectedDate2"></my-date-picker>
+            <my-date-picker [options]="myDatePickerOptions"
+                            (dateChanged)="onDate4Changed($event)"
+                            [selDate]="completionDate"></my-date-picker>
           </li>
         </ul>
       </div>
@@ -161,11 +164,18 @@
         <div flex class="client-section">
           <img class="client-img" src="app/share/images/company-logo/infosys.png">
         </div>
-        <select>
+<!--        <select>
           <option value=""> Test1 </option>
           <option value=""> Test2 </option>
           <option value=""> Test3 </option>
+        </select>-->
+
+        <!--<select  [(ngModel)]="selectedUser" (ngModelChange)="onChange($event)">-->
+        <select (change)="onChange($event.target.value)">
+          <option selected="selected">Select User</option>
+          <option *ngFor="#user of allUsers" [value]="user.firstName">{{user.firstName}}</option>
         </select>
+
       </div>
     </div>
   </div>

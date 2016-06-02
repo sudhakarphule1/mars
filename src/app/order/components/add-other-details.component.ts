@@ -41,8 +41,8 @@ export class AddOtherDetails implements  OnInit{
               private customerServices: CustomerServices) {
     this.leadId = params.get('leadId');
     this.currentOrder = orderLocalStore.order;
-    this.currentOrder.orderDate = new Date();
-    this.currentOrder.completionDate = new Date();
+/*    this.currentOrder.orderDate = new Date();
+    this.currentOrder.completionDate = new Date();*/
     this.items = orderLocalStore.items;
   }
 

@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 import {Orders} from '../services/order.service';
 import {Item} from "../../model/item";
 import {Order} from "../../model/order";
@@ -30,7 +30,8 @@ export class AddItems {
   displaySuccess = false;
   errorMessage: string = "";
 
-  currentOrder: Order;
+  /*currentOrder: Order;*/
+  @Input currentOrder: Order;
   oldOrders: Array<Order>;
   private inboxItem;
 
@@ -44,7 +45,6 @@ export class AddItems {
       .subscribe(res => {this.items = res;
         orderLocalStore.items = this.items;});
     this.currentOrder = orderLocalStore.order;
-    console.log("he items ahet"+this.items);
   }
 
   createOrder(){

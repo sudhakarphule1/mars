@@ -84,7 +84,7 @@ export class ViewInbox implements OnInit, OnDestroy {
     if( item.type == 'Order' ) {
       link = ['ViewOrder', { orderId: item.id }];
     } else {
-      link = ['CreateOrder', { leadId: item.id }];
+      link = ['CreateOrder', { orderId: item.id }];
     }
     this._router.navigate(link);
   }
