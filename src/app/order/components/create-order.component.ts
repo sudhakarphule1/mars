@@ -5,32 +5,23 @@ import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {Orders} from '../services/order.service';
 import {Order} from "../../model/order";
-
-import {AddItems} from "./add-items.component";
-import {PreviewItems} from "./preview-items.component";
-import {AddOtherDetails} from "./add-other-details.component";
-import {PreviewOrder} from "./preview-order.component";
 import {MyDatePicker} from "../../share/components/date-picker/mydatepicker";
 import {OrderLocalStore} from "./order-local-store";
 import {SharedServices} from "../services/shared.service";
 import {User} from "../../model/user";
+import {OrderHeader} from "./order-header.component";
+import {AddOtherDetails} from "./add-other-details.component";
+import {AddItems} from "./add-items.component";
 
 @Component({
   selector: 'create-order',
   templateUrl: 'app/order/components/create-order.component.html',
   styles: [ require('./common.scss') ],
   providers: [HTTP_PROVIDERS, Orders, SharedServices],
-  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
+  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker, OrderHeader, AddOtherDetails, AddItems],
 })
-/*@RouteConfig([
-  new Route({ path: '/addItems', component: AddItems, name: 'AddItems', useAsDefault: true}),
-  new Route({ path: '/previewItems', component: PreviewItems, name: 'PreviewItems'}),
-  new Route({ path: '/addOtherDetails', component: AddOtherDetails, name: 'AddOtherDetails'}),
-  new Route({ path: '/previewOrder', component: PreviewOrder, name: 'PreviewOrder'})
-])*/
 
 export class CreateOrder implements OnInit{
-
   private myDatePickerOptions = {
     todayBtnTxt: 'Today',
     dateFormat: 'yyyy-mm-dd',

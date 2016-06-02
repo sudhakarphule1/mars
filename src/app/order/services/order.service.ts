@@ -114,7 +114,6 @@ export class Orders {
       .map((arrayList: any) => {
         let result:Array<Order> = [];
         if (arrayList) {
-          console.log(arrayList);
           arrayList.result.forEach((item: any) => {
             var defaultTask : task.Task = new task.Task();
             defaultTask.assignedOn = new Date(item.defaultTask.assignedOn);
