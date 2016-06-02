@@ -64,7 +64,7 @@ export class EmailService {
             defaultTask.priority = item.defaultTask.priority;
 
             var email = new Email();
-            email.id = item._id;
+            email._id = item._id;
             email.html = item.html;
             email.text = item.text;
             email.subject = item.subject;

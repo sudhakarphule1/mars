@@ -38,7 +38,7 @@ export class EmailCompactView {
       "inReplyTo" : this.email.messageId,
       "references": [this.email.messageId],
       "date": new Date(),
-      "id":this.email.id
+      "id":this.email._id
     }
 
     console.log("replay email body =>" +JSON.stringify(replyEmail));

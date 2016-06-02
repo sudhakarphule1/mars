@@ -78,13 +78,13 @@ export class ViewInbox implements OnInit, OnDestroy {
 
   selected : string;
   navigateTo(item: InboxItem) {
-    this.selected = item.id;
+    this.selected = item._id;
     this.orderLocalStore.inboxItem = item;
     let link;
     if( item.type == 'Order' ) {
-      link = ['ViewOrder', { orderId: item.id }];
+      link = ['ViewOrder', { orderId: item._id }];
     } else {
-      link = ['CreateOrder', { orderId: item.id }];
+      link = ['CreateOrder', { orderId: item._id }];
     }
     this._router.navigate(link);
   }

@@ -1,10 +1,8 @@
-import {Component, Input, OnInit} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {Orders} from '../services/order.service';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {FORM_DIRECTIVES} from "angular2/common";
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
-
 import {Order} from "../../model/order";
 import {MyDatePicker} from "../../share/components/date-picker/mydatepicker";
 import {SharedServices} from "../services/shared.service";
@@ -16,7 +14,7 @@ import {Customer} from "../../model/customer";
   selector: 'order-header',
   templateUrl: 'app/order/components/order-header.component.html',
   styles: [ require('./common.scss') ],
-  providers: [HTTP_PROVIDERS, Orders, SharedServices, CustomerServices],
+  providers: [HTTP_PROVIDERS, SharedServices, CustomerServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 
@@ -36,18 +34,18 @@ export class OrderHeader implements OnInit{
   transitDate: string = '2016-04-01';
   completionDate: string = '2016-04-01';
   currentOrder: Order = new Order();
-  message: string = "";
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
-  displayMessage: boolean = false;
   leadId: string;
   allUsers: Array<User>;
-  private showDetails: boolean = false;
-  constructor(private orders: Orders,
-              params: RouteParams,
+  constructor(params: RouteParams,
               private sharedServices: SharedServices,
               private customerServices: CustomerServices) {
     this.leadId = params.get('orderId');
+    this.currentOrder.orderDate = new Date(this.orderDate);
+    this.currentOrder.completionDate = new Date(this.completionDate);
+    this.currentOrder.orderPlacedDate = new Date(this.orderPlacedDate);
+    this.currentOrder.transitDate = new Date(this.transitDate);
   }
 
   ngOnInit() {
@@ -62,20 +60,20 @@ export class OrderHeader implements OnInit{
     this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;});
   }
 
-  editOrder(){
+/*  editOrder(){
     this.orders.editOrder(this.currentOrder).subscribe(
       err => this.message = "Your order details have been successfully updated.",
       () => this.message = "Your order details have been successfully updated."
     );
     this.displayMessage = true;
-  }
+  }*/
 
-  removeItem(item){
+/*  removeItem(item){
     var index = this.currentOrder.items.indexOf(item);
     this.currentOrder.items.splice(index, 1);
     if(this.currentOrder.items.length == 0){
     }
-  }
+  }*/
 
   onDate1Changed(event) {
     console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
@@ -89,6 +87,7 @@ export class OrderHeader implements OnInit{
     this.currentOrder.orderPlacedDate = new Date(event.formatted);
     console.log(" complete by:" + this.currentOrder.defaultTask.completeBy);
   }
+
   onDate3Changed(event) {
     console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
     this.currentOrder.transitDate = new Date(event.formatted);
@@ -103,9 +102,10 @@ export class OrderHeader implements OnInit{
   }
 
   onChange(user){
+    console.log(user);
     for(var i in this.allUsers){
-      if (this.allUsers[i].firstName === this.currentOrder.defaultTask.assignedTo.firstName){
-        this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
+      if (this.allUsers[i].firstName === user){
+        this.currentOrder.defaultTask.assignedTo = this.allUsers[i];
       }
     }
   }
@@ -121,7 +121,6 @@ export class OrderHeader implements OnInit{
     this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
     this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
     this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;
-    this.showDetails =  true;
   }
 
 }

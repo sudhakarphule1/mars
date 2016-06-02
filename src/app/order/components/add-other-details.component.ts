@@ -47,12 +47,10 @@ export class AddOtherDetails implements  OnInit{
   }
 
   ngOnInit() {
-    this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;
-    console.log(this.allCustomers);});
+    this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;});
   }
 
   proceedNext(){
-    this.currentOrder.totalAmount = 3434;
 
     if(this.oldCustomers){
     this.orderLocalStore.customer = this.selectedCustomer;
@@ -102,7 +100,7 @@ export class AddOtherDetails implements  OnInit{
       }
     }
 
-    this.currentOrder.customer = this.selectedCustomer._id;
+    this.currentOrder.customer = this.selectedCustomer;
     this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
     this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
     this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;

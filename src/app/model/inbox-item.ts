@@ -2,7 +2,7 @@ import * as task from "./task";
 /*import NewTask = require ("./task");*/
 
 export abstract class InboxItem {
-  id:string;
+  _id:string;
   type:string;
   date:Date;
   fromCompany:string;

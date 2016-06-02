@@ -3,7 +3,7 @@
  */
 export class Admin{
 
-  _id: string
+  _id: string;
   userName : string;
   password : string;
   createdAt: Date;

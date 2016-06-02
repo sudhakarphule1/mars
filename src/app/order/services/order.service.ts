@@ -67,7 +67,7 @@ export class Orders {
           defaultTask.priority = item.result[0].defaultTask.priority;
 
           //var order = new Order();
-          order.id = item.result[0]._id;
+          order._id = item.result[0]._id;
           order.remarks = item.result[0].remarks;
           order.shippingAddress = item.result[0].shippingAddress;
           order.billingAddress = item.result[0].billingAddress;
@@ -123,7 +123,7 @@ export class Orders {
             defaultTask.priority = item.defaultTask.priority;
 
             var order = new Order();
-            order.id = item._id;
+            order._id = item._id;
             order.items = item.items;
             order.orderDate = new Date(item.orderDate);
             order.completionDate = new Date(item.completionDate);

@@ -22,25 +22,23 @@ import {OrderLocalStore} from "./order-local-store";
 
 export class AddItems {
 
-  leadId: string;
+  /*leadId: string;*/
   items : Array<Item>;
   orderStage: string = "createOrder";
   displayError = false;
+  showProducts: boolean = false;
   search: string = '';
   displaySuccess = false;
   errorMessage: string = "";
-
-  /*currentOrder: Order;*/
   @Input currentOrder: Order;
-  oldOrders: Array<Order>;
+  /*oldOrders: Array<Order>;*/
   private inboxItem;
 
-  constructor(private _router: Router,
-              private orders: Orders,
+  constructor(private orders: Orders,
               params: RouteParams,
               private searchService: SearchService,
               public orderLocalStore : OrderLocalStore) {
-    this.leadId = params.get('leadId');
+    /*this.leadId = params.get('leadId');*/
     orders.getAllProducts()
       .subscribe(res => {this.items = res;
         orderLocalStore.items = this.items;});
@@ -61,11 +59,10 @@ export class AddItems {
     else {
       this.orderStage = "preview";
       this.displayError = false;
-      this._router.navigate(['PreviewItems']);
     }
   }
 
-  viewHistory(){
+/*  viewHistory(){
     this.inboxItem = this.orderLocalStore.inboxItem;
     console.log(this.inboxItem);
     this.orders.getLastOrder("Completed", this.inboxItem.fromCompany)
@@ -75,6 +72,6 @@ export class AddItems {
         this._router.parent.navigate(['ViewOrder', { orderId: this.orderLocalStore.order.id, cloneOrder: true }])
       });
     ;
-  }
+  }*/
 
 }

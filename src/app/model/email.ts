@@ -2,7 +2,7 @@ import {InboxItem} from "./inbox-item";
 import {Task} from "./task";
 
 export class Email extends InboxItem {
-  id: string;
+  _id: string;
   html : string;
   text : string;
   subject : string;

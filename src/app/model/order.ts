@@ -15,6 +15,7 @@ export class Order extends InboxItem {
     this.items = Array<Item>();
   }
 
+  _id: string;
   orderDate:Date;
   orderPlacedDate: Date;
   transitDate: Date;

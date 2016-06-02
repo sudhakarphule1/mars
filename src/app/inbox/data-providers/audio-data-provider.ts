@@ -32,7 +32,7 @@ export class AudioDataProvider{
             audioContent.from = item.from;
             audioContent.subject = item.subject;
             audioContent.attachment = item.attachment;
-            audioContent.id = item.id;
+            audioContent._id = item.id;
             audioContent.date =  new Date(item.date);
             audioContent.fromCompany = item.fromCompany;
             audioContent.defaultTask = defaultTask;
