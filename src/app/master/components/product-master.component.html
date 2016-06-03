@@ -1,0 +1,30 @@
+<div>
+  <input type="text" [(ngModel)]="entityname">
+
+  <table border="2" layout-align-lg="center" width="100%" height="100%">
+    <thead>
+    <th></th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Detail</th>
+    <th>Variant</th>
+    <th>Quantity</th>
+    <th>Rate</th>
+    <th>Vat</th>
+    </thead>
+
+    <tbody>
+    <tr layout-wrap *ngFor="#item of (items| productsFilter:'filterBy': entityname )">
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)">{{srNO}}</td>
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)">{{item.name}} </td>
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)">{{item.type}}</td>
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)"> {{item.detail}}</td>
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)"> {{item.variant}}</td>
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)"> {{item.qty}}</td>
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)">{{item.unitRate}}</td>
+      <td contenteditable="true" (blur)="onRowClick($event,item._id, item)">{{item._v}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

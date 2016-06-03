@@ -1,55 +1,66 @@
 import {Component} from 'angular2/core';
-import {Observable} from 'rxjs/Observable';
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 import "../../../../node_modules/ng2-material/dist/ng2-material.css";
 import "../../../../node_modules/ng2-material/dist/font.css";
-
+import {Component} from "angular2/core";
+import {ROUTER_DIRECTIVES} from "angular2/router";
+import {Item} from "../../model/item";
+import {ProductService} from "../services/product.service";
+import {ProductsFilterPipe} from "../../order/components/products-filter.pipe";
 
 @Component({
   selector: 'ib-product-master',
   templateUrl: 'app/master/components/product-master.component.html',
   styleUrls: [''],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
+  providers: [ProductService, ProductsFilterPipe],
+  pipe: [ProductsFilterPipe]
 })
 
-
 export class ProductMaster {
-/*
-  orders = [{companyName: 'Infosys',
-    orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-    orderDate: '03/24/2016',
-    orderType: 'email'},
-    {companyName: 'HSBC',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '02/10/2016',
-      orderType: 'online'},
-    {companyName: 'IBM',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '06/30/2016',
-      orderType: 'phone'},
-    {companyName: 'Cognizant',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '02/01/2016',
-      orderType: 'manual'},
-    {companyName: 'Quick Heal',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '02/20/2016',
-      orderType: 'email'},
-    {companyName: 'Infosys',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '03/24/2016',
-      orderType: 'email'},
-    {companyName: 'HSBC',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '02/10/2016',
-      orderType: 'online'},
-    {companyName: 'IBM',
-      orderDetails: '5 Tissue boxes, 10 Hand dryers, 20 paper towels',
-      orderDate: '06/30/2016',
-      orderType: 'phone'}];
 
-  selectedItem: string;
+  items:Array<Item>;
+  itemss:Array<Item>;
+  productjson = {"_id": "", "name": "", "detail": "", "variant": "", "type": "", "available": "", "unitRate": ""}
 
-  displayDetails(item) { this.selectedItem = item; }*/
+  constructor(private products:ProductService) {
+    products.getAllProducts()
+      .subscribe(res => {
+        this.items = res;
+      });
+  }
+
+  onRowClick(event, id, item2) {
+
+    for (var index:number = 0; index < 5; index++) {
+
+      //console.log(event.currentTarget.parentElement.children.item(index).textContent)
+      this.productjson._id = id
+      if (index == 1) {
+        this.productjson.name = event.currentTarget.parentElement.children.item(index).textContent
+      }
+      if (index == 2) {
+        this.productjson.type = event.currentTarget.parentElement.children.item(index).textContent
+      }
+      if (index == 3) {
+        this.productjson.detail = event.currentTarget.parentElement.children.item(index).textContent
+      }
+      if (index == 4) {
+        this.productjson.variant = event.currentTarget.parentElement.children.item(index).textContent
+      }
+      if (index == 6) {
+        this.productjson.unitRate = event.currentTarget.parentElement.children.item(index).textContent
+      }
+
+    }
+
+    console.log("hi");
+    this.products.updateProduct(this.productjson);
+
+    this.products.getAllProducts()
+      .subscribe(res => {
+        this.items = res;
+      });
+  }
+
 }
