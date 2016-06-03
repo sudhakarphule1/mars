@@ -1,17 +1,19 @@
-<md-list-item class="md-3-line" [class.active]="selected == order.id">
+<div class="md-3-line" [class.active]="selected == order.id">
   <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
-  <div class="client-section">
+  <div class="client-section" style="width:80px;float:left;">
     <span><img src="app/inbox/images/mobile-app.png"> </span>
     <img [src]="'app/share/images/company-logo/'+order.customer.fromCompany + '.png'" class="md-avatar client-img" alt="{{order.customer.fromCompany}}"/>
   </div>
-  <div class="md-list-item-text" layout="column">
+  <div class="list-containt">
     <p *ngFor="#item of order.items">{{item.productId.name}}, {{item.productId.variant}}, {{item.qty}}</p>
     <p>{{ order.orderType }}</p>
     <p><b>Assigned to: {{ order.defaultTask.assignedTo.firstName }}</b></p>
   </div>
-  <md-list-item class="md-2-line user-avtar">
-    <img [src]="'app/share/images/avtars/'+order.defaultTask.assignedTo.firstName + '.jpg'" class="md-avatar" alt="{{order.defaultTask.assignedTo}}"/>
-    <span flex> 25min </span>
-  </md-list-item>
-  <p class="delivery-date">Delivery by {{ order.orderDate | date }}</p>
-</md-list-item>
+  <div class="user-right-section">
+    <div class="user-avtar">
+      <img [src]="'app/share/images/avtars/'+order.defaultTask.assignedTo.firstName + '.jpg'" class="md-avatar" alt="{{order.defaultTask.assignedTo}}"/>
+      <span flex> 25min </span>
+    </div>
+    <p class="delivery-date">Delivery by {{ order.orderDate | date }}</p>
+  </div>
+</div>

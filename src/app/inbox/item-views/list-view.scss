@@ -40,7 +40,30 @@ $ca-text-editor-bg: #b2b2b2;
 .client-img{
   padding: 10px;
   border:1px solid $ca-dark-gray;
-  margin:5px 20px 0px 30px;
+  margin:5px 10px 0px 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  float: left;
+}
+.list-containt {
+  width: 70%;
+  display: inline-block;
+  height: auto;
+  p {
+    margin: 4px 0px;
+    font-size: 14px;
+  }
+}
+.user-right-section {
+  float: right;
+  .user-avtar {
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
 }
 .client-section {
   position: relative;
@@ -63,20 +86,22 @@ $ca-text-editor-bg: #b2b2b2;
 .delivery-date{
   position: absolute;
   right: 10px;
-  bottom: 13px;
+  bottom: 0px;
   font-size: 11px;
   text-align: right;
   background: $ca-drak-yellow;
 }
 .user-avtar {
-  margin-right: 10px;
+  margin:5px 10px 0px 0px;
   span {
-    padding: 15px 0;
+    padding: 9px 0px 0px 8px;
     font-size: 11px;
+    float: right;
   }
 }
 .md-3-line {
-  min-height: inherit;
+  min-height: 65px;
+  position: relative;
 }
 .email-compact {
   cursor: pointer;
@@ -191,4 +216,16 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .client-img {
+    margin: 5px 10px 0px 10px;
+  }
+  .delivery-date {
+    font-size: 10px;
+  }
+  .list-containt{
+    width: 38%;
+  }
 }

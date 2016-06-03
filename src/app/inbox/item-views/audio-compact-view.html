@@ -1,20 +1,21 @@
-<md-list-item class="md-3-line" [class.active]="selected == audioContent.id" >
+<div class="md-3-line" [class.active]="selected == audioContent.id" >
   <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
-  <div class="client-section">
+  <div class="client-section" style="width:80px;float:left;">
     <span><img src="app/inbox/images/recording.png"> </span>
     <img [src]="'app/share/images/company-logo/'+audioContent.fromCompany + '.png'" class="md-avatar client-img" alt="{{audioContent.from}}"/>
   </div>
-  <div class="md-list-item-text" layout="column">
-    <h3 class="list-label">{{ audioContent.subject }}</h3>
+  <div class="list-containt">
+    <p class="list-label">{{ audioContent.subject }}</p>
     <audio controls>
       <source [src]="audioContent.attachment" type="audio/mpeg">
       Your browser does not support the audio tag.
     </audio>
   </div>
-
-  <md-list-item class="md-2-line user-avtar">
-    <img [src]="'app/share/images/avtars/'+audioContent.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{audioContent.defaultTask.assignedTo}}"/>
-    <span flex> 25min </span>
-  </md-list-item>
-  <p class="delivery-date">Delivery by {{ audioContent.date | date }}</p>
-</md-list-item>
+  <div class="user-right-section">
+    <div class="user-avtar">
+      <img [src]="'app/share/images/avtars/'+audioContent.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{audioContent.defaultTask.assignedTo}}"/>
+      <span flex> 25min </span>
+    </div>
+    <p class="delivery-date">Delivery by {{ audioContent.date | date }}</p>
+  </div>
+</div>

@@ -1,21 +1,23 @@
-<md-list-item class="md-3-line email-compact" [class.active]="selected == email.id" >
+<div class="md-3-line email-compact" [class.active]="selected == email.id" >
   <div > </div>
-  <div class="client-section">
+  <div class="client-section" style="width:80px;float:left;">
     <span><img src="app/inbox/images/email.png"> </span>
     <img [src]="'app/share/images/company-logo/'+email.fromCompany + '.png'" class="md-avatar client-img" alt="{{email.from}}"/>
   </div>
-  <div class="md-list-item-text" layout="column" (click)="showDetails = !showDetails">
-    <h3 class="list-label">{{ email.subject }}</h3>
-    <h4>{{ email.from[0].address }}</h4>
+  <div class="list-containt" (click)="showDetails = !showDetails">
+    <p class="list-label">{{ email.subject }}</p>
+    <p>{{ email.from[0].address }}</p>
     <p>{{ email.priority }}</p>
     <p>{{ email.defaultTask.assignedTo.firstName }}</p>
   </div>
-  <md-list-item class="md-2-line user-avtar">
-    <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo.firstName + '.jpg'" class="md-avatar" alt="{{email.defaultTask.assignedTo.firstName}}"/>
-    <span flex> {{email.defaultTask.assignedOn | amTimeAgo}}</span>
-  </md-list-item>
-  <p class="delivery-date ">Delivery by {{email.defaultTask.completeBy|date }}</p>
-</md-list-item>
+  <div class="user-right-section">
+    <div class="user-avtar">
+      <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo.firstName + '.jpg'" class="md-avatar" alt="{{email.defaultTask.assignedTo.firstName}}"/>
+      <span flex> {{email.defaultTask.assignedOn | amTimeAgo}}</span>
+    </div>
+    <p class="delivery-date ">Delivery by {{email.defaultTask.completeBy|date }}</p>
+  </div>
+</div>
 
 
 <div *ngIf="showDetails == true">
