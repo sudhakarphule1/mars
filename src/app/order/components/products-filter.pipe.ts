@@ -12,7 +12,7 @@ export class ProductsFilterPipe implements PipeTransform {
       || item.name.toLowerCase().search(args[1].toLowerCase()) !== -1
       || item.type.toLowerCase().search(args[1].toLowerCase()) !== -1
       || item.detail.toLowerCase().search(args[1].toLowerCase()) !== -1
-      || item.variant.toLowerCase().search(args[1].toLowerCase()) !== -1)
+      || item.unit.toLowerCase().search(args[1].toLowerCase()) !== -1)
     }
     else {
       return allItems;

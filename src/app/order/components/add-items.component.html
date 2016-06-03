@@ -2,53 +2,113 @@
 
   <div class="order-details">
     <div layout="row" layout-wrap class="row-title">
-      <div flex="60">
+      <div flex="30">
         Product
       </div>
       <div class="content-center1" flex="20">
         Quantity
       </div>
       <div class="content-center" flex="20">
-        Availability
+        Unit
+      </div>
+      <div class="content-center" flex="10">
+        Unit Rate
+      </div>
+      <div class="content-center" flex="10">
+        VAT%
+      </div>
+      <div class="content-center" flex="10">
+        Amount
       </div>
     </div>
+
+<!--    <div layout-wrap *ngIf="!selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+      <div flex="30">
+        <h4 layout-margin>  </h4>
+        <h4 layout-margin>  </h4>
+      </div>
+      <div class="content-center add-item" flex="20">
+
+      </div>
+      <div class="content-center add-item" flex="20">
+        <h3 layout-margin>  </h3>
+      </div>
+      <div class="content-center add-item" flex="10">
+        <h3 layout-margin>  </h3>
+      </div>
+      <div class="content-center add-item" flex="10">
+        <h3 layout-margin>  </h3>
+      </div>
+      <div class="content-center add-item" flex="10">
+        <h3 layout-margin>  </h3>
+      </div>
+    </div>-->
+
+    <div layout-wrap *ngFor="#item of selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+      <div flex="30">
+        <h4 layout-margin>{{item.name}}</h4>
+        <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
+      </div>
+      <div class="content-center add-item" flex="20">
+        <div *ngIf="item.available == true">
+          <button type='submit'
+                  class='qtyminus'
+                  (click)="item.qty=item.qty-1; item.amount=item.unitRate*item.qty; getTotalAmount()"
+                  [disabled]="item.qty == 0">-</button>
+          <input type='number'
+                 [(ngModel)]="item.qty"
+                 class='qty'>
+          <button type='submit'
+                  class='qtyplus'
+                  (click)="item.qty=item.qty+1; item.amount=item.unitRate*item.qty; getTotalAmount()">+</button>
+        </div>
+      </div>
+      <div class="content-center add-item" flex="20">
+        <h3 layout-margin>{{item.unit}}</h3>
+      </div>
+      <div class="content-center add-item" flex="10">
+        <h3 layout-margin>{{item.unitRate}}</h3>
+      </div>
+      <div class="content-center add-item" flex="10">
+        <h3 layout-margin>{{item.VAT}}%</h3>
+      </div>
+      <div class="content-center add-item" flex="10">
+        <h3 layout-margin>{{item.amount}}</h3>
+      </div>
+    </div>
+    <div layout="row" layout-wrap class="row-title" *ngIf="selectedItems.length > 0">{{totalAmount}}</div>
+
+
     <input type="search"
            name="search"
            placeholder="Search"
            [(ngModel)]="search"
            class="search"
-           (blur)="showProducts = false"
-           (click)="showProducts = true"
+           (click)="showProducts = !showProducts"
            md-maxlength="10"
            flex="40">
     <div *ngIf="showProducts">
-      <div layout-wrap *ngFor="#item of (items| productsFilter:'filterBy': search )" layout="row" class="md-caption md-list-item-text order-row-list" flex >
-        <div flex="60">
+      <div layout-wrap
+           *ngFor="#item of (items| productsFilter:'filterBy': search )"
+           layout="row"
+           (click)="selectThisItem(item)"
+           class="md-caption md-list-item-text order-row-list"
+           flex >
+          <div flex="40">
           <h4 layout-margin>{{item.name}}</h4>
-          <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
+          <h4 layout-margin>{{item.detail}}</h4>
         </div>
-        <div class="content-center add-item" flex="20">
-          <div *ngIf="item.available == true">
-            <button type='submit'
-                    class='qtyminus'
-                    (click)="item.qty=item.qty-1"
-                    [disabled]="item.qty == 0">-</button>
-            <input type='number'
-                   [(ngModel)]="item.qty"
-                   class='qty'>
-            <button type='submit'
-                    class='qtyplus'
-                    (click)="item.qty=item.qty+1">+</button>
+          <div flex="20">
+            <h4 layout-margin>{{item.unit}}</h4>
           </div>
-        </div>
-        <div class="content-center" flex="20">
-          <h3 layout-margin>{{item.available}}</h3>
-        </div>
+          <div flex="20">
+            <h4 layout-margin>{{item.unitRate}}</h4>
+          </div>
+          <div flex="20">
+            <h4 layout-margin>{{item.VAT}}</h4>
+          </div>
       </div>
     </div>
-
   </div>
   <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
-  <button md-raised-button class="button md-primary" (click)="createOrder()" flex="auto">Create Order</button>
-  <button md-raised-button class="button md-primary" (click)="viewHistory()" flex="auto">View Recent Order History</button>
   </div>
