@@ -10,10 +10,11 @@ import {CustomerMaster} from "../master/components/customer-master.component";
 import {SearchService} from "../share/components/search.service";
 import {MessageService} from "../share/services/message.service";
 import {CustomerObservableService} from "../order/services/customer.observable.service";
+import {OrderObservableService} from "../order/services/order.observable.service";
 
 @Component({
   selector: 'inbox',
-  providers: [HTTP_PROVIDERS, SearchService, CustomerObservableService],
+  providers: [HTTP_PROVIDERS, SearchService, CustomerObservableService, OrderObservableService],
   templateUrl: 'app/inbox/inbox.component.html',
   styles: [ require('./item-views/list-view.scss') ],
   directives: [ROUTER_DIRECTIVES, Header, MATERIAL_DIRECTIVES],

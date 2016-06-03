@@ -10,6 +10,7 @@ import {User} from "../../model/user";
 import {CustomerServices} from "../services/customer.service";
 import {Customer} from "../../model/customer";
 import {CustomerObservableService} from "../services/customer.observable.service";
+import {OrderObservableService} from "../services/order.observable.service";
 
 @Component({
   selector: 'order-header',
@@ -38,14 +39,14 @@ export class OrderHeader implements OnInit{
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
   leadId: string;
-  private currentCustomer : Customer = new Customer();
   displayMessage: boolean = false;
   id: string;
   allUsers: Array<User>;
   constructor(params: RouteParams,
               private sharedServices: SharedServices,
               private customerServices: CustomerServices,
-              private customerObservableService :CustomerObservableService) {
+              private customerObservableService :CustomerObservableService,
+              private orderObservableService: OrderObservableService) {
     this.leadId = params.get('orderId');
     this.currentOrder.orderDate = new Date(this.orderDate);
     this.currentOrder.completionDate = new Date(this.completionDate);
@@ -56,29 +57,9 @@ export class OrderHeader implements OnInit{
   ngOnInit() {
     this.sharedServices.getAllUsers()
       .subscribe(res => {this.allUsers = res.result;
-/*        for(var i in this.allUsers){
-          if (this.currentOrder.defaultTask.assignedTo.firstName === this.allUsers[i].firstName){
-            this.currentOrder.defaultTask.assignedTo = Object.assign({}, this.allUsers[i]);
-          }
-        }*/
       });
     this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;});
   }
-
-/*  editOrder(){
-    this.orders.editOrder(this.currentOrder).subscribe(
-      err => this.message = "Your order details have been successfully updated.",
-      () => this.message = "Your order details have been successfully updated."
-    );
-    this.displayMessage = true;
-  }*/
-
-/*  removeItem(item){
-    var index = this.currentOrder.items.indexOf(item);
-    this.currentOrder.items.splice(index, 1);
-    if(this.currentOrder.items.length == 0){
-    }
-  }*/
 
   onDate1Changed(event) {
     console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
@@ -106,11 +87,11 @@ export class OrderHeader implements OnInit{
     console.log(" complete by:" + this.currentOrder.defaultTask.completeBy);
   }
 
-  onChange(user){
-    console.log(user);
+  getUserDetails(user){
     for(var i in this.allUsers){
-      if (this.allUsers[i].firstName === user){
+      if (this.allUsers[i]._id === user){
         this.currentOrder.defaultTask.assignedTo = this.allUsers[i];
+        this.orderObservableService.changeOrderObject(this.currentOrder);
       }
     }
   }
@@ -120,14 +101,14 @@ export class OrderHeader implements OnInit{
     {
       if (this.allCustomers[i]._id == customerId) {
         this.selectedCustomer = this.allCustomers[i];
-        this.currentCustomer = this.selectedCustomer;
-        this.customerObservableService.changeCustomerObject(this.currentCustomer);
+        this.currentOrder.customer = this.selectedCustomer;
+        this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
+        this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
+        this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;
+        this.orderObservableService.changeOrderObject(this.currentOrder);
+        break;
+        /*this.customerObservableService.changeCustomerObject(this.currentCustomer);*/
       }
     }
-    this.currentOrder.customer = this.selectedCustomer;
-    this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
-    this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
-    this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;
   }
-
 }

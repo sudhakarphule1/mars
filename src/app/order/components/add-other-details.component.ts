@@ -11,6 +11,7 @@ import {Item} from "../../model/item";
 import {CustomerObservableService} from "../services/customer.observable.service";
 import {Input} from "angular2/core";
 import {Subscription} from "rxjs/Subscription";
+import {OrderObservableService} from "../services/order.observable.service";
 
 @Component({
   selector: 'add-other-details',
@@ -47,6 +48,7 @@ export class AddOtherDetails implements  OnInit{
               private _router: Router,
               private orderLocalStore : OrderLocalStore,
               private customerServices: CustomerServices,
+              private orderObservableService: OrderObservableService,
               private customerObservableService :CustomerObservableService) {
     this.leadId = params.get('leadId');
     this.currentOrder = orderLocalStore.order;

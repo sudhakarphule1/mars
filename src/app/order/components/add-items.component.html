@@ -77,7 +77,7 @@
       </div>
     </div>
     <div layout="row" layout-wrap class="row-title" *ngIf="selectedItems.length > 0">{{totalAmount}}</div>
-
+    <button *ngIf="selectedItems.length > 0" md-raised-button class="button md-raised md-primary" (click)="createOrder()">Save</button>
 
     <input type="search"
            name="search"

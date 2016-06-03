@@ -15,6 +15,6 @@ export class CustomerObservableService {
 
   // Service message commands
   changeCustomerObject(custmerObject: Customer) {
-    this._showCustomerSource.next(custmerObject)
+    this._showCustomerSource.next(custmerObject);
   }
 }
