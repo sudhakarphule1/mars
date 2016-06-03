@@ -64,11 +64,13 @@ class HttpInterceptor extends Http {
 */
 import {Http, Headers} from 'angular2/http';
 import {Injectable} from "angular2/core";
+import {MessageService} from "../services/message.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class HttpClient {
   private http;
-  constructor(http: Http) {
+  constructor(http: Http, private messageService :MessageService) {
     this.http = http;
   }
 
@@ -95,7 +97,8 @@ export class HttpClient {
 
   }
   private handleError (error: any) {
-      console.log("Error Occured.......");
+    this.messageService.show("Error Occured");
+      return Observable.throw("Error has been thrown");
   }
 
   post(url, data) {
@@ -103,6 +106,9 @@ export class HttpClient {
     this.createAuthorizationHeader(headers);
     return this.http.post(url, data, {
       headers: headers
-    });
+    }).map((response) => {
+      localStorage.setItem("access_token", response.json().access_token);
+      return response;})
+      .catch(this.handleError);;
   }
 }

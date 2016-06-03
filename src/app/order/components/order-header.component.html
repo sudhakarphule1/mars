@@ -123,8 +123,8 @@
         <div flex class="client-section">
           <img class="client-img" src="app/share/images/company-logo/infosys.png">
         </div>
-        <select (change)="getCustomerDetails($event.target.value)">
-          <option selected="selected">Select Customer</option>
+        <select  [(ngModel)]="selectedCustomerObject" (ngModelChange)="getCustomerDetails($event)">
+          <option selected="selected">Choose Customer</option>
           <option *ngFor="#customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
           <option>Add a New Customer</option>
         </select>

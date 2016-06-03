@@ -38,4 +38,7 @@
       </ul>
     </div>
   </md-button>
+  <div [hidden]="displayMessage" (click)="closeMessage()" class="toster-error">
+    {{message}}
+  </div>
 </div>

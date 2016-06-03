@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, Input, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {FORM_DIRECTIVES} from "angular2/common";
@@ -9,6 +9,7 @@ import {SharedServices} from "../services/shared.service";
 import {User} from "../../model/user";
 import {CustomerServices} from "../services/customer.service";
 import {Customer} from "../../model/customer";
+import {CustomerObservableService} from "../services/customer.observable.service";
 
 @Component({
   selector: 'order-header',
@@ -37,10 +38,14 @@ export class OrderHeader implements OnInit{
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
   leadId: string;
+  private currentCustomer : Customer = new Customer();
+  displayMessage: boolean = false;
+  id: string;
   allUsers: Array<User>;
   constructor(params: RouteParams,
               private sharedServices: SharedServices,
-              private customerServices: CustomerServices) {
+              private customerServices: CustomerServices,
+              private customerObservableService :CustomerObservableService) {
     this.leadId = params.get('orderId');
     this.currentOrder.orderDate = new Date(this.orderDate);
     this.currentOrder.completionDate = new Date(this.completionDate);
@@ -110,11 +115,13 @@ export class OrderHeader implements OnInit{
     }
   }
 
-  getCustomerDetails(customer){
-    for (var i = 0; i < this.allCustomers.length; i++)
+  getCustomerDetails(customerId){
+   for (var i = 0; i < this.allCustomers.length; i++)
     {
-      if (this.allCustomers[i].fromCompany == customer) {
+      if (this.allCustomers[i]._id == customerId) {
         this.selectedCustomer = this.allCustomers[i];
+        this.currentCustomer = this.selectedCustomer;
+        this.customerObservableService.changeCustomerObject(this.currentCustomer);
       }
     }
     this.currentOrder.customer = this.selectedCustomer;

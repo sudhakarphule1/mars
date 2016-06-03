@@ -8,6 +8,9 @@ import {CustomerServices} from "../services/customer.service";
 import {Customer} from "../../model/customer";
 import {Contract} from "../../model/contract";
 import {Item} from "../../model/item";
+import {CustomerObservableService} from "../services/customer.observable.service";
+import {Input} from "angular2/core";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'add-other-details',
@@ -33,18 +36,32 @@ export class AddOtherDetails implements  OnInit{
   private customerMessage:string = '';
   private response;
   private items: Array<Item>;
+  private isCustomerSelected : boolean =true;
   private selectedItemId: string;
+  private currentCustomer : Customer= new Customer();
+  @Input() currentCustomerId : string;
+  private subscription: Subscription;
+  private  customerId : string;
 
   constructor(params: RouteParams,
               private _router: Router,
               private orderLocalStore : OrderLocalStore,
-              private customerServices: CustomerServices) {
+              private customerServices: CustomerServices,
+              private customerObservableService :CustomerObservableService) {
     this.leadId = params.get('leadId');
     this.currentOrder = orderLocalStore.order;
 /*    this.currentOrder.orderDate = new Date();
     this.currentOrder.completionDate = new Date();*/
     this.items = orderLocalStore.items;
+    this.subscription =  customerObservableService.filterCustomers$.subscribe(
+        customerObject => {
+          this.currentCustomer = customerObject;
+          this.isCustomerSelected = false;
+        }
+    );
+
   }
+
 
   ngOnInit() {
     this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;});

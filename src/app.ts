@@ -10,6 +10,7 @@ import {HttpClient} from "./app/share/components/interceptor"
 import {MainApp} from './app/main-app';
 // Add all operators to Observable
 import 'rxjs/Rx';
+import {MessageService} from "./app/share/services/message.service";
 
-bootstrap(MainApp, [HTTP_PROVIDERS, ROUTER_PROVIDERS, MATERIAL_PROVIDERS, HttpClient])
+bootstrap(MainApp, [HTTP_PROVIDERS, ROUTER_PROVIDERS, MATERIAL_PROVIDERS, HttpClient, MessageService])
   .catch(err => console.error(err));

@@ -8,10 +8,12 @@ import {UserAccount} from "../share/components/user-account.component";
 import {ProductMaster} from "../master/components/product-master.component";
 import {CustomerMaster} from "../master/components/customer-master.component";
 import {SearchService} from "../share/components/search.service";
+import {MessageService} from "../share/services/message.service";
+import {CustomerObservableService} from "../order/services/customer.observable.service";
 
 @Component({
   selector: 'inbox',
-  providers: [HTTP_PROVIDERS, SearchService],
+  providers: [HTTP_PROVIDERS, SearchService, CustomerObservableService],
   templateUrl: 'app/inbox/inbox.component.html',
   styles: [ require('./item-views/list-view.scss') ],
   directives: [ROUTER_DIRECTIVES, Header, MATERIAL_DIRECTIVES],
