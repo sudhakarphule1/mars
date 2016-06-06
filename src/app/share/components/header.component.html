@@ -1,44 +1,42 @@
-<div class="top-header" flex layout="row">
-  <h1 class="logo"><img src="app/share/images/logo.png"></h1>
-  <button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
-    <i md-icon>menu</i>
-  </button>
-  <input type="search" name="search" #search class="search" md-maxlength="10" flex (keyup)="onSearchChange(search.value)">
-  <span flex></span>
-  <md-button md-button class="md-warn" >
-    <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
-    My Orders
-  </md-button>
-  <md-button md-button class="md-warn" >
-    <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
-    Leads
-  </md-button>
-  <md-button md-button class="md-warn master-btn" >
-    <md-icon><img src="app/share/images/orders.svg"></md-icon> Master
-    <div class="menu-dropdown">
-      <ul>
-        <li> Products </li>
-        <li> Customers </li>
-      </ul>
-    </div>
-  </md-button>
-  <md-button md-button [routerLink]="['/Inbox', {'showHistory':true}]" class="md-warn">
-    <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
-    History
-  </md-button>
-  <md-button md-button class="md-war my-account">
-    <div class="user-avtar">
-      <img class="md-user-avatar" src="app/share/images/avtars/Swapnil.jpg"/>
-    </div>
-    <div class="menu-dropdown">
-      <ul>
-        <li> Notes </li>
-        <li> Account Setting </li>
-        <li (click)="logout()"> Logout </li>
-      </ul>
-    </div>
-  </md-button>
-  <div [hidden]="displayMessage" (click)="closeMessage()" class="toster-error">
-    {{message}}
+<h1 class="logo"><img src="app/share/images/logo.png"></h1>
+<button md-button class="md-icon-button" aria-label="Profile" (click)="open('left')"  hide-gt-md>
+  <i md-icon>menu</i>
+</button>
+<input type="search" name="search" #search class="search" md-maxlength="10" flex (keyup)="onSearchChange(search.value)">
+<span flex></span>
+<md-button md-button>
+  <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
+  My Orders
+</md-button>
+<md-button md-button>
+  <md-icon><img class="" src="app/share/images/leads.svg"></md-icon>
+  Leads
+</md-button>
+<md-button md-button class="master-btn" >
+  <md-icon><img src="app/share/images/orders.svg"></md-icon> Master
+  <div class="menu-dropdown">
+    <ul>
+      <li> Products </li>
+      <li> Customers </li>
+    </ul>
   </div>
+</md-button>
+<md-button md-button [routerLink]="['/Inbox', {'showHistory':true}]" >
+  <md-icon><img class="" src="app/share/images/orders.svg"></md-icon>
+  History
+</md-button>
+<md-button md-button class="md-war my-account">
+  <div class="user-avtar">
+    <img class="md-user-avatar" src="app/share/images/avtars/Swapnil.jpg"/>
+  </div>
+  <div class="menu-dropdown">
+    <ul>
+      <li> Notes </li>
+      <li> Account Setting </li>
+      <li (click)="logout()"> Logout </li>
+    </ul>
+  </div>
+</md-button>
+<div [hidden]="displayMessage" (click)="closeMessage()" class="toster-error">
+  {{message}}
 </div>

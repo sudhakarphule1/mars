@@ -1,4 +1,4 @@
-@import "../../../../node_modules/ng2-material/ng2-material.css";
+@import "../../../app/main-app.scss";
 
 $ca-search-bg: rgba(255, 255, 255, 0.4);
 $dropdown-bg: #831D27;
@@ -21,9 +21,13 @@ md-button {
   padding: 0 6px;
 }
 md-icon {
-  height: 21px;
+  height: 31px;
   width: 18px;
-  margin: 6px 0;
+  margin: 0px 0;
+}
+md-button {
+  margin: 0px !important;
+  color: #FFF;
 }
 .selbtngroup {
   display: none;
