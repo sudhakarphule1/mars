@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from 'angular2/core';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
-import {FORM_DIRECTIVES} from "angular2/common";
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {HTTP_PROVIDERS} from '@angular/http';
+import {Orders} from '../services/order.service';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
+import {FORM_DIRECTIVES} from "@angular/common";
+import {ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
+
 import {Order} from "../../model/order";
 import {MyDatePicker} from "../../share/components/date-picker/mydatepicker";
 import {SharedServices} from "../services/shared.service";
@@ -16,7 +18,7 @@ import {OrderObservableService} from "../services/order.observable.service";
   selector: 'order-header',
   templateUrl: 'app/order/components/order-header.component.html',
   styles: [ require('./common.scss') ],
-  providers: [HTTP_PROVIDERS, SharedServices, CustomerServices],
+  providers: [HTTP_PROVIDERS, Orders, SharedServices, CustomerServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 

@@ -44,7 +44,7 @@
       </div>
     </div>-->
 
-    <div layout-wrap *ngFor="#item of selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+    <div layout-wrap *ngFor="let item of selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
       <div flex="30">
         <h4 layout-margin>{{item.name}}</h4>
         <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
@@ -89,7 +89,7 @@
            flex="40">
     <div *ngIf="showProducts">
       <div layout-wrap
-           *ngFor="#item of (items| productsFilter:'filterBy': search )"
+           *ngFor="let item of (items| productsFilter:'filterBy': search )"
            layout="row"
            (click)="selectThisItem(item)"
            class="md-caption md-list-item-text order-row-list"

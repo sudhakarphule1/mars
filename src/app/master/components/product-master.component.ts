@@ -1,10 +1,7 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
-import "../../../../node_modules/ng2-material/dist/ng2-material.css";
-import "../../../../node_modules/ng2-material/dist/font.css";
-
+import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material";
 
 @Component({
   selector: 'ib-product-master',

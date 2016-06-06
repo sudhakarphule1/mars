@@ -28,7 +28,7 @@
         <p [innerHTML]="email.html" class="client-conversation"></p>
 
 
-        <div *ngFor="#message of email.conversation">
+        <div *ngFor="let message of email.conversation">
           <!--{{message.text}}-->
 
           <div *ngIf="message.by=='User'" class="user-conversation">
@@ -73,7 +73,7 @@
       <md-content class="md-padding">
         <!--<iframe src='http://localhost:5000/{{email.attachments[0].fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>-->
         <ul>
-          <li *ngFor="#attachment of email.attachments">
+          <li *ngFor="let attachment of email.attachments">
             <iframe src='http://localhost:5000/{{attachment.fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>
           </li>
         </ul>

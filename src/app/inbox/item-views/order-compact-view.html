@@ -5,7 +5,7 @@
     <img [src]="'app/share/images/company-logo/'+order.customer.fromCompany + '.png'" class="md-avatar client-img" alt="{{order.customer.fromCompany}}"/>
   </div>
   <div class="list-containt">
-    <p *ngFor="#item of order.items">{{item.productId.name}}, {{item.productId.variant}}, {{item.qty}}</p>
+    <p *ngFor="let item of order.items">{{item.productId.name}}, {{item.productId.variant}}, {{item.qty}}</p>
     <p>{{ order.orderType }}</p>
     <p><b>Assigned to: {{ order.defaultTask.assignedTo.firstName }}</b></p>
   </div>

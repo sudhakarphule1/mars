@@ -1,11 +1,14 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {Orders} from '../services/order.service';
 import {Item} from "../../model/item";
 import {Order} from "../../model/order";
+import {ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
 import {SearchService}     from '../../share/components/search.service';
 import {ProductsFilterPipe} from "./products-filter.pipe"
-import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+
+import {HTTP_PROVIDERS}    from '@angular/http';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
+import {Router} from "@angular/router-deprecated";
 import {OrderLocalStore} from "./order-local-store";
 import {Subscription} from "rxjs/Subscription";
 import {OrderObservableService} from "../services/order.observable.service";

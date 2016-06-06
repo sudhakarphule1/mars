@@ -1,9 +1,9 @@
-import {Component, OnInit} from 'angular2/core';
-/*import {Http, HTTP_PROVIDERS} from 'angular2/http';*/
+import {Component, OnInit} from '@angular/core';
+/*import {Http, HTTP_PROVIDERS} from '@angular/http';*/
 import {Orders} from '../services/order.service';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
-import {FORM_DIRECTIVES} from "angular2/common";
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
+import {FORM_DIRECTIVES} from "@angular/common";
+import {ROUTER_DIRECTIVES, OnActivate, RouteParams} from '@angular/router-deprecated';
 import {OrderLocalStore} from "../components/order-local-store";
 
 import {Order} from "../../model/order";

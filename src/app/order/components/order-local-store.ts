@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 import {Order} from "../../model/order";
 import {InboxItem} from "../../model/inbox-item";
 import {Customer} from "../../model/customer";

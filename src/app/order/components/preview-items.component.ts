@@ -1,13 +1,13 @@
 /**
  * Created by chetan on 27/4/16.
  */
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {Order} from "../../model/order";
-import {RouteParams, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router, RouteParams} from '@angular/router-deprecated';
 import {OrderLocalStore} from "./order-local-store";
 
-import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {HTTP_PROVIDERS}    from '@angular/http';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 
 @Component({
   selector: 'previewItems',

@@ -1,7 +1,7 @@
 /*
-import {Pipe, PipeTransform} from 'angular2/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {InboxItem} from "../model/inbox-item";
-import {Injectable} from "angular2/core";
+import {Injectable} from "@angular/core";
 
 /!*@Pipe({ name: 'inboxFilter' })
 export class InboxFilterPipe implements PipeTransform {

@@ -1,6 +1,6 @@
-import {Component, Input} from 'angular2/core';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
-import {FORM_DIRECTIVES} from "angular2/common";
+import {Component, Input} from '@angular/core';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
+import {FORM_DIRECTIVES} from "@angular/common";
 import {Order} from "../../model/order";
 
 @Component({

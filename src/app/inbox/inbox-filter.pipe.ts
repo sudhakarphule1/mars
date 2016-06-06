@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from 'angular2/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {InboxItem} from "../model/inbox-item";
 
 @Pipe({ name: 'inboxFilter' })

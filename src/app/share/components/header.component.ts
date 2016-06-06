@@ -1,6 +1,6 @@
-import {Component, OnChanges, SimpleChange} from 'angular2/core';
-import {ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {MATERIAL_DIRECTIVES, Media, SidenavService} from "ng2-material/all";
+import {Component, OnChanges, SimpleChange} from '@angular/core';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
+import {MATERIAL_DIRECTIVES, Media} from "ng2-material";
 import {SearchService}     from './search.service';
 import {MessageService} from "../services/message.service";
 import {Subscription} from "rxjs/Subscription";
@@ -9,7 +9,7 @@ import {Subscription} from "rxjs/Subscription";
   selector: 'ib-header',
   templateUrl: 'app/share/components/header.component.html',
   styles: [ require('./header.component.scss') ],
-  providers: [SidenavService/*, SearchService*/],
+  providers: [],
   directives: [ROUTER_DIRECTIVES, MATERIAL_DIRECTIVES]
 })
 export class Header {
@@ -19,8 +19,7 @@ export class Header {
   public message: string = "Sample Error";
   subscription : Subscription;
 
-  constructor(public sidenav: SidenavService,
-              private searchService: SearchService,
+  constructor(private searchService: SearchService,
               private messageService: MessageService,
               private _router: Router)
   {
@@ -43,9 +42,6 @@ export class Header {
   hasMedia(breakSize: string): boolean {
     return true;
   //  return Media.hasMedia(breakSize);
-  }
-  open(name: string) {
-    this.sidenav.show(name);
   }
 
   logout(){

@@ -2,10 +2,10 @@
 /!**
  * Created by chetan on 16/5/16.
  *!/
-import {bootstrap} from 'angular2/platform/browser';
-import {provide} from 'angular2/core';
-import {HTTP_PROVIDERS, Http, Request, RequestOptionsArgs, Response, XHRBackend, RequestOptions, ConnectionBackend, Headers} from 'angular2/http';
-import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, Router} from 'angular2/router';
+import {bootstrap} from '@angular/platform/browser';
+import {provide} from '@angular/core';
+import {HTTP_PROVIDERS, Http, Request, RequestOptionsArgs, Response, XHRBackend, RequestOptions, ConnectionBackend, Headers} from '@angular/http';
+import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, Router} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 /!*import * as _ from 'lodash'*!/
 
@@ -62,10 +62,11 @@ class HttpInterceptor extends Http {
   }
 }
 */
-import {Http, Headers} from 'angular2/http';
-import {Injectable} from "angular2/core";
+import {Http, Headers} from '@angular/http';
+import {Injectable} from "@angular/core";
 import {MessageService} from "../services/message.service";
 import {Observable} from "rxjs/Observable";
+
 
 @Injectable()
 export class HttpClient {

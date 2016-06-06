@@ -1,5 +1,5 @@
-import {Component, Input} from 'angular2/core';
-import {NgClass} from 'angular2/common';
+import {Component, Input} from '@angular/core';
+import {NgClass} from '@angular/common';
 import {Order} from "../../model/order";
 
 @Component({

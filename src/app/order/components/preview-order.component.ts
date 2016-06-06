@@ -1,8 +1,8 @@
-import {Component} from 'angular2/core';
-import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {Component} from '@angular/core';
+import {HTTP_PROVIDERS}    from '@angular/http';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 import {Order} from "../../model/order";
-import {RouteParams, Router} from "angular2/router";
+import {Router, RouteParams} from "@angular/router-deprecated";
 import {OrderLocalStore} from "./order-local-store";
 import {Orders} from "../services/order.service";
 import {Customer} from "../../model/customer";

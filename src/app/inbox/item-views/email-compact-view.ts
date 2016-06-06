@@ -1,5 +1,5 @@
-import {Component, Input} from 'angular2/core';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {Component, Input} from '@angular/core';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 import {TimeAgoPipe} from "angular2-moment/TimeAgoPipe";
 import {EmailService} from "./../../order/services/email.service"
 import {Email} from "../../model/email";

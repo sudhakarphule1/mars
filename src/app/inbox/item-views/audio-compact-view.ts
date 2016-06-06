@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 
 @Component({
@@ -10,7 +10,7 @@ import {Component, Input} from 'angular2/core';
 export class AudioCompactView {
   @Input() audioContent;
   @Input() selected:string;
-  
+
   constructor() {
   }
 }

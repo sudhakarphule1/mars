@@ -1,6 +1,6 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
-import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {HTTP_PROVIDERS}    from '@angular/http';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 import {Order} from "../../model/order";
 
 @Component({
