@@ -22,31 +22,15 @@
       </div>
     </div>
 
-<!--    <div layout-wrap *ngIf="!selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
-      <div flex="30">
-        <h4 layout-margin>  </h4>
-        <h4 layout-margin>  </h4>
-      </div>
-      <div class="content-center add-item" flex="20">
-
-      </div>
-      <div class="content-center add-item" flex="20">
-        <h3 layout-margin>  </h3>
-      </div>
-      <div class="content-center add-item" flex="10">
-        <h3 layout-margin>  </h3>
-      </div>
-      <div class="content-center add-item" flex="10">
-        <h3 layout-margin>  </h3>
-      </div>
-      <div class="content-center add-item" flex="10">
-        <h3 layout-margin>  </h3>
-      </div>
-    </div>-->
 
     <div layout-wrap *ngFor="#item of selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+
       <div flex="30">
-        <h4 layout-margin>{{item.name}}</h4>
+        <input
+            [(ngModel)]="item.name"
+            (keyup)="showProducts= true"
+
+        >
         <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
       </div>
       <div class="content-center add-item" flex="20">
@@ -77,14 +61,15 @@
       </div>
     </div>
     <div layout="row" layout-wrap class="row-title" *ngIf="selectedItems.length > 0">{{totalAmount}}</div>
-    <button *ngIf="selectedItems.length > 0" md-raised-button class="button md-raised md-primary" (click)="createOrder()">Save</button>
+    <div layout-padding *ngIf="displayMessage">{{ message }}</div>
+    <button *ngIf="selectedItems.length > 0" md-raised-button class="button md-raised md-primary" (click)="saveItems()">Save</button>
 
-    <input type="search"
+    <input
            name="search"
            placeholder="Search"
            [(ngModel)]="search"
            class="search"
-           (click)="showProducts = !showProducts"
+           (keyup)="showProducts = true"
            md-maxlength="10"
            flex="40">
     <div *ngIf="showProducts">
@@ -110,5 +95,5 @@
       </div>
     </div>
   </div>
-  <div layout-padding *ngIf="displayError == true">{{ errorMessage }}</div>
+
   </div>

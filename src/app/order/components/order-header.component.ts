@@ -13,7 +13,7 @@ import {CustomerObservableService} from "../services/customer.observable.service
 import {OrderObservableService} from "../services/order.observable.service";
 
 @Component({
-  selector: 'order-header',
+  selector: 'oa-order-header',
   templateUrl: 'app/order/components/order-header.component.html',
   styles: [ require('./common.scss') ],
   providers: [HTTP_PROVIDERS, SharedServices, CustomerServices],
@@ -35,7 +35,7 @@ export class OrderHeader implements OnInit{
   orderPlacedDate: string = '2016-04-01';
   transitDate: string = '2016-04-01';
   completionDate: string = '2016-04-01';
-  currentOrder: Order = new Order();
+  private  currentOrder: Order = new Order();
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
   private newCustomer : Customer =new Customer();

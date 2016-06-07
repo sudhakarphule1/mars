@@ -12,7 +12,7 @@ import {OrderObservableService} from "../services/order.observable.service";
 import {CustomerObservableService} from "../services/customer.observable.service";
 
 @Component({
-  selector: 'add-items',
+  selector: 'oa-order-items',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/add-items.component.html',
   styles: [ require('./common.scss') ],
@@ -22,15 +22,19 @@ import {CustomerObservableService} from "../services/customer.observable.service
 
 export class AddItems {
 
-  items : Array<Item>;
+  items : Array<Item> = new Array<Item>();
+  copyItems : Array<Item> = new Array<Item>();
   displayError = false;
   showProducts: boolean = false;
+  showProductsInside: boolean = false;
+  itemName: string;
   search: string = '';
   message: string = '';
-  displaySuccess: boolean = false;
+  displayMessage: boolean = false;
   errorMessage: string = "";
   subscription: Subscription;
   totalAmount: number = 0;
+  totalQuantity: number = 0;
   selectedItems: Array<Item> = new Array<Item>();
   currentOrder: Order = new Order();
 
@@ -39,12 +43,13 @@ export class AddItems {
               public orderLocalStore : OrderLocalStore,
               private orderObservableService: OrderObservableService,
               private customerObservableService :CustomerObservableService) {
-    /*this.leadId = params.get('leadId');*/
     orders.getAllProducts()
       .subscribe(res => {this.items = res;
         for(var i in this.items){
             this.items[i].amount = 0;
         }
+        Object.assign(this.copyItems,this.items);
+        console.log("copy Items"+this.copyItems);
       });
 
     this.subscription = orderObservableService.filterOrders$.subscribe(
@@ -54,29 +59,30 @@ export class AddItems {
     )
   }
 
-  createOrder(){
-/*
-    for(var i in this.items){
-      if (this.items[i].qty > 0 ){
-        this.currentOrder.items.push(this.items[i]);
+  saveItems(){
+
+    this.displayMessage = false;
+    for (var i = 0; i < this.selectedItems.length; i++)
+    {
+      if(this.selectedItems[i].qty === 0){
+        this.message = "The quantity for one of your selected products is 0.";
+        this.displayMessage = true;
+        break;
       }
     }
-
-    if (this.currentOrder.items.length == 0){
-      this.errorMessage = "You haven't selected any item for your order";
-      this.displayError = true;
+    if(this.displayMessage === false){
+      this.currentOrder.items = this.selectedItems;
+      this.currentOrder.totalAmount = this.totalAmount;
+      console.log(this.currentOrder.items);
+      this.message = "Your items list has been successfully saved.";
+      this.displayMessage = true;
     }
-    else {
-      this.displayError = false;
-    }*/
-    this.currentOrder.items = this.selectedItems;
-    console.log(this.currentOrder.items);
-    this.message = "Your items list has been successfully saved."
+
   }
 
   selectThisItem(value){
 
-    for (var i = 0; i < this.items.length; i++)
+    /*for (var i = 0; i < this.items.length; i++)
     {
       if (this.items[i]._id === value._id) {
         this.errorMessage = "You have already selected this product.";
@@ -85,7 +91,7 @@ export class AddItems {
       else{
         {break;}
       }
-    }
+    }*/
     this.selectedItems.push(value);
 
     var index = this.items.indexOf(value);
@@ -93,6 +99,7 @@ export class AddItems {
       this.items.splice(index, 1);
     }
     console.log(this.items);
+    this.showProducts = false;
   }
 
   getTotalAmount(){

@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {Order} from "../../model/order";
@@ -12,9 +12,10 @@ import {CustomerObservableService} from "../services/customer.observable.service
 import {Input} from "angular2/core";
 import {Subscription} from "rxjs/Subscription";
 import {OrderObservableService} from "../services/order.observable.service";
+import {Orders} from "../services/order.service";
 
 @Component({
-  selector: 'add-other-details',
+  selector: 'oa-order-other-details',
   providers: [HTTP_PROVIDERS, CustomerServices],
   templateUrl: 'app/order/components/add-other-details.component.html',
   styles: [ require('./common.scss') ],
@@ -22,12 +23,14 @@ import {OrderObservableService} from "../services/order.observable.service";
   pipes: []
 })
 
-export class AddOtherDetails implements  OnInit{
+export class AddOtherDetails {
 
   leadId: string;
-  displayError = false;
+  displayError: boolean = false;
   errorMessage: string = "";
-  currentOrder: Order = new Order();
+  successMessage: string = "";
+  displaySuccess: boolean = false;
+  private currentOrder: Order = new Order();
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
   private showDetails: boolean = false;
@@ -36,8 +39,7 @@ export class AddOtherDetails implements  OnInit{
   private displayCustomer:boolean = false;
   private customerMessage:string = '';
   private response;
-  private items: Array<Item>;
-  private isCustomerSelected : boolean =true;
+  private isCustomerSelected : boolean = true;
   private selectedItemId: string;
   private currentCustomer : Customer= new Customer();
   @Input() currentCustomerId : string;
@@ -45,19 +47,17 @@ export class AddOtherDetails implements  OnInit{
   private  customerId : string;
 
   constructor(params: RouteParams,
+              private orders: Orders,
               private _router: Router,
               private orderLocalStore : OrderLocalStore,
               private customerServices: CustomerServices,
               private orderObservableService: OrderObservableService,
               private customerObservableService :CustomerObservableService) {
     this.leadId = params.get('leadId');
-    this.currentOrder = orderLocalStore.order;
-/*    this.currentOrder.orderDate = new Date();
-    this.currentOrder.completionDate = new Date();*/
-    this.items = orderLocalStore.items;
-    this.subscription =  customerObservableService.filterCustomers$.subscribe(
-        customerObject => {
-          this.currentCustomer = customerObject;
+    this.currentOrder.customer = new Customer;
+    this.subscription =  orderObservableService.filterOrders$.subscribe(
+        orderObject => {
+          this.currentOrder = orderObject;
           this.isCustomerSelected = false;
         }
     );
@@ -119,25 +119,22 @@ export class AddOtherDetails implements  OnInit{
     this.showDetails =  true;
   }
 
+  placeOrder(){
 
-  newContract(){
-    var  contract : Contract = new Contract();
-    /*contract.item = " ";
-    contract.productId = " ";
-    contract.unitRate = 4;*/
-    console.log("new contract element is created.");
-    this.selectedCustomer.contract.push(contract);
-  }
+    console.log(this.currentOrder);
 
-  onSelect(productId) {
-    /*this.selectedProduct = null;*/
-    /*for (var i = 0; i < this.items.length; i++)
-    {
-      if (this.ite[i].id == productId) {
-        this.selectedProduct = this.products[i];
-      }
-    }*/
-    console.log(this.items);
-    console.log("git hti fir" + productId);
+    if(this.currentOrder.items.length === 0){
+      this.errorMessage = "You haven't selected any items for your order.";
+      this.displayError = true;
+    }
+    else if(!this.currentOrder.defaultTask.assignedTo.firstName){
+      this.errorMessage = "You haven't assigned this order to anyone.";
+      this.displayError = true;
+    }
+    else{
+      this.orders.createOrder(this.currentOrder).subscribe(res => this.response = res);
+      this.successMessage = "Your order has been created.";
+      this.displaySuccess = true;
+    }
   }
 }
