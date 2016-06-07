@@ -30,6 +30,8 @@ export class AddItems {
   itemName: string;
   search: string = '';
   message: string = '';
+  search: string;
+  isVisibleProductArray : Array<Boolean> =new Array<Boolean>();
   displayMessage: boolean = false;
   errorMessage: string = "";
   subscription: Subscription;
@@ -80,6 +82,17 @@ export class AddItems {
 
   }
 
+  makeProductSuggestionVisible(item){
+    this.isVisibleProductArray[item] = true;
+    for(var index : number = 0; index < this.selectedItems.length;index++){
+      if(index != item){
+        this.isVisibleProductArray[index] = false;
+      }
+    }
+
+
+  }
+
   selectThisItem(value){
 
     /*for (var i = 0; i < this.items.length; i++)
@@ -100,6 +113,12 @@ export class AddItems {
     }
     console.log(this.items);
     this.showProducts = false;
+    this.search = '';
+  }
+  selectItemFromFiltered(oldItem,newItem){
+    var index : number = this.selectedItems.indexOf(oldItem);
+    this.selectedItems[this.selectedItems.indexOf(oldItem)]=newItem;
+    this.isVisibleProductArray[index] = false;  
   }
 
   getTotalAmount(){

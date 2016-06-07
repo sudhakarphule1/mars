@@ -22,15 +22,15 @@
       </div>
     </div>
 
-
     <div layout-wrap *ngFor="#item of selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
 
       <div flex="30">
-        <input
-            [(ngModel)]="item.name"
-            (keyup)="showProducts= true"
-
-        >
+        <input type="search"
+               name="search"
+               [(ngModel)]="item.name"
+               class="search"
+               (keydown)="makeProductSuggestionVisible(selectedItems.indexOf(item)); search=item.name"
+               md-maxlength="10">
         <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
       </div>
       <div class="content-center add-item" flex="20">
@@ -59,19 +59,74 @@
       <div class="content-center add-item" flex="10">
         <h3 layout-margin>{{item.amount}}</h3>
       </div>
-    </div>
-    <div layout="row" layout-wrap class="row-title" *ngIf="selectedItems.length > 0">{{totalAmount}}</div>
-    <div layout-padding *ngIf="displayMessage">{{ message }}</div>
-    <button *ngIf="selectedItems.length > 0" md-raised-button class="button md-raised md-primary" (click)="saveItems()">Save</button>
 
-    <input
-           name="search"
+      <div *ngIf="isVisibleProductArray[selectedItems.indexOf(item)]">
+        <div layout-wrap
+             *ngFor="#innerItem of (items| productsFilter:'filterBy': search )"
+             layout="row"
+             (click)="selectItemFromFiltered(item,innerItem)"
+             class="md-caption md-list-item-text order-row-list"
+             flex >
+          <div flex="40">
+            <h4 layout-margin>{{innerItem.name}}</h4>
+            <h4 layout-margin>{{innerItem.detail}}</h4>
+          </div>
+          <div flex="20">
+            <h4 layout-margin>{{innerItem.unit}}</h4>
+          </div>
+          <div flex="20">
+            <h4 layout-margin>{{innerItem.unitRate}}</h4>
+          </div>
+          <div flex="20">
+            <h4 layout-margin>{{innerItem.VAT}}</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div layout="row" layout-wrap class="row-title">
+      <div flex="30" id="emptyRow">
+      <input type="search"
+             style="width: 100%; float: left;"
+             name="search"
+             placeholder="Search"
+             [(ngModel)]="search"
+             class="search"
+             (keyup)="showProducts = true"
+             md-maxlength="10">
+    </div>
+    <div class="content-center add-item" flex="20">
+      <div>
+        <input type="text" style="width: 100%; float: left;">
+        </div>
+    </div>
+    <div class="content-center add-item" flex="20">
+      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
+    </div>
+    <div class="content-center add-item" flex="10">
+      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
+    </div>
+    <div class="content-center add-item" flex="10">
+      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
+    </div>
+    <div class="content-center add-item" flex="10">
+      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
+    </div>
+    </div>
+
+
+    <!--<div layout="row" layout-wrap class="row-title" *ngIf="selectedItems.length > 0">{{totalAmount}}</div>
+    <div layout-padding *ngIf="displayMessage">{{ message }}</div>
+    <button *ngIf="selectedItems.length > 0" md-raised-button class="button md-raised md-primary" (click)="saveItems()">Save</button>-->
+
+    <!--<input name="search"
            placeholder="Search"
            [(ngModel)]="search"
            class="search"
            (keyup)="showProducts = true"
            md-maxlength="10"
-           flex="40">
+           flex="40">-->
     <div *ngIf="showProducts">
       <div layout-wrap
            *ngFor="#item of (items| productsFilter:'filterBy': search )"
