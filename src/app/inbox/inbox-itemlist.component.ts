@@ -16,7 +16,6 @@ import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
 import {EmailService} from '../order/services/email.service';
 import {OrderLocalStore} from "../order/components/order-local-store";
-import {ViewOrder} from "../order/components/view-order.component";
 
 @Component({
   selector: 'inbox-itemlist',
@@ -29,7 +28,6 @@ import {ViewOrder} from "../order/components/view-order.component";
 
 @RouteConfig([
   new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
-  new Route({ path: '/vieworder', component: ViewOrder, name: 'ViewOrder'})
 ])
 
 export class ViewInbox implements OnInit, OnDestroy {

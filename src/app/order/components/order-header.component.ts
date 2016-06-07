@@ -17,12 +17,12 @@ import {OrderObservableService} from "../services/order.observable.service";
 @Component({
   selector: 'order-header',
   templateUrl: 'app/order/components/order-header.component.html',
-  styles: [ require('./common.scss') ],
+  styles: [require('./common.scss')],
   providers: [HTTP_PROVIDERS, Orders, SharedServices, CustomerServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })
 
-export class OrderHeader implements OnInit{
+export class OrderHeader implements OnInit {
 
   private myDatePickerOptions = {
     todayBtnTxt: 'Today',
@@ -33,22 +33,23 @@ export class OrderHeader implements OnInit{
     width: '150px'
   };
 
-  orderDate: string = '2016-04-01';
-  orderPlacedDate: string = '2016-04-01';
-  transitDate: string = '2016-04-01';
-  completionDate: string = '2016-04-01';
-  currentOrder: Order = new Order();
-  private allCustomers: Array<Customer>;
-  private selectedCustomer: Customer = new Customer();
-  leadId: string;
-  displayMessage: boolean = false;
-  id: string;
-  allUsers: Array<User>;
-  constructor(params: RouteParams,
-              private sharedServices: SharedServices,
-              private customerServices: CustomerServices,
-              private customerObservableService :CustomerObservableService,
-              private orderObservableService: OrderObservableService) {
+  orderDate:string = '2016-04-01';
+  orderPlacedDate:string = '2016-04-01';
+  transitDate:string = '2016-04-01';
+  completionDate:string = '2016-04-01';
+  currentOrder:Order = new Order();
+  private allCustomers:Array<Customer>;
+  private selectedCustomer:Customer = new Customer();
+  leadId:string;
+  displayMessage:boolean = false;
+  id:string;
+  allUsers:Array<User>;
+
+  constructor(params:RouteParams,
+              private sharedServices:SharedServices,
+              private customerServices:CustomerServices,
+              private customerObservableService:CustomerObservableService,
+              private orderObservableService:OrderObservableService) {
     this.leadId = params.get('orderId');
     this.currentOrder.orderDate = new Date(this.orderDate);
     this.currentOrder.completionDate = new Date(this.completionDate);
@@ -58,9 +59,12 @@ export class OrderHeader implements OnInit{
 
   ngOnInit() {
     this.sharedServices.getAllUsers()
-      .subscribe(res => {this.allUsers = res.result;
+      .subscribe(res => {
+        this.allUsers = res.result;
       });
-    this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;});
+    this.customerServices.getAllCustomers().subscribe(res => {
+      this.allCustomers = res.result;
+    });
   }
 
   onDate1Changed(event) {
@@ -89,18 +93,17 @@ export class OrderHeader implements OnInit{
     console.log(" complete by:" + this.currentOrder.defaultTask.completeBy);
   }
 
-  getUserDetails(user){
-    for(var i in this.allUsers){
-      if (this.allUsers[i]._id === user){
+  getUserDetails(user) {
+    for (var i in this.allUsers) {
+      if (this.allUsers[i]._id === user) {
         this.currentOrder.defaultTask.assignedTo = this.allUsers[i];
         this.orderObservableService.changeOrderObject(this.currentOrder);
       }
     }
   }
 
-  getCustomerDetails(customerId){
-   for (var i = 0; i < this.allCustomers.length; i++)
-    {
+  getCustomerDetails(customerId) {
+    for (var i = 0; i < this.allCustomers.length; i++) {
       if (this.allCustomers[i]._id == customerId) {
         this.selectedCustomer = this.allCustomers[i];
         this.currentOrder.customer = this.selectedCustomer;
