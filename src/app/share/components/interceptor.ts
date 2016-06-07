@@ -66,12 +66,15 @@ import {Http, Headers} from 'angular2/http';
 import {Injectable} from "angular2/core";
 import {MessageService} from "../services/message.service";
 import {Observable} from "rxjs/Observable";
+``
+var g_messageService :MessageService;
 
 @Injectable()
 export class HttpClient {
   private http;
   constructor(http: Http, private messageService :MessageService) {
     this.http = http;
+    g_messageService = this.messageService;
   }
 
   createAuthorizationHeader(headers:Headers) {
@@ -91,14 +94,13 @@ export class HttpClient {
     return this.http.get(newUrl, {
       headers: headers
     }).map((response) => {
-      localStorage.setItem("access_token", response.json().access_token);
+        localStorage.setItem("access_token", response.json().access_token);
       return response;})
       .catch(this.handleError);
 
   }
-  private handleError (error: any) {
-    this.messageService.show("Error Occured");
-      return Observable.throw("Error has been thrown");
+  private handleError (error: any, someting : any) {
+    g_messageService.show(JSON.parse(error._body).message);
   }
 
   post(url, data) {

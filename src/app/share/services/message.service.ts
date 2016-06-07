@@ -12,7 +12,7 @@ export class MessageService {
   showMessage$ = this._showMessageSource.asObservable();
 
   // Service message commands
-  show(message: string) {debugger
+  show(message: string) {
     this._showMessageSource.next(message)
   }
 }

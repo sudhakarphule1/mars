@@ -38,9 +38,11 @@ export class OrderHeader implements OnInit{
   currentOrder: Order = new Order();
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
+  private newCustomer : Customer =new Customer();
   leadId: string;
   displayMessage: boolean = false;
   id: string;
+  private response;
   allUsers: Array<User>;
   constructor(params: RouteParams,
               private sharedServices: SharedServices,
@@ -111,4 +113,35 @@ export class OrderHeader implements OnInit{
       }
     }
   }
+
+  createCustomer(){
+
+    if (!this.newCustomer.fromCompany || !this.newCustomer.contactPerson ||
+      !this.newCustomer.contactNumber || !this.newCustomer.shippingAddress.line1 ||
+      !this.newCustomer.shippingAddress.line2 || !this.newCustomer.shippingAddress.pinCode ||
+      !this.newCustomer.shippingAddress.city || !this.newCustomer.billingAddress.line1 ||
+      !this.newCustomer.billingAddress.line2 || !this.newCustomer.billingAddress.pinCode ||
+      !this.newCustomer.billingAddress.city ) {
+      console.log("Some validation error are remaining");
+    }
+    else {
+      this.currentOrder.fromCompany = this.newCustomer.fromCompany;
+      this.currentOrder.billingAddress = this.newCustomer.billingAddress;
+      this.currentOrder.shippingAddress = this.newCustomer.shippingAddress;
+      this.customerServices.createCustomer(this.newCustomer).subscribe
+      (res =>
+      {this.response = res.json();
+        this.currentOrder.customer = this.response.result._id;
+      });
+    }
+  }
+  copyAddress(){
+    this.newCustomer.billingAddress.line1 = this.newCustomer.shippingAddress.line1;
+    this.newCustomer.billingAddress.line2 = this.newCustomer.shippingAddress.line2;
+    this.newCustomer.billingAddress.pinCode = this.newCustomer.shippingAddress.pinCode;
+    this.newCustomer.billingAddress.city = this.newCustomer.shippingAddress.city;
+    this.newCustomer.billingAddress.state = this.newCustomer.shippingAddress.state;
+    this.newCustomer.billingAddress.country = this.newCustomer.shippingAddress.country;
+  }
+
 }

@@ -102,14 +102,7 @@ export class AddOtherDetails implements  OnInit{
     }
   }
 
-  copyAddress(){
-    this.newCustomer.billingAddress.line1 = this.newCustomer.shippingAddress.line1;
-    this.newCustomer.billingAddress.line2 = this.newCustomer.shippingAddress.line2;
-    this.newCustomer.billingAddress.pinCode = this.newCustomer.shippingAddress.pinCode;
-    this.newCustomer.billingAddress.city = this.newCustomer.shippingAddress.city;
-    this.newCustomer.billingAddress.state = this.newCustomer.shippingAddress.state;
-    this.newCustomer.billingAddress.country = this.newCustomer.shippingAddress.country;
-  }
+
 
   getCustomerDetails(customer){
     for (var i = 0; i < this.allCustomers.length; i++)
@@ -126,42 +119,6 @@ export class AddOtherDetails implements  OnInit{
     this.showDetails =  true;
   }
 
-  createCustomer(){
-
-      if (!this.newCustomer.fromCompany || !this.newCustomer.contactPerson ||
-        !this.newCustomer.contactNumber || !this.newCustomer.shippingAddress.line1 ||
-        !this.newCustomer.shippingAddress.line2 || !this.newCustomer.shippingAddress.pinCode ||
-        !this.newCustomer.shippingAddress.city || !this.newCustomer.shippingAddress.state ||
-        !this.newCustomer.shippingAddress.country || !this.newCustomer.billingAddress.line1 ||
-        !this.newCustomer.billingAddress.line2 || !this.newCustomer.billingAddress.pinCode ||
-        !this.newCustomer.billingAddress.city || !this.newCustomer.billingAddress.state ||
-        !this.newCustomer.billingAddress.country) {
-        this.errorMessage = "One of the mandatory fields is missing";
-        this.displayError = true;
-      }
-      else if (isNaN(this.newCustomer.contactNumber)) {
-        this.errorMessage = "Contact Number needs to be numeric";
-        this.displayError = true;
-      }
-      else if (!isNaN(this.newCustomer.contactNumber) &&
-        (isNaN(this.newCustomer.billingAddress.pinCode) || isNaN(this.newCustomer.shippingAddress.pinCode))) {
-        this.errorMessage = "Pin Code needs to be numeric";
-        this.displayError = true;
-      }
-      else {
-        this.displayError = false;
-        this.currentOrder.fromCompany = this.newCustomer.fromCompany;
-        this.currentOrder.billingAddress = this.newCustomer.billingAddress;
-        this.currentOrder.shippingAddress = this.newCustomer.shippingAddress;
-        this.customerServices.createCustomer(this.newCustomer).subscribe
-          (res =>
-          {this.response = res.json();
-            this.currentOrder.customer = this.response.result._id;
-          });
-        this.customerMessage = "A new customer has been created.";
-        this.displayCustomer = true;
-      }
-  }
 
   newContract(){
     var  contract : Contract = new Contract();
