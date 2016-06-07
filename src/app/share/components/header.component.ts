@@ -1,16 +1,15 @@
 import {Component, OnChanges, SimpleChange} from '@angular/core';
 import {ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
-import {MATERIAL_DIRECTIVES, Media} from "ng2-material";
 import {SearchService}     from './search.service';
 import {MessageService} from "../services/message.service";
 import {Subscription} from "rxjs/Subscription";
 
 @Component({
-  selector: 'ib-header',
+  selector: 'oa-header',
   templateUrl: 'app/share/components/header.component.html',
   styles: [ require('./header.component.scss') ],
   providers: [],
-  directives: [ROUTER_DIRECTIVES, MATERIAL_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES]
 })
 export class Header {
 

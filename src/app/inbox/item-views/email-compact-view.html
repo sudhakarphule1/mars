@@ -1,4 +1,4 @@
-<div class="md-3-line email-compact" [class.active]="selected == email.id" >
+<div class="email-compact" [class.active]="selected == email.id" >
   <div > </div>
   <div class="client-section" style="width:80px;float:left;">
     <span><img src="app/inbox/images/email.png"> </span>
@@ -19,67 +19,48 @@
   </div>
 </div>
 
-
 <div *ngIf="showDetails == true">
-  <md-tabs md-dynamic-height md-border-bottom>
-    <template md-tab label="Content">
-      <md-content class="md-padding">
+  <div class="md-padding">
+    <p [innerHTML]="email.html" class="client-conversation"></p>
+    <div *ngFor="let message of email.conversation">
+      <div *ngIf="message.by=='User'" class="user-conversation">
+        <p> {{message.text}}</p>
+      </div>
+      <div *ngIf="message.by=='Client'" class="client-conversation">
+        <p [innerHTML]="message.html"></p>
+      </div>
+    </div>
 
-        <p [innerHTML]="email.html" class="client-conversation"></p>
-
-
-        <div *ngFor="let message of email.conversation">
-          <!--{{message.text}}-->
-
-          <div *ngIf="message.by=='User'" class="user-conversation">
-            <p> {{message.text}}</p>
-          </div>
-          <div *ngIf="message.by=='Client'" class="client-conversation">
-            <p [innerHTML]="message.html"></p>
-          </div>
-
+    <button class="oa-button" (click)="reply = !reply">Reply</button>
+    <div class="reply-content" *ngIf="reply == true">
+      <input md-input type="text" id="content" value="{{ email.from[0].address }}" >
+      <textarea [(ngModel)] = "replyText" rows="5" ></textarea>
+      <section layout="row" class="text-editor" layout-sm="column" layout-wrap>
+        <div class="rich-texteditor-icon">
+          <span><img src="app/inbox/images/text-style.svg"></span>
+          <span><img src="app/inbox/images/bold.svg"></span>
+          <span><img src="app/inbox/images/italic.svg"></span>
+          <span><img src="app/inbox/images/underline.svg"></span>
+          <span><img src="app/inbox/images/alignment.svg"></span>
+          <span><img src="app/inbox/images/numbers.svg"></span>
+          <span><img src="app/inbox/images/bullets.svg"></span>
+          <span><img src="app/inbox/images/attachment.svg"></span>
         </div>
-
-
-
-        <button md-raised-button class="button md-primary" (click)="reply = !reply">Reply</button>
-        <div class="reply-content" *ngIf="reply == true">
-          <md-input-container layout="row" flex="100">
-            <input md-input type="text" id="content" value="{{ email.from[0].address }}" >
-          </md-input-container>
-          <md-input-container layout="row" flex="100" class="md-block" >
-            <textarea [(ngModel)] = "replyText" rows="5" ></textarea>
-          </md-input-container>
-          <section layout="row" class="text-editor" layout-sm="column" layout-wrap>
-            <md-button flex="50">
-              <md-icon><img class="" src="app/inbox/images/text-style.svg"></md-icon>
-              <md-icon><img class="" src="app/inbox/images/bold.svg"></md-icon>
-              <md-icon><img class="" src="app/inbox/images/italic.svg"></md-icon>
-              <md-icon><img class="" src="app/inbox/images/underline.svg"></md-icon>
-              <md-icon><img class="" src="app/inbox/images/alignment.svg"></md-icon>
-              <md-icon><img class="" src="app/inbox/images/numbers.svg"></md-icon>
-              <md-icon><img class="" src="app/inbox/images/bullets.svg"></md-icon>
-              <md-icon><img class="" src="app/inbox/images/attachment.svg"></md-icon>
-            </md-button>
-            <section layout="row" flex="50" layout-sm="column" layout-align="end start" layout-wrap>
-              <button md-raised-button class="button" (click)="reply = !reply">Cancel</button>
-              <button md-raised-button class="md-primary button" (click)="sendReply()">Send</button>
-            </section>
-          </section>
-        </div>
-      </md-content>
-    </template>
-    <template md-tab label="Attachments">
-      <md-content class="md-padding">
-        <!--<iframe src='http://localhost:5000/{{email.attachments[0].fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>-->
-        <ul>
-          <li *ngFor="let attachment of email.attachments">
-            <iframe src='http://localhost:5000/{{attachment.fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>
-          </li>
-        </ul>
-      </md-content>
-    </template>
-  </md-tabs>
+        <section class="reply-button">
+          <button class="oa-button primary-btn" (click)="reply = !reply">Cancel</button>
+          <button class="oa-button sec-primary-btn" (click)="sendReply()">Send</button>
+        </section>
+      </section>
+    </div>
+  </div>
+  <div>
+    <!--<iframe src='http://localhost:5000/{{email.attachments[0].fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>-->
+    <ul>
+      <li *ngFor="let attachment of email.attachments">
+        <iframe src='http://localhost:5000/{{attachment.fileName}}' style="width:100%; height:500px;" frameborder="0"></iframe>
+      </li>
+    </ul>
+  </div>
 </div>
 
 
