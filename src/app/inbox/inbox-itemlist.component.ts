@@ -28,14 +28,15 @@ import {ViewOrder} from "../order/components/view-order.component";
 })
 
 @RouteConfig([
-  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
-  new Route({ path: '/vieworder', component: ViewOrder, name: 'ViewOrder'})
+  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true})/*,
+  new Route({ path: '/vieworder', component: ViewOrder, name: 'ViewOrder'})*/
 ])
 
 export class ViewInbox implements OnInit, OnDestroy {
   showDetails: boolean = false;
   showHistory: boolean = false;
   filterBy: string = '';
+  selected : string;
   itemList : Array<InboxItem>;
   subscription:Subscription;
 
@@ -76,17 +77,15 @@ export class ViewInbox implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  selected : string;
   navigateTo(item: InboxItem) {
     this.selected = item._id;
     this.orderLocalStore.inboxItem = item;
-    let link;
-    if( item.type == 'Order' ) {
+/*    if( item.type == 'Order' ) {
       link = ['ViewOrder', { orderId: item._id }];
     } else {
       link = ['CreateOrder', { orderId: item._id }];
-    }
+    }*/
+    let link = ['CreateOrder', { orderId: item._id }];
     this._router.navigate(link);
   }
 }
-

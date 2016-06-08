@@ -11,6 +11,7 @@ import {CustomerServices} from "../services/customer.service";
 import {Customer} from "../../model/customer";
 import {CustomerObservableService} from "../services/customer.observable.service";
 import {OrderObservableService} from "../services/order.observable.service";
+import {Orders} from "../services/order.service";
 
 @Component({
   selector: 'oa-order-header',
@@ -30,7 +31,7 @@ export class OrderHeader implements OnInit{
     height: '17px',
     width: '150px'
   };
-
+  /*selectedCustomerObject: Customer = new Customer();*/
   orderDate: string = '2016-04-01';
   orderPlacedDate: string = '2016-04-01';
   transitDate: string = '2016-04-01';
@@ -45,15 +46,35 @@ export class OrderHeader implements OnInit{
   private response;
   allUsers: Array<User>;
   constructor(params: RouteParams,
+              private orders: Orders,
               private sharedServices: SharedServices,
               private customerServices: CustomerServices,
               private customerObservableService :CustomerObservableService,
               private orderObservableService: OrderObservableService) {
     this.leadId = params.get('orderId');
+
+    if(this.leadId){
+      this.orders.getOrderById(this.leadId).subscribe(res => {debugger
+        this.currentOrder = res;
+        for(var i =0; i<this.currentOrder.items.length; i++){
+          this.currentOrder.items[i].productId.qty = this.currentOrder.items[i].qty;
+          this.currentOrder.items[i] = this.currentOrder.items[i].productId;
+        }
+        this.orderObservableService.changeOrderObject(this.currentOrder, true);
+        this.selectedCustomer = this.currentOrder.customer;
+/*        this.orderDate = toString(this.currentOrder.orderDate);
+        this.completionDate = toString(this.currentOrder.completionDate);
+        this.orderPlacedDate = toString(this.currentOrder.orderPlacedDate);
+        this.transitDate = toString(this.currentOrder.transitDate);*/
+      });
+    }
+
+    else{
     this.currentOrder.orderDate = new Date(this.orderDate);
     this.currentOrder.completionDate = new Date(this.completionDate);
     this.currentOrder.orderPlacedDate = new Date(this.orderPlacedDate);
     this.currentOrder.transitDate = new Date(this.transitDate);
+    }
   }
 
   ngOnInit() {

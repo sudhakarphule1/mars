@@ -37,7 +37,6 @@ export class ViewOrder implements OnInit{
     this.orders.getOrderById(this.id).subscribe(res => {
       this.orderLocalStore.order = res;
       this.currentOrder = res;
-      console.log("parent order" + JSON.stringify(this.currentOrder));
     });
   }
 

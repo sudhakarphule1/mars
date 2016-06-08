@@ -45,6 +45,7 @@ export class AddOtherDetails {
   @Input() currentCustomerId : string;
   private subscription: Subscription;
   private  customerId : string;
+  private showOrder: boolean = false;
 
   constructor(params: RouteParams,
               private orders: Orders,

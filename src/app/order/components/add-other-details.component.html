@@ -17,6 +17,7 @@
           <p>{{currentOrder.customer.billingAddress.city}}, </p>
           <p>{{currentOrder.customer.billingAddress.country}}, </p>
     </div>
-  <div *ngIf="displayError">{{errorMessage}}</div>
+  <div *ngIf="displayError && !displaySuccess">{{errorMessage}}</div>
+  <div *ngIf="!displayError && displaySuccess">{{successMessage}}</div>
   <button md-raised-button class="button md-raised md-primary" (click)="placeOrder()">Place Order</button>
 </div>

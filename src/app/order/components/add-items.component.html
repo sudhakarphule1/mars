@@ -5,7 +5,7 @@
       <div flex="30">
         Product
       </div>
-      <div class="content-center1" flex="20">
+      <div class="content-center1" flex="10">
         Quantity
       </div>
       <div class="content-center" flex="20">
@@ -20,20 +20,23 @@
       <div class="content-center" flex="10">
         Amount
       </div>
+      <div class="content-center" flex="10">
+        Action
+      </div>
     </div>
 
-    <div layout-wrap *ngFor="#item of selectedItems" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+    <div layout-wrap *ngFor="#item of currentOrder.items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
 
       <div flex="30">
         <input type="search"
                name="search"
                [(ngModel)]="item.name"
                class="search"
-               (keydown)="makeProductSuggestionVisible(selectedItems.indexOf(item)); search=item.name"
+               (keydown)="makeProductSuggestionVisible(currentOrder.items.indexOf(item)); search=item.name"
                md-maxlength="10">
         <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
       </div>
-      <div class="content-center add-item" flex="20">
+      <div class="content-center add-item" flex="10">
         <div *ngIf="item.available == true">
           <button type='submit'
                   class='qtyminus'
@@ -59,8 +62,11 @@
       <div class="content-center add-item" flex="10">
         <h3 layout-margin>{{item.amount}}</h3>
       </div>
+      <div class="content-center add-item" flex="10">
+        <span (click)="removeSelectedItem(item)" layout-margin >X</span>
+      </div>
 
-      <div *ngIf="isVisibleProductArray[selectedItems.indexOf(item)]">
+      <div *ngIf="isVisibleProductArray[currentOrder.items.indexOf(item)]">
         <div layout-wrap
              *ngFor="#innerItem of (items| productsFilter:'filterBy': search )"
              layout="row"
@@ -82,8 +88,8 @@
           </div>
         </div>
       </div>
-
     </div>
+    <div layout="row" layout-wrap class="row-title" *ngIf="currentOrder.items.length > 0">{{totalAmount}}</div>
 
     <div layout="row" layout-wrap class="row-title">
       <div flex="30" id="emptyRow">
@@ -114,11 +120,6 @@
       <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
     </div>
     </div>
-
-
-    <!--<div layout="row" layout-wrap class="row-title" *ngIf="selectedItems.length > 0">{{totalAmount}}</div>
-    <div layout-padding *ngIf="displayMessage">{{ message }}</div>
-    <button *ngIf="selectedItems.length > 0" md-raised-button class="button md-raised md-primary" (click)="saveItems()">Save</button>-->
 
     <!--<input name="search"
            placeholder="Search"
