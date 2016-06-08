@@ -7,13 +7,15 @@ import 'rxjs/add/operator/map';
 import {Headers} from "angular2/http";
 import {RequestOptions} from "angular2/http";
 import {Config} from "../../../config/config";
+import {HttpClient} from "../../share/components/interceptor";
 @Injectable()
 export class CustomerServices {
-  constructor(private http: Http){}
+  constructor(private http: Http,
+              private httpClient: HttpClient){}
 
   public getAllCustomers(){
     let url = Config.RESTServer + `customer?access_token=`+localStorage.getItem("access_token");
-    return this.http.get(url).map((res) => res.json());
+    return this.httpClient.get(url).map((res) => res.json());
   }
 
   public createCustomer(value){

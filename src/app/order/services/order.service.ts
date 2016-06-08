@@ -34,7 +34,7 @@ export class Orders {
 
   public getLastOrder(value1, value2){
     let url = Config.RESTServer + `orders?fromCompany=` + value2 + `&sendLastOrder=true`  + `&access_token=`+ localStorage.getItem("access_token");
-    return this.http.get(url).map((res) => res.json());
+    return this.httpClient.get(url).map((res) => res.json());
   }
 
   public getAllOrders(){
@@ -50,7 +50,7 @@ export class Orders {
   public getOrderById(value){
     let url = Config.RESTServer + `orders?_id=` + value  + `&access_token=`+ localStorage.getItem("access_token");
     /*return this.getOrdersObjectFunction(url);*/
-    return this.http.get(url)
+    return this.httpClient.get(url)
     // initial transform - result to json
       .map(res => res.json())
       // next transform - each element in the
@@ -106,7 +106,7 @@ export class Orders {
   }
 
   public getOrdersObjectFunction(url){
-    return this.http.get(url)
+    return this.httpClient.get(url)
     // initial transform - result to json
       .map(res => res.json())
       // next transform - each element in the

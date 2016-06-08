@@ -54,13 +54,13 @@ export class OrderHeader implements OnInit{
     this.leadId = params.get('orderId');
 
     if(this.leadId){
-      this.orders.getOrderById(this.leadId).subscribe(res => {debugger
+      this.orders.getOrderById(this.leadId).subscribe(res => {
         this.currentOrder = res;
         for(var i =0; i<this.currentOrder.items.length; i++){
           this.currentOrder.items[i].productId.qty = this.currentOrder.items[i].qty;
           this.currentOrder.items[i] = this.currentOrder.items[i].productId;
         }
-        this.orderObservableService.changeOrderObject(this.currentOrder, true);
+        this.orderObservableService.changeOrderObject(this.currentOrder);
         this.selectedCustomer = this.currentOrder.customer;
 /*        this.orderDate = toString(this.currentOrder.orderDate);
         this.completionDate = toString(this.currentOrder.completionDate);
