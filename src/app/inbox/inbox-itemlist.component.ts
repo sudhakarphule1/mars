@@ -20,7 +20,7 @@ import {OrderLocalStore} from "../order/components/order-local-store";
 @Component({
   selector: 'inbox-itemlist',
   templateUrl: 'app/inbox/inbox-itemlist.component.html',
-  styles: [ require('./item-views/list-view.scss') ],
+  styles: [ require('./item-views/inbox.component.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   providers: [Orders, EmailService, OrderLocalStore, AudioDataProvider, SearchService],
   pipes:[InboxFilterPipe]

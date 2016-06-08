@@ -1,11 +1,4 @@
-$ca-date-bg: #AAA;
-$ca-date-gray: #ccc;
-$ca-date-lightgray: #ddd;
-$ca-date-white: #fff;
-$ca-date-black: #000;
-$ca-datebutton: #f36523;
-$ca-datebutton-bg: #FAFAFA;
-$ca-caltable-bg: #003366;
+@import "../../../../app/variable.scss";
 
 @font-face {
     font-family: 'mydatepicker';
@@ -46,7 +39,7 @@ $ca-caltable-bg: #003366;
         position: relative;
         display: table;
         border: none;
-        background-color: $ca-date-white;
+        background-color: $oa-white;
     }
     .selection {
         display: table-cell;
@@ -75,62 +68,62 @@ $ca-caltable-bg: #003366;
         height: 100%;
         width: 30px;
         border: none;
-        border-left: 1px solid $ca-date-bg;
+        border-left: 1px solid $oa-date-bg;
         padding: 0px;
         cursor: pointer;
         outline: 0;
         font: inherit;
         -moz-user-select: none;
-        background: $ca-datebutton-bg;
-        color: $ca-date-black;
+        background: $oa-datebutton-bg;
+        color: $oa-black;
         &:focus {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-datebutton;
+            color: $oa-white;
         }
         &:hover {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-datebutton;
+            color: $oa-white;
         }
     }
     .btnclear {
         height: 100%;
         width: 30px;
         border: none;
-        border-left: 1px solid $ca-date-bg;
+        border-left: 1px solid $oa-date-bg;
         padding: 0px;
         cursor: pointer;
         outline: 0;
         font: inherit;
         -moz-user-select: none;
-        background: $ca-datebutton-bg;
-        color: $ca-date-black;
+        background: $oa-datebutton-bg;
+        color: $oa-black;
         &:focus {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-datebutton;
+            color: $oa-white;
         }
         &:hover {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-datebutton;
+            color: $oa-white;
         }
     }
     .headertodaybtn {
-        background: $ca-datebutton-bg;
-        border: 1px solid $ca-date-bg;
-        color: $ca-date-black;
+        background: $oa-datebutton-bg;
+        border: 1px solid $oa-date-bg;
+        color: $oa-black;
         padding: 4px 6px;
         border-radius: 2px;
         cursor: pointer;
         font-size: 12px;
     }
     .footerbtn {
-        background: $ca-datebutton-bg;
+        background: $oa-datebutton-bg;
     }
     .header {
         width: 100%;
         height: 36px;
         margin-bottom: 1px;
-        background-color: $ca-datebutton-bg;
-        border: 1px solid $ca-date-bg;
+        background-color: $oa-datebutton-bg;
+        border: 1px solid $oa-date-bg;
         td {
             vertical-align: middle;
             border: none;
@@ -150,24 +143,24 @@ $ca-caltable-bg: #003366;
     .caltable {
         table-layout: fixed;
         width: 100%;
-        background-color: $ca-date-white;
+        background-color: $oa-white;
         font-size: 14px;
         border-collapse: collapse;
-        color: $ca-caltable-bg;
+        color: $oa-caltable-bg;
         line-height: 1.1;
         th {
             border-collapse: collapse;
-            color: $ca-caltable-bg;
+            color: $oa-caltable-bg;
             line-height: 1.1;
             text-align: center;
-            background-color: $ca-date-lightgray;
+            background-color: $oa-light-gray;
             font-size: 12px;
             vertical-align: middle;
-            color: $ca-date-black;
+            color: $oa-black;
         }
         td {
             border-collapse: collapse;
-            color: $ca-caltable-bg;
+            color: $oa-caltable-bg;
             line-height: 1.1;
             text-align: center;
             cursor: pointer;
@@ -177,33 +170,33 @@ $ca-caltable-bg: #003366;
         tbody {
             .currmonth {
                 &:hover {
-                    background-color: $ca-datebutton;
-                    color: $ca-date-white;
+                    background-color: $oa-datebutton;
+                    color: $oa-white;
                 }
             }
-            border: 1px solid $ca-date-bg;
+            border: 1px solid $oa-date-bg;
         }
     }
     .prevmonth {
-        color: $ca-date-gray;
+        color: $oa-gray;
     }
     .nextmonth {
-        color: $ca-date-gray;
+        color: $oa-gray;
     }
     .currmonth {
         font-weight: bold;
-        color: $ca-date-black;
+        color: $oa-black;
     }
     .currday {
         div {
-            border: 1px solid $ca-datebutton;
+            border: 1px solid $oa-datebutton;
         }
     }
     .selectedday {
         div {
-            background-color: $ca-datebutton !important;
+            background-color: $oa-datebutton !important;
             border-radius: 0;
-            color: $ca-date-white;
+            color: $oa-white;
             padding: 7px;
         }
     }
@@ -212,32 +205,32 @@ $ca-caltable-bg: #003366;
         width: 60px;
     }
     .headerbtn {
-        background-color: $ca-datebutton-bg;
+        background-color: $oa-datebutton-bg;
         cursor: pointer;
         display: table-cell;
-        color: $ca-date-black;
+        color: $oa-black;
     }
     .footerarea {
-        border: 1px solid $ca-date-bg;
+        border: 1px solid $oa-date-bg;
     }
     .table {
-        border: 1px solid $ca-date-bg;
+        border: 1px solid $oa-date-bg;
         th {
-            border: 1px solid $ca-date-bg;
+            border: 1px solid $oa-date-bg;
         }
         td {
-            border: 1px solid $ca-date-bg;
+            border: 1px solid $oa-date-bg;
         }
     }
     .headermonthtxt {
-        color: $ca-date-black;
+        color: $oa-black;
         width: 40px;
         text-align: center;
         display: table-cell;
         vertical-align: middle;
     }
     .headeryeartxt {
-        color: $ca-date-black;
+        color: $oa-black;
         width: 40px;
         text-align: center;
         display: table-cell;
@@ -263,7 +256,7 @@ $ca-caltable-bg: #003366;
     .icon-left {
         font-size: 14px;
         &:hover {
-            color: $ca-datebutton;
+            color: $oa-datebutton;
         }
         &:before {
             content: "\e605";
@@ -272,7 +265,7 @@ $ca-caltable-bg: #003366;
     .icon-right {
         font-size: 14px;
         &:hover {
-            color: $ca-datebutton;
+            color: $oa-datebutton;
         }
         &:before {
             content: "\e607";

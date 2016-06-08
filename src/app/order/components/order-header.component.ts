@@ -17,7 +17,7 @@ import {OrderObservableService} from "../services/order.observable.service";
 @Component({
   selector: 'order-header',
   templateUrl: 'app/order/components/order-header.component.html',
-  styles: [require('./common.scss')],
+  styles: [require('./order.components.scss')],
   providers: [HTTP_PROVIDERS, Orders, SharedServices, CustomerServices],
   directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, MyDatePicker],
 })

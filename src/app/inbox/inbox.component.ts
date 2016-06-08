@@ -16,9 +16,8 @@ import {OrderObservableService} from "../order/services/order.observable.service
   selector: 'inbox',
   providers: [HTTP_PROVIDERS, SearchService, CustomerObservableService, OrderObservableService],
   templateUrl: 'app/inbox/inbox.component.html',
-  styles: [ require('./inbox.component.scss'),
-    require('./item-views/list-view.scss') ],
-  directives: [ROUTER_DIRECTIVES, Header, MATERIAL_DIRECTIVES],
+  styles: [ require('./item-views/inbox.component.scss') ],
+  directives: [ROUTER_DIRECTIVES, Header],
   pipes: []
 })
 @RouteConfig([

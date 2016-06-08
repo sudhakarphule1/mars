@@ -17,7 +17,7 @@ import {OrderObservableService} from "../services/order.observable.service";
   selector: 'add-other-details',
   providers: [HTTP_PROVIDERS, CustomerServices],
   templateUrl: 'app/order/components/add-other-details.component.html',
-  styles: [ require('./common.scss') ],
+  styles: [ require('./order.components.scss') ],
   directives: [MATERIAL_DIRECTIVES],
   pipes: []
 })

@@ -17,7 +17,7 @@ import {CustomerServices} from "../services/customer.service";
 @Component({
   selector: 'create-order',
   templateUrl: 'app/order/components/create-order.component.html',
-  styles: [ require('./common.scss') ],
+  styles: [ require('./order.components.scss') ],
   providers: [],
   directives: [OrderHeader, AddOtherDetails, AddItems],
 })

@@ -1,16 +1,16 @@
-<div class="inbox-section">
-  <div class="assign-order">
-    <span> Sort By: </span>
-    <select>
-      <option value="" class="" selected="selected">Select Sort Option:</option>
-      <option value="" label="Company Name">Company Name</option>
-      <option value="" label="Delivery Date">Delivery Date</option>
-      <option value="" label="Order Date">Order Date</option>
-      <option value="" label="Lead Type">Lead Type</option>
-      <option value="" label="Order Status">Order Status</option>
-    </select>
-  </div>
-  <div class="left-section">
+<section class="inbox-section">
+  <section class="left-section">
+    <div class="assign-order">
+      <span> Sort By: </span>
+      <select>
+        <option value="" class="" selected="selected">Select Sort Option:</option>
+        <option value="" label="Company Name">Company Name</option>
+        <option value="" label="Delivery Date">Delivery Date</option>
+        <option value="" label="Order Date">Order Date</option>
+        <option value="" label="Lead Type">Lead Type</option>
+        <option value="" label="Order Status">Order Status</option>
+      </select>
+    </div>
     <div class="inbox-list">
       <div *ngFor="let item of (itemList | inboxFilter:'filterBy': filterBy )" (click)="navigateTo(item)" [class.active]="isFirst">
         <ib-email-compact-view [email]="item" [(selected)]="selected" *ngIf="item.type == 'Email'"></ib-email-compact-view>
@@ -19,8 +19,8 @@
         <md-divider></md-divider>
       </div>
     </div>
-  </div>
-  <div class="right-section">
+  </section>
+  <section class="right-section">
     <router-outlet></router-outlet>
-  </div>
-</div>
+  </section>
+</section>

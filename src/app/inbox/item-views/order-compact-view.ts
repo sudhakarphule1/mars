@@ -5,7 +5,7 @@ import {Order} from "../../model/order";
 @Component({
   selector: 'ib-order-compact-view',
   templateUrl: 'app/inbox/item-views/order-compact-view.html',
-  styles: [ require('./list-view.scss') ],
+  styles: [ require('./inbox.component.scss') ],
   inputs: ['order']
 })
 export class OrderCompactView{

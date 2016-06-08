@@ -18,7 +18,7 @@ import {CustomerObservableService} from "../services/customer.observable.service
   selector: 'add-items',
   providers: [HTTP_PROVIDERS],
   templateUrl: 'app/order/components/add-items.component.html',
-  styles: [ require('./common.scss') ],
+  styles: [ require('./order.components.scss') ],
   directives: [MATERIAL_DIRECTIVES],
   pipes:[ProductsFilterPipe]
 })
