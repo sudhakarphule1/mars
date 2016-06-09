@@ -21,7 +21,7 @@ import {ViewOrder} from "../order/components/view-order.component";
 @Component({
   selector: 'inbox-itemlist',
   templateUrl: 'app/inbox/inbox-itemlist.component.html',
-  styles: [ require('./item-views/list-view.scss') ],
+  styles: [ require('./item-views/inbox.component.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   providers: [Orders, EmailService, OrderLocalStore, AudioDataProvider, SearchService],
   pipes:[InboxFilterPipe]

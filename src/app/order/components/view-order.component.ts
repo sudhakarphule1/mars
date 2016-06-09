@@ -8,15 +8,14 @@ import {OrderLocalStore} from "../components/order-local-store";
 
 import {Order} from "../../model/order";
 import {OrderHeader} from "./order-header.component";
-import {EditOrder} from "./edit-order.component";
-import {PreviewCurrentItems} from "./preview-current-order.component";
+import {PreviewCurrentItems} from "./preview-order.component";
 
 @Component({
   selector: 'ib-preview-order',
   templateUrl: 'app/order/components/view-order.component.html',
   styles: [ require('./common.scss') ],
   providers: [Orders],
-  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, OrderHeader, EditOrder, PreviewCurrentItems],
+  directives: [MATERIAL_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, OrderHeader,reviewCurrentItems],
 })
 
 export class ViewOrder implements OnInit{
