@@ -100,7 +100,7 @@
              [(ngModel)]="search"
              class="search"
              (keyup)="showProducts = true"
-             md-maxlength="10">
+             md-maxlength="10" onblur="showProducts = false">
     </div>
     <div class="content-center add-item" flex="20">
       <div>

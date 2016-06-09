@@ -28,7 +28,6 @@ export class AddItems {
   showProducts: boolean = false;
   search: string = '';
   message: string = '';
-  search: string;
   isVisibleProductArray : Array<Boolean> =new Array<Boolean>();
   displayMessage: boolean = false;
   subscription: Subscription;
@@ -115,14 +114,20 @@ export class AddItems {
     }
   }
 
-  removeSelectedItem(value){
+  removeSelectedItem(value){debugger
     var index = this.currentOrder.items.indexOf(value);
+    this.items.push(value)
     if(index > -1){
       this.currentOrder.items.splice(index, 1);
     }
 
+
   }
 
+  temp(){
+    debugger
+
+  }
 /*  viewHistory(){
     this.inboxItem = this.orderLocalStore.inboxItem;
     console.log(this.inboxItem);
