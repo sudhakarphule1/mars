@@ -7,14 +7,18 @@ import 'rxjs/add/operator/map';
 import {Headers} from "@angular/http";
 import {RequestOptions} from "@angular/http";
 import {Config} from "../../../config/config";
+import {HttpClient} from "../../share/components/interceptor"
 
 @Injectable()
 export class SharedServices {
-  constructor(private http: Http){}
+  constructor(private http: Http,
+              private httpClient: HttpClient){
+              this.httpClient=httpClient;
+  }
 
   public getAllUsers(){
-    let url = Config.RESTServer + `user?access_token=`+localStorage.getItem("access_token");
-    return this.http.get(url).map((res) => res.json());
+    let url = Config.RESTServer + `user`;
+    return this.httpClient.get(url).map((res) => res.json());
   }
 
   public getUserById(value){

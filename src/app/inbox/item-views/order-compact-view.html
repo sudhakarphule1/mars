@@ -1,11 +1,11 @@
-<div class="order-compact" [class.active]="selected == order.id">
+<div class="md-3-line" [class.active]="selected == order.id">
   <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
   <div class="client-section" style="width:80px;float:left;">
     <span><img src="app/inbox/images/mobile-app.png"> </span>
     <img [src]="'app/share/images/company-logo/'+order.customer.fromCompany + '.png'" class="md-avatar client-img" alt="{{order.customer.fromCompany}}"/>
   </div>
   <div class="list-containt">
-    <p *ngFor="let item of order.items">{{item.productId.name}}, {{item.productId.variant}}, {{item.qty}}</p>
+    <p *ngFor="#item of order.items">{{item.productId.name}}, {{item.productId.unit}}, {{item.qty}}</p>
     <p>{{ order.orderType }}</p>
     <p><b>Assigned to: {{ order.defaultTask.assignedTo.firstName }}</b></p>
   </div>

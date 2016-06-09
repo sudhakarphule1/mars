@@ -6,8 +6,8 @@ import {Customer} from "./customer";
 export class Order extends InboxItem {
   constructor() {
     super('Order');
-    this.shippingAddress = new Address;
-    this.billingAddress = new Address;
+    this.shippingAddress = new Array<Address>();
+    this.billingAddress = new Array<Address>();
     this.orderDate = new Date();
     this.orderPlacedDate =  new Date();
     this.transitDate = new Date();
@@ -26,8 +26,8 @@ export class Order extends InboxItem {
   customer: Customer;
   totalAmount: number;
   items: Array<Item>;
-  shippingAddress: Address;
-  billingAddress: Address;
+  shippingAddress: Array<Address>;
+  billingAddress: Array<Address>;
 
   search(searchFor : string) : boolean{
     var item;

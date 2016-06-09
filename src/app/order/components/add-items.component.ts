@@ -29,16 +29,13 @@ export class AddItems {
   copyItems : Array<Item> = new Array<Item>();
   displayError = false;
   showProducts: boolean = false;
-  showProductsInside: boolean = false;
-  itemName: string;
   search: string = '';
   message: string = '';
+  search: string;
+  isVisibleProductArray : Array<Boolean> =new Array<Boolean>();
   displayMessage: boolean = false;
-  errorMessage: string = "";
   subscription: Subscription;
   totalAmount: number = 0;
-  totalQuantity: number = 0;
-  selectedItems: Array<Item> = new Array<Item>();
   currentOrder: Order = new Order();
 
   constructor(private orders: Orders,
@@ -52,12 +49,12 @@ export class AddItems {
             this.items[i].amount = 0;
         }
         Object.assign(this.copyItems,this.items);
-        console.log("copy Items"+this.copyItems);
       });
 
     this.subscription = orderObservableService.filterOrders$.subscribe(
       orderObject=>{
         this.currentOrder = orderObject;
+        console.log(this.currentOrder.items);
       }
     )
   }
@@ -65,52 +62,68 @@ export class AddItems {
   saveItems(){
 
     this.displayMessage = false;
-    for (var i = 0; i < this.selectedItems.length; i++)
+    for (var i = 0; i < this.currentOrder.items.length; i++)
     {
-      if(this.selectedItems[i].qty === 0){
+      if(this.currentOrder.items[i].qty === 0){
         this.message = "The quantity for one of your selected products is 0.";
         this.displayMessage = true;
         break;
       }
     }
     if(this.displayMessage === false){
-      this.currentOrder.items = this.selectedItems;
+      this.currentOrder.items = this.currentOrder.items;
       this.currentOrder.totalAmount = this.totalAmount;
-      console.log(this.currentOrder.items);
       this.message = "Your items list has been successfully saved.";
       this.displayMessage = true;
     }
 
   }
 
+  makeProductSuggestionVisible(item){
+    this.isVisibleProductArray[item] = true;
+    for(var index : number = 0; index < this.currentOrder.items.length;index++){
+      if(index != item){
+        this.isVisibleProductArray[index] = false;
+      }
+    }
+  }
+
   selectThisItem(value){
 
-    /*for (var i = 0; i < this.items.length; i++)
-    {
-      if (this.items[i]._id === value._id) {
-        this.errorMessage = "You have already selected this product.";
-        this.displayError = true;
-      }
-      else{
-        {break;}
-      }
-    }*/
-    this.selectedItems.push(value);
+    value.qty = 1;
+    value.amount=value.unitRate*value.qty;
+    this.currentOrder.items.push(value);
+    this.getTotalAmount();
 
     var index = this.items.indexOf(value);
     if(index > -1){
       this.items.splice(index, 1);
     }
-    console.log(this.items);
     this.showProducts = false;
+    this.search = '';
+
+  }
+
+  selectItemFromFiltered(oldItem,newItem){
+    var index : number = this.currentOrder.items.indexOf(oldItem);
+    this.currentOrder.items[this.currentOrder.items.indexOf(oldItem)]=newItem;
+    this.isVisibleProductArray[index] = false;
   }
 
   getTotalAmount(){
 
     this.totalAmount = 0;
-    for(var i = 0; i < this.selectedItems.length; i++){
-      this.totalAmount += this.selectedItems[i].amount;
+    for(var i = 0; i < this.currentOrder.items.length; i++){
+      this.totalAmount += this.currentOrder.items[i].amount;
     }
+  }
+
+  removeSelectedItem(value){
+    var index = this.currentOrder.items.indexOf(value);
+    if(index > -1){
+      this.currentOrder.items.splice(index, 1);
+    }
+
   }
 
 /*  viewHistory(){

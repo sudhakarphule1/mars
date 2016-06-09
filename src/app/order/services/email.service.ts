@@ -13,14 +13,18 @@ import {Task} from "../../model/task";
 import {Email} from "../../model/email";
 import {User} from "../../model/user";
 import {Config} from "../../../config/config";
+import {HttpClient} from "../../share/components/interceptor";
 
 @Injectable()
 export class EmailService {
-  constructor(private http: Http){}
+  constructor(private http: Http,
+              private httpClient: HttpClient){
+    this.httpClient=httpClient;
+  }
 
 
   public getAllEmails(){
-    let url = Config.RESTServer + `emails?access_token=`+localStorage.getItem("access_token");
+    let url = Config.RESTServer + `emails`;
     return this.getEmailObjectFunction(url);
   }
 
@@ -38,7 +42,7 @@ export class EmailService {
   public getEmailObjectFunction(url){
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(url, {
+    return this.httpClient.get(url, {
         headers: headers
       })
       // initial transform - result to json

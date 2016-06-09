@@ -13,6 +13,7 @@ import {Input} from "angular2/core";
 import {Subscription} from "rxjs/Subscription";
 import {OrderObservableService} from "../services/order.observable.service";
 import {Orders} from "../services/order.service";
+import {Address} from "../../model/address";
 
 @Component({
   selector: 'oa-order-other-details',
@@ -45,6 +46,8 @@ export class AddOtherDetails {
   @Input() currentCustomerId : string;
   private subscription: Subscription;
   private  customerId : string;
+  private showOrder: boolean = false;
+  private tempAddress : Address;
 
   constructor(params: RouteParams,
               private orders: Orders,
@@ -54,7 +57,10 @@ export class AddOtherDetails {
               private orderObservableService: OrderObservableService,
               private customerObservableService :CustomerObservableService) {
     this.leadId = params.get('leadId');
-    this.currentOrder.customer = new Customer;
+    this.currentOrder.customer = new Customer();
+    this.tempAddress =new Address();
+    this.currentOrder.customer.shippingAddress.push(this.tempAddress);
+    this.currentOrder.customer.billingAddress.push(this.tempAddress);
     this.subscription =  orderObservableService.filterOrders$.subscribe(
         orderObject => {
           this.currentOrder = orderObject;
@@ -114,8 +120,8 @@ export class AddOtherDetails {
 
     this.currentOrder.customer = this.selectedCustomer;
     this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
-    this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
-    this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;
+    this.currentOrder.billingAddress[0] = this.selectedCustomer.billingAddress[0];
+    this.currentOrder.shippingAddress[0] = this.selectedCustomer.shippingAddress[0];
     this.showDetails =  true;
   }
 

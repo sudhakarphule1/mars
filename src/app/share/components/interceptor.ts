@@ -66,7 +66,6 @@ import {Http, Headers} from '@angular/http';
 import {Injectable} from "@angular/core";
 import {MessageService} from "../services/message.service";
 import {Observable} from "rxjs/Observable";
-``
 var g_messageService :MessageService;
 
 

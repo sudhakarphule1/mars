@@ -40,5 +40,5 @@ export class Configfile {
 }
 
 export class Config {
-  public static get RESTServer(): string { return 'http://localhost:8080/api/'; }
+  public static get RESTServer(): string { return 'http://localhost:5000/api/'; }
 }

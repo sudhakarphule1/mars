@@ -1,141 +1,141 @@
 <div class="orders">
-   <a href="/#openModal">Open Modal</a>
-   <div  id="openModal"  class="modalDialog">
-     <div class="tableClass " layout-padding >
-       <a href="#close" title="Close" class="close">X</a>
-       <h3>Add New Customer</h3>
-       <div layout-gt-sm="row">
-         <div layout-gt-sm="row" >
-           <md-input-container class="md-block" >
-             <label>Compnay Name</label>
-             <input md-input [(ngModel)] = "newCustomer.fromCompany">
-           </md-input-container>
-         </div>
-         <div layout-gt-sm="row" >
-           <md-input-container class="md-block" >
-             <label>Contact Person</label>
-             <input md-input [(ngModel)] = "newCustomer.contactPerson" >
-           </md-input-container>
-         </div>
-       </div>
-
-       <div layout-gt-sm="row" >
-         <div layout-gt-sm="row" flex="50">
-           <md-input-container class="md-block" >
-             <label>Contact Number</label>
-             <input md-input [(ngModel)] = "newCustomer.contactNumber" >
-           </md-input-container>
-         </div>
-       </div>
-
-       <div class="tableClass" layout-padding>
-         <h4>Shipping Address</h4>
-         <div layout-gt-sm="row" >
-           <div layout-gt-sm="row" flex="50">
+  <div class="create-customer-modal" [hidden]="isNewCustomerDivInvisible" >
+     <div  id="openModal"   class="modalDialog">
+       <div class="tableClass " layout-padding >
+         <span (click)="isNewCustomerDivInvisible=true;" class="close">X</span>
+         <h3>Add New Customer</h3>
+         <div layout-gt-sm="row">
+           <div layout-gt-sm="row" >
              <md-input-container class="md-block" >
-               <label>Line1</label>
-               <input md-input [(ngModel)] = "newCustomer.shippingAddress.line1" >
+               <label>Compnay Name</label>
+               <input md-input [(ngModel)] = "newCustomer.fromCompany">
              </md-input-container>
            </div>
            <div layout-gt-sm="row" >
              <md-input-container class="md-block" >
-               <label>Line2</label>
-               <input md-input [(ngModel)] = "newCustomer.shippingAddress.line2" >
+               <label>Contact Person</label>
+               <input md-input [(ngModel)] = "newCustomer.contactPerson" >
              </md-input-container>
            </div>
          </div>
+
          <div layout-gt-sm="row" >
-           <div layout-gt-sm="row" >
+           <div layout-gt-sm="row" flex="50">
              <md-input-container class="md-block" >
-               <label>Pincode</label>
-               <input md-input [(ngModel)] = "newCustomer.shippingAddress.pinCode" >
+               <label>Contact Number</label>
+               <input md-input [(ngModel)] = "newCustomer.contactNumber" >
              </md-input-container>
+           </div>
+         </div>
+
+         <div class="tableClass" layout-padding>
+           <h4>Shipping Address</h4>
+           <div layout-gt-sm="row" >
+             <div layout-gt-sm="row" flex="50">
+               <md-input-container class="md-block" >
+                 <label>Line1</label>
+                 <input md-input [(ngModel)] = "newCustomer.shippingAddress[0].line1" >
+               </md-input-container>
+             </div>
+             <div layout-gt-sm="row" >
+               <md-input-container class="md-block" >
+                 <label>Line2</label>
+                 <input md-input [(ngModel)] = "newCustomer.shippingAddress[0].line2" >
+               </md-input-container>
+             </div>
            </div>
            <div layout-gt-sm="row" >
-             <md-input-container class="md-block" >
-               <label>City</label>
-               <input md-input [(ngModel)] = "newCustomer.shippingAddress.city" >
-             </md-input-container>
+             <div layout-gt-sm="row" >
+               <md-input-container class="md-block" >
+                 <label>Pincode</label>
+                 <input md-input [(ngModel)] = "newCustomer.shippingAddress[0].pinCode" >
+               </md-input-container>
+             </div>
+             <div layout-gt-sm="row" >
+               <md-input-container class="md-block" >
+                 <label>City</label>
+                 <input md-input [(ngModel)] = "newCustomer.shippingAddress[0].city" >
+               </md-input-container>
+             </div>
            </div>
-         </div>
-         <div layout-gt-sm="row" >
-           <div layout-gt-sm="row" flex="50">
-             <md-input-container class="md-block" flex-gt-sm>
-               <select md-input [(ngModel)] = "newCustomer.shippingAddress.state" >
-               <option>Maharashtra</option>
-               <option>Goa</option>
-               <option>Karnataka</option>
-               <option>Utter Pradesh</option>
-               </select>
-             </md-input-container>
-           </div>
-         </div>
-
-         <h4>Billing Address
-           <label>
-             <input type="checkbox" (click)="copyAddress()"/>
-             Same as Shipping Address
-           </label>
-         </h4>
-
-         <div layout-gt-sm="row" >
-           <div layout-gt-sm="row" flex="50">
-             <md-input-container class="md-block" flex-gt-sm>
-               <label >Line1</label>
-               <input md-input [(ngModel)] = "newCustomer.billingAddress.line1" >
-             </md-input-container>
-           </div>
-           <div layout-gt-sm="row" flex="50">
-             <md-input-container class="md-block" flex-gt-sm>
-               <label>Line2</label>
-               <input md-input [(ngModel)] = "newCustomer.billingAddress.line2" >
-             </md-input-container>
-           </div>
-         </div>
-
-         <div layout-gt-sm="row" >
-           <div layout-gt-sm="row" flex="50">
-             <md-input-container class="md-block" flex-gt-sm>
-               <label>Pincode</label>
-               <input md-input [(ngModel)] = "newCustomer.billingAddress.pinCode" >
-             </md-input-container>
-           </div>
-           <div layout-gt-sm="row" flex="50">
-             <md-input-container class="md-block" flex-gt-sm>
-               <label>City</label>
-               <input md-input [(ngModel)] = "newCustomer.billingAddress.city" >
-             </md-input-container>
-           </div>
-         </div>
-
-         <div layout-gt-sm="row" >
-           <div layout-gt-sm="row" flex="50">
-             <md-input-container class="md-block" flex-gt-sm>
-               <select md-input [(ngModel)] = "newCustomer.shippingAddress.state" >
-                 <option selected>Maharashtra</option>
+           <div layout-gt-sm="row" >
+             <div layout-gt-sm="row" flex="50">
+               <md-input-container class="md-block" flex-gt-sm>
+                 <select md-input [(ngModel)] = "newCustomer.shippingAddress[0].state" >
+                 <option>Maharashtra</option>
                  <option>Goa</option>
                  <option>Karnataka</option>
                  <option>Utter Pradesh</option>
-               </select>
-             </md-input-container>
+                 </select>
+               </md-input-container>
+             </div>
            </div>
-         </div>
 
-         <div layout-gt-sm="row" >
-           <div layout-gt-sm="row" >
-             <button md-button md-raised-button class="md-primary" (click)="createCustomer()">Add New</button>
-           </div>
-         </div>
+           <h4>Billing Address
+             <label>
+               <input type="checkbox" (click)="copyAddress()"/>
+               Same as Shipping Address
+             </label>
+           </h4>
 
-         <div layout-gt-sm="row" >
            <div layout-gt-sm="row" >
-             <button md-button md-raised-button class="md-primary">Cancel</button>
+             <div layout-gt-sm="row" flex="50">
+               <md-input-container class="md-block" flex-gt-sm>
+                 <label >Line1</label>
+                 <input md-input [(ngModel)] = "newCustomer.billingAddress[0].line1" >
+               </md-input-container>
+             </div>
+             <div layout-gt-sm="row" flex="50">
+               <md-input-container class="md-block" flex-gt-sm>
+                 <label>Line2</label>
+                 <input md-input [(ngModel)] = "newCustomer.billingAddress.line2" >
+               </md-input-container>
+             </div>
+           </div>
+
+           <div layout-gt-sm="row" >
+             <div layout-gt-sm="row" flex="50">
+               <md-input-container class="md-block" flex-gt-sm>
+                 <label>Pincode</label>
+                 <input md-input [(ngModel)] = "newCustomer.billingAddress.pinCode" >
+               </md-input-container>
+             </div>
+             <div layout-gt-sm="row" flex="50">
+               <md-input-container class="md-block" flex-gt-sm>
+                 <label>City</label>
+                 <input md-input [(ngModel)] = "newCustomer.billingAddress.city" >
+               </md-input-container>
+             </div>
+           </div>
+
+           <div layout-gt-sm="row" >
+             <div layout-gt-sm="row" flex="50">
+               <md-input-container class="md-block" flex-gt-sm>
+                 <select md-input [(ngModel)] = "newCustomer.shippingAddress[0].state" >
+                   <option selected>Maharashtra</option>
+                   <option>Goa</option>
+                   <option>Karnataka</option>
+                   <option>Utter Pradesh</option>
+                 </select>
+               </md-input-container>
+             </div>
+           </div>
+
+           <div layout-gt-sm="row" >
+             <div layout-gt-sm="row" >
+               <button md-button md-raised-button class="md-primary" (click)="createCustomer()">Add New</button>
+             </div>
+           </div>
+
+           <div layout-gt-sm="row" >
+             <div layout-gt-sm="row" >
+               <button md-button md-raised-button class="md-primary">Cancel</button>
+             </div>
            </div>
          </div>
-       </div>
-       </div>
+         </div>
      </div>
-
+   </div>
 
   <div class="show-details">
     <span>Show Details</span>
@@ -146,10 +146,11 @@
         <div flex class="client-section">
           <img class="client-img" src="app/share/images/company-logo/infosys.png">
         </div>
-        <select  [(ngModel)]="selectedCustomerObject" (ngModelChange)="getCustomerDetails($event)">
+        <!--<div>{{selectedCustomer.fromCompany}}</div>-->
+        <select  [(ngModel)]="selectedCustomer" (ngModelChange)="getCustomerDetails($event)">
           <option selected="selected">Choose Customer</option>
-          <option *ngFor="let customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
-          <option>Add a New Customer</option>
+          <option *ngFor="#customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
+          <option>Add New Customer</option>
         </select>
       </div>
     </div>
@@ -190,7 +191,7 @@
         </div>
         <select [(ngModel)]="selectedUser"  (ngModelChange)="getUserDetails($event)">
           <option selected="selected">Select User</option>
-          <option *ngFor="let user of allUsers" [value]="user._id">{{user.firstName}}</option>
+          <option *ngFor="#user of allUsers" [value]="user._id">{{user.firstName}}</option>
         </select>
       </div>
     </div>

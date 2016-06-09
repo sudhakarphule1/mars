@@ -1,39 +1,42 @@
 /**
  * Created by chetan on 31/5/16.
  */
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy} from 'angular2/core';
 import {AudioDataProvider} from "./data-providers/audio-data-provider";
 import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
 import {AudioCompactView} from "./item-views/audio-compact-view";
 import {CreateOrder} from '../order/components/create-order.component';
-import {MATERIAL_DIRECTIVES} from "ng2-material";
+import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
-import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
+import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
 import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
 import {EmailService} from '../order/services/email.service';
 import {OrderLocalStore} from "../order/components/order-local-store";
+import {ViewOrder} from "../order/components/view-order.component";
 
 @Component({
   selector: 'inbox-itemlist',
   templateUrl: 'app/inbox/inbox-itemlist.component.html',
-  styles: [ require('./item-views/inbox.component.scss') ],
+  styles: [ require('./item-views/list-view.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   providers: [Orders, EmailService, OrderLocalStore, AudioDataProvider, SearchService],
   pipes:[InboxFilterPipe]
 })
 
 @RouteConfig([
-  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true}),
+  new Route({ path: '/createorder', component: CreateOrder, name: 'CreateOrder', useAsDefault : true})/*,
+  new Route({ path: '/vieworder', component: ViewOrder, name: 'ViewOrder'})*/
 ])
 
 export class ViewInbox implements OnInit, OnDestroy {
   showDetails: boolean = false;
   showHistory: boolean = false;
   filterBy: string = '';
+  selected : string;
   itemList : Array<InboxItem>;
   subscription:Subscription;
 
@@ -74,17 +77,15 @@ export class ViewInbox implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  selected : string;
   navigateTo(item: InboxItem) {
     this.selected = item._id;
     this.orderLocalStore.inboxItem = item;
-    let link;
-    if( item.type == 'Order' ) {
+/*    if( item.type == 'Order' ) {
       link = ['ViewOrder', { orderId: item._id }];
     } else {
       link = ['CreateOrder', { orderId: item._id }];
-    }
+    }*/
+    let link = ['CreateOrder', { orderId: item._id }];
     this._router.navigate(link);
   }
 }
-

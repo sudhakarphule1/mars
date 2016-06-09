@@ -2,21 +2,22 @@
     <div style="float: left; width: 50%">
        <h3> Shipping Address</h3>
           <p>{{currentOrder.customer.fromCompany}}</p>
-          <p>{{currentOrder.customer.shippingAddress.line1}},</p>
-          <p>{{currentOrder.customer.shippingAddress.line2}},</p>
-          <p>{{currentOrder.customer.shippingAddress.pinCode}}, </p>
-          <p>{{currentOrder.customer.shippingAddress.city}}, </p>
-          <p>{{currentOrder.customer.shippingAddress.country}}, </p>
+          <p>{{currentOrder.customer.shippingAddress[0].line1}},</p>
+          <p>{{currentOrder.customer.shippingAddress[0].line2}},</p>
+          <p>{{currentOrder.customer.shippingAddress[0].pinCode}}, </p>
+          <p>{{currentOrder.customer.shippingAddress[0].city}}, </p>
+          <p>{{currentOrder.customer.shippingAddress[0].country}}, </p>
     </div>
     <div style="float: left; width: 50%" [hidden]="isCustomerSelected">
        <h3> Billing Address</h3>
           <p>{{currentOrder.customer.fromCompany}},
-          <p>{{currentOrder.customer.billingAddress.line1}},</p>
-          <p>{{currentOrder.customer.billingAddress.line2}},</p>
-          <p>{{currentOrder.customer.billingAddress.pinCode}}, </p>
-          <p>{{currentOrder.customer.billingAddress.city}}, </p>
-          <p>{{currentOrder.customer.billingAddress.country}}, </p>
+          <p>{{currentOrder.customer.billingAddress[0].line1}},</p>
+          <p>{{currentOrder.customer.billingAddress[0].line2}},</p>
+          <p>{{currentOrder.customer.billingAddress[0].pinCode}}, </p>
+          <p>{{currentOrder.customer.billingAddress[0].city}}, </p>
+          <p>{{currentOrder.customer.billingAddress[0].country}}, </p>
     </div>
-  <div *ngIf="displayError">{{errorMessage}}</div>
+  <div *ngIf="displayError && !displaySuccess">{{errorMessage}}</div>
+  <div *ngIf="!displayError && displaySuccess">{{successMessage}}</div>
   <button md-raised-button class="button md-raised md-primary" (click)="placeOrder()">Place Order</button>
 </div>
