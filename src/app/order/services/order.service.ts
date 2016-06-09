@@ -69,8 +69,8 @@ export class Orders {
           //var order = new Order();
           order._id = item.result[0]._id;
           order.remarks = item.result[0].remarks;
-          order.shippingAddress[0] = item.result[0].shippingAddress[0];
-          order.billingAddress[0] = item.result[0].billingAddress[0];
+          order.shippingAddress[0] = item.result[0].shippingAddress;
+          order.billingAddress[0] = item.result[0].billingAddress;
           order.items = item.result[0].items;
           order.customer = item.result[0].customer;
           order.orderDate = new Date(item.result[0].orderDate);
@@ -83,7 +83,23 @@ export class Orders {
 
   public createOrder(value){
     value.access_token = localStorage.getItem("access_token");
-    let params = JSON.stringify(value);
+    var tempObject : Object= new Object();
+    tempObject.type = value.type;
+    tempObject.defaultTask= value.defaultTask;
+    tempObject.defaultTask.assignedTo= value.defaultTask.assignedTo._id;
+    tempObject.shippingAddress= value.shippingAddress[0];
+    tempObject.billingAddress= value.billingAddress[0];
+    tempObject.items= value.items;
+    for(var index : number=0; index < value.items.length;index++)
+    {
+      tempObject.items[index].productId= value.items[index]._id;
+      tempObject.items[index].qty= value.items[index].qty;
+    }
+
+    tempObject.customer= value.customer._id;
+    tempObject.access_token=value.access_token;
+    console.log(tempObject);
+    let params = JSON.stringify(tempObject);
     console.log("create order params =>"+params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
