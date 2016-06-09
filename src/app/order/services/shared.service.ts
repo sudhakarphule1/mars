@@ -12,10 +12,12 @@ import {HttpClient} from "../../share/components/interceptor"
 @Injectable()
 export class SharedServices {
   constructor(private http: Http,
-              private httpClient: HttpClient){}
+              private httpClient: HttpClient){
+              this.httpClient=httpClient;
+  }
 
   public getAllUsers(){
-    let url = Config.RESTServer + `user?access_token=`+localStorage.getItem("access_token");
+    let url = Config.RESTServer + `user`;
     return this.httpClient.get(url).map((res) => res.json());
   }
 

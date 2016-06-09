@@ -7,15 +7,15 @@ import {Contract} from "./contract"
 export class Customer  {
 
   constructor() {
-    this.shippingAddress = new Address;
-    this.billingAddress = new Address;
+    this.shippingAddress = new Array<Address>();
+    this.billingAddress =  new Array<Address>();
     this.contract = new Array<Contract>();
   }
   _id: string;
   fromCompany: string;
   contactPerson: string;
   contactNumber: number;
-  billingAddress: Address;
-  shippingAddress: Address;
+  billingAddress: Array<Address>;
+  shippingAddress: Array<Address>;
   contract: Array<Contract>;
 }

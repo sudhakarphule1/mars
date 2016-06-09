@@ -88,13 +88,13 @@
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Line1</label>
-                <input [(ngModel)] = "currentOrder.shippingAddress.line1" >
+                <input [(ngModel)] = "currentOrder.shippingAddress[0].line1" >
               </md-input-container>
             </div>
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Line2</label>
-                <input [(ngModel)] = "currentOrder.shippingAddress.line2" >
+                <input [(ngModel)] = "currentOrder.shippingAddress[0].line2" >
               </md-input-container>
             </div>
           </div>
@@ -102,13 +102,13 @@
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Pincode</label>
-                <input [(ngModel)] = "currentOrder.shippingAddress.pinCode" >
+                <input [(ngModel)] = "currentOrder.shippingAddress[0].pinCode" >
               </md-input-container>
             </div>
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>City</label>
-                <input [(ngModel)] = "currentOrder.shippingAddress.city" >
+                <input [(ngModel)] = "currentOrder.shippingAddress[0].city" >
               </md-input-container>
             </div>
           </div>
@@ -116,13 +116,13 @@
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>State</label>
-                <input [(ngModel)] = "currentOrder.shippingAddress.state" >
+                <input [(ngModel)] = "currentOrder.shippingAddress[0].state" >
               </md-input-container>
             </div>
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Country</label>
-                <input [(ngModel)] = "currentOrder.shippingAddress.country" >
+                <input [(ngModel)] = "currentOrder.shippingAddress[0].country" >
               </md-input-container>
             </div>
           </div>
@@ -134,13 +134,13 @@
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label >Line1</label>
-                <input [(ngModel)] = "currentOrder.billingAddress.line1" >
+                <input [(ngModel)] = "currentOrder.billingAddress[0].line1" >
               </md-input-container>
             </div>
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Line2</label>
-                <input [(ngModel)] = "currentOrder.billingAddress.line2" >
+                <input [(ngModel)] = "currentOrder.billingAddress[0].line2" >
               </md-input-container>
             </div>
           </div>
@@ -149,13 +149,13 @@
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Pincode</label>
-                <input [(ngModel)] = "currentOrder.billingAddress.pinCode" >
+                <input [(ngModel)] = "currentOrder.billingAddress[0].pinCode" >
               </md-input-container>
             </div>
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>City</label>
-                <input [(ngModel)] = "currentOrder.billingAddress.city" >
+                <input [(ngModel)] = "currentOrder.billingAddress[0].city" >
               </md-input-container>
             </div>
           </div>
@@ -164,7 +164,7 @@
             <div layout-gt-sm="row" flex="50">
               <md-input-container class="md-block" flex-gt-sm>
                 <label>State</label>
-                <input [(ngModel)] = "currentOrder.billingAddress.state" >
+                <input [(ngModel)] = "currentOrder.billingAddress[0].state" >
               </md-input-container>
             </div>
             <div layout-gt-sm="row" flex="50">

@@ -12,6 +12,7 @@ import {Customer} from "../../model/customer";
 import {CustomerObservableService} from "../services/customer.observable.service";
 import {OrderObservableService} from "../services/order.observable.service";
 import {Orders} from "../services/order.service";
+import {Address} from "../../model/address";
 
 @Component({
   selector: 'oa-order-header',
@@ -40,7 +41,9 @@ export class OrderHeader implements OnInit{
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
   private newCustomer : Customer =new Customer();
+  private tempAddress: Address;
   leadId: string;
+  isNewCustomerDivInvisible : boolean = true;
   displayMessage: boolean = false;
   id: string;
   private response;
@@ -52,7 +55,9 @@ export class OrderHeader implements OnInit{
               private customerObservableService :CustomerObservableService,
               private orderObservableService: OrderObservableService) {
     this.leadId = params.get('orderId');
-
+    this.tempAddress =new Address();
+    this.newCustomer.shippingAddress.push(this.tempAddress);
+    this.newCustomer.billingAddress.push(this.tempAddress);
     if(this.leadId){
       this.orders.getOrderById(this.leadId).subscribe(res => {
         this.currentOrder = res;
@@ -81,7 +86,9 @@ export class OrderHeader implements OnInit{
     this.sharedServices.getAllUsers()
       .subscribe(res => {this.allUsers = res.result;
       });
-    this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;});
+    this.customerServices.getAllCustomers().subscribe(res => {
+      this.allCustomers = res.result;
+    });
   }
 
   onDate1Changed(event) {
@@ -120,14 +127,20 @@ export class OrderHeader implements OnInit{
   }
 
   getCustomerDetails(customerId){
+    if(customerId === "Add New Customer"){
+      this.isNewCustomerDivInvisible=false;
+      return;
+    }else{
+      this.isNewCustomerDivInvisible = true;
+    }
    for (var i = 0; i < this.allCustomers.length; i++)
     {
       if (this.allCustomers[i]._id == customerId) {
         this.selectedCustomer = this.allCustomers[i];
         this.currentOrder.customer = this.selectedCustomer;
         this.currentOrder.fromCompany = this.selectedCustomer.fromCompany;
-        this.currentOrder.billingAddress = this.selectedCustomer.billingAddress;
-        this.currentOrder.shippingAddress = this.selectedCustomer.shippingAddress;
+        this.currentOrder.billingAddress[0] = this.selectedCustomer.billingAddress[0];
+        this.currentOrder.shippingAddress[0] = this.selectedCustomer.shippingAddress[0];
         this.orderObservableService.changeOrderObject(this.currentOrder);
         break;
         /*this.customerObservableService.changeCustomerObject(this.currentCustomer);*/
@@ -138,31 +151,32 @@ export class OrderHeader implements OnInit{
   createCustomer(){
 
     if (!this.newCustomer.fromCompany || !this.newCustomer.contactPerson ||
-      !this.newCustomer.contactNumber || !this.newCustomer.shippingAddress.line1 ||
-      !this.newCustomer.shippingAddress.line2 || !this.newCustomer.shippingAddress.pinCode ||
-      !this.newCustomer.shippingAddress.city || !this.newCustomer.billingAddress.line1 ||
-      !this.newCustomer.billingAddress.line2 || !this.newCustomer.billingAddress.pinCode ||
-      !this.newCustomer.billingAddress.city ) {
-      console.log("Some validation error are remaining");
+      !this.newCustomer.contactNumber || !this.newCustomer.shippingAddress[0].line1 ||
+      !this.newCustomer.shippingAddress[0].line2 || !this.newCustomer.shippingAddress[0].pinCode ||
+      !this.newCustomer.shippingAddress[0].city || !this.newCustomer.billingAddress[0].line1 ||
+      !this.newCustomer.billingAddress[0].line2 || !this.newCustomer.billingAddress[0].pinCode ||
+      !this.newCustomer.billingAddress[0].city ) {
+      console.log("All Fields are required");
     }
     else {
       this.currentOrder.fromCompany = this.newCustomer.fromCompany;
-      this.currentOrder.billingAddress = this.newCustomer.billingAddress;
-      this.currentOrder.shippingAddress = this.newCustomer.shippingAddress;
+      this.currentOrder.billingAddress[0] = this.newCustomer.billingAddress[0];
+      this.currentOrder.shippingAddress[0] = this.newCustomer.shippingAddress[0];
       this.customerServices.createCustomer(this.newCustomer).subscribe
       (res =>
       {this.response = res.json();
         this.currentOrder.customer = this.response.result._id;
+        this.isNewCustomerDivInvisible = true;
       });
     }
   }
   copyAddress(){
-    this.newCustomer.billingAddress.line1 = this.newCustomer.shippingAddress.line1;
-    this.newCustomer.billingAddress.line2 = this.newCustomer.shippingAddress.line2;
-    this.newCustomer.billingAddress.pinCode = this.newCustomer.shippingAddress.pinCode;
-    this.newCustomer.billingAddress.city = this.newCustomer.shippingAddress.city;
-    this.newCustomer.billingAddress.state = this.newCustomer.shippingAddress.state;
-    this.newCustomer.billingAddress.country = this.newCustomer.shippingAddress.country;
+    this.newCustomer.billingAddress[0].line1 = this.newCustomer.shippingAddress[0].line1;
+    this.newCustomer.billingAddress[0].line2 = this.newCustomer.shippingAddress[0].line2;
+    this.newCustomer.billingAddress[0].pinCode = this.newCustomer.shippingAddress[0].pinCode;
+    this.newCustomer.billingAddress[0].city = this.newCustomer.shippingAddress[0].city;
+    this.newCustomer.billingAddress[0].state = this.newCustomer.shippingAddress[0].state;
+    this.newCustomer.billingAddress[0].country = this.newCustomer.shippingAddress[0].country;
   }
 
 }

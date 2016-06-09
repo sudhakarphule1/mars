@@ -8,6 +8,7 @@ import {Orders} from "../services/order.service";
 import {Customer} from "../../model/customer";
 import {Item} from "../../model/item";
 import {Product} from "../../model/product";
+import {Address} from "../../model/address";
 
 @Component({
   selector: 'inbox-app',
@@ -29,6 +30,7 @@ export class PreviewOrder {
   sendOrder: Order = new Order();
   private response;
   private customer: Customer =  new Customer();
+  private tempAddress : Address;
 
   constructor(private orders: Orders,
               params: RouteParams,
@@ -37,6 +39,9 @@ export class PreviewOrder {
     this.leadId = params.get('leadId');
     this.currentOrder = orderLocalStore.order;
     this.customer = orderLocalStore.customer;
+    this.tempAddress =new Address();
+    this.customer.shippingAddress.push(this.tempAddress);
+    this.customer.billingAddress.push(this.tempAddress);
   }
 
   goToPrevious(){
@@ -53,7 +58,7 @@ export class PreviewOrder {
 
   resetCurrentOrder(){
     this.currentOrder.items = [];
-    this.currentOrder.shippingAddress.line1 = "";
+    this.currentOrder.shippingAddress[0].line1 = "";
 
   }
 

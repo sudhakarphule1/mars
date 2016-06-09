@@ -41,19 +41,19 @@
     <div class="md-block address-section" flex="100" layout-padding layout="row">
       <label flex="35">Shipping Address:</label>
       <h3 flex="65">
-        <span>{{customer.shippingAddress.line1}},</span>
-        <span>{{customer.shippingAddress.line2}},</span>
-        <span>{{customer.shippingAddress.city}} - {{customer.shippingAddress.pinCode}},</span>
-        <span>{{customer.shippingAddress.state}}</span>
+        <span>{{customer.shippingAddress[0].line1}},</span>
+        <span>{{customer.shippingAddress[0].line2}},</span>
+        <span>{{customer.shippingAddress[0].city}} - {{customer.shippingAddress[0].pinCode}},</span>
+        <span>{{customer.shippingAddress[0].state}}</span>
       </h3>
     </div>
     <div class="md-block address-section" flex="100" layout-padding layout="row">
       <label flex="35">Billing Address:</label>
       <h3 flex="65">
-        <span>{{customer.billingAddress.line1}},</span>
-        <span>{{customer.billingAddress.line2}},</span>
-        <span>{{customer.billingAddress.city}} - {{customer.billingAddress.pinCode}},</span>
-        <span>{{customer.billingAddress.state}}</span>
+        <span>{{customer.billingAddress[0].line1}},</span>
+        <span>{{customer.billingAddress[0].line2}},</span>
+        <span>{{customer.billingAddress[0].city}} - {{customer.billingAddress[0].pinCode}},</span>
+        <span>{{customer.billingAddress[0].state}}</span>
       </h3>
     </div>
   </div>

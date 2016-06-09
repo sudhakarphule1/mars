@@ -61,18 +61,18 @@
       <div class="md-block address-section" flex="100" layout-padding layout="row">
         <label flex="35">Shipping Address:</label>
         <h3 flex="65">
-          <span>{{currentOrder.shippingAddress.line1}},</span>
-          <span>{{currentOrder.shippingAddress.line2}},</span>
-          <span>{{currentOrder.shippingAddress.city}} - {{currentOrder.shippingAddress.pinCode}},</span>
-          <span>{{currentOrder.shippingAddress.state}}</span>
+          <span>{{currentOrder.shippingAddress[0].line1}},</span>
+          <span>{{currentOrder.shippingAddress[0].line2}},</span>
+          <span>{{currentOrder.shippingAddress[0].city}} - {{currentOrder.shippingAddress[0].pinCode}},</span>
+          <span>{{currentOrder.shippingAddress[0].state}}</span>
         </h3>
       </div>
       <div class="md-block address-section" flex="100" layout-padding layout="row">
         <label flex="35">Billing Address:</label>
         <h3 flex="65">
-          <span>{{currentOrder.billingAddress.line1}},</span>
-          <span>{{currentOrder.billingAddress.line2}},</span>
-          <span>{{currentOrder.billingAddress.city}} - {{currentOrder.billingAddress.pinCode}},</span>
+          <span>{{currentOrder.billingAddress[0].line1}},</span>
+          <span>{{currentOrder.billingAddress[0].line2}},</span>
+          <span>{{currentOrder.billingAddress[0].city}} - {{currentOrder.billingAddress[0].pinCode}},</span>
           <span>{{currentOrder.billingAddress.state}}</span>
         </h3>
       </div>

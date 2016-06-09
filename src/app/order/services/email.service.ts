@@ -18,11 +18,13 @@ import {HttpClient} from "../../share/components/interceptor";
 @Injectable()
 export class EmailService {
   constructor(private http: Http,
-              private httpClient: HttpClient){}
+              private httpClient: HttpClient){
+    this.httpClient=httpClient;
+  }
 
 
   public getAllEmails(){
-    let url = Config.RESTServer + `emails?access_token=`+localStorage.getItem("access_token");
+    let url = Config.RESTServer + `emails`;
     return this.getEmailObjectFunction(url);
   }
 

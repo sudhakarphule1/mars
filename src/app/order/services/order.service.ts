@@ -33,22 +33,22 @@ export class Orders {
   }
 
   public getLastOrder(value1, value2){
-    let url = Config.RESTServer + `orders?fromCompany=` + value2 + `&sendLastOrder=true`  + `&access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders?fromCompany=` + value2 + `&sendLastOrder=true`;
     return this.httpClient.get(url).map((res) => res.json());
   }
 
   public getAllOrders(){
-    let url = Config.RESTServer + `orders?access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders`;
     return this.getOrdersObjectFunction(url);
   }
 
   public getOrdersByStatus(value){
-    let url = Config.RESTServer + `orders?defaultTask.status=` + value + `&access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders?defaultTask.status=` + value ;
     return this.getOrdersObjectFunction(url);
   }
 
   public getOrderById(value){
-    let url = Config.RESTServer + `orders?_id=` + value  + `&access_token=`+ localStorage.getItem("access_token");
+    let url = Config.RESTServer + `orders?_id=` + value ;
     /*return this.getOrdersObjectFunction(url);*/
     return this.httpClient.get(url)
     // initial transform - result to json
@@ -69,8 +69,8 @@ export class Orders {
           //var order = new Order();
           order._id = item.result[0]._id;
           order.remarks = item.result[0].remarks;
-          order.shippingAddress = item.result[0].shippingAddress;
-          order.billingAddress = item.result[0].billingAddress;
+          order.shippingAddress[0] = item.result[0].shippingAddress[0];
+          order.billingAddress[0] = item.result[0].billingAddress[0];
           order.items = item.result[0].items;
           order.customer = item.result[0].customer;
           order.orderDate = new Date(item.result[0].orderDate);

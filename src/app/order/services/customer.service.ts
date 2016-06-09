@@ -11,10 +11,12 @@ import {HttpClient} from "../../share/components/interceptor";
 @Injectable()
 export class CustomerServices {
   constructor(private http: Http,
-              private httpClient: HttpClient){}
+              private httpClient: HttpClient){
+              this.httpClient=httpClient;
+  }
 
   public getAllCustomers(){
-    let url = Config.RESTServer + `customer?access_token=`+localStorage.getItem("access_token");
+    let url = Config.RESTServer + `customer`;
     return this.httpClient.get(url).map((res) => res.json());
   }
 
