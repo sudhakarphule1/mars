@@ -1,9 +1,8 @@
-import {Component} from 'angular2/core';
-import {RouteParams, ROUTER_DIRECTIVES, Route, RouteConfig} from 'angular2/router';
-import {Router} from "angular2/router";
+import {Component} from '@angular/core';
+import {Router, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
-import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {HTTP_PROVIDERS}    from '@angular/http';
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 import {SharedServices} from "../../order/services/shared.service.ts";
 import {Inbox} from "../../inbox/inbox.component.ts";
 
@@ -12,7 +11,7 @@ import {Inbox} from "../../inbox/inbox.component.ts";
   providers: [HTTP_PROVIDERS, SharedServices],
   templateUrl: 'app/share/components/login.component.html',
   styles: [ require('./login.component.scss') ],
-  directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES]
 })
 
 export class Login {

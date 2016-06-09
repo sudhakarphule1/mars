@@ -1,6 +1,6 @@
-import {bootstrap} from 'angular2/platform/browser';
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit} from '@angular/core';
 import {MyDatePicker} from './mydatepicker';
+import {bootstrap} from '@angular/platform-browser-dynamic'
 
 @Component({
     selector: 'sample-date-picker',

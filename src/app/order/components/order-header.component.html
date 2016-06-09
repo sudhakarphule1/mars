@@ -148,7 +148,7 @@
         </div>
         <select  [(ngModel)]="selectedCustomerObject" (ngModelChange)="getCustomerDetails($event)">
           <option selected="selected">Choose Customer</option>
-          <option *ngFor="#customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
+          <option *ngFor="let customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
           <option>Add a New Customer</option>
         </select>
       </div>
@@ -190,7 +190,7 @@
         </div>
         <select [(ngModel)]="selectedUser"  (ngModelChange)="getUserDetails($event)">
           <option selected="selected">Select User</option>
-          <option *ngFor="#user of allUsers" [value]="user._id">{{user.firstName}}</option>
+          <option *ngFor="let user of allUsers" [value]="user._id">{{user.firstName}}</option>
         </select>
       </div>
     </div>

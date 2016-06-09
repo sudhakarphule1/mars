@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES, Media} from "ng2-material/all";
+import {Component} from '@angular/core';
+import {Router, Route, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {HTTP_PROVIDERS}    from '@angular/http';
+import {MATERIAL_DIRECTIVES, Media} from "ng2-material";
 import {ViewInbox} from "./inbox-itemlist.component.ts";
 import {Header} from "../share/components/header.component";
 import {UserAccount} from "../share/components/user-account.component";
@@ -16,8 +16,8 @@ import {OrderObservableService} from "../order/services/order.observable.service
   selector: 'inbox',
   providers: [HTTP_PROVIDERS, SearchService, CustomerObservableService, OrderObservableService],
   templateUrl: 'app/inbox/inbox.component.html',
-  styles: [ require('./item-views/list-view.scss') ],
-  directives: [ROUTER_DIRECTIVES, Header, MATERIAL_DIRECTIVES],
+  styles: [ require('./item-views/inbox.component.scss') ],
+  directives: [ROUTER_DIRECTIVES, Header],
   pipes: []
 })
 @RouteConfig([

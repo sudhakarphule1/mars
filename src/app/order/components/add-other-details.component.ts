@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 import {Order} from "../../model/order";
-import {RouteParams, Router} from "angular2/router";
+import {Router, RouteParams} from "@angular/router-deprecated";
 import {OrderLocalStore} from "./order-local-store";
 import {CustomerServices} from "../services/customer.service";
 import {Customer} from "../../model/customer";
@@ -18,7 +18,7 @@ import {Orders} from "../services/order.service";
   selector: 'oa-order-other-details',
   providers: [HTTP_PROVIDERS, CustomerServices],
   templateUrl: 'app/order/components/add-other-details.component.html',
-  styles: [ require('./common.scss') ],
+  styles: [ require('./order.components.scss') ],
   directives: [MATERIAL_DIRECTIVES],
   pipes: []
 })

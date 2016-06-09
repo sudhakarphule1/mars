@@ -1,11 +1,5 @@
-$color_1: #ffffff;
-$color_2: #8AC249;
-$color_3: #000;
-$color_4: rgba(0, 0, 0, 0.54);
+@import "../../../app/variable.scss";
 
-md-list-item.md-no-style {
-  padding: 0px;
-}
 .qty {
   width: 30px;
   height: 20px;
@@ -43,7 +37,7 @@ md-list-item.md-no-style {
   margin: 0px 0px 0px 10px;
   font-size: 14px;
   div {
-    color: $color_1;
+    color: $oa-color_1;
   }
 }
 .content-center {
@@ -65,7 +59,7 @@ md-list-item.md-no-style {
     margin: 2px 0px;
     font-weight: normal;
     font-size: 13px;
-    color: $color_2;
+    color: $oa-color_2;
   }
 }
 .order-details {
@@ -74,22 +68,12 @@ md-list-item.md-no-style {
   overflow: auto;
   overflow: auto;
 }
-md-list-item {
-  min-height: inherit;
-}
 .top-client-section {
   .md-avatar {
     margin: 0px 10px 0px 0px;
   }
 }
 .col-order-detail {
-  .md-avatar {
-    margin-top: 0px;
-    margin-right: 0px;
-  }
-  .md-list-item-text {
-    margin: 0px;
-  }
   h2 {
     margin: 5px;
     font-weight: normal;
@@ -102,10 +86,6 @@ md-list-item {
     float: left;
     padding: 6px 5px 0 0;
     font-size: 14px;
-  }
-  md-input-container {
-    float: left;
-    margin: 0;
   }
   .chat-icon {
     width: 26px;
@@ -120,31 +100,8 @@ md-list-item {
     font-size: 14px;
   }
 }
-md-radio-button {
-  float: left;
-  margin: 4px 0px;
-  width: 27px;
-}
 .right-top-section {
   height: 42px;
-  md-list-item {
-    font-size: 14px;
-    margin-bottom: 0px;
-    text-align: right;
-    h3 {
-      font-size: 14px;
-      margin-bottom: 0px;
-      text-align: right;
-      span {
-        float: left;
-        padding: 5px;
-        width: 100px;
-      }
-    }
-    div {
-      padding: 0px;
-    }
-  }
 }
 .assigned-section {
   height: 32px;
@@ -155,22 +112,18 @@ md-radio-button {
     font-size: 16px;
   }
 }
-md-input-container {
-  height: 40px;
-  margin: 0px 0px 15px;
-}
 .place-order {
   .md-block {
     h3 {
       margin: 0px;
       font-size: 14px;
-      color: $color_3;
+      color: $oa-color_3;
       font-weight: normal;
     }
     padding: 0px 10px;
     label {
       font-size: 14px;
-      color: $color_4;
+      color: $oa-color_4;
       float: left;
     }
   }
