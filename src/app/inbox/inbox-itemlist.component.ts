@@ -7,7 +7,7 @@ import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
 import {AudioCompactView} from "./item-views/audio-compact-view";
 import {CreateOrder} from '../order/components/create-order.component';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
