@@ -96,13 +96,10 @@ export class HttpClient {
       headers: headers
     }).map((response) => {
         localStorage.setItem("access_token", response.json().access_token);
-      return response;})
-      .catch(this.handleError);
+      return response;});
 
   }
-  private handleError (error: any, someting : any) {
-    g_messageService.show(JSON.parse(error._body).message);
-  }
+
 
   post(url, data) {
     let headers = new Headers();
