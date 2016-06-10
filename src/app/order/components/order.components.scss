@@ -33,11 +33,11 @@
 }
 .row-title {
   background: $oa-default-color-34;
-  padding: 4px 12px 5px;
-  margin: 0px 0px 0px 10px;
+  padding: 4px 0px 5px;
+  margin: 0px 0px 0px 0px;
   font-size: 14px;
   display: inline-block;
-  width: 97%;
+  width: 100%;
   float: left;
   div {
     color: $oa-default-color-10;
@@ -45,25 +45,51 @@
 }
 .search-row {
   background: $oa-default-color-25;
-  padding: 4px 12px 5px;
-  margin: 0px 0px 0px 10px;
+  padding: 4px 0px 5px;
+  margin: 0px 0px 0px 0px;
   font-size: 14px;
   display: inline-block;
-  width: 97%;
+  width: 100%;
   float: left;
   input {
     width: 50% !important;
     padding: 4px;
+    margin-left: 10px;
   }
 }
 .total-amount {
   color: $oa-default-color-10;
   float: left;
   background: #7b9fa8;
-  width: 98%;
-  margin-left: 10px;
-  padding: 7px;
+  width: 100%;
+  margin-left: 0px;
+  padding: 7px 0px;
   text-align: right;
+  span {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.delete-row {
+  display: none;
+  position: absolute;
+  right: 9px;
+  top: 16px;
+  cursor: pointer;
+}
+.order-row-list:hover .delete-row {
+  display: block;
+}
+.search-auto-suggestion {
+  box-shadow: 1px 4px 8px 3px #ccc;
+  display: inline-block;
+  width: 99%;
+  margin: 0 0 0 10px;
+  .order-row-list {
+    margin: 0px 0px 1px;
+    width: 98.4%;
+    padding: 10px;
+  }
 }
 .content-center {
   text-align: center;
@@ -73,11 +99,12 @@
 }
 .order-row-list {
   background: $oa-default-color-21;
-  margin: 0px 0px 2px 10px;
-  padding: 10px;
+  margin: 0px 0px 1px 0px;
+  padding: 10px 0px;
   display: inline-block;
-  width: 97%;
+  width: 100%;
   float: left;
+  position: relative;
   h4 {
     margin: 0px 0px;
     font-weight: normal;
@@ -316,9 +343,9 @@ input[type=number] {
 
 .show-details {
   background: $oa-default-color-25;
-  padding: 5px 10px;
+  padding: 5px 0px;
   display: inline-block;
-  width: 97%;
+  width: 100%;
   span {
     color: $oa-default-color-10;
     float: right;
@@ -630,6 +657,7 @@ width: 100%;
   float: left;
 }
 .content-center1 {
-  width: 28%;
+  width: 39%;
   float: left;
+  margin-left: 10px;
 }
