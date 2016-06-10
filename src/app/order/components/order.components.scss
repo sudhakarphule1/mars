@@ -32,13 +32,38 @@
   margin: 3px 0px 0px;
 }
 .row-title {
-  background: $oa-default-color-20;
+  background: $oa-default-color-34;
   padding: 4px 12px 5px;
   margin: 0px 0px 0px 10px;
   font-size: 14px;
+  display: inline-block;
+  width: 97%;
+  float: left;
   div {
-    color: $oa-default-color-9;
+    color: $oa-default-color-10;
   }
+}
+.search-row {
+  background: $oa-default-color-25;
+  padding: 4px 12px 5px;
+  margin: 0px 0px 0px 10px;
+  font-size: 14px;
+  display: inline-block;
+  width: 97%;
+  float: left;
+  input {
+    width: 50% !important;
+    padding: 4px;
+  }
+}
+.total-amount {
+  color: $oa-default-color-10;
+  float: left;
+  background: #7b9fa8;
+  width: 98%;
+  margin-left: 10px;
+  padding: 7px;
+  text-align: right;
 }
 .content-center {
   text-align: center;
@@ -50,6 +75,9 @@
   background: $oa-default-color-21;
   margin: 0px 0px 2px 10px;
   padding: 10px;
+  display: inline-block;
+  width: 97%;
+  float: left;
   h4 {
     margin: 0px 0px;
     font-weight: normal;
@@ -59,7 +87,7 @@
     margin: 2px 0px;
     font-weight: normal;
     font-size: 13px;
-    color: $oa-default-color-10;
+    color: $oa-default-color-12;
   }
 }
 .order-details {
@@ -596,4 +624,12 @@ width: 100%;
   border: 1px solid #888;
   width: 80%;
   position: relative;
+}
+.content-center {
+  width: 12%;
+  float: left;
+}
+.content-center1 {
+  width: 28%;
+  float: left;
 }

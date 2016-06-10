@@ -30,7 +30,7 @@
     </li>
     <li class="my-account">
       <div class="user-avtar">
-        <img class="md-user-avatar" src="app/share/images/avtars/Swapnil.jpg"/>
+        <img class="menu-dropdown-user-avatar" src="app/share/images/avtars/Swapnil.jpg"/>
       </div>
       <div class="menu-dropdown">
         <ul>
@@ -42,3 +42,7 @@
     </li>
   </ul>
 </nav>
+<div [hidden]="displayMessage" class="toster-error">
+  {{message}}
+  <span (click)="closeMessage()"> X </span>
+</div>

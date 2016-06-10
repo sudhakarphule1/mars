@@ -1,42 +1,38 @@
 <div class="orders">
 
   <div class="order-details">
-    <div layout="row" layout-wrap class="row-title">
-      <div flex="30">
+    <div class="row-title">
+      <div class="content-center1">
         Product
       </div>
-      <div class="content-center1" flex="10">
+      <div class="content-center">
         Quantity
       </div>
-      <div class="content-center" flex="20">
+      <div class="content-center">
         Unit
       </div>
-      <div class="content-center" flex="10">
+      <div class="content-center">
         Unit Rate
       </div>
-      <div class="content-center" flex="10">
+      <div class="content-center">
         VAT%
       </div>
-      <div class="content-center" flex="10">
+      <div class="content-center">
         Amount
-      </div>
-      <div class="content-center" flex="10">
-        Action
       </div>
     </div>
 
-    <div layout-wrap *ngFor="let item of currentOrder.items" layout="row" class="md-caption md-list-item-text order-row-list" flex >
+    <div *ngFor="let item of currentOrder.items" class="order-row-list">
 
-      <div flex="30">
+      <div class="content-center1">
         <input type="search"
                name="search"
                [(ngModel)]="item.name"
                class="search"
-               (keydown)="makeProductSuggestionVisible(currentOrder.items.indexOf(item)); search=item.name"
-               md-maxlength="10">
-        <h4 layout-margin>{{item.detail}} {{item.variant}}</h4>
+               (keydown)="makeProductSuggestionVisible(currentOrder.items.indexOf(item)); search=item.name">
+        <h4 >{{item.detail}} {{item.variant}}</h4>
       </div>
-      <div class="content-center add-item" flex="10">
+      <div class="content-center add-item">
         <div *ngIf="item.available == true">
           <button type='submit'
                   class='qtyminus'
@@ -50,49 +46,46 @@
                   (click)="item.qty=item.qty+1; item.amount=item.unitRate*item.qty; getTotalAmount()">+</button>
         </div>
       </div>
-      <div class="content-center add-item" flex="20">
-        <h3 layout-margin>{{item.unit}}</h3>
+      <div class="content-center add-item">
+        <h3 layout-margin>{{item.unit}}&nbsp;</h3>
       </div>
-      <div class="content-center add-item" flex="10">
-        <h3 layout-margin>{{item.unitRate}}</h3>
+      <div class="content-center add-item">
+        <h3 layout-margin>{{item.unitRate}}&nbsp;</h3>
       </div>
-      <div class="content-center add-item" flex="10">
-        <h3 layout-margin>{{item.VAT}}%</h3>
+      <div class="content-center add-item">
+        <h3 layout-margin>{{item.VAT}}%&nbsp;</h3>
       </div>
-      <div class="content-center add-item" flex="10">
-        <h3 layout-margin>{{item.amount}}</h3>
+      <div class="content-center add-item">
+        <h3 layout-margin>{{item.amount}}&nbsp;</h3>
       </div>
-      <div class="content-center add-item" flex="10">
-        <span (click)="removeSelectedItem(item)" layout-margin >X</span>
-      </div>
+      <!-- <div class="content-center add-item">
+        <span (click)="removeSelectedItem(item)">X</span>
+      </div> -->
 
       <div *ngIf="isVisibleProductArray[currentOrder.items.indexOf(item)]">
-        <div layout-wrap
-             *ngFor=" let innerItem of (items| productsFilter:'filterBy': search )"
-             layout="row"
+        <div *ngFor=" let innerItem of (items| productsFilter:'filterBy': search )"
              (click)="selectItemFromFiltered(item,innerItem)"
-             class="md-caption md-list-item-text order-row-list"
-             flex >
-          <div flex="40">
-            <h4 layout-margin>{{innerItem.name}}</h4>
-            <h4 layout-margin>{{innerItem.detail}}</h4>
+             class="order-row-list">
+          <div>
+            <h4>{{innerItem.name}}</h4>
+            <h4>{{innerItem.detail}}</h4>
           </div>
-          <div flex="20">
-            <h4 layout-margin>{{innerItem.unit}}</h4>
+          <div>
+            <h4>{{innerItem.unit}}</h4>
           </div>
-          <div flex="20">
-            <h4 layout-margin>{{innerItem.unitRate}}</h4>
+          <div>
+            <h4>{{innerItem.unitRate}}</h4>
           </div>
-          <div flex="20">
-            <h4 layout-margin>{{innerItem.VAT}}</h4>
+          <div>
+            <h4>{{innerItem.VAT}}</h4>
           </div>
         </div>
       </div>
     </div>
-    <div layout="row" layout-wrap class="row-title" *ngIf="currentOrder.items.length > 0">{{totalAmount}}</div>
+    <div class="total-amount" *ngIf="currentOrder.items.length > 0">{{totalAmount}}</div>
 
-    <div layout="row" layout-wrap class="row-title">
-      <div flex="30" id="emptyRow">
+    <div class="search-row">
+      <div id="emptyRow">
       <input type="search"
              style="width: 100%; float: left;"
              name="search"
@@ -100,24 +93,10 @@
              [(ngModel)]="search"
              class="search"
              (keyup)="showProducts = true"
-             md-maxlength="10" onblur="showProducts = false">
+             onblur="showProducts = false">
     </div>
-    <div class="content-center add-item" flex="20">
-      <div>
-        <input type="text" style="width: 100%; float: left;">
-        </div>
-    </div>
-    <div class="content-center add-item" flex="20">
-      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
-    </div>
-    <div class="content-center add-item" flex="10">
-      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
-    </div>
-    <div class="content-center add-item" flex="10">
-      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
-    </div>
-    <div class="content-center add-item" flex="10">
-      <h3 layout-margin><input type="text" style="width: 100%; float: left;"></h3>
+    <div class="content-center add-item">
+
     </div>
     </div>
 
@@ -129,24 +108,21 @@
            md-maxlength="10"
            flex="40">-->
     <div *ngIf="showProducts">
-      <div layout-wrap
-           *ngFor="let item of (items| productsFilter:'filterBy': search )"
-           layout="row"
+      <div *ngFor="let item of (items| productsFilter:'filterBy': search )"
            (click)="selectThisItem(item)"
-           class="md-caption md-list-item-text order-row-list"
-           flex >
-          <div flex="40">
-          <h4 layout-margin>{{item.name}}</h4>
-          <h4 layout-margin>{{item.detail}}</h4>
-        </div>
-          <div flex="20">
-            <h4 layout-margin>{{item.unit}}</h4>
+           class="order-row-list">
+          <div>
+            <h4>{{item.name}}</h4>
+            <h4>{{item.detail}}</h4>
           </div>
-          <div flex="20">
-            <h4 layout-margin>{{item.unitRate}}</h4>
+          <div>
+            <h4>{{item.unit}}</h4>
           </div>
-          <div flex="20">
-            <h4 layout-margin>{{item.VAT}}</h4>
+          <div>
+            <h4>{{item.unitRate}}</h4>
+          </div>
+          <div>
+            <h4>{{item.VAT}}</h4>
           </div>
       </div>
     </div>

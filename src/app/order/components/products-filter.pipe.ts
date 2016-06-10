@@ -7,7 +7,7 @@ import {Item} from "../../model/item";
 @Pipe({name: 'productsFilter'})
 export class ProductsFilterPipe implements PipeTransform {
   transform(allItems:Item[], args:any[]) {
-    if (allItems) {debugger
+    if (allItems) {
       return allItems.filter(item => args[1].toLowerCase() === ""
       || item.name.toLowerCase().search(args[1].toLowerCase()) !== -1
       || item.type.toLowerCase().search(args[1].toLowerCase()) !== -1

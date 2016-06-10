@@ -99,3 +99,22 @@ nav {
     }
   }
 }
+.toster-error {
+  position: absolute;
+  right: 0px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  font-size: 15px;
+  padding: 8px 25px 8px 8px;
+  min-width: 100px;
+  text-align: center;
+  top: 0px;
+  span {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+}

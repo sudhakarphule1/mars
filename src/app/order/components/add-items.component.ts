@@ -117,7 +117,7 @@ export class AddItems {
     }
   }
 
-  removeSelectedItem(value){debugger
+  removeSelectedItem(value){
     var index = this.currentOrder.items.indexOf(value);
     this.items.push(value)
     if(index > -1){
@@ -128,7 +128,7 @@ export class AddItems {
   }
 
   temp(){
-    debugger
+    
 
   }
 /*  viewHistory(){
