@@ -2,7 +2,7 @@
   <div [ngClass]="{pending: isPending, inProgress: isInProgress, complete : isComplete}"> </div>
   <div class="client-section" style="width:80px;float:left;">
     <span><img src="app/inbox/images/recording.png"> </span>
-    <img [src]="'app/share/images/company-logo/'+audioContent.fromCompany + '.png'" class="md-avatar client-img" alt="{{audioContent.from}}"/>
+    <img [src]="'app/share/images/company-logo/'+audioContent.fromCompany + '.png'" class="client-img" alt="{{audioContent.from}}"/>
   </div>
   <div class="list-containt">
     <p class="list-label">{{ audioContent.subject }}</p>
@@ -13,7 +13,7 @@
   </div>
   <div class="user-right-section">
     <div class="user-avtar">
-      <img [src]="'app/share/images/avtars/'+audioContent.defaultTask.assignedTo + '.jpg'" class="md-avatar" alt="{{audioContent.defaultTask.assignedTo}}"/>
+      <img [src]="'app/share/images/avtars/'+audioContent.defaultTask.assignedTo + '.jpg'" alt="{{audioContent.defaultTask.assignedTo}}"/>
       <span flex> 25min </span>
     </div>
     <p class="delivery-date">Delivery by {{ audioContent.date | date }}</p>

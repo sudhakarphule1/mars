@@ -2,7 +2,7 @@
   <div > </div>
   <div class="client-section" style="width:80px;float:left;">
     <span><img src="app/inbox/images/email.png"> </span>
-    <img [src]="'app/share/images/company-logo/'+email.fromCompany + '.png'" class="md-avatar client-img" alt="{{email.from}}"/>
+    <img [src]="'app/share/images/company-logo/'+email.fromCompany + '.png'" class="client-img" alt="{{email.from}}"/>
   </div>
   <div class="list-containt" (click)="showDetails = !showDetails">
     <p class="list-label">{{ email.subject }}</p>
@@ -12,7 +12,7 @@
   </div>
   <div class="user-right-section">
     <div class="user-avtar">
-      <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo.firstName + '.jpg'" class="md-avatar" alt="{{email.defaultTask.assignedTo.firstName}}"/>
+      <img [src]="'app/share/images/avtars/'+email.defaultTask.assignedTo.firstName + '.jpg'" alt="{{email.defaultTask.assignedTo.firstName}}"/>
       <span flex> {{email.defaultTask.assignedOn | amTimeAgo}}</span>
     </div>
     <p class="delivery-date ">Delivery by {{email.defaultTask.completeBy|date }}</p>
@@ -20,7 +20,7 @@
 </div>
 
 <div *ngIf="showDetails == true">
-  <div class="md-padding">
+  <div>
     <p [innerHTML]="email.html" class="client-conversation"></p>
     <div *ngFor="let message of email.conversation">
       <div *ngIf="message.by=='User'" class="user-conversation">
@@ -33,7 +33,7 @@
 
     <button class="oa-button" (click)="reply = !reply">Reply</button>
     <div class="reply-content" *ngIf="reply == true">
-      <input md-input type="text" id="content" value="{{ email.from[0].address }}" >
+      <input type="text" id="content" value="{{ email.from[0].address }}" >
       <textarea [(ngModel)] = "replyText" rows="5" ></textarea>
       <section layout="row" class="text-editor" layout-sm="column" layout-wrap>
         <div class="rich-texteditor-icon">

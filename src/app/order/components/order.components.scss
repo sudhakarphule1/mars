@@ -14,7 +14,7 @@
   width: 22px;
   display: block;
   outline: none;
-  background: #DADADA;
+  background: $oa-default-color-19;
   float: left;
 }
 .qtyplus {
@@ -25,19 +25,19 @@
   width: 22px;
   display: block;
   outline: none;
-  background: #DADADA;
+  background: $oa-default-color-19;
   float: left;
 }
 .add-item {
   margin: 3px 0px 0px;
 }
 .row-title {
-  background: #B3B3B3;
+  background: $oa-default-color-20;
   padding: 4px 12px 5px;
   margin: 0px 0px 0px 10px;
   font-size: 14px;
   div {
-    color: $oa-color_1;
+    color: $oa-default-color-9;
   }
 }
 .content-center {
@@ -47,7 +47,7 @@
   }
 }
 .order-row-list {
-  background: #F2F2F2;
+  background: $oa-default-color-21;
   margin: 0px 0px 2px 10px;
   padding: 10px;
   h4 {
@@ -59,7 +59,7 @@
     margin: 2px 0px;
     font-weight: normal;
     font-size: 13px;
-    color: $oa-color_2;
+    color: $oa-default-color-10;
   }
 }
 .order-details {
@@ -67,11 +67,6 @@
   height: 72vh;
   overflow: auto;
   overflow: auto;
-}
-.top-client-section {
-  .md-avatar {
-    margin: 0px 10px 0px 0px;
-  }
 }
 .col-order-detail {
   h2 {
@@ -117,13 +112,13 @@
     h3 {
       margin: 0px;
       font-size: 14px;
-      color: $oa-color_3;
+      color: $oa-default-color-11;
       font-weight: normal;
     }
     padding: 0px 10px;
     label {
       font-size: 14px;
-      color: $oa-color_4;
+      color: $oa-default-color-12;
       float: left;
     }
   }
@@ -161,13 +156,13 @@ input[type=number] {
     input {
       &:checked {
         &~.control__indicator {
-          background: #f16b4f;
+          background: $oa-default-color-22;
         }
       }
     }
   }
   .control__indicator {
-    background: #f16b4f;
+    background: $oa-default-color-22;
   }
 }
 .radio-btn1 {
@@ -178,13 +173,13 @@ input[type=number] {
     input {
       &:checked {
         &~.control__indicator {
-          background-color: #fec61b;
+          background-color: $oa-default-color-23;
         }
       }
     }
   }
   .control__indicator {
-    background-color: #fec61b;
+    background-color: $oa-default-color-23;
   }
 }
 .radio-btn2 {
@@ -195,19 +190,19 @@ input[type=number] {
     input {
       &:checked {
         &~.control__indicator {
-          background-color: #88c24c;
+          background-color: $oa-default-color-24;
         }
       }
     }
   }
   .control__indicator {
-    background-color: #88c24c;
+    background-color: $oa-default-color-24;
   }
 }
 .control-group {
   display: inline-block;
   vertical-align: top;
-  background: #fff;
+  background: $oa-default-color-10;
   text-align: left;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
   padding: 30px;
@@ -241,7 +236,7 @@ input[type=number] {
   left: 0;
   height: 20px;
   width: 20px;
-  background: #e6e6e6;
+  background: $oa-default-color-30;
   &:after {
     content: '';
     position: absolute;
@@ -255,7 +250,7 @@ input[type=number] {
       top: 4px;
       width: 3px;
       height: 8px;
-      border: solid #fff;
+      border: solid $oa-default-color-10;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
     }
@@ -292,12 +287,12 @@ input[type=number] {
 }
 
 .show-details {
-  background: #78B1BA;
+  background: $oa-default-color-25;
   padding: 5px 10px;
   display: inline-block;
   width: 97%;
   span {
-    color: #fff;
+    color: $oa-default-color-10;
     float: right;
   }
 }
@@ -306,7 +301,7 @@ input[type=number] {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 1px solid #DEDEDE;
+    border: 1px solid $oa-default-color-5;
   }
 }
 .show-details {
@@ -317,21 +312,21 @@ input[type=number] {
 
 @mixin gray-stripe {
 background-size: 35px 35px;
-background-color: #EcEcEc;
+background-color: $oa-default-color-27;
 background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .4) 25%, transparent 25%,transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%,transparent 75%, transparent);
 background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .4) 25%, transparent 25%,transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%,transparent 75%, transparent);
 }
 
 @mixin blue-stripe {
 background-size: 35px 35px;
-background-color: #59B2A8;
+background-color: $oa-default-color-28;
 background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,transparent 75%, transparent);
 background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,transparent 75%, transparent);
 }
 
 @mixin green-stripe {
 background-size: 35px 35px;
-background-color: #FBB03B;
+background-color: $oa-default-color-26;
 background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,transparent 75%, transparent);
 background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,transparent 75%, transparent);
 }
@@ -348,14 +343,14 @@ background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, tran
   }
 }
 .checkout-wrap {
-  color: #444;
+  color: $oa-default-color-31;
   margin: 40px auto;
   position: relative;
   text-align: center;
 }
 ul.checkout-bar {
   li {
-    color: #ccc;
+    color: $oa-default-color-5;
     display: block;
     font-size: 16px;
     font-weight: 600;
@@ -363,10 +358,10 @@ ul.checkout-bar {
     position: relative;
     &:before {
       @include inner-shadow;
-      background: #ddd;
-      border: 2px solid #FFF;
+      background: $oa-default-color-7;
+      border: 2px solid $oa-default-color-10;
       border-radius: 50%;
-      color: #fff;
+      color: $oa-default-color-10;
       font-size: 16px;
       font-weight: 700;
       left: 20px;
@@ -381,51 +376,51 @@ ul.checkout-bar {
 
     }
     span {
-      color: #ccc;
+      color: $oa-default-color-5;
     }
     my-date-picker  {
-      background: #ccc;
+      background: $oa-default-color-5;
       display: inline-block;
-      color: #fff;
+      color: $oa-default-color-10;
       border-radius: 16px;
       outline: none;
     }
      &.active {
-      color: #FBB03B;
+      color: $oa-default-color-26;
       font-weight: bold;
       &:before {
-        background: #FBB03B; 
+        background: $oa-default-color-26; 
         z-index: 99999;
       }
       span {
-        color: #FBB03B;
+        color: $oa-default-color-26;
       }
       my-date-picker  {
-        background: #FBB03B;
+        background: $oa-default-color-26;
         display: inline-block;
-        color: #fff;
+        color: $oa-default-color-10;
         border-radius: 16px;
         outline: none;
       }
     }
     &.visited {
-      background: #ECECEC;
-      color: #59B2A8;
+      background: $oa-default-color-27;
+      color: $oa-default-color-28;
       z-index: 99999;
       &:before {
-       background: #59B2A8; 
+       background: $oa-default-color-28; 
         z-index: 99999;
       }
       span {
-        color: #59B2A8;
+        color: $oa-default-color-28;
       }
       .mydp {
-        background: #59B2A8;
+        background: $oa-default-color-28;
       }
       my-date-picker  {
-        background: #59B2A8;
+        background: $oa-default-color-28;
         display: inline-block;
-        color: #fff;
+        color: $oa-default-color-10;
         border-radius: 16px;
         outline: none;
       }
@@ -468,7 +463,7 @@ ul.checkout-bar {
     }
   }
   span {
-    color: #57aed1;
+    color: $oa-default-color-29;
     font-size: 12px;
     font-weight: 200;
     text-decoration: none;
@@ -480,7 +475,7 @@ ul.checkout-bar {
 }
 
 select {
-  background-color: #78B1BA;
+  background-color: $oa-default-color-25;
   width: 100px;
   padding: 0px 20px 0px 10px;
   font-size: 14px;
@@ -491,81 +486,67 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
-  color: #fff;
+  color: $oa-default-color-10;
   margin-top: 8px;
   background-image: url("../app/share/images/down-arrow.svg");
   background-size: 9px 6px;
   background-repeat: no-repeat;
   background-position: 83px 9px;
 }
-
-
- .checkout-bar li.active:after {
-    -webkit-animation: myanimation 3s 0;
-    @include green-stripe;
-    @include inner-shadow;
-    content:"";
-    height: 4px;
-    width: 100%;
-    left: 50%;
-    position: absolute;
-    top: -21px;
-    z-index: 0;
-  }
-  .checkout-wrap {
-    margin:35px auto 80px auto;
-  }
-  ul.checkout-bar {
-  /*@include inner-shadow;
-  @include gray-stripe;*/
-  border-radius: 15px;
+.checkout-bar li.active:after {
+  -webkit-animation: myanimation 3s 0;
+  @include green-stripe;
+  @include inner-shadow;
+  content:"";
   height: 4px;
-  margin: 0 auto;
-  padding: 0;
-  /*position: absolute;*/
   width: 100%;
-  /*&:before {
-    @include blue-stripe;
-    @include inner-shadow;
-    border-radius: 15px;
-    content: " ";
-    height: 15px;
-    left: 0;
-    position: absolute;
-    width: 10%;
-  }*/
-   li {
-      display: inline-block;
-      margin: 15px 0 0;
-      padding: 0;
-      text-align: center;
-      width: 20%;
-      &:before {
-        height: 35px;
-        left: 38%;
-        line-height: 35px;
+  left: 50%;
+  position: absolute;
+  top: -21px;
+  z-index: 0;
+}
+.checkout-wrap {
+  margin:35px auto 80px auto;
+}
+ul.checkout-bar {
+/*@include inner-shadow;
+@include gray-stripe;*/
+border-radius: 15px;
+height: 4px;
+margin: 0 auto;
+padding: 0;
+width: 100%;
+ li {
+    display: inline-block;
+    margin: 15px 0 0;
+    padding: 0;
+    text-align: center;
+    width: 20%;
+    &:before {
+      height: 35px;
+      left: 38%;
+      line-height: 35px;
+      position: absolute;
+      top: -40px;
+      width: 35px;
+      z-index: 99;
+    }
+    &.visited {
+      background: none;
+      &:after {
+        @include blue-stripe;
+        @include inner-shadow;
+        content: "";
+        height: 4px;
+        left: 50%;
         position: absolute;
-        top: -40px;
-        width: 35px;
+        top: -21px;
+        width: 100%;
         z-index: 99;
-      }
-      &.visited {
-        background: none;
-        &:after {
-          @include blue-stripe;
-          @include inner-shadow;
-          content: "";
-          height: 4px;
-          left: 50%;
-          position: absolute;
-          top: -21px;
-          width: 100%;
-          z-index: 99;
-        }
       }
     }
   }
-
+}
 .customer-details {
   display: inline-block;
   width: 100%;
@@ -596,4 +577,3 @@ select {
     margin: 5px 10px 0px 10px;
   }
 }
-
