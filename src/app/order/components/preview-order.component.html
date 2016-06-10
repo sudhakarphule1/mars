@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <div layout="row" *ngFor="#item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
+    <div layout="row" *ngFor="let item of currentOrder.items" class="md-caption md-list-item-text order-row-list">
       <div flex="50">
         <h4>{{item.name}}</h4>
         <h4>{{item.detail}}</h4>

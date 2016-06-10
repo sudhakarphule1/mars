@@ -62,8 +62,8 @@ class HttpInterceptor extends Http {
   }
 }
 */
-import {Http, Headers} from '@angular/http';
-import {Injectable} from "@angular/core";
+import {Http, Headers} from 'angular2/http';
+import {Injectable} from "angular2/core";
 import {MessageService} from "../services/message.service";
 import {Observable} from "rxjs/Observable";
 var g_messageService :MessageService;
@@ -95,11 +95,10 @@ export class HttpClient {
       headers: headers
     }).map((response) => {
         localStorage.setItem("access_token", response.json().access_token);
-      return response;})
-      .catch(this.handleError);
+      return response;});
 
   }
-  private handleError (error: any, someting : any) {
+  private handleError (error: any) {
     g_messageService.show(JSON.parse(error._body).message);
   }
 

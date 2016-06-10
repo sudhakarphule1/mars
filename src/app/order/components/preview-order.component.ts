@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {HTTP_PROVIDERS}    from 'angular2/http';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 import {Order} from "../../model/order";
 import {RouteParams, Router} from "angular2/router";
 import {OrderLocalStore} from "./order-local-store";

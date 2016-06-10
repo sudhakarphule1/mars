@@ -68,7 +68,7 @@
 
       <div *ngIf="isVisibleProductArray[currentOrder.items.indexOf(item)]">
         <div layout-wrap
-             *ngFor="#innerItem of (items| productsFilter:'filterBy': search )"
+             *ngFor=" let innerItem of (items| productsFilter:'filterBy': search )"
              layout="row"
              (click)="selectItemFromFiltered(item,innerItem)"
              class="md-caption md-list-item-text order-row-list"
