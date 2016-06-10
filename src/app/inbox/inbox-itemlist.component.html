@@ -1,37 +1,25 @@
-<div layout="row" layout-md="column" layout-fill layout-align="top center" >
-  <div class="inbox-section" flex-xs="40" flex-sm="40" flex-md="40" flex-gt-lg="40">
-    <div class="left-section">
-      <div class="assign-order" layout="row" >
-        <span> Sort By: </span>
-        <div layout="row" flex >
-          <select>
-            <option value="" class="" selected="selected">Select Sort Option:</option>
-            <option value="" label="Company Name">Company Name</option>
-            <option value="" label="Delivery Date">Delivery Date</option>
-            <option value="" label="Order Date">Order Date</option>
-            <option value="" label="Lead Type">Lead Type</option>
-            <option value="" label="Order Status">Order Status</option>
-          </select>
-        </div>
-        <div layout="row" layout-align="end none" >
-          <span> Leads </span>
-          <md-switch flex layout-fill  aria-label="Switch 1"></md-switch>
-        </div>
+<section class="inbox-section">
+  <section class="left-section">
+    <div class="assign-order">
+      <span> Sort By: </span>
+      <select>
+        <option value="" class="" selected="selected">Select Sort Option:</option>
+        <option value="" label="Company Name">Company Name</option>
+        <option value="" label="Delivery Date">Delivery Date</option>
+        <option value="" label="Order Date">Order Date</option>
+        <option value="" label="Lead Type">Lead Type</option>
+        <option value="" label="Order Status">Order Status</option>
+      </select>
+    </div>
+    <div class="inbox-list">
+      <div *ngFor="let item of (itemList | inboxFilter:'filterBy': filterBy )" (click)="navigateTo(item)" [class.active]="isFirst">
+        <ib-email-compact-view [email]="item" [(selected)]="selected" *ngIf="item.type == 'Email'"></ib-email-compact-view>
+        <ib-order-compact-view [order]="item" [(selected)]="selected" *ngIf="item.type == 'Order'"></ib-order-compact-view>
+        <ib-audio-compact-view [audioContent]="item" [(selected)]="selected" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
       </div>
-
-      <md-list class="inbox-list">
-        <div *ngFor="#item of (itemList | inboxFilter:'filterBy': filterBy )" (click)="navigateTo(item)" [class.active]="isFirst">
-          <ib-email-compact-view [email]="item" [(selected)]="selected" *ngIf="item.type == 'Email'"></ib-email-compact-view>
-          <ib-order-compact-view [order]="item" [(selected)]="selected" *ngIf="item.type == 'Order'"></ib-order-compact-view>
-          <ib-audio-compact-view [audioContent]="item" [(selected)]="selected" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>
-          <md-divider></md-divider>
-        </div>
-      </md-list>
     </div>
-  </div>
-  <div layout="column" layout-fill layout-align="top center" flex-gt-lg="60">
-    <div class="left-section">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+  </section>
+  <section class="right-section">
+    <router-outlet></router-outlet>
+  </section>
+</section>

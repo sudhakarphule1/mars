@@ -1,11 +1,11 @@
 /**
  * Created by chetan on 19/5/16.
  */
-import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Headers} from "angular2/http";
-import {RequestOptions} from "angular2/http";
+import {Headers} from "@angular/http";
+import {RequestOptions} from "@angular/http";
 import {Config} from "../../../config/config";
 import {HttpClient} from "../../share/components/interceptor";
 @Injectable()

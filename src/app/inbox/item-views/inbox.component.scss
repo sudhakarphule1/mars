@@ -1,30 +1,27 @@
-$ca-light-gray: #EAEAEA;
-$ca-gray: #cccccc;
-$ca-dark-gray: #b7b7b7;
-$ca-drak-yellow: #FFFACD;
-$ca-text-editor-bg: #b2b2b2;
+@import "../../../app/variable.scss";
 
 .assign-order {
-  background:$ca-light-gray;
-  box-shadow: 1px 4px 6px $ca-gray;
-  margin-bottom: 5px;
+  background:$oa-default-color-4;
+  box-shadow: 1px 4px 6px $oa-default-color-5;
   padding: 0px 10px;
+  display: inline-block;
+  width: 100%;
   span {
     margin: 5px 0px 0px;
     font-size: 14px;
-  }
-  md-switch {
-    margin: 0 0 0 15px;
+    float: left;
   }
   select {
     font-size: 14px;
+    float: left;
+    padding: 3px;
   }
 }
 .inbox-list {
   padding: 0px;
   cursor: pointer;
   &:hover {
-    backgroud:$ca-light-gray;
+    backgroud:$oa-default-color-4;
   }
 }
 .inbox-section {
@@ -36,10 +33,17 @@ $ca-text-editor-bg: #b2b2b2;
   height: 93vh;
   overflow: auto;
   overflow-x: hidden;
+  width: 40%;
+  float: left;
+}
+.right-section {
+  float: left;
+  width: 60%;
+  height: 93vh;
 }
 .client-img{
   padding: 10px;
-  border:1px solid $ca-dark-gray;
+  border:1px solid $oa-default-color-6;
   margin:5px 10px 0px 10px;
   width: 30px;
   height: 30px;
@@ -47,12 +51,13 @@ $ca-text-editor-bg: #b2b2b2;
   float: left;
 }
 .list-containt {
-  width: 70%;
+  width: 64%;
   display: inline-block;
   height: auto;
   p {
     margin: 4px 0px;
     font-size: 14px;
+    word-wrap: break-word;
   }
 }
 .user-right-section {
@@ -73,9 +78,6 @@ $ca-text-editor-bg: #b2b2b2;
     top: 8px;
   }
 }
-.md-list-item-text h3.list-label {
-  width: 90%;
-}
 .pending{
   position: absolute;
   left: 0px;
@@ -89,7 +91,8 @@ $ca-text-editor-bg: #b2b2b2;
   bottom: 0px;
   font-size: 11px;
   text-align: right;
-  background: $ca-drak-yellow;
+  background: $oa-default-color-8;
+  margin: 0px;
 }
 .user-avtar {
   margin:5px 10px 0px 0px;
@@ -99,19 +102,18 @@ $ca-text-editor-bg: #b2b2b2;
     float: right;
   }
 }
-.md-3-line {
-  min-height: 65px;
-  position: relative;
-}
-.email-compact {
+.email-compact,
+.audio-compact,
+.order-compact {
   cursor: pointer;
+  position: relative;
 }
 .active {
   background-color: #EAEAEA;
 }
 .disabled {
   color: gray;
-  border: medium solid $ca-gray;
+  border: medium solid $oa-default-color-5;
 }
 .user-avtar {
   div {
@@ -138,35 +140,65 @@ audio::-moz-media-controls-volume-slider,
 audio::-webkit-media-controls-mute-button {
   display: none;
 }
-.button {
-  text-transform: capitalize;
-  padding: 1px 10px;
-  line-height: 28px;
-  border-radius: 0;
-  margin:0px;
-  box-shadow: 0px 0px 0px;
+.oa-button {
+  padding: 0 6px;
+  margin: 6px 8px;
+  line-height: 26px;
+  min-height: 26px;
+  background: 0 0;
+  white-space: nowrap;
+  min-width: 88px;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: rgb(16,108,200);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  color: #FFF;
+  border: 0;  
+}
+.sec-primary-btn {
+  background: #fff;
+  color: rgba(0, 0, 0, 0.87059);
+}
+.reply-button {
+  float: right;
+  button {
+    margin: 0px;
+  }
 }
 .reply-content {
   min-height:175px;
-  border:1px solid $ca-gray;
+  border:1px solid $oa-default-color-5;
   margin-top: 10px;
-  md-input-container {
-    padding : 0px 15px;
-    margin:0px;
-  }
+  padding: 10px;
   .text-editor {
-    background:$ca-text-editor-bg;
+    background:$oa-default-color-8;
     height: 29px
   }
-  md-icon {
-    height: 24px;
-    padding: 5px 2px;
-    width: 20px;
+  input {
+    border-bottom: 1px solid #ccc;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    padding: 6px 0;
+    width: 100%;
   }
-}
-textarea {
-  width:100%;
-  border:0px;
+  textarea {
+    width:100%;
+    border:0px;
+    resize: none;
+  }
+  .rich-texteditor-icon {
+    span {
+      img {
+        width: 20px;
+        height: 28px;
+        float: left;
+        margin-left: 10px;
+      }
+    }
+  }
 }
 .client-conversation {
   display: inline-block;
@@ -194,22 +226,13 @@ textarea {
     font-size: 14px;
   }
 }
-md-list-item {
-  .md-avatar {
-    width: 30px;
-    height: 30px;
-  }
-}
-
 /* Plese move to header component css */
-md-toolbar.toolbar {
+oa-header {
   background: transparent url("../app/inbox/images/header-bg.png") repeat-x scroll 0 0 / 100% 100%;
   min-height: 34px;
   height: 34px;
-}
-
-md-sidenav-container.md-pushed{
-  padding-left: 200px;
+  display: inline-block;
+  width: 100%;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -218,7 +241,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
   .client-img {
     margin: 5px 10px 0px 10px;
   }

@@ -1,5 +1,4 @@
-$ca-formcontrol-bg: rgba(255, 255, 255, 0.4);
-$ca-white: #ffffff;
+@import "../../../app/variable.scss";
 
 .login-section {
 	background-image: url("../app/share/images/login-screen-bg.png");
@@ -31,12 +30,12 @@ $ca-white: #ffffff;
 .login-logo {
 	width: 194px;
 	float: left;
-	border-right: 1px solid $ca-white;
+	border-right: 1px solid $oa-default-color-3;
 	margin-right: 30px;
 	height: 180px;
 	label {
 		float: left;
-		color: $ca-white;
+		color: $oa-default-color-3;
 	}
 }
 .login-form {
@@ -46,50 +45,50 @@ $ca-white: #ffffff;
     margin-top: 28px;
 	label {
 		float: left;
-		color: $ca-white;
+		color: $oa-default-color-3;
 	}
 	.form-control {
 		margin-bottom: 8px;
-		background: $ca-formcontrol-bg;
-		border: 0px solid $ca-formcontrol-bg;
+		background: $oa-default-transparent;
+		border: 0px solid $oa-default-transparent;
 		width: 100%;
 		height: 28px;
 		text-indent: 6px;
-		color: $ca-white;
+		color: $oa-default-color-3;
 	}
 	button {
 		margin-bottom: 8px;
-		background: $ca-formcontrol-bg;
-		border: 1px solid $ca-formcontrol-bg;
+		background: $oa-default-transparent;
+		border: 1px solid $oa-default-transparent;
 		width: 100%;
 		height: 32px;
 		margin-top: 10px;
-		color: $ca-white;
+		color: $oa-default-color-3;
 	}
 	a {
 		width: 100%;
 		display: inline-block;
 		text-align: right;
 		margin-top: 10px;
-		color: $ca-white;
+		color: $oa-default-color-3;
 	}
 }
 /*checkout bar css */
 .form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: $ca-white;
+    color: $oa-default-color-3;
 }
 .form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: $ca-white;
+   color: $oa-default-color-3;
    opacity:  1;
 }
 .form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: $ca-white;
+   color: $oa-default-color-3;
    opacity:  1;
 }
 .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: $ca-white;
+   color: $oa-default-color-3;
 }
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #99A3A5 inset;
+    -webkit-box-shadow: 0 0 0px 1000px $oa-default-color-32 inset;
     border: 0;
 }

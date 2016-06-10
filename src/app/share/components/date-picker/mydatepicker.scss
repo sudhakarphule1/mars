@@ -1,13 +1,6 @@
-$ca-date-bg: #AAA;
-$ca-date-gray: #ccc;
-$ca-date-lightgray: #ddd;
-$ca-date-white: #fff;
-$ca-date-black: #000;
-$ca-datebutton: #f36523;
-$ca-datebutton-bg: #FAFAFA;
-$ca-caltable-bg: #003366;
+@import "../../../../app/variable.scss";
 
-@font-face {
+@font-face { 
     font-family: 'mydatepicker';
     src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SAssAAAC8AAAAYGNtYXDMUczTAAABHAAAAGxnYXNwAAAAEAAAAYgAAAAIZ2x5ZmFQ1q4AAAGQAAABbGhlYWQGZuTFAAAC/AAAADZoaGVhB4IDyQAAAzQAAAAkaG10eBYAAnAAAANYAAAAIGxvY2EBdAE0AAADeAAAABJtYXhwABUAPgAAA4wAAAAgbmFtZQ5R9RkAAAOsAAABnnBvc3QAAwAAAAAFTAAAACAAAwOaAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADmBwPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAUAAAABAAEAADAAAAAQAg5gDmAuYF5gf//f//AAAAAAAg5gDmAuYF5gf//f//AAH/4xoEGgMaARoAAAMAAQAAAAAAAAAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAAMAEAAAAPAA4AABAAJAA4AEwAYAB0AIgAnACwAMQA2ADsAABMRMxEjFyE1IRUDITUhFQERMxEjJRUzNSMTFTM1IzMVMzUjMxUzNSMBFTM1IzMVMzUjMxUzNSMTFTM1I0Bzc0ADAP0AQAOA/IADDXNz/ZOAgCCAgMCAgMCAgP6AgIDAgIDAgIAggIADAP1AAsBzc3P9c3NzAwD9QALAgMDA/sCAgICAgID/AICAgICAgAJAwMAAAAAAAgBwADADkANQAAQACQAANwEnARcDATcBB+kCp3n9WXl5Aqd5/Vl5MAKnef1ZeQKn/Vl5Aqd5AAABAOAAAAMgA4AAAwAAAQMBJQMgA/3DASADgPyAAcPfAAEA4AAAAyADgAADAAA3EwEF4AMCPf7gAAOA/j3fAAAAAQAAAAEAAF0/BsNfDzz1AAsEAAAAAADRxFAkAAAAANHEUCQAAAAAA8ADgAAAAAgAAgAAAAAAAAABAAADwP/AAAAEAAAAAAADwAABAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAAAAAAAAIAAAAEAABABAAAcAQAAOAEAADgAAAAAAAKABQAHgB6AJYApgC2AAAAAQAAAAgAPAAMAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABAAkAAAABAAAAAAACAAcAcgABAAAAAAADAAkAPAABAAAAAAAEAAkAhwABAAAAAAAFAAsAGwABAAAAAAAGAAkAVwABAAAAAAAKABoAogADAAEECQABABIACQADAAEECQACAA4AeQADAAEECQADABIARQADAAEECQAEABIAkAADAAEECQAFABYAJgADAAEECQAGABIAYAADAAEECQAKADQAvHZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAclZlcnNpb24gMS4wAFYAZQByAHMAaQBvAG4AIAAxAC4AMHZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAcnZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAclJlZ3VsYXIAUgBlAGcAdQBsAGEAcnZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAckZvbnQgZ2VuZXJhdGVkIGJ5IEljb01vb24uAEYAbwBuAHQAIABnAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4ALgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=) format('truetype');
     font-weight: normal;
@@ -37,16 +30,17 @@ $ca-caltable-bg: #003366;
         max-width: 262px;
         padding: 0px;
         border-radius: 2px;
-        background-color: #ddd;
+        background-color: $oa-default-color-33;
         z-index: 100;
         left: -51px;
         right: -63px;
+        border: 1px solid $oa-default-color-5;
     }
     .selectiongroup {
         position: relative;
         display: table;
         border: none;
-        background-color: $ca-date-white;
+        background-color: $oa-default-color-3;
     }
     .selection {
         display: table-cell;
@@ -75,62 +69,62 @@ $ca-caltable-bg: #003366;
         height: 100%;
         width: 30px;
         border: none;
-        border-left: 1px solid $ca-date-bg;
+        border-left: 1px solid $oa-default-color-13;
         padding: 0px;
         cursor: pointer;
         outline: 0;
         font: inherit;
         -moz-user-select: none;
-        background: $ca-datebutton-bg;
-        color: $ca-date-black;
+        background: $oa-default-color-12;
+        color: $oa-default-color-14;
         &:focus {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-default-color-12;
+            color: $oa-default-color-3;
         }
         &:hover {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-default-color-12;
+            color: $oa-default-color-3;
         }
     }
     .btnclear {
         height: 100%;
         width: 30px;
         border: none;
-        border-left: 1px solid $ca-date-bg;
+        border-left: 1px solid $oa-default-color-13;
         padding: 0px;
         cursor: pointer;
         outline: 0;
         font: inherit;
         -moz-user-select: none;
-        background: $ca-datebutton-bg;
-        color: $ca-date-black;
+        background: $oa-default-color-12;
+        color: $oa-default-color-14;
         &:focus {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-default-color-12;
+            color: $oa-default-color-3;
         }
         &:hover {
-            background: $ca-datebutton;
-            color: $ca-date-white;
+            background: $oa-default-color-12;
+            color: $oa-default-color-3;
         }
     }
     .headertodaybtn {
-        background: $ca-datebutton-bg;
-        border: 1px solid $ca-date-bg;
-        color: $ca-date-black;
+        background: transparent;
+        border: 1px solid $oa-default-color-13;
+        color: $oa-default-color-12;
         padding: 4px 6px;
         border-radius: 2px;
         cursor: pointer;
         font-size: 12px;
     }
     .footerbtn {
-        background: $ca-datebutton-bg;
+        background: $oa-default-color-12;
     }
     .header {
         width: 100%;
         height: 36px;
         margin-bottom: 1px;
-        background-color: $ca-datebutton-bg;
-        border: 1px solid $ca-date-bg;
+        background-color: $oa-default-color-33;
+        border: 1px solid $oa-default-color-33;
         td {
             vertical-align: middle;
             border: none;
@@ -150,24 +144,24 @@ $ca-caltable-bg: #003366;
     .caltable {
         table-layout: fixed;
         width: 100%;
-        background-color: $ca-date-white;
+        background-color: $oa-default-color-3;
         font-size: 14px;
         border-collapse: collapse;
-        color: $ca-caltable-bg;
+        color: $oa-default-color-18;
         line-height: 1.1;
         th {
             border-collapse: collapse;
-            color: $ca-caltable-bg;
+            color: $oa-default-color-18;
             line-height: 1.1;
             text-align: center;
-            background-color: $ca-date-lightgray;
+            background-color: $oa-default-color-4;
             font-size: 12px;
             vertical-align: middle;
-            color: $ca-date-black;
+            color: $oa-default-color-14;
         }
         td {
             border-collapse: collapse;
-            color: $ca-caltable-bg;
+            color: $oa-default-color-18;
             line-height: 1.1;
             text-align: center;
             cursor: pointer;
@@ -177,33 +171,33 @@ $ca-caltable-bg: #003366;
         tbody {
             .currmonth {
                 &:hover {
-                    background-color: $ca-datebutton;
-                    color: $ca-date-white;
+                    background-color: $oa-default-color-12;
+                    color: $oa-default-color-3;
                 }
             }
-            border: 1px solid $ca-date-bg;
+            border: 1px solid $oa-default-color-13;
         }
     }
     .prevmonth {
-        color: $ca-date-gray;
+        color: $oa-default-color-5;
     }
     .nextmonth {
-        color: $ca-date-gray;
+        color: $oa-default-color-5;
     }
     .currmonth {
         font-weight: bold;
-        color: $ca-date-black;
+        color: $oa-default-color-14;
     }
     .currday {
         div {
-            border: 1px solid $ca-datebutton;
+            border: 1px solid $oa-default-color-12;
         }
     }
     .selectedday {
         div {
-            background-color: $ca-datebutton !important;
+            background-color: $oa-default-color-28 !important;
             border-radius: 0;
-            color: $ca-date-white;
+            color: $oa-default-color-3;
             padding: 7px;
         }
     }
@@ -212,32 +206,32 @@ $ca-caltable-bg: #003366;
         width: 60px;
     }
     .headerbtn {
-        background-color: $ca-datebutton-bg;
+        background-color: $oa-default-color-33;
         cursor: pointer;
         display: table-cell;
-        color: $ca-date-black;
+        color: $oa-default-color-14;
     }
     .footerarea {
-        border: 1px solid $ca-date-bg;
+        border: 1px solid $oa-default-color-13;
     }
     .table {
-        border: 1px solid $ca-date-bg;
+        border: 1px solid $oa-default-color-13;
         th {
-            border: 1px solid $ca-date-bg;
+            border: 1px solid $oa-default-color-13;
         }
         td {
-            border: 1px solid $ca-date-bg;
+            border: 1px solid $oa-default-color-13;
         }
     }
     .headermonthtxt {
-        color: $ca-date-black;
+        color: $oa-default-color-12;
         width: 40px;
         text-align: center;
         display: table-cell;
         vertical-align: middle;
     }
     .headeryeartxt {
-        color: $ca-date-black;
+        color: $oa-default-color-12;
         width: 40px;
         text-align: center;
         display: table-cell;
@@ -263,7 +257,7 @@ $ca-caltable-bg: #003366;
     .icon-left {
         font-size: 14px;
         &:hover {
-            color: $ca-datebutton;
+            color: $oa-default-color-12;
         }
         &:before {
             content: "\e605";
@@ -272,7 +266,7 @@ $ca-caltable-bg: #003366;
     .icon-right {
         font-size: 14px;
         &:hover {
-            color: $ca-datebutton;
+            color: $oa-default-color-12;
         }
         &:before {
             content: "\e607";

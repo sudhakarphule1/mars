@@ -1,12 +1,8 @@
-<div layout="row">
-  <md-content flex>
-    <md-toolbar class="toolbar">
-      <ib-header flex layout="row" layout-align="end none">Header</ib-header>
-    </md-toolbar>
-    <md-content flex>
-      <div layout="column" layout-fill layout-align="top center">
-        <router-outlet></router-outlet>
-      </div>
-    </md-content>
-  </md-content>
-</div>
+<section>
+    <header>
+      <oa-header>Header</oa-header>
+    </header>
+    <div layout="column" layout-fill layout-align="top center">
+      <router-outlet></router-outlet>
+    </div>
+</section>

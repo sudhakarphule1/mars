@@ -1,7 +1,7 @@
 /**
  * Created by chetan on 28/4/16.
  */
-import {Pipe, PipeTransform} from 'angular2/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {Item} from "../../model/item";
 
 @Pipe({name: 'productsFilter'})

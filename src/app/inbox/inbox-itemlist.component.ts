@@ -1,17 +1,17 @@
 /**
  * Created by chetan on 31/5/16.
  */
-import {Component, OnInit, OnDestroy} from 'angular2/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {AudioDataProvider} from "./data-providers/audio-data-provider";
 import {OrderCompactView} from "./item-views/order-compact-view";
 import {EmailCompactView} from "./item-views/email-compact-view";
 import {AudioCompactView} from "./item-views/audio-compact-view";
 import {CreateOrder} from '../order/components/create-order.component';
-import {MATERIAL_DIRECTIVES} from "ng2-material/all";
+import {MATERIAL_DIRECTIVES} from "ng2-material";
 import {InboxFilterPipe} from "./inbox-filter.pipe"
 import {SearchService} from '../share/components/search.service';
 import {Subscription}   from 'rxjs/Subscription';
-import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
+import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, RouteParams} from '@angular/router-deprecated';
 import {InboxItem} from "../model/inbox-item";
 import {Orders} from '../order/services/order.service';
 import {EmailService} from '../order/services/email.service';
@@ -21,7 +21,7 @@ import {ViewOrder} from "../order/components/view-order.component";
 @Component({
   selector: 'inbox-itemlist',
   templateUrl: 'app/inbox/inbox-itemlist.component.html',
-  styles: [ require('./item-views/list-view.scss') ],
+  styles: [ require('./item-views/inbox.component.scss') ],
   directives: [CreateOrder, OrderCompactView, EmailCompactView, AudioCompactView, MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES],
   providers: [Orders, EmailService, OrderLocalStore, AudioDataProvider, SearchService],
   pipes:[InboxFilterPipe]
