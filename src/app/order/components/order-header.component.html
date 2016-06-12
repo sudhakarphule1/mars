@@ -1,8 +1,8 @@
 <div class="orders">
-  <div class="create-customer-modal" [hidden]="isNewCustomerDivInvisible" >
+  <div class="create-customer-modal" *ngIf="isNewCustomerDivInvisible" >
      <div  id="openModal"   class="modalDialog">
        <div class="tableClass " layout-padding >
-         <span (click)="isNewCustomerDivInvisible=true;" class="close">X</span>
+         <span (click)="isNewCustomerDivInvisible=false;" class="close">X</span>
          <h3>Add New Customer</h3>
          <div layout-gt-sm="row">
            <div layout-gt-sm="row" >

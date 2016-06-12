@@ -46,7 +46,7 @@ export class OrderHeader implements OnInit {
   private selectedCustomerString : string;
   private tempAddress: Address;
   leadId: string;
-  isNewCustomerDivInvisible : boolean = true;
+  isNewCustomerDivInvisible : boolean = false;
   displayMessage: boolean = false;
   id: string;
   private response;
@@ -138,10 +138,10 @@ export class OrderHeader implements OnInit {
 
   getCustomerDetails(customerId){
     if(customerId === "Add a New Customer"){
-      this.isNewCustomerDivInvisible=false;
+      this.isNewCustomerDivInvisible=true;
       return;
     }else{
-      this.isNewCustomerDivInvisible = true;
+      this.isNewCustomerDivInvisible = false;
     }
    for (var i = 0; i < this.allCustomers.length; i++)
     {
@@ -176,7 +176,7 @@ export class OrderHeader implements OnInit {
       (res =>
       {this.response = res.json();
         this.currentOrder.customer = this.response.result._id;
-        this.isNewCustomerDivInvisible = true;
+        this.isNewCustomerDivInvisible = false;
       });
     }
   }
