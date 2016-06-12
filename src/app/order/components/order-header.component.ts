@@ -43,6 +43,7 @@ export class OrderHeader implements OnInit {
   private allCustomers: Array<Customer>;
   private selectedCustomer: Customer = new Customer();
   private newCustomer : Customer =new Customer();
+  private selectedCustomerString : string;
   private tempAddress: Address;
   leadId: string;
   isNewCustomerDivInvisible : boolean = true;
@@ -50,6 +51,11 @@ export class OrderHeader implements OnInit {
   id: string;
   private response;
   allUsers: Array<User>;
+  listOfStates : Array<string> = ["Ahmednagar","Jalgaon", "Jalgaon", "Pune", "Akola", "Jalna", "Raigad", "Ratnagiri", "Latur",
+    "Kolhapur", "Amravati", "Sangli", "Beed", "Mumbai", "Satara", "Bhandara", "Mumbai Sub-urban",
+    "Sindhudurg", "Buldhana", "Solapur", "Chandrapur", "Wardha", "Nandurbar", "Dhule", "Thane", "Nanded",
+    "Gadchiroli","Nashik","Osmanabad","Yavatmal","Hingoli","Parbhani","Gondia","Washim","Aurangabad" ,"Nagpur"
+  ];
   constructor(params: RouteParams,
               private orders: Orders,
               private sharedServices: SharedServices,
@@ -123,13 +129,15 @@ export class OrderHeader implements OnInit {
     for(var i in this.allUsers){
       if (this.allUsers[i]._id === user){
         this.currentOrder.defaultTask.assignedTo = this.allUsers[i];
-        this.orderObservableService.changeOrderObject(this.currentOrder);
+        if(this.selectedCustomerString != undefined){
+          this.orderObservableService.changeOrderObject(this.currentOrder);
+        }
       }
     }
   }
 
   getCustomerDetails(customerId){
-    if(customerId === "Add New Customer"){
+    if(customerId === "Add a New Customer"){
       this.isNewCustomerDivInvisible=false;
       return;
     }else{

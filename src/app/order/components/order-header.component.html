@@ -61,11 +61,8 @@
            <div layout-gt-sm="row" >
              <div layout-gt-sm="row" flex="50">
                <md-input-container class="md-block" flex-gt-sm>
-                 <select md-input [(ngModel)] = "newCustomer.shippingAddress[0].state" >
-                 <option>Maharashtra</option>
-                 <option>Goa</option>
-                 <option>Karnataka</option>
-                 <option>Utter Pradesh</option>
+                 <select  [(ngModel)] = "newCustomer.shippingAddress[0].state" >
+                 <option *ngFor="let state1 of listOfStates" selected [value]="state1">{{state1}}  </option>
                  </select>
                </md-input-container>
              </div>
@@ -111,11 +108,8 @@
            <div layout-gt-sm="row" >
              <div layout-gt-sm="row" flex="50">
                <md-input-container class="md-block" flex-gt-sm>
-                 <select md-input [(ngModel)] = "newCustomer.shippingAddress[0].state" >
-                   <option selected>Maharashtra</option>
-                   <option>Goa</option>
-                   <option>Karnataka</option>
-                   <option>Utter Pradesh</option>
+                 <select  [(ngModel)] = "newCustomer.billingAddress[0].state" >
+                   <option *ngFor="let state of listOfStates" selected [value]="state">{{state}}  </option>
                  </select>
                </md-input-container>
              </div>
@@ -147,7 +141,7 @@
           <img class="client-img" src="app/share/images/company-logo/infosys.png">
         </div>
         <!--<div>{{selectedCustomer.fromCompany}}</div>-->
-        <select  [(ngModel)]="selectedCustomer" (ngModelChange)="getCustomerDetails($event)">
+        <select  [(ngModel)]="selectedCustomerString" (ngModelChange)="getCustomerDetails($event)">
           <option selected="selected">Choose Customer</option>
           <option *ngFor="let customer of allCustomers" [value]="customer._id">{{customer.fromCompany}}</option>
           <option>Add a New Customer</option>
