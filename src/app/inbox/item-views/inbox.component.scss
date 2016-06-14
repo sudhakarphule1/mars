@@ -107,6 +107,8 @@
 .order-compact {
   cursor: pointer;
   position: relative;
+  display: inline-block;
+  width: 100%;
 }
 .active {
   background-color: #EAEAEA;

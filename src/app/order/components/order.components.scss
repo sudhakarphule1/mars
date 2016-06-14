@@ -100,6 +100,7 @@
     width: 98.4%;
     padding: 10px;
     border-bottom: 1px solid $oa-default-color-36;
+    background: none;
   }
 }
 .content-center {
@@ -109,7 +110,6 @@
   }
 }
 .order-row-list {
-  background: $oa-default-color-21;
   margin: 0px 0px 1px 0px;
   padding: 10px 0px;
   display: inline-block;
@@ -375,6 +375,7 @@ input[type=number] {
 }
 .show-details {
   float: right;
+  cursor: pointer;
   img {
     float: right;
     width: 14px;
@@ -656,11 +657,20 @@ width: 100%;
   .client-img {
     margin: 5px 10px 0px 10px;
   }
+  .modalDialog {
+    margin-bottom: 60px !important;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1366px) {
+.modalDialog {
+    margin-bottom: 60px !important;
+  }
 }
 .create-customer-modal {
   position: fixed;
   z-index: 999999;
-  padding-top: 100px;
+  padding-top: 50px;
   left: 0;
   top: 0;
   width: 100%;
@@ -672,11 +682,12 @@ width: 100%;
 .modalDialog {
   background-color: #fefefe;
   margin: auto;
-  padding: 0px;
+  padding: 0 ;
   border: 1px solid #888;
   width: 600px;
   position: relative;
   font-weight: 200;
+  overflow-y: auto; 
   h3 {
     margin: 0px;
     padding: 10px;
@@ -731,16 +742,16 @@ width: 100%;
       padding: 0px;
     }
   }
-  .crate-button {
-    background: $oa-default-color-26;
-    display: inline-block;
-    padding: 8px 30px;
-    float: right;
-    border: 0px;
-    margin: 10px;
-    color: $oa-default-color-10;
-    cursor: pointer;
-  }
+}
+.button {
+  background: $oa-default-color-26;
+  display: inline-block;
+  padding: 4px 30px;
+  float: right;
+  border: 0px;
+  margin: 10px;
+  color: $oa-default-color-10;
+  cursor: pointer;
 }
 .content-center {
   width: 12%;
@@ -756,4 +767,34 @@ width: 100%;
 }
 .notSelected {
   border : 3px solid #ff0000;
+}
+.address-section {
+  background: $oa-default-color-21;
+  display: inline-block;
+  width: 100%;
+  .shipping-address,
+  .billing-address {
+    float: left;
+    width: 50%;
+    padding: 0px 0px;
+    h3 {
+      background: $oa-default-color-25;
+      padding: 8px 11px 8px;
+      margin: 0px 0px 0px 0px;
+      font-size: 14px;
+      display: inline-block;
+      width: 97%;
+      position: relative;
+      float: left;
+      color: $oa-default-color-10;
+      font-weight: normal;
+    }
+    p {
+      margin : 0px;
+      padding: 8px 10px 0;
+      font-size: 14px;
+      display: inline-block;
+      width: 100%;
+    }
+  }
 }
