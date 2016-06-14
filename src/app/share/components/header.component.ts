@@ -26,6 +26,9 @@ export class Header {
       message => {
         this.displayMessage = false;
         this.message = message;
+        setTimeout(() => {
+          this.displayMessage = true;
+        },3000);
       }
     );
   }

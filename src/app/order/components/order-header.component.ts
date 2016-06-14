@@ -15,6 +15,7 @@ import {CustomerObservableService} from "../services/customer.observable.service
 import {OrderObservableService} from "../services/order.observable.service";
 import {Orders} from "../services/order.service";
 import {Address} from "../../model/address";
+import {CommonObservableService} from "../../share/services/common.observable.service";
 
 @Component({
   selector: 'oa-order-header',
@@ -51,6 +52,7 @@ export class OrderHeader implements OnInit {
   displayMessage: boolean = false;
   id: string;
   private response;
+  subscription: Subscription;
   allUsers: Array<User>;
   isShowDetail : boolean = true;
 
@@ -63,7 +65,13 @@ export class OrderHeader implements OnInit {
               private sharedServices: SharedServices,
               private customerServices: CustomerServices,
               private customerObservableService :CustomerObservableService,
-              private orderObservableService: OrderObservableService) {
+              private orderObservableService: OrderObservableService,
+              private commonobservable : CommonObservableService) {
+    this.subscription = commonobservable.showCustomer$.subscribe(
+      isCustomerSelected=>{
+        this.isCustomerNotSelected =isCustomerSelected;
+      }
+    );
     this.leadId = params.get('orderId');
     this.tempAddress =new Address();
     this.tempAddress1 =new Address();
@@ -83,6 +91,9 @@ export class OrderHeader implements OnInit {
         this.orderPlacedDate =this.currentOrder.orderPlacedDate.toDateString();
         this.transitDate = this.currentOrder.transitDate.toDateString();
       });
+
+      this.commonobservable.changeEditFlag(true);
+
     }
 
     else{
@@ -142,8 +153,10 @@ export class OrderHeader implements OnInit {
   getCustomerDetails(customerId){
     if(customerId === "Add a New Customer"){
       this.isNewCustomerDivInvisible=true;
+      this.isCustomerNotSelected = true;
       return;
     }else{
+      this.isCustomerNotSelected = false;
       this.isNewCustomerDivInvisible = false;
     }
    for (var i = 0; i < this.allCustomers.length; i++)

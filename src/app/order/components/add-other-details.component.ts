@@ -14,6 +14,7 @@ import {Subscription} from "rxjs/Subscription";
 import {OrderObservableService} from "../services/order.observable.service";
 import {Orders} from "../services/order.service";
 import {Address} from "../../model/address";
+import {CommonObservableService} from "../../share/services/common.observable.service";
 
 @Component({
   selector: 'oa-order-other-details',
@@ -40,7 +41,7 @@ export class AddOtherDetails {
   private displayCustomer:boolean = false;
   private customerMessage:string = '';
   private response;
-  private isCustomerSelected : boolean = true;
+  private isCustomerSelected : boolean = false;
   private selectedItemId: string;
   private currentCustomer : Customer= new Customer();
   @Input() currentCustomerId : string;
@@ -56,7 +57,7 @@ export class AddOtherDetails {
               private customerServices: CustomerServices,
               private orderObservableService: OrderObservableService,
               private customerObservableService :CustomerObservableService) {
-    this.leadId = params.get('leadId');
+    this.leadId = params.get('orderId');
     this.currentOrder.customer = new Customer();
     this.tempAddress =new Address();
     this.currentOrder.customer.shippingAddress.push(this.tempAddress);
@@ -64,12 +65,11 @@ export class AddOtherDetails {
     this.subscription =  orderObservableService.filterOrders$.subscribe(
         orderObject => {
           this.currentOrder = orderObject;
-          this.isCustomerSelected = false;
+          this.isCustomerSelected = true;
         }
     );
 
   }
-
 
   ngOnInit() {
     this.customerServices.getAllCustomers().subscribe(res => {this.allCustomers = res.result;});
@@ -108,7 +108,14 @@ export class AddOtherDetails {
     }
   }
 
-
+  editOrder(){
+    console.log(this.currentOrder);
+    this.orders.editOrder(this.currentOrder).subscribe(
+      err => this.successMessage = "Your order has been edited.",
+      () => this.successMessage = "Your order has been edited."
+    );
+    this.displaySuccess = true;
+  }
 
   getCustomerDetails(customer){
     for (var i = 0; i < this.allCustomers.length; i++)

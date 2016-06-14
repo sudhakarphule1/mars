@@ -27,9 +27,10 @@
       <div class="content-center1">
         <input type="search"
                name="search"
+               [class.empty]="isEmpty && item._id == recentItemId"
                [(ngModel)]="item.name"
                class="search"
-               (keydown)="makeProductSuggestionVisible(currentOrder.items.indexOf(item)); search=item.name">
+               (keydown)="makeProductSuggestionVisible(currentOrder.items.indexOf(item),item);">
         <h4 >{{item.detail}} {{item.variant}}</h4>
       </div>
       <div class="content-center add-item">
@@ -87,6 +88,7 @@
     </div>
 
     </div>
+
     <div class="search-row">
       <div id="emptyRow">
       <input type="search"
@@ -95,10 +97,12 @@
              placeholder="Search"
              [(ngModel)]="search"
              class="search"
-             (keyup)="showProducts = true"
-             onblur="showProducts = false">
-      </div>
-      <div class="content-center add-item">
+             (keyup)="showProducts = true;"
+             (click) = "checkCustomerSelected()"
+             [readonly]="isReadOnly"
+      >
+    </div>
+    <div class="content-center add-item">
 
       </div>
       <div class="search-auto-suggestion" *ngIf="showProducts">
@@ -122,13 +126,13 @@
       </div>
     </div>
 
-    <div class="total-amount" *ngIf="currentOrder.items.length > 0"> 
+    <div class="total-amount" *ngIf="currentOrder.items.length > 0">
       <label>
         <img src="./app/order/images/grand-total.svg" width="16" height="16"> Grand Total </label>
       <span>{{totalAmount}}</span>
     </div>
 
-    
+
     <!--<input name="search"
            placeholder="Search"
            [(ngModel)]="search"
@@ -136,7 +140,7 @@
            (keyup)="showProducts = true"
            md-maxlength="10"
            flex="40">-->
-    
+
   </div>
 
   </div>

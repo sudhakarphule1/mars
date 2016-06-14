@@ -12,7 +12,7 @@
       </select>
     </div>
     <div class="inbox-list">
-      <div *ngFor="let item of (itemList | inboxFilter:'filterBy': filterBy )" (click)="navigateTo(item)" [class.active]="isFirst">
+      <div *ngFor="let item of (itemList)" (click)="navigateTo(item)" [class.active]="isFirst">
         <ib-email-compact-view [email]="item" [(selected)]="selected" *ngIf="item.type == 'Email'"></ib-email-compact-view>
         <ib-order-compact-view [order]="item" [(selected)]="selected" *ngIf="item.type == 'Order'"></ib-order-compact-view>
         <ib-audio-compact-view [audioContent]="item" [(selected)]="selected" *ngIf="item.type == 'AudioContent'"></ib-audio-compact-view>

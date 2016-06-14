@@ -13,6 +13,7 @@ import {OrderLocalStore} from "./order-local-store";
 import {Subscription} from "rxjs/Subscription";
 import {OrderObservableService} from "../services/order.observable.service";
 import {CustomerObservableService} from "../services/customer.observable.service";
+import {CommonObservableService} from "../../share/services/common.observable.service";
 
 @Component({
   selector: 'oa-order-items',
@@ -36,12 +37,16 @@ export class AddItems {
   subscription: Subscription;
   totalAmount: number = 0;
   currentOrder: Order = new Order();
-
+  private isEmpty: boolean= false;
+  private recentItemId : string;
+  private isReadOnly : boolean =true;
+  @Input() isCustomerNotSelected :boolean;
   constructor(private orders: Orders,
               private searchService: SearchService,
               public orderLocalStore : OrderLocalStore,
               private orderObservableService: OrderObservableService,
-              private customerObservableService :CustomerObservableService) {
+              private customerObservableService :CustomerObservableService,
+              private commonObservableService :CommonObservableService) {
     orders.getAllProducts()
       .subscribe(res => {this.items = res;
         for(var i in this.items){
@@ -55,7 +60,8 @@ export class AddItems {
         this.currentOrder = orderObject;
         console.log(this.currentOrder.items);
       }
-    )
+    );
+
   }
 
   saveItems(){
@@ -78,13 +84,20 @@ export class AddItems {
 
   }
 
-  makeProductSuggestionVisible(item){
-    this.isVisibleProductArray[item] = true;
+  makeProductSuggestionVisible(itemIndex,item){
+    this.isVisibleProductArray[itemIndex] = true;
     for(var index : number = 0; index < this.currentOrder.items.length;index++){
-      if(index != item){
+      if(index != itemIndex){
         this.isVisibleProductArray[index] = false;
       }
     }
+    if(item.name==""){
+      this.recentItemId = item._id;
+      this.isEmpty =true;
+    }else{
+      this.isEmpty=false;
+    }
+
   }
 
   selectThisItem(value){
@@ -126,11 +139,17 @@ export class AddItems {
 
 
   }
-
-  temp(){
-    
-
+  checkCustomerSelected(){
+    if(this.currentOrder.customer==undefined){
+      this.commonObservableService.change(true);
+      this.isReadOnly =true;
+    }else{
+      this.isReadOnly =false;
+      this.commonObservableService.change(false);
+    }
   }
+
+
 /*  viewHistory(){
     this.inboxItem = this.orderLocalStore.inboxItem;
     console.log(this.inboxItem);

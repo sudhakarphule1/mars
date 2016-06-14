@@ -1,4 +1,4 @@
-<div class="orders" [hidden]="isCustomerSelected">
+<div class="orders" *ngIf="isCustomerSelected">
     <div style="float: left; width: 50%">
        <h3> Shipping Address</h3>
           <p>{{currentOrder.customer.fromCompany}}</p>
@@ -8,7 +8,7 @@
           <p>{{currentOrder.customer.shippingAddress[0].city}}, </p>
           <p>{{currentOrder.customer.shippingAddress[0].country}}, </p>
     </div>
-    <div style="float: left; width: 50%" [hidden]="isCustomerSelected">
+    <div style="float: left; width: 50%">
        <h3> Billing Address</h3>
           <p>{{currentOrder.customer.fromCompany}},
           <p>{{currentOrder.customer.billingAddress[0].line1}},</p>
@@ -19,5 +19,6 @@
     </div>
   <div *ngIf="displayError && !displaySuccess">{{errorMessage}}</div>
   <div *ngIf="!displayError && displaySuccess">{{successMessage}}</div>
-  <button md-raised-button class="button md-raised md-primary" (click)="placeOrder()">Place Order</button>
+  <button *ngIf="!leadId" md-raised-button class="button md-raised md-primary" (click)="placeOrder()">Place Order</button>
+  <button *ngIf="leadId" md-raised-button class="button md-raised md-primary" (click)="editOrder()">Edit Order</button>
 </div>

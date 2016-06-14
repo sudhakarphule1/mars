@@ -83,7 +83,7 @@ export class Orders {
 
   public createOrder(value){
     value.access_token = localStorage.getItem("access_token");
-    var tempObject : Object= new Object();
+/*    var tempObject : Object= new Object();
     tempObject.type = value.type;
     tempObject.defaultTask= value.defaultTask;
     tempObject.defaultTask.assignedTo= value.defaultTask.assignedTo._id;
@@ -98,8 +98,10 @@ export class Orders {
 
     tempObject.customer= value.customer._id;
     tempObject.access_token=value.access_token;
-    console.log(tempObject);
-    let params = JSON.stringify(tempObject);
+    console.log(tempObject);*/
+    value.shippingAddress =value.shippingAddress[0];
+    value.billingAddress =value.billingAddress[0];
+    let params = JSON.stringify(value);
     console.log("create order params =>"+params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -108,11 +110,14 @@ export class Orders {
   }
 
   public editOrder(value){
+    value.access_token = localStorage.getItem("access_token");
+    value.shippingAddress =value.shippingAddress[0];
+    value.billingAddress =value.billingAddress[0];
     let params = JSON.stringify(value);
     console.log(params);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = Config.RESTServer + `orders?_id=` + value.id;
+    let url = Config.RESTServer + `orders/` + value._id;
     return this.http.put(url, params,options).map((res) => res.json());
   }
 
