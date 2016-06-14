@@ -45,16 +45,18 @@ export class OrderHeader implements OnInit {
   private newCustomer : Customer =new Customer();
   private selectedCustomerString : string;
   private tempAddress: Address;
+  private tempAddress1: Address;
   leadId: string;
   isNewCustomerDivInvisible : boolean = false;
   displayMessage: boolean = false;
   id: string;
   private response;
   allUsers: Array<User>;
-  listOfStates : Array<string> = ["Ahmednagar","Jalgaon", "Jalgaon", "Pune", "Akola", "Jalna", "Raigad", "Ratnagiri", "Latur",
-    "Kolhapur", "Amravati", "Sangli", "Beed", "Mumbai", "Satara", "Bhandara", "Mumbai Sub-urban",
-    "Sindhudurg", "Buldhana", "Solapur", "Chandrapur", "Wardha", "Nandurbar", "Dhule", "Thane", "Nanded",
-    "Gadchiroli","Nashik","Osmanabad","Yavatmal","Hingoli","Parbhani","Gondia","Washim","Aurangabad" ,"Nagpur"
+  isShowDetail : boolean = true;
+
+  listOfStates1 : Array<string> = ["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"
+  ];
+  listOfStates2 : Array<string> = ["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"
   ];
   constructor(params: RouteParams,
               private orders: Orders,
@@ -64,8 +66,9 @@ export class OrderHeader implements OnInit {
               private orderObservableService: OrderObservableService) {
     this.leadId = params.get('orderId');
     this.tempAddress =new Address();
+    this.tempAddress1 =new Address();
     this.newCustomer.shippingAddress.push(this.tempAddress);
-    this.newCustomer.billingAddress.push(this.tempAddress);
+    this.newCustomer.billingAddress.push(this.tempAddress1);
     if(this.leadId){
       this.orders.getOrderById(this.leadId).subscribe(res => {
         this.currentOrder = res;
@@ -187,6 +190,9 @@ export class OrderHeader implements OnInit {
     this.newCustomer.billingAddress[0].city = this.newCustomer.shippingAddress[0].city;
     this.newCustomer.billingAddress[0].state = this.newCustomer.shippingAddress[0].state;
     this.newCustomer.billingAddress[0].country = this.newCustomer.shippingAddress[0].country;
+  }
+  showHideDetails(){
+  this.isShowDetail= ! this.isShowDetail;
   }
 
 }

@@ -1,5 +1,8 @@
 @import "../../../app/variable.scss";
-
+.tableClass {
+  display: inline-block;
+  padding: 0px 10px;
+}
 .qty {
   width: 30px;
   height: 20px;
@@ -52,7 +55,7 @@
   width: 100%;
   float: left;
   input {
-    width: 50% !important;
+    width: 37% !important;
     padding: 4px;
     margin-left: 10px;
   }
@@ -122,6 +125,7 @@
   height: 72vh;
   overflow: auto;
   overflow: auto;
+  margin-top: -4px;
 }
 .col-order-detail {
   h2 {
@@ -349,6 +353,8 @@ input[type=number] {
   span {
     color: $oa-default-color-10;
     float: right;
+    padding-right: 10px;
+    font-size: 14px;
   }
 }
 .client-section {
@@ -361,6 +367,12 @@ input[type=number] {
 }
 .show-details {
   float: right;
+  img {
+    float: right;
+    width: 14px;
+    height: 15px;
+    padding: 1px 0 0 5px;
+  }
 }
 
 /*checkout bar css */
@@ -602,10 +614,15 @@ width: 100%;
     }
   }
 }
+.orders {
+    display: inline-block;
+    width: 100%;
+  }
 .customer-details {
   display: inline-block;
   width: 100%;
-  height: 100px;
+  float: left;
+  max-height: 100px;
   .select-customer,
   .assigned-customer {
     float: left;
@@ -647,17 +664,82 @@ width: 100%;
 .modalDialog {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 0px;
   border: 1px solid #888;
-  width: 80%;
+  width: 600px;
   position: relative;
+  font-weight: 200;
+  h3 {
+    margin: 0px;
+    padding: 10px;
+    background: $oa-default-color-25;
+    color: $oa-default-color-3;
+    font-size: 16px;
+    span {
+      float: right;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  }
+  h4 {
+    font-size: 16px;
+    margin: 20px 0px 10px;
+    padding: 0px 5px;
+    font-weight: 200;
+    color: $oa-default-color-35;
+    label {
+      float: right;
+      font-weight: 200;
+    }
+  }
+  .row1 {
+    display: inline-block;
+    width: 100%;
+    .form-group {
+      float: left;
+      width: 48%;
+      margin: 0px 1%;
+      input {
+        border: 0px;
+        width: 100%;
+        padding: 8px 0px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid $oa-default-color-5;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    select {
+      width: 100%;
+      height: 30px;
+      border-radius: 0;
+      font-weight: 200;
+      border-bottom: 1px solid $oa-default-color-5;
+      color: $oa-default-color-12;
+      background: url("../app/share/images/down-arrow-black.svg") no-repeat 99% 14px transparent;
+      background-size: 9px 6px !important ;
+      margin-bottom: 10px;
+      padding: 0px;
+    }
+  }
+  .crate-button {
+    background: $oa-default-color-26;
+    display: inline-block;
+    padding: 8px 30px;
+    float: right;
+    border: 0px;
+    margin: 10px;
+    color: $oa-default-color-10;
+    cursor: pointer;
+  }
 }
 .content-center {
   width: 12%;
   float: left;
 }
 .content-center1 {
-  width: 39%;
+  width: 38%;
   float: left;
   margin-left: 10px;
 }
