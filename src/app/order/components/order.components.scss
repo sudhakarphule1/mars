@@ -53,6 +53,7 @@
   font-size: 14px;
   display: inline-block;
   width: 100%;
+  position: relative;
   float: left;
   input {
     width: 37% !important;
@@ -84,14 +85,21 @@
   display: block;
 }
 .search-auto-suggestion {
-  box-shadow: 1px 4px 8px 3px #ccc;
   display: inline-block;
-  width: 99%;
+  width: 35.8%;
   margin: 0 0 0 10px;
+  max-height: 300px;
+  overflow-x: hidden;
+  position: absolute;
+  left: 0px;
+  top: 31px;
+  z-index: 1;
+  background: $oa-default-color-21;
   .order-row-list {
     margin: 0px 0px 1px;
     width: 98.4%;
     padding: 10px;
+    border-bottom: 1px solid $oa-default-color-36;
   }
 }
 .content-center {

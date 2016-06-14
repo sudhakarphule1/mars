@@ -64,6 +64,7 @@
         </span>
       </div>
 
+      <div class="search-auto-suggestion">
       <div *ngIf="isVisibleProductArray[currentOrder.items.indexOf(item)]">
         <div *ngFor=" let innerItem of (items| productsFilter:'filterBy': search )"
              (click)="selectItemFromFiltered(item,innerItem)"
@@ -84,12 +85,8 @@
         </div>
       </div>
     </div>
-    <div class="total-amount" *ngIf="currentOrder.items.length > 0"> 
-      <label>
-        <img src="./app/order/images/grand-total.svg" width="16" height="16"> Grand Total </label>
-      <span>{{totalAmount}}</span>
-    </div>
 
+    </div>
     <div class="search-row">
       <div id="emptyRow">
       <input type="search"
@@ -100,12 +97,38 @@
              class="search"
              (keyup)="showProducts = true"
              onblur="showProducts = false">
-    </div>
-    <div class="content-center add-item">
+      </div>
+      <div class="content-center add-item">
 
-    </div>
+      </div>
+      <div class="search-auto-suggestion" *ngIf="showProducts">
+        <div *ngFor="let item of (items| productsFilter:'filterBy': search )"
+             (click)="selectThisItem(item)"
+             class="order-row-list">
+            <div>
+              <h4>{{item.name}}</h4>
+              <h4>{{item.detail}}</h4>
+            </div>
+            <div>
+              <h4>{{item.unit}}</h4>
+            </div>
+            <div>
+              <h4>{{item.unitRate}}</h4>
+            </div>
+            <div>
+              <h4>{{item.VAT}}</h4>
+            </div>
+        </div>
+      </div>
     </div>
 
+    <div class="total-amount" *ngIf="currentOrder.items.length > 0"> 
+      <label>
+        <img src="./app/order/images/grand-total.svg" width="16" height="16"> Grand Total </label>
+      <span>{{totalAmount}}</span>
+    </div>
+
+    
     <!--<input name="search"
            placeholder="Search"
            [(ngModel)]="search"
@@ -113,25 +136,7 @@
            (keyup)="showProducts = true"
            md-maxlength="10"
            flex="40">-->
-    <div class="search-auto-suggestion" *ngIf="showProducts">
-      <div *ngFor="let item of (items| productsFilter:'filterBy': search )"
-           (click)="selectThisItem(item)"
-           class="order-row-list">
-          <div>
-            <h4>{{item.name}}</h4>
-            <h4>{{item.detail}}</h4>
-          </div>
-          <div>
-            <h4>{{item.unit}}</h4>
-          </div>
-          <div>
-            <h4>{{item.unitRate}}</h4>
-          </div>
-          <div>
-            <h4>{{item.VAT}}</h4>
-          </div>
-      </div>
-    </div>
+    
   </div>
 
   </div>
