@@ -14,6 +14,6 @@
       <img [src]="'app/share/images/avtars/'+order.defaultTask.assignedTo.firstName + '.jpg'" class="md-avatar" alt="{{order.defaultTask.assignedTo}}"/>
       <span flex> 25min </span>
     </div>
-    <p class="delivery-date">Delivery by {{ order.orderDate  }}</p>
+    <p class="delivery-date">Delivery by {{ order.orderDate |date }}</p>
   </div>
 </div>

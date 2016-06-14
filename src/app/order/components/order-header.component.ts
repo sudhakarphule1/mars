@@ -86,10 +86,10 @@ export class OrderHeader implements OnInit {
         }
         this.orderObservableService.changeOrderObject(this.currentOrder);
         this.selectedCustomer = this.currentOrder.customer;
-        this.orderDate = this.currentOrder.orderDate.toDateString();
-        this.completionDate = this.currentOrder.completionDate.toDateString();
-        this.orderPlacedDate =this.currentOrder.orderPlacedDate.toDateString();
-        this.transitDate = this.currentOrder.transitDate.toDateString();
+        this.orderDate = this.currentOrder.orderDate;
+        this.completionDate = this.currentOrder.completionDate;
+        this.orderPlacedDate =this.currentOrder.orderPlacedDate;
+        this.transitDate = this.currentOrder.transitDate;
       });
 
       this.commonobservable.changeEditFlag(true);
