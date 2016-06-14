@@ -1,27 +1,38 @@
 Search:<input type="text" name="entityname" [(ngModel)]="entityname">
 <ul>
   <li>
-    <label>Name</label>
-    <label>Type</label>
-    <label>Detail</label>
-    <label>Variant</label>
-    <label>Rate</label>
-    <label>Vat</label>
+    <label (click)="sortby('name')">Name </label>
+    <label (click)="sortby('type')">Type  </label>
+    <label (click)="sortby('name')">Detail </label>
+    <label (click)="sortby('variant')">Variant </label>
+    <label (click)="sortby('unit')">Unit  </label>
+    <label (click)="sortby('price')">Rate </label>
+    <label (click)="sortby('vat')">Vat  </label>
   </li>
 
-  <li *ngFor="let item of (items| productsFilter:entityname)" (mouseover)=setDeleteButtonValue(items.indexOf(item))>
-    <input class="addedlink" [class.empty]="isempty && item._id == myCurrentid && !item.name" type="string"
-           [(ngModel)]="item.name" (blur)="onRowClick(item,item.name)" (keyup)=handleKeyEvent($event)>
-    <input class="addedlink" [class.empty]="isempty && item._id == myCurrentid && !item.type" type="string"
+  <li *ngFor="let item of (items| productSearchFilter:entityname | productsSortFilter : sortBy  )" (mouseover)=setDeleteButtonValue(items.indexOf(item))>
+    <input class="addedlink" [class.empty]="isInputFieldEmpty && item._id == myCurrentid && !item.name" type="string"
+           [(ngModel)]="item.name" (blur)="onRowClick(item,item.name)" (keyup)=handleKeyEvent($event) required>
+
+    <input class="addedlink" [class.empty]="isInputFieldEmpty && item._id == myCurrentid && !item.type" type="string"
            [(ngModel)]="item.type" (blur)="onRowClick(item,item.type)" (keyup)=handleKeyEvent($event)>
-    <input class="addedlink" [class.empty]="isempty && item._id == myCurrentid && !item.detail" type="string"
+
+    <input class="addedlink" [class.empty]="isInputFieldEmpty && item._id == myCurrentid && !item.detail" type="string"
            [(ngModel)]="item.detail" (blur)="onRowClick(item,item.detail)" (keyup)=handleKeyEvent($event)>
-    <!--<input type="string" [(ngModel)]="item.variant"  (blur)="onRowClick(item,item.variant)"  (keyup)=handleKeyEvent($event)>inpput-->
-    <input class="addedlink" [class.empty]="isempty && item._id==myCurrentid && !item.unitRate" type="number"
+
+    <input class="addedlink" [class.empty]="isInputFieldEmpty && item._id == myCurrentid && !item.variant" type="string"
+           [(ngModel)]="item.variant" (blur)="onRowClick(item,item.variant)" (keyup)=handleKeyEvent($event)>
+
+    <!--<input class="addedlink" [class.empty]="isInputFieldEmpty && item._id==myCurrentid && !item.unit" type="string"
+           [(ngModel)]="item.unit" (blur)="onRowClick(item,item.unit)" (keyup)=handleKeyEvent($event)>-->
+
+    <input class="addedlink" [class.empty]="isInputFieldEmpty && item._id==myCurrentid && !item.unitRate" type="number"
            [(ngModel)]="item.unitRate" (blur)="onRowClick(item,item.unitRate)" (keyup)=handleKeyEvent($event)>
-    <!--<input type="number" [(ngModel)]="item.vat"(blur)="onRowClick(item)">-->
+
+    <!--<input class="addedlink" [class.empty]="isInputFieldEmpty && item._id==myCurrentid && !item.vat" type="number"
+           [(ngModel)]="item.unitRate" (blur)="onRowClick(item,item.vat)" (keyup)=handleKeyEvent($event)>-->
+
     <button type="button" [hidden]=isVisibleDeleteButton[items.indexOf(item)] (click)=deleteRow(item)>Delete</button>
   </li>
 </ul>
-
 

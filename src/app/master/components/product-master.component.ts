@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {Item} from "../../model/item";
 import {ProductService} from "../services/product.service";
-import {ProductsFilterPipe} from "../../order/components/products-filter.pipe";
+import {ProductSortingFilter} from "./products-sort-filter.pipe";
+import {ProductSearchFilterPipe} from "./products-search-filter.Pipe";
+import {moveCursor} from "readline";
 
 @Component({
   selector: 'ib-product-master',
@@ -14,20 +15,18 @@ import {ProductsFilterPipe} from "../../order/components/products-filter.pipe";
   }
 
    input:focus {
-        height: 50px;
-        width: 11em;
         word-wrap: break-word;
    }
 `],
-  pipes: [ProductsFilterPipe],
-  directives: [ROUTER_DIRECTIVES]
+  pipes: [ProductSearchFilterPipe,ProductSortingFilter]
 })
 
 export class ProductMaster {
   entityname:string = '';
-  isempty = false;
+  isInputFieldEmpty = false;
   myCurrentid:any;
   items:Array<Item>;
+  sortBy : string = "name";
   isVisibleDeleteButton:Array<Boolean> = new Array<Boolean>();
 
   constructor(private products:ProductService) {
@@ -40,7 +39,6 @@ export class ProductMaster {
   }
 
   setDeleteButtonValue(itemindex) {
-    //this.buttonMode = !this.buttonMode;
     this.isVisibleDeleteButton[itemindex] = false;
     for (var index:number = 0; index < this.items.length; index++) {
       if (index != itemindex) {
@@ -53,18 +51,25 @@ export class ProductMaster {
     console.log(event.keyCode);
 
     if (event.keyCode == 37) {
-
+      console.log(event);debugger
+      event.target.previousElementSibling.focus();
     }
 
     if (event.keyCode == 38) {
-
+      console.log(event);
+      event.target.nextElementSibling.focus();
     }
 
-    if (event.keyCode == 39) {
+    if (event.keyCode == 39) {debugger
+      console.log(event);
+      //var k =event.target.value.length;
+        event.target.nextElementSibling.focus();
 
     }
 
     if (event.keyCode == 40) {
+      console.log(event);
+      event.target.nextElementSibling.focus();
 
     }
   }
@@ -86,8 +91,11 @@ export class ProductMaster {
     }
     else {
       this.myCurrentid = updateItem._id;
-      this.isempty = true;
+      this.isInputFieldEmpty = true;
     }
+  }
+  sortby(sortByMe){
+    this.sortBy=sortByMe;
   }
 
 }

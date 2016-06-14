@@ -3,7 +3,7 @@
  */
 
 import {Injectable} from "angular2/core";
-import {Http, Headers, RequestOptions, RequestOptionsArgs} from "angular2/http";
+import {Http, Headers, RequestOptions} from "angular2/http";
 import "rxjs/add/operator/map";
 import {Config} from "../../../config/config";
 import {Item} from "../../model/item";
@@ -30,9 +30,7 @@ export class ProductService {
   public updateProduct(value) {
     value.access_token = localStorage.getItem("access_token");
     let params = JSON.stringify(value);
-    console.log("param", params);
     let url = Config.RESTServer + `product/` + value._id;
-    console.log("url =>"+ url);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     return this.http.put(url, params, options).map((res) => res.json()).map((data) => {
