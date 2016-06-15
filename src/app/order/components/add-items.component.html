@@ -22,69 +22,71 @@
       </div>
     </div>
 
-    <div *ngFor="let item of currentOrder.items" class="order-row-list">
-
-      <div class="content-center1">
-        <input type="search"
-               name="search"
-               [class.empty]="isEmpty && item._id == recentItemId"
-               [(ngModel)]="item.name"
-               class="search"
-               (keydown)="makeProductSuggestionVisible(currentOrder.items.indexOf(item),item);">
-        <h4 >{{item.detail}} {{item.variant}}</h4>
-      </div>
-      <div class="content-center add-item">
-        <div *ngIf="item.available == true">
-          <button type='submit'
-                  class='qtyminus'
-                  (click)="item.qty=item.qty-1; item.amount=item.unitRate*item.qty; getTotalAmount()"
-                  [disabled]="item.qty == 0">-</button>
-          <input type='number'
-                 [(ngModel)]="item.qty"
-                 class='qty'>
-          <button type='submit'
-                  class='qtyplus'
-                  (click)="item.qty=item.qty+1; item.amount=item.unitRate*item.qty; getTotalAmount()">+</button>
+    <div class="product-list">
+      <div *ngFor="let item of currentOrder.items" class="order-row-list">
+        <div class="content-center1">
+          <input type="search"
+                 name="search"
+                 [class.empty]="isEmpty && item._id == recentItemId"
+                 [(ngModel)]="item.name"
+                 class="search"
+                 (keydown)="makeProductSuggestionVisible(currentOrder.items.indexOf(item),item);"
+                 [style.width]="((item.name.length * 6) + 5) + 'px'">
+          <span>{{item.detail}} {{item.variant}}</span>
         </div>
-      </div>
-      <div class="content-center add-item">
-        <h3 layout-margin>{{item.unit}}&nbsp;</h3>
-      </div>
-      <div class="content-center add-item">
-        <h3 layout-margin>{{item.unitRate}}&nbsp;</h3>
-      </div>
-      <div class="content-center add-item">
-        <h3 layout-margin>{{item.VAT}}%&nbsp;</h3>
-      </div>
-      <div class="content-center add-item">
-        <h3 layout-margin>{{item.amount}}&nbsp;</h3>
-      </div>
-      <div class="delete-row">
-        <span (click)="removeSelectedItem(item)">
-          <img src="./app/order/images/delete.svg" width="16" height="16">
-        </span>
-      </div>
-
-      <div class="search-auto-suggestion">
-      <div *ngIf="isVisibleProductArray[currentOrder.items.indexOf(item)]">
-        <div *ngFor=" let innerItem of (items| productsFilter:'filterBy': search )"
-             (click)="selectItemFromFiltered(item,innerItem)"
-             class="order-row-list">
-          <div>
-            <h4>{{innerItem.name}}</h4>
-            <h4>{{innerItem.detail}}</h4>
-          </div>
-          <div>
-            <h4>{{innerItem.unit}}</h4>
-          </div>
-          <div>
-            <h4>{{innerItem.unitRate}}</h4>
-          </div>
-          <div>
-            <h4>{{innerItem.VAT}}</h4>
+        <div class="content-center add-item">
+          <div class="qty-container" *ngIf="item.available == true">
+            <!-- Sequence is managed by the order property in CSS -->
+            <input type='number'
+                   [(ngModel)]="item.qty"
+                   class='qty'>
+            <button type='submit'
+                    class='qtyminus'
+                    (click)="item.qty=item.qty-1; item.amount=item.unitRate*item.qty; getTotalAmount()"
+                    [disabled]="item.qty == 0">-</button>
+            <button type='submit'
+                    class='qtyplus'
+                    (click)="item.qty=item.qty+1; item.amount=item.unitRate*item.qty; getTotalAmount()">+</button>
           </div>
         </div>
-      </div>
+        <div class="content-center add-item">
+          <h3 layout-margin>{{item.unit}}&nbsp;</h3>
+        </div>
+        <div class="content-center add-item">
+          <h3 layout-margin>{{item.unitRate}}&nbsp;</h3>
+        </div>
+        <div class="content-center add-item">
+          <h3 layout-margin>{{item.VAT}}%&nbsp;</h3>
+        </div>
+        <div class="content-center add-item">
+          <h3 layout-margin>{{item.amount}}&nbsp;</h3>
+        </div>
+        <div class="delete-row">
+          <span (click)="removeSelectedItem(item)">
+            <img src="./app/order/images/delete.svg" width="16" height="16">
+          </span>
+        </div>
+        <div class="search-auto-suggestion">
+          <div *ngIf="isVisibleProductArray[currentOrder.items.indexOf(item)]">
+            <div *ngFor=" let innerItem of (items| productsFilter:'filterBy': search )"
+                 (click)="selectItemFromFiltered(item,innerItem)"
+                 class="order-row-list">
+              <div>
+                <h4>{{innerItem.name}}</h4>
+                <h4>{{innerItem.detail}}</h4>
+              </div>
+              <div>
+                <h4>{{innerItem.unit}}</h4>
+              </div>
+              <div>
+                <h4>{{innerItem.unitRate}}</h4>
+              </div>
+              <div>
+                <h4>{{innerItem.VAT}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 
     </div>
@@ -94,7 +96,7 @@
       <input type="search"
              style="width: 100%; float: left;"
              name="search"
-             placeholder="Search"
+             placeholder="Add New"
              [(ngModel)]="search"
              class="search"
              (keyup)="showProducts = true;"

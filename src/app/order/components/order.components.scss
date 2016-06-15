@@ -3,11 +3,8 @@
   display: inline-block;
   padding: 0px 10px;
 }
-.qty {
-  width: 30px;
-  height: 20px;
-  text-align: center;
-  float: left;
+.qty-container {
+  display: flex;
 }
 .qtyminus {
   border: 0;
@@ -19,6 +16,9 @@
   outline: none;
   background: $oa-default-color-19;
   float: left;
+  visibility: hidden;
+  order: -1;
+
 }
 .qtyplus {
   border: 0;
@@ -30,6 +30,23 @@
   outline: none;
   background: $oa-default-color-19;
   float: left;
+  visibility: hidden;
+
+}
+.qty {
+  width: 30px;
+  height: 20px;
+  text-align: center;
+  float: left;
+}
+.search::-webkit-search-cancel-button {
+  display: none;
+}
+.qty-container {
+  position: relative;
+  &:hover > button {
+      visibility: visible !important;
+  }
 }
 .add-item {
   margin: 3px 0px 0px;
@@ -47,7 +64,6 @@
   }
 }
 .search-row {
-  background: $oa-default-color-25;
   padding: 4px 0px 5px;
   margin: 0px 0px 0px 0px;
   font-size: 14px;
@@ -55,10 +71,13 @@
   width: 100%;
   position: relative;
   float: left;
+  border-top: 1px solid $oa-default-color-5;
+  border-bottom: 1px solid $oa-default-color-5;
   input {
     width: 37% !important;
     padding: 4px;
     margin-left: 10px;
+    border: 1px solid $oa-default-color-5;
   }
 }
 .total-amount {
@@ -80,10 +99,21 @@
   right: 9px;
   top: 16px;
   cursor: pointer;
+  img {
+    width: 21px;
+    height: 21px;
+  }
 }
 .order-row-list:hover .delete-row {
   display: block;
 }
+.order-row-list:hover .qty-container > button  {
+  visibility: visible !important;
+}
+.order-row-list:hover .content-center1 input {
+  border: 1px solid $oa-default-color-5;
+}
+
 .search-auto-suggestion {
   display: inline-block;
   width: 35.8%;
@@ -554,11 +584,11 @@ select {
   background-color: $oa-default-color-25;
   width: 100px;
   padding: 0px 20px 0px 10px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1;
   border: 0;
   border-radius: 22px;
-  height: 22px;
+  height: 20px;
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
@@ -567,7 +597,7 @@ select {
   background-image: url("../app/share/images/down-arrow.svg");
   background-size: 9px 6px;
   background-repeat: no-repeat;
-  background-position: 83px 9px;
+  background-position: 83px 7px;
 }
 .checkout-bar li.active:after {
   -webkit-animation: myanimation 3s 0;
@@ -622,6 +652,12 @@ width: 100%;
       }
     }
   }
+}
+.product-list {
+  max-height: 200px;
+  overflow-y: auto;
+  float: left;
+  width: 100%;
 }
 .orders {
     display: inline-block;
@@ -761,12 +797,28 @@ width: 100%;
   width: 38%;
   float: left;
   margin-left: 10px;
+  input {
+    border: 1px solid transparent;
+    min-width: 30px;
+    padding: 4px 0px;
+    &:hover {
+      border: 1px solid $oa-default-color-5;
+      -webkit-apperance: none;
+    }
+  }
+  span {
+    font-size: 14px;
+  }
 }
+@keyframes blink { 50% { border-color: #ff0000; }  }
+
 .empty {
-  border : 3px solid #ff0000;
+  border : 2px solid #78B1BA;
+  animation: blink .5s step-end infinite alternate;
 }
 .notSelected {
-  border : 3px solid #ff0000;
+  border : 2px solid #78B1BA;
+  animation: blink .5s step-end infinite alternate;
 }
 .address-section {
   background: $oa-default-color-21;

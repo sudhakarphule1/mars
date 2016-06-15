@@ -11,7 +11,7 @@
     border-radius: 2px;
     line-height: 1.1;
     display: inline-block;
-    width: 84px !important;
+    width: 96px !important;
     height: 17px !important;
     &:focus {
       outline: none;
@@ -47,13 +47,17 @@
         position: absolute;
         width: 100%;
         text-align: left;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 500;
-        padding: 2px 80px 0 9px;
+        padding: 3px 80px 0 9px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         text-align: center;
+        background-image: url("../app/share/images/down-arrow.svg");
+        background-size: 9px 6px;
+        background-repeat: no-repeat;
+        background-position: 78px 8px;
     }
     .selbtngroup {
         position: relative;

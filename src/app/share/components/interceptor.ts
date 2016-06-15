@@ -94,7 +94,6 @@ export class HttpClient {
     return this.http.get(newUrl, {
       headers: headers
     }).map((response) => {
-    g_messageService.show("This is Toaster message");
         localStorage.setItem("access_token", response.json().access_token);
       return response;});
 

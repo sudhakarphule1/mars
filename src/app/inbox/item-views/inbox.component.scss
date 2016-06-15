@@ -35,6 +35,7 @@
   overflow-x: hidden;
   width: 40%;
   float: left;
+  background: $oa-default-color-4;
 }
 .right-section {
   float: left;
@@ -88,7 +89,7 @@
 .delivery-date{
   position: absolute;
   right: 10px;
-  bottom: 0px;
+  bottom: 4px;
   font-size: 11px;
   text-align: right;
   background: $oa-default-color-8;
@@ -109,6 +110,8 @@
   position: relative;
   display: inline-block;
   width: 100%;
+  padding: 1px 0px 4px 0px;
+  border-bottom: 1px solid $oa-default-color-5;
 }
 .active {
   background-color: #EAEAEA;
